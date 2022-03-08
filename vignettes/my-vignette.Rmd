@@ -1,0 +1,113 @@
+---
+title: "glycanPredict"
+author: "Margot Bligh"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{glycanPredict}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+This package is intended for "calculation" of all possible glycans (or sugars) within a set of constraining parameters. Specifically, the user indicates which monomer types (hexose only or hexose and pentose), degree of polymerisation (length) range and modification types (e.g. sulphate, carboxylic acid, deoxy - full list of options is described below) should be included, the desired maximum for the average number of modifications per monomer and whether mono-/oligosaccharides are procainamide-labelled or not. There is also the option for whether or not double sulphation of a single monomer is possible or not. The function "builds" names, formulas and masses for all sugars possible within the constraining parameters. The user also provides two parameters related to mass spectrometry: ionisation mode and scan range. *m/z* values of ions are calculated depending on the ionisation mode and modifications (discussed more in detail below). Sugars which contain no ions with *m/z* values within the given scan range are removed. The final output is returned as a (wide format) dataframe. This package was written for annotation of mass spec data (especially LC-MS) but if used for other purposes either ionisation mode can be given and very wide scan ranges. The package works by sourcing a python file and then using the function encoded in the python script.
+
+***word of caution: please note that this tool will predict some sugars that are not really 'possible' as the nature of sugar chemistry means that it would take a long time to add in all the constraints!***
+
+# Possible modifications
+Twelve modifications are currently possible. In addition to vectors of combinations can also give the option 'all' (*may be very slow!*) or 'none' (the default)
+
+### Sulphate
+Needs to be written as `'sulphate'`. Double sulphation per monomer is also possible be giving `double_sulphate = 1, nmod_max = 2`
+
+### Carboxylic acid
+Needs to be written as `'carboxyl'`. Carboxylic acids as found in uronic acids - for example mannuronic and guluronate acids in alginate.
+
+### Phosphate
+Needs to be written as `'phosphate'`. 
+
+### Deoxy
+Needs to be written as `'deoxy'`. E.g. fucose  
+
+### O-methyl
+Needs to be written as `'omethyl'`. 
+
+### Amino
+Needs to be written as `'amino'`. E.g. glucosamine or galactosamine
+
+### Anhydro-bridge
+Needs to be written as `'anhydro'`. E.g. in carrageenans
+
+### Unsaturated
+Needs to be written as `'unsaturated'`. Occurs only once per oligosaccharide.  
+
+### Alditol
+Needs to be written as `'alditol'`. Occurs only once per oligosaccharide.  
+
+### Dehydrated
+Needs to be written as `'deyhdrated'`. Occurs only once per oligosaccharide. Useful for annotation of fragmentation spectra.   
+
+# Ions
+
+## Positive mode
+
+Ions:
+
+* [M+H]^+^
+
+* [M+Na]^+^
+
+* [M+NH4]^+^
+
+* [M+K]^+^
+
+## Negative mode
+Ions
+
+* [M-H]^-^ 
+
+* *if anionic modifications included*: [M-nH]^-n^, where *n* is the maximum number of anionic groups on one sugar
+
+* [M+Cl]^-^
+
+* [M+CHOO]^-^ 
+
+* [M-2H]^-2^
+
+* [M+2Cl]^-2^
+
+* [M+2CHOO]^-2^
+
+* [M+Cl-H]^-2^
+
+* [M+CHOO-H]^-2^
+
+# Output
+Final output: e.g. for positive mode (changes ions in output)
+
+| **dp** | **name** | **mass** | **formula** | **[M+H]+** | **[M+Na]+** | **[M+NH4]+** | **[M+K]+** |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| degree of polymerisation |  name in the format of "monomer or modification"-number. examples below | monoisotopic mass (Da) of fully protonated (neutral) molecule | sum chemical formula | *m/z* of [M+H]^+^ ion |  *m/z* of [M+Na]^+^ ion | *m/z* of [M+NH4]^+^ ion | *m/z* of [M+K]^+^ ion |
+
+**Example names**
+
+* hex-2-deoxy-2 = disaccharide of deoxyhexose
+
+* hex-4-pent-2-sulphate-3 = hexasaccharide with four hexose monomers, two pentose monomers, and three sulphate groups
+
+* hex-7-carboxy-2-procA = procainamide-labelled heptasaccharide with two carboxylic acid groups
+
+# Example usage
+
+```{example usage}
+mz_predicted <- predictGlycans(dp1 = 1, dp2 = 8, ESI_mode = 'neg',
+                              scan_range1 = 175, scan_range2 = 1400,
+                              pent_option = 1, 
+                              modifications = c("anhydrobridge", "sulphate"))
+```

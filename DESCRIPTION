@@ -1,0 +1,24 @@
+Package: glycanPredict
+Title: Prediction of Glycan Masses
+Version: 0.0.0.9000
+Authors@R: 
+    person("Margot", "Bligh", , "mbligh«mai-bremen.de", role = c("aut", "cre"))
+Maintainer: Margot Bligh <mbligh@mpi-bremen.de>
+Description: This package is intended for "calculation" of all possible sugars / glycans within a set of constraining parameters. The function "builds" and returns names, formulas and masses. The user also provides parameters related to mass spectrometry.
+License: GPL-2
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+	reticulate
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "numpy"),
+      list(package = "pandas") 
+    )
+  )
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

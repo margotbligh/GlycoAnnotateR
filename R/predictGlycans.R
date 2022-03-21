@@ -19,6 +19,13 @@ predictGlycans <- function(dp1,dp2,ESI_mode, scan_range1, scan_range2,
                           pent_option=NULL,modifications=NULL,
                           nmod_max=NULL,double_sulphate=NULL,label=NULL){
   path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict-r.py", sep="/")
+  #check if pandas installed
+  if(!reticulate::py_module_available("pandas")){
+    reticulate::py_install("pandas")
+  }
+  if(!reticulate::py_module_available("numpy")){
+    reticulate::py_install("numpy")
+  }
   reticulate::source_python(path)
   dp1 = as.integer(dp1)
   dp2 = as.integer(dp2)

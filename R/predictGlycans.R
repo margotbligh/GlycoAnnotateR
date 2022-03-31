@@ -2,7 +2,7 @@
 #'
 #' This function will predict all possible glycan molecules within the constraints of the parameters.
 #' @param dp1 Minimum degree of polymerisation. Requires an integer. 
-#' @param dp2 Minimum degree of polymerisation. Requires an integer.
+#' @param dp2 Maximum degree of polymerisation. Requires an integer.
 #' @param ESI_mode ESI mode used. Accepts 'pos' or 'neg'
 #' @param scan_range1 Lower end of scan range. Requires an integer.
 #' @param scan_range2 Upper end of scan range. Requires an integer.

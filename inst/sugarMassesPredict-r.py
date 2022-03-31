@@ -90,37 +90,16 @@ modifications_neutral = {"anhydrobridge",
                          "amino",
                          "dehydrated"}
 
-def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
-                   scan_range2=1000, pent_option=0, modifications='none', nmod_max=1, double_sulphate=0, label='none'):
-    print("\nstep #1: getting and checking arguments")
-    print("----------------------------------------\n")
-    #get args and check that they are in the correct format
-    dp_range = [dp1, dp2]
-    if len(dp_range) != 2:
-        raise ValueError('dp range does not have two values!')
-    if dp_range[1] < dp_range[0]:
-        raise ValueError('dp range needs to start with lower value!')
+def predict_sugars(dp=None, ESI_mode='neg', scan_range=None, pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none'):
+    if scan_range is None:
+        scan_range = [175, 1400]
+    if dp is None:
+        dp_range = [1, 6]
+    else:
+        dp_range = dp
     dp_range_list = list(range(dp_range[0], dp_range[1] + 1))
-    if not pent_option in [0,1]:
-        raise ValueError('pent option needs to be 0 or 1!')
-    if modifications != 'none':
-        if not all(elem in possible_modifications for elem in modifications):
-            raise ValueError('you have given a modification that is not allowed!')
-    if type(ESI_mode) is str:
-        if not ESI_mode in ['neg', 'pos']:
-            raise ValueError('you have given an ESI mode that is not allowed! did you make a typo?')
-    if type(ESI_mode) is list:
-        if not all(elem in ['neg', 'pos'] for elem in ESI_mode):
-            raise ValueError('you have given an ESI mode that is not allowed! did you make a typo?')
-    scan_range = [scan_range1, scan_range2]
-    if len(scan_range) != 2:
-        raise ValueError('scan range does not have two values!')
-    if type(scan_range[0]) is not int or type(scan_range[1]) is not int:
-        raise ValueError('scan range includes non-integer values!')
-    if scan_range[1] < scan_range[0]:
-        raise ValueError('scan range needs to start with lower value!')
-    if not label in ['none', 'procainamide']:
-        raise ValueError('you have given a label that is not allowed!')
+    print("step #1: getting arguments")
+    print("----------------------------------------")
     if "all" in modifications:
         modifications = possible_modifications
     if "sulphate" in modifications:
@@ -179,10 +158,10 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         modification_numbers = []
         for i in dp_range_list:
             a = list(range(0, i + 1))
-            if pent_option == 1:
+            if pent_option == True:
                 modification_numbers = modification_numbers + \
                                        list(itertools.product(a, repeat=m)) * (i + 1)
-            elif pent_option == 0:
+            elif pent_option == False:
                 modification_numbers = modification_numbers + \
                                        list(itertools.product(a, repeat=m))
         modification_numbers = pd.DataFrame(modification_numbers)
@@ -192,10 +171,10 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         print("--> getting pentose masses")
         masses = getPentMasses(masses)
     #add modifications
-    if "none" in modifications and pent_option == 1:
+    if "none" in modifications and pent_option == True:
         masses.name = masses.name.str.replace("hex-0-", "")
         masses.name = masses.name.str.replace("-pent-0", "")
-    if "none" not in modifications and pent_option == 1:
+    if "none" not in modifications and pent_option == True:
         print("--> adding modifications")
         m = len(modifications)
         dp = masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
@@ -216,7 +195,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
                                'pent': pent})
         masses = pd.concat([masses, modification_numbers], axis=1)
         masses['mass'] = mass
-    if "none" not in modifications and pent_option == 0:
+    if "none" not in modifications and pent_option == False:
         print("--> adding modifications")
         m = len(modifications)
         dp = masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
@@ -235,7 +214,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
                                'hex': hex})
         masses = pd.concat([masses, modification_numbers], axis=1)
         masses['mass'] = mass
-    if "sulphate" in modifications and double_sulphate == 1:
+    if "sulphate" in modifications and double_sulphate == True:
         print("--> adding extra sulphate groups")
         masses_s1 = masses.loc[masses['sulphate'] >= 1]
         masses_s2 = masses_s1
@@ -279,7 +258,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         del masses_a
     print("\nstep #3: building formulas")
     print("----------------------------------------\n")
-    if "none" in modifications and pent_option == 1:
+    if "none" in modifications and pent_option == True:
         dp = masses.dp
         hex = masses.hex
         pent = masses.pent
@@ -316,7 +295,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         # fix to remove atoms with zero
         formulas_final = formulas_final.str.replace("\D0", "")
         masses['formula'] = formulas_final
-    if "none" in modifications and pent_option == 0:
+    if "none" in modifications and pent_option == False:
         dp = masses.dp
         hex = masses.hex
         molecule_numbers = pd.DataFrame({'dp': dp,'hex': hex})
@@ -352,7 +331,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         # fix to remove atoms with zero
         formulas_final = formulas_final.str.replace("\D0", "")
         masses['formula'] = formulas_final
-    if "none" not in modifications and pent_option == 1:
+    if "none" not in modifications and pent_option == True:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')
         if alditol_option == 'y':
@@ -397,7 +376,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         # fix to remove atoms with zero
         formulas_final = formulas_final.str.replace("\D0", "")
         masses['formula'] = formulas_final
-    if "none" not in modifications and pent_option == 0:
+    if "none" not in modifications and pent_option == False:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')
         if alditol_option == 'y':
@@ -453,7 +432,7 @@ def predict_sugars(dp1=1, dp2=2, ESI_mode='pos', scan_range1=100,
         masses['nmod'] = masses[modifications].sum(axis=1)
         masses['nmod_avg'] = masses.nmod / masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
-    if 'anhydrobridge' in modifications and pent_option == 1:
+    if 'anhydrobridge' in modifications and pent_option == True:
         indexDelete = masses[masses.hex < masses.anhydrobridge].index
         masses.drop(indexDelete, inplace=True)
         masses = masses.reset_index()

@@ -40,8 +40,8 @@ encoded in the python script.
 are not really ‘possible’ as the nature of sugar chemistry means that it
 would take a long time to add in all the constraints!}
 
-For more details see the help vignette:
-\code{vignette("help", package = "glycanPredict")}
+For more details see the vignette:
+\code{vignette("glycanPredict", package = "glycanPredict")}
 }
 \section{Slots}{
 

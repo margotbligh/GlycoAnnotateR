@@ -323,7 +323,7 @@ def predict_sugars(dp= [1, 6], ESI_mode='neg', scan_range=[175, 1400], pent_opti
             else:
                 formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
         # fix to remove atoms with zero
-        formulas_final = formulas_final.str.replace("\D0", "")
+        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         masses['formula'] = formulas_final
     if "none" not in modifications and pent_option == True:
         if unsaturated_option == 'y':

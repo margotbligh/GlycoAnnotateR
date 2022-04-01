@@ -1,23 +1,54 @@
 #' Function to predict glycan masses and m/z values
 #'
-#' This function will predict all possible glycan molecules within the constraints of the parameters.
-#' @param dp1 Minimum degree of polymerisation. Requires an integer. 
-#' @param dp2 Maximum degree of polymerisation. Requires an integer.
-#' @param ESI_mode ESI mode used. Accepts 'pos' or 'neg'
-#' @param scan_range1 Lower end of scan range. Requires an integer.
-#' @param scan_range2 Upper end of scan range. Requires an integer.
-#' @param pent_option Should pentose monomers be included? 1 = yes, 0 = no. Defaults to no.
-#' @param modifications Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
-#' @param nmod_max Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.
-#' @param double_sulphate Can monomers be double-sulphated: 0 for no (default), 1 for yes. For yes you MUST give a value of at least 2 to nmod_max.
-#' @param label Are sugars labelled? Currently only accepts none (default, leave out) or 'procainamide'.
+#' @include setClass.R
+#'
+#' @description This function will predict all possible glycan molecules within the constraints of the parameters.
+#' @param param A \code{predictGlycansParam} object containing all parameters for the
+#'     predictGlycans function. See \link[glycanPredict]{predictGlycansParam-class}
+#'
 #' @export
 #' @examples
-#' mz_predicted <- predictGlycans(dp1 = 1, dp2 = 8, ESI_mode = 'neg', scan_range1 = 175, scan_range2 = 1400, pent_option = 1, modifications = c("sulphate", "deoxy", "carboxyl"),nmod_max = 2, double_sulphate = 1)
+#' pgp <- predictGlycansParam()
+#' pgp@@dp <- c(1,7)
+#' pgp@@ESI_mode <- 'neg'
+#' pgp@@scan_range <- c(150, 1300)
+#' pgp@@modifications <- c('sulphate', 'carboxyl')
+#' pgp@@double_sulphate <- TRUE
+#' predicted.df <- predictGlycans(param = pgp)
+#' 
+#' @details 
+#' This function is intended for “calculation” of all possible glycans (or sugars) 
+#' within a set of constraining parameters (contained within the 
+#' \code{predictGlycansParam} object). Specifically, the user indicates which 
+#' monomer types (hexose only or hexose and pentose), degree of polymerisation (length) 
+#' range and modification types should be included, the desired maximum 
+#' for the average number of modifications per monomer and whether 
+#' mono-/oligosaccharides are procainamide-labelled or not. There is also the 
+#' option for whether or not double sulphation of a single monomer is possible or not. 
+#' The function “builds” names, formulas and masses for all sugars possible 
+#' within the constraining parameters. The user also provides two parameters 
+#' related to mass spectrometry: ionisation mode (\code{ESI_mode}) and 
+#' scan range (\code{scan_range}). m/z values of ions are calculated 
+#' depending on the ionisation mode and modifications. Sugars which contain 
+#' no ions with m/z values within the given scan range are removed. The final 
+#' output is returned as a (wide format) dataframe. This package was written 
+#' for annotation of mass spec data (especially LC-MS) but if used for 
+#' other purposes either ionisation mode can be given and very wide scan ranges. 
+#' The function works by sourcing a python file and then using the function 
+#' encoded in the python script.
+#' 
+#' **Word of caution: please note that this tool will predict some sugars that 
+#' are not really ‘possible’ as the nature of sugar chemistry means that it 
+#' would take a long time to add in all the constraints!**
+#' 
+#' For more details see the help vignette:
+#' \code{vignette("help", package = "glycanPredict")}
+#' 
+#' @seealso 
+#' glycanPredict::predictGlycansParam()
+#' 
 
-predictGlycans <- function(dp1,dp2,ESI_mode, scan_range1, scan_range2,
-                          pent_option=NULL,modifications=NULL,
-                          nmod_max=NULL,double_sulphate=NULL,label=NULL){
+predictGlycans <- function(param){
   path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict-r.py", sep="/")
   #check if pandas installed
   if(!reticulate::py_module_available("pandas")){
@@ -26,38 +57,20 @@ predictGlycans <- function(dp1,dp2,ESI_mode, scan_range1, scan_range2,
   if(!reticulate::py_module_available("numpy")){
     reticulate::py_install("numpy")
   }
+  #source python script
   reticulate::source_python(path)
-  dp1 = as.integer(dp1)
-  dp2 = as.integer(dp2)
-  scan_range1 = as.integer(scan_range1)
-  scan_range2 = as.integer(scan_range2)
-  if(!is.null(pent_option)){
-    pent_option = as.integer(pent_option)
-  } else{
-    pent_option = as.integer(0)
-  }
-  if(!is.null(nmod_max)){
-    nmod_max = as.integer(nmod_max)
-  } else{
-    nmod_max = as.integer(1)
-  }
-  if(!is.null(double_sulphate)){
-    double_sulphate = as.integer(double_sulphate)
-  } else{
-    double_sulphate = as.integer(0)
-  }
-  if(!is.null(modifications)){
-    if(is.vector(modifications)){
-      modifications = as.list(modifications)
-    }
-  } else{
-    modifications = "none"
-  }
-  if(is.null(label)){
-    label = "none"
-  }
-  df <- predict_sugars(dp1 = dp1, dp2 = dp2, ESI_mode = ESI_mode,
-                       scan_range1 = scan_range1, scan_range2 = scan_range2,
+  #get parameters from object
+  #and reset class types for python
+  dp = as.list(as.integer(param@dp))
+  ESI_mode = param@ESI_mode
+  scan_range = as.list(as.integer(param@scan_range))
+  pent_option = param@pent_option
+  nmod_max = as.integer(param@nmod_max)
+  modifications = as.list(modifications)
+  double_sulphate = param@double_sulphate
+  label = param@label
+  df <- predict_sugars(dp = dp, ESI_mode = ESI_mode,
+                       scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, 
                        double_sulphate = double_sulphate)

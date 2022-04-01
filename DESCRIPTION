@@ -22,3 +22,6 @@ Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr
+Collate: 
+    'setClass.R'
+    'predictGlycans.R'

@@ -12,7 +12,7 @@ df <- predictGlycans(param = pgp)
 \description{
 An S4 class that contains the parameters for glycan prediction.
 Once created the predictGlycansParam object should be supplied to the function
-\code{predictGlycans} for glycan prediction constrained by the parameters contained
+\link[glycanPredict]{predictGlycans} for glycan prediction constrained by the parameters contained
 in the \code{predictGlycansParam} object.
 }
 \details{

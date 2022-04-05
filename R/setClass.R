@@ -8,6 +8,7 @@
 #' 
 #' @seealso glycanPredict::predictGlycans()
 #' 
+#' @export
 #' @usage 
 #' pgp <- predictGlycansParam()
 #' df <- predictGlycans(param = pgp)
@@ -24,8 +25,7 @@
 #' @inherit predictGlycans details
 #' 
 #' @inherit predictGlycans examples
-#' 
-#' @export
+#'
 
 predictGlycansParam = setClass("predictGlycansParam",
          slots = c(

@@ -66,7 +66,7 @@ predictGlycans <- function(param){
   scan_range = as.list(as.integer(param@scan_range))
   pent_option = param@pent_option
   nmod_max = as.integer(param@nmod_max)
-  modifications = as.list(modifications)
+  modifications = as.list(param@modifications)
   double_sulphate = param@double_sulphate
   label = param@label
   df <- predict_sugars(dp = dp, ESI_mode = ESI_mode,

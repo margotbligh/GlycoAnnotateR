@@ -8,7 +8,9 @@
 #' 
 #' @seealso glycanPredict::predictGlycans()
 #' 
-#' @export
+#' @export predictGlycansParam
+#' @exportClass predictGlycansParam
+#' 
 #' @usage 
 #' pgp <- predictGlycansParam()
 #' df <- predictGlycans(param = pgp)

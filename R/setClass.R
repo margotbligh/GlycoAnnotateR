@@ -71,7 +71,7 @@ predictGlycansParam = setClass("predictGlycansParam",
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated', 
                                         'alditol', 'amino','dehydrated','sulphate')
-           if (!(object@modifications) %in% possible_modifications)
+           if (!all(object@modifications %in% possible_modifications))
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",
                                          collapse = ", "), "."))

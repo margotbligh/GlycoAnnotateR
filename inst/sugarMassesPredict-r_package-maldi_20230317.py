@@ -517,7 +517,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 combinationDf['Ca'] = combinationDf['Ca'] / 2
                 combinationDf = combinationDf[((combinationDf['Ca'] % 2) == 0) | ((combinationDf['Ca'] % 2) == 1)]
                 combinationDf['charge'] = combinationDf['H'] + combinationDf['Na'] + (combinationDf['Ca'] * 2)
-                #combinationDf = combinationDf[combinationDf['charge'] == -1]
+                combinationDf = combinationDf[combinationDf['charge'] == -1]
                 temp = gb.get_group(i)
                 n = temp.nmod_anionic.unique().__len__()
                 combinationDf = pd.concat([combinationDf] * n, ignore_index=True)
@@ -541,7 +541,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic = masses_polyanionic_loop.merge(masses_polyanionic_extraions, on='name', how='left')
             #add to 1 and 2 anionic groups
             masses = pd.concat([masses_polyanionic, masses_1anionic, masses_2anionic], ignore_index=True)
-            return(masses)
             # remove rows where all ions are outside range
             my_cols = list(masses.filter(like='[M', axis=1).columns)
             masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])
@@ -624,4 +623,4 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #6: returning ouput")
     #print("----------------------------------------------------------------\n")
     masses_final = masses_final.reset_index(drop=True)
-    #return(masses_final)
+    return(masses_final)

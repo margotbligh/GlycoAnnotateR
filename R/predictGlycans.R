@@ -49,7 +49,7 @@
 #' 
 
 predictGlycans <- function(param){
-  path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict-r.py", sep="/")
+  path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict-r_package-maldi_20230317.py", sep="/")
   #check if pandas installed
   if(!reticulate::py_module_available("pandas")){
     reticulate::py_install("pandas")

@@ -8,7 +8,7 @@ Description: This package is intended for "calculation" of all possible sugars /
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Imports:
 	reticulate
 Config/reticulate:

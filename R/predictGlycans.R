@@ -10,7 +10,7 @@
 #' @examples
 #' pgp <- predictGlycansParam()
 #' pgp@@dp <- c(1,7)
-#' pgp@@ESI_mode <- 'neg'
+#' pgp@@polarity <- 'neg'
 #' pgp@@scan_range <- c(150, 1300)
 #' pgp@@modifications <- c('sulphate', 'carboxyl')
 #' pgp@@double_sulphate <- TRUE
@@ -70,10 +70,10 @@ predictGlycans <- function(param){
   double_sulphate = param@double_sulphate
   label = param@label
   ion_type = param@ion_type
-  df <- predict_sugars(dp = dp, ESI_mode = ESI_mode,
+  df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
-                       label = label, nmod_max = nmod_max, 
+                       label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulphate = double_sulphate)
   return(df)
 }

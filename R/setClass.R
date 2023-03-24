@@ -32,23 +32,25 @@
 predictGlycansParam = setClass("predictGlycansParam",
          slots = c(
            dp = "numeric",
-           ESI_mode = "character",
+           polarity = "character",
            scan_range = "numeric",
            pent_option = "logical",
            modifications = "character",
            nmod_max = "numeric",
            double_sulphate = "logical",
-           label = "character"
+           label = "character",
+           ion_type = "character"
          ),
          prototype = prototype(
            dp = c(1, 6),
-           ESI_mode = "neg",
+           polarity = "neg",
            scan_range = c(175, 1400),
            pent_option = FALSE,
            modifications = "none",
            nmod_max = 1,
            double_sulphate = FALSE,
-           label = "none"
+           label = "none",
+           ion_type = "ESI"
          ),
          validity = function(object) {
            msg <- character()

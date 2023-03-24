@@ -494,7 +494,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # expand rows
             # get additional numbers of anionic groups added
             masses_polyanionic['k'] = masses_polyanionic['nmod_anionic'].map(
-                lambda nmod_anionic: round_up_to_even(nmod_anionic))
+                lambda nmod_anionic: round_up_to_even_divide(nmod_anionic))
             # calculate total number of anionic ions possible
             masses_polyanionic['x'] = masses_polyanionic['k'].map(lambda k: k*(k+1))
             # split out those with odd numbers of anionic groups

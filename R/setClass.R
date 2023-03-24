@@ -16,13 +16,14 @@
 #' df <- predictGlycans(param = pgp)
 #' 
 #' @slot dp Degree of polymerisation range (numeric, length 2).
-#' @slot ESI_mode ESI mode used. Accepts 'pos' or 'neg'.
+#' @slot polarity ionisation mode used. Accepts 'pos' or 'neg'.
 #' @slot scan_range Scan range used during MS. (numeric, length 2).
 #' @slot pent_option Logical: Should pentose monomers be included? 
 #' @slot modifications Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
 #' @slot nmod_max Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulphate Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.
 #' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
+#' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' 
 #' @inherit predictGlycans details
 #' 
@@ -58,8 +59,8 @@ predictGlycansParam = setClass("predictGlycansParam",
              msg <- c(msg, paste0("'dp' has to be a numeric",
                                   " of length 2 with only positive",
                                   " values."))
-           if(!any(object@ESI_mode %in% c("neg", "pos")))
-             msg <- c(msg, paste0("'ESI_mode' has to be a character",
+           if(!any(object@polarity %in% c("neg", "pos")))
+             msg <- c(msg, paste0("'polarity' has to be a character",
                                   " containing 'pos' and/or 'neg"))
            if (length(object@scan_range) != 2 | any(object@scan_range < 0))
              msg <- c(msg, paste0("'scan_range' has to be a numeric",

@@ -486,7 +486,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_2anionic['[M-H]-'] = masses_1anionic.mass - ion_mdiff['H'] + e_mdiff
             masses_2anionic['[M-2H+Na]-'] = masses_1anionic.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
             # split out those with >= 3 anionic groups
-            masses_polyanionic = masses_anionic[masses_anionic['nmod_anionic'] => 3]
+            masses_polyanionic = masses_anionic[masses_anionic['nmod_anionic'] > 2]
             #add M-H and M-2H+Na to polyanionic
             masses_polyanionic_extraions = masses_polyanionic
             masses_polyanionic_extraions['[M-H]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + e_mdiff

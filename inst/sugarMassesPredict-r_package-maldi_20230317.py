@@ -505,7 +505,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic = pd.concat([masses_polyanionic_even, masses_polyanionic_odd])
             # repeat rows
             masses_polyanionic['rows'] = masses_polyanionic['x'] - 2
-            masses_polyanionic_rep = masses_polyanionic.loc[masses_polyanionic.index.repeat(masses_polyanionic.row)].reset_index(drop=True)
+            masses_polyanionic_rep = masses_polyanionic.loc[masses_polyanionic.index.repeat(masses_polyanionic.rows)].reset_index(drop=True)
             gb = masses_polyanionic.groupby('nmod_anionic')
             masses_polyanionic_loop = pd.DataFrame()
             for i in masses_polyanionic['nmod_anionic'].unique():

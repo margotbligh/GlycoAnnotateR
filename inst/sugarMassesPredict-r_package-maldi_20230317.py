@@ -577,12 +577,13 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # filter anionic molecules based on scan range
             # set values outside range to NaN
             # remove rows where all ions are outside range
+            
             my_cols = list(masses_anionic.filter(like='[M', axis=1).columns)
             masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] >= scan_range[0])
             masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] <= scan_range[1])
             masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
             # concatenate dataframes and format nicely to only have useful columns
-            masses_final = pd.concat([masses_anionic, masses_neutral])
+            masses_final = pd.concat([masses_final, masses_neutral])
             bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated'}
             bad_cols.update(modifications_anionic)
             bad_cols.update(modifications_neutral)

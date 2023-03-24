@@ -516,7 +516,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 combinationDf = combinationDf[combinationDf['Ca'] >= 0]
                 combinationDf['Ca'] = combinationDf['Ca'] / 2
                 combinationDf = combinationDf[((combinationDf['Ca'] % 2) == 0) | ((combinationDf['Ca'] % 2) == 1)]
-                combinationDf['charge'] = combinationDf['H'] + combinationDf['Na'] + combinationDf['Ca'] * 2
+                combinationDf['charge'] = combinationDf['H'] + combinationDf['Na'] + (combinationDf['Ca'] * 2)
                 combinationDf = combinationDf[combinationDf['charge'] == -1]
                 temp = gb.get_group(i)
                 n = temp.nmod_anionic.unique().__len__()
@@ -528,9 +528,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0|\\.0", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1", "")
             masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - masses_polyanionic_loop.H * ion_mdiff['H'] + masses_polyanionic_loop.Na * ion_mdiff['Na'] + masses_polyanionic_loop.Ca * ion_mdiff['Ca'] + e_mdiff
             #drop extra columns
-            bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca', 'charge']
+            bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)
             #pivot
             masses_polyanionic_loop = pd.pivot_table(masses_polyanionic_loop, columns='ion', values='mz', index=['name'])
@@ -584,7 +585,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
             # concatenate dataframes and format nicely to only have useful columns
             masses_final = pd.concat([masses_final, masses_neutral])
-            bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated'}
+            bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
             bad_cols.update(modifications_anionic)
             bad_cols.update(modifications_neutral)
             cols_del = list(set(masses_final.columns).intersection(bad_cols))

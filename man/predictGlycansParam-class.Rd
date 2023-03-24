@@ -48,7 +48,7 @@ For more details see the vignette:
 \describe{
 \item{\code{dp}}{Degree of polymerisation range (numeric, length 2).}
 
-\item{\code{ESI_mode}}{ESI mode used. Accepts 'pos' or 'neg'.}
+\item{\code{polarity}}{ionisation mode used. Accepts 'pos' or 'neg'.}
 
 \item{\code{scan_range}}{Scan range used during MS. (numeric, length 2).}
 
@@ -61,6 +61,8 @@ For more details see the vignette:
 \item{\code{double_sulphate}}{Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.}
 
 \item{\code{label}}{Are sugars labelled? Currently only accepts 'none' or 'procainamide'.}
+
+\item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
 }}
 
 \examples{

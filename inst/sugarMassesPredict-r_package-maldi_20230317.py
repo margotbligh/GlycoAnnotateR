@@ -528,7 +528,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0|\\.0", "")
-            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - masses_polyanionic_loop.H * ion_mdiff['H'] + masses_polyanionic_loop.Na * ion_mdiff['Na'] + masses_polyanionic_loop.Ca * ion_mdiff['Ca'] + e_mdiff)
+            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - masses_polyanionic_loop.H * ion_mdiff['H'] + masses_polyanionic_loop.Na * ion_mdiff['Na'] + masses_polyanionic_loop.Ca * ion_mdiff['Ca'] + e_mdiff
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca', 'charge']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)

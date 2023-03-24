@@ -522,7 +522,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 n = temp.nmod_anionic.unique().__len__()
                 combinationDf = pd.concat([combinationDf] * n, ignore_index=True)
                 temp = pd.concat([temp.reset_index(), combinationDf.reset_index()], axis=1)
-                masses_polyanionic_loop = pd.concat([dfloop, temp], ignore_index=True)
+                masses_polyanionic_loop = pd.concat([masses_polyanionic_loop, temp], ignore_index=True)
             #calculate m/z and make names
             masses_polyanionic_loop['ion'] = '[M' + masses_polyanionic_loop.H.astype(str) + 'H+' + \
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \

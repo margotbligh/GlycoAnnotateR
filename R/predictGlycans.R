@@ -62,13 +62,14 @@ predictGlycans <- function(param){
   #get parameters from object
   #and reset class types for python
   dp = as.list(as.integer(param@dp))
-  ESI_mode = param@ESI_mode
+  polarity = param@polarity
   scan_range = as.list(as.integer(param@scan_range))
   pent_option = param@pent_option
   nmod_max = as.integer(param@nmod_max)
   modifications = as.list(param@modifications)
   double_sulphate = param@double_sulphate
   label = param@label
+  ion_type = param@ion_type
   df <- predict_sugars(dp = dp, ESI_mode = ESI_mode,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,

@@ -506,7 +506,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # repeat rows
             masses_polyanionic['rows'] = masses_polyanionic['x'] - 2
             masses_polyanionic_rep = masses_polyanionic.loc[masses_polyanionic.index.repeat(masses_polyanionic.rows)].reset_index(drop=True)
-            gb = masses_polyanionic.groupby('nmod_anionic')
+            gb = masses_polyanionic_rep.groupby('nmod_anionic')
             masses_polyanionic_loop = pd.DataFrame()
             for i in masses_polyanionic['nmod_anionic'].unique():
                 combinations = itertools.permutations(list(range(-i, i + 1)), 3)
@@ -519,7 +519,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 combinationDf['charge'] = combinationDf['H'] + combinationDf['Na'] + (combinationDf['Ca'] * 2)
                 combinationDf = combinationDf[combinationDf['charge'] == -1]
                 temp = gb.get_group(i)
-                n = temp.nmod_anionic.unique().__len__()
+                n = temp.name.unique().__len__()
                 combinationDf = pd.concat([combinationDf] * n, ignore_index=True)
                 temp = pd.concat([temp.reset_index(), combinationDf.reset_index()], axis=1)
                 masses_polyanionic_loop = pd.concat([masses_polyanionic_loop, temp], ignore_index=True)
@@ -527,8 +527,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop['ion'] = '[M' + masses_polyanionic_loop.H.astype(str) + 'H+' + \
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0|\\.0", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Ca", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0Na", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "")
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+")
             masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - masses_polyanionic_loop.H * ion_mdiff['H'] + masses_polyanionic_loop.Na * ion_mdiff['Na'] + masses_polyanionic_loop.Ca * ion_mdiff['Ca'] + e_mdiff
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']

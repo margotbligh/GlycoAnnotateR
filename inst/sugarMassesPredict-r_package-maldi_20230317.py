@@ -529,13 +529,13 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
             masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass + (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
-            return(masses_polyanionic_loop)
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0.0Ca", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Na", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1[NCH]", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\]", "]")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+")
+            masses_polyanionic_loop.ion = re.sub("\\.0", "", masses_polyanionic_loop.ion) #remove .0
+            masses_polyanionic_loop.ion = re.sub("\\+0", "", masses_polyanionic_loop.ion) #remove 0
+            masses_polyanionic_loop.ion = re.sub("-1H", "-H", masses_polyanionic_loop.ion) #replace 1H with H
+            masses_polyanionic_loop.ion = re.sub("\\+1N", "+N", masses_polyanionic_loop.ion) #replace 1H with H
+            masses_polyanionic_loop.ion = re.sub("\\+1C", "+C", masses_polyanionic_loop.ion) #replace 1H with H
+            masses_polyanionic_loop.ion = re.sub("\\+]", "]", masses_polyanionic_loop.ion) #+] with ]
+            masses_polyanionic_loop.ion = re.sub("\\+\\+", "+", masses_polyanionic_loop.ion) #++ with +
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)
@@ -626,4 +626,4 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #6: returning ouput")
     #print("----------------------------------------------------------------\n")
     masses_final = masses_final.reset_index(drop=True)
-    #return(masses_final)
+    return(masses_final)

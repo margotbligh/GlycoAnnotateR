@@ -555,7 +555,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # format nicely to only have useful columns
             masses_final = masses
             bad_cols = {'level_0', 'index', 'alditol', 'hex', 'pent', 'nmod', 'nmod_avg', 'nmod_anionic', '_merge',
-                        'dehydrated'}
+                        'dehydrated', 'k', 'x'}
             bad_cols.update(modifications_neutral)
             cols_del = list(set(masses_final.columns).intersection(bad_cols))
             masses_final = masses_final.drop(columns=cols_del)

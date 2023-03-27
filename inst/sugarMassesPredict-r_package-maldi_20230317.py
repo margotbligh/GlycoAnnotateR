@@ -530,10 +530,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Ca", "")
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Na", "")
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1", "")
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1[NCH]", "")
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\]", "]")
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+")
-            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - masses_polyanionic_loop.H * ion_mdiff['H'] + masses_polyanionic_loop.Na * ion_mdiff['Na'] + masses_polyanionic_loop.Ca * ion_mdiff['Ca'] + e_mdiff
+            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)
@@ -557,28 +557,26 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             bad_cols.update(modifications_neutral)
             cols_del = list(set(masses_final.columns).intersection(bad_cols))
             masses_final = masses_final.drop(columns=cols_del)
-            if "ESI" in ion_type:
-                if "neg" in polarity:
-                    ions = list(range(1, masses_anionic.nmod_anionic.max() + 1))
-                    ions = list("[M-" + pd.Series(ions).astype(str) + "H]-" + pd.Series(ions).astype(str))
-                    for i in range(len(ions)):
-                        masses_anionic[ions[i]] = (masses_anionic.mass - ion_mdiff['H'] * (i + 1) + e_mdiff * (i + 1)) / (i + 1)
-                        masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 1))
-                    masses_anionic = masses_anionic.rename({'[M-1H]-1': '[M-H]-'}, axis=1)
-                    masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
-                    masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-                    masses_anionic['[M+2Cl]-2'] = (masses_anionic.mass + 2 * ion_mdiff['Cl'] + 2 * e_mdiff) / 2
-                    masses_anionic['[M+2CHOO]-2'] = (masses_anionic.mass + 2 * ion_mdiff['CHOO'] + 2 * e_mdiff) / 2
-                    masses_anionic['[M+Cl-H]-2'] = (masses_anionic.mass + ion_mdiff['Cl'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
-                    masses_anionic['[M+CHOO-H]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] - ion_mdiff[
-                        'H'] + 2 * e_mdiff) / 2
-                    masses_anionic['[M+CHOO+Cl]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] + ion_mdiff[
-                        'Cl'] + 2 * e_mdiff) / 2
-            if "pos" in polarity:
-                masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
-                masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
-                masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
-                masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
+        if "ESI" in ion_type:
+          if "neg" in polarity:
+            ions = list(range(1, masses_anionic.nmod_anionic.max() + 1))
+            ions = list("[M-" + pd.Series(ions).astype(str) + "H]-" + pd.Series(ions).astype(str))
+            for i in range(len(ions)):
+              masses_anionic[ions[i]] = (masses_anionic.mass - ion_mdiff['H'] * (i + 1) + e_mdiff * (i + 1)) / (i + 1)
+              masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 1))
+              masses_anionic = masses_anionic.rename({'[M-1H]-1': '[M-H]-'}, axis=1)
+              masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
+              masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
+              masses_anionic['[M+2Cl]-2'] = (masses_anionic.mass + 2 * ion_mdiff['Cl'] + 2 * e_mdiff) / 2
+              masses_anionic['[M+2CHOO]-2'] = (masses_anionic.mass + 2 * ion_mdiff['CHOO'] + 2 * e_mdiff) / 2
+              masses_anionic['[M+Cl-H]-2'] = (masses_anionic.mass + ion_mdiff['Cl'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
+              masses_anionic['[M+CHOO-H]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
+              masses_anionic['[M+CHOO+Cl]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] + ion_mdiff['Cl'] + 2 * e_mdiff) / 2
+          if "pos" in polarity:
+            masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
+            masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
+            masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
+            masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
             # filter anionic molecules based on scan range
             # set values outside range to NaN
             # remove rows where all ions are outside range

@@ -547,7 +547,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             #add to other ions
             masses_polyanionic = masses_polyanionic_loop.merge(masses_polyanionic_extraions, on='name', how='left')
             #add to 1 and 2 anionic groups
-            masses = pd.concat([masses_polyanionic, masses_1anionic, masses_2anionic], ignore_index=True)
+            masses = pd.concat([masses_polyanionic, masses_1anionic, masses_2anionic, masses_neutral], ignore_index=True)
             # remove rows where all ions are outside range
             my_cols = list(masses.filter(like='[M', axis=1).columns)
             masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])

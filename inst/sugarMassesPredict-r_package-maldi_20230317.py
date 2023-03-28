@@ -542,8 +542,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)
             #pivot
             masses_polyanionic_loop = pd.pivot_table(masses_polyanionic_loop, columns='ion', values='mz', index=['name'])
-            return(masses_polyanionic_loop)
             masses_polyanionic_loop['name'] = masses_polyanionic_loop.index
+            return(masses_polyanionic_loop)
             masses_polyanionic_loop = masses_polyanionic_loop.reset_index(drop=True)
             #add to other ions
             masses_polyanionic = masses_polyanionic_loop.merge(masses_polyanionic_extraions, on='name', how='left')

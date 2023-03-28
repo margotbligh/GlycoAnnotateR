@@ -491,7 +491,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             #add M-H and M-2H+Na to polyanionic
             masses_polyanionic_extraions = masses_polyanionic
             masses_polyanionic_extraions['[M-H]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + e_mdiff
-            masses_polyanionic_extraions['[M-2H+Na]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
+            masses_polyanionic_extraions['[M-2H+Na]-'] = masses_polyanionic_extraions.mass - (ion_mdiff['H']*2) + ion_mdiff['Na'] + e_mdiff
             # expand rows
             # get additional numbers of anionic groups added
             masses_polyanionic['k'] = masses_polyanionic['nmod_anionic'].map(

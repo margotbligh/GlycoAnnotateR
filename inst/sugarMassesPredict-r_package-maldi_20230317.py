@@ -538,7 +538,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+]", "]", regex=True) #+] with ]
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+", regex=True) #++ with +
             #return(masses_polyanionic_loop)
-            return(masses_polyanionic_extraions)
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)

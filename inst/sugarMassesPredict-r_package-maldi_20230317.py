@@ -491,7 +491,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             #add M-H and M-2H+Na to polyanionic
             masses_polyanionic_extraions = masses_polyanionic.copy(deep = False)
             masses_polyanionic_extraions['[M-H]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + e_mdiff
-            masses_polyanionic_extraions['[M-2H+Na]-'] = masses_polyanionic_extraions.mass - (ion_mdiff['H']*2) + ion_mdiff['Na'] + e_mdiff
             # expand rows
             # get additional numbers of anionic groups added
             masses_polyanionic['k'] = masses_polyanionic['nmod_anionic'].map(
@@ -505,7 +504,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # add back together
             masses_polyanionic = pd.concat([masses_polyanionic_even, masses_polyanionic_odd])
             # repeat rows
-            masses_polyanionic['rows'] = masses_polyanionic['x'] - 2
+            masses_polyanionic['rows'] = masses_polyanionic['x'] - 1
             masses_polyanionic_rep = masses_polyanionic.loc[masses_polyanionic.index.repeat(masses_polyanionic.rows)].reset_index(drop=True)
             gb = masses_polyanionic_rep.groupby('nmod_anionic')
             masses_polyanionic_loop = pd.DataFrame()

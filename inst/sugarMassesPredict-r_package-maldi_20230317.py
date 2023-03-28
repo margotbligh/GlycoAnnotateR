@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import itertools
 import math
+import re
 
 # suppress warnings
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -483,8 +484,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_1anionic['[M-H]-'] = masses_1anionic.mass - ion_mdiff['H'] + e_mdiff
             #split out those with 2 anionic groups
             masses_2anionic = masses_anionic[masses_anionic['nmod_anionic'] == 2]
-            masses_2anionic['[M-H]-'] = masses_1anionic.mass - ion_mdiff['H'] + e_mdiff
-            masses_2anionic['[M-2H+Na]-'] = masses_1anionic.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
+            masses_2anionic['[M-H]-'] = masses_2anionic.mass - ion_mdiff['H'] + e_mdiff
+            masses_2anionic['[M-2H+Na]-'] = masses_2anionic.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
             # split out those with >= 3 anionic groups
             masses_polyanionic = masses_anionic[masses_anionic['nmod_anionic'] > 2]
             #add M-H and M-2H+Na to polyanionic
@@ -527,13 +528,14 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop['ion'] = '[M' + masses_polyanionic_loop.H.astype(str) + 'H+' + \
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Ca", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("0.0Na", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("1[NCH]", "")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\]", "]")
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+")
-            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass - (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
+            masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass + (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "", regex=True) #remove .0
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0", "", regex=True) #remove 0
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("-1H", "-H", regex=True) #replace 1H with H
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1N", "+N", regex=True) #replace 1H with H
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1C", "+C", regex=True) #replace 1H with H
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+]", "]", regex=True) #+] with ]
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+\\+", "+", regex=True) #++ with +
             #drop extra columns
             bad_cols = ['k', 'x', 'rows', 'index', 'H', 'Na', 'Ca']
             masses_polyanionic_loop = masses_polyanionic_loop.drop(columns=bad_cols)
@@ -553,7 +555,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # format nicely to only have useful columns
             masses_final = masses
             bad_cols = {'level_0', 'index', 'alditol', 'hex', 'pent', 'nmod', 'nmod_avg', 'nmod_anionic', '_merge',
-                        'dehydrated'}
+                        'dehydrated', 'k', 'x', 'sulphate'}
             bad_cols.update(modifications_neutral)
             cols_del = list(set(masses_final.columns).intersection(bad_cols))
             masses_final = masses_final.drop(columns=cols_del)

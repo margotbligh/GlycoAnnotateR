@@ -529,8 +529,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                           masses_polyanionic_loop.Na.astype(str) + 'Na+' + \
                                           masses_polyanionic_loop.Ca.astype(str) + 'Ca]-'
             masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass + (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0[HCN]a{0,1}\\+", "+", regex=True) #remove 0
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "", regex=True) #remove .0
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0", "", regex=True) #remove 0
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("-1H", "-H", regex=True) #replace 1H with H
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1N", "+N", regex=True) #replace 1H with H
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1C", "+C", regex=True) #replace 1H with H

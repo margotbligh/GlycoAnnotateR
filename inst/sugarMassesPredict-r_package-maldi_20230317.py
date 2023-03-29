@@ -485,13 +485,12 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             #split out those with 2 anionic groups
             masses_2anionic = masses_anionic[masses_anionic['nmod_anionic'] == 2]
             masses_2anionic['[M-H]-'] = masses_2anionic.mass - ion_mdiff['H'] + e_mdiff
-            masses_2anionic['[M-2H+Na]-'] = masses_2anionic.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
+            masses_2anionic['[M-2H+Na]-'] = masses_2anionic.mass - (ion_mdiff['H']*2) + ion_mdiff['Na'] + e_mdiff
             # split out those with >= 3 anionic groups
             masses_polyanionic = masses_anionic[masses_anionic['nmod_anionic'] > 2]
             #add M-H and M-2H+Na to polyanionic
-            masses_polyanionic_extraions = masses_polyanionic
+            masses_polyanionic_extraions = masses_polyanionic.copy(deep = False)
             masses_polyanionic_extraions['[M-H]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + e_mdiff
-            masses_polyanionic_extraions['[M-2H+Na]-'] = masses_polyanionic_extraions.mass - ion_mdiff['H'] + ion_mdiff['Na'] + e_mdiff
             # expand rows
             # get additional numbers of anionic groups added
             masses_polyanionic['k'] = masses_polyanionic['nmod_anionic'].map(
@@ -505,7 +504,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # add back together
             masses_polyanionic = pd.concat([masses_polyanionic_even, masses_polyanionic_odd])
             # repeat rows
-            masses_polyanionic['rows'] = masses_polyanionic['x'] - 2
+            masses_polyanionic['rows'] = masses_polyanionic['x'] - 1
             masses_polyanionic_rep = masses_polyanionic.loc[masses_polyanionic.index.repeat(masses_polyanionic.rows)].reset_index(drop=True)
             gb = masses_polyanionic_rep.groupby('nmod_anionic')
             masses_polyanionic_loop = pd.DataFrame()
@@ -531,7 +530,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_polyanionic_loop['mz'] = masses_polyanionic_loop.mass + (masses_polyanionic_loop.H * ion_mdiff['H']) + (masses_polyanionic_loop.Na * ion_mdiff['Na']) + (masses_polyanionic_loop.Ca * ion_mdiff['Ca']) + e_mdiff
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\.0", "", regex=True) #remove .0
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0Na", "+", regex=True) #remove 0
-            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0Ca", "", regex=True) #remove 0
+            masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+0Ca\\]", "]", regex=True) #remove 0
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("-1H", "-H", regex=True) #replace 1H with H
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1N", "+N", regex=True) #replace 1H with H
             masses_polyanionic_loop.ion = masses_polyanionic_loop.ion.str.replace("\\+1C", "+C", regex=True) #replace 1H with H
@@ -547,7 +546,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             #add to other ions
             masses_polyanionic = masses_polyanionic_loop.merge(masses_polyanionic_extraions, on='name', how='left')
             #add to 1 and 2 anionic groups
-            masses = pd.concat([masses_polyanionic, masses_1anionic, masses_2anionic], ignore_index=True)
+            masses = pd.concat([masses_polyanionic, masses_1anionic, masses_2anionic, masses_neutral], ignore_index=True)
             # remove rows where all ions are outside range
             my_cols = list(masses.filter(like='[M', axis=1).columns)
             masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])

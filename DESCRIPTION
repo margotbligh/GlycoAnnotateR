@@ -12,7 +12,11 @@ RoxygenNote: 7.2.1
 Imports:
 	reticulate
 Imports:
-	tidyverse
+	tidyr
+Imports:
+	magrittr
+Imports:
+	dplyr
 Config/reticulate:
   list(
     packages = list(

@@ -235,19 +235,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         #print("--> adding procainamide label")
         masses['name'] = masses.name + ' procA'
         masses['mass'] = masses.mass + proca_mdiff
-    if "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+    elif "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
         #print("--> adding 2-aminopyridine")
         masses['name'] = masses.name + ' 2-PA'
         masses['mass'] = masses.mass + pa_mdiff
-    if "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+    elif "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
         #print("--> adding 2-aminobenzoic acid label")
         masses['name'] = masses.name + ' 2-AA'
         masses['mass'] = masses.mass + aba_mdiff
-    if "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+    elif "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
         #print("--> adding 2-aminobenzamide")
         masses['name'] = masses.name + ' 2-AA'
         masses['mass'] = masses.mass + ab_mdiff
-    if "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+    elif "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
         #print("--> adding bis-PMP label")
         masses['name'] = masses.name + ' bis-PMP'
         masses['mass'] = masses.mass + pmp_mdiff

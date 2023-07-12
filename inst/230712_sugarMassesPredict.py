@@ -49,6 +49,14 @@ aba_mdiff = 121.052764
 pmp_mdiff = 330.148061
 ab_mdiff = 120.068748
 
+#possible names for labels
+proa_names = {"procainamide", "proca", "procA", "ProA"}
+pa_names = {"2-ap", "2-AP", "pa", "PA", "2-aminopyridine"}
+aba_names = {"2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid"}
+ab_names = {"2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"}
+pmp_names = {"pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"}
+
+
 # mass differences for ions
 ion_mdiff = {
     "H": 1.00782500000003,
@@ -59,7 +67,6 @@ ion_mdiff = {
     "K": 38.963708,
     "Ca": 39.962591
 }
-
 e_mdiff = 0.000548579909
 
 # formulas
@@ -99,6 +106,7 @@ modifications_neutral = {"anhydrobridge",
                          "unsaturated",
                          "amino",
                          "dehydrated"}
+
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI"):
     dp_range_list = list(range(dp[0], dp[1] + 1))
@@ -231,23 +239,23 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses = masses.append(masses_s2).reset_index()
         del masses_s1
         del masses_s2
-    if "procainamide" or "proca" or "procA" or "ProA" in label:
+    if label in proa_names:
         #print("--> adding procainamide label")
         masses['name'] = masses.name + ' procA'
         masses['mass'] = masses.mass + proca_mdiff
-    elif "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+    if label in pa_names:
         #print("--> adding 2-aminopyridine")
         masses['name'] = masses.name + ' 2-PA'
         masses['mass'] = masses.mass + pa_mdiff
-    elif "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+    if label in aba_names:
         #print("--> adding 2-aminobenzoic acid label")
         masses['name'] = masses.name + ' 2-AA'
         masses['mass'] = masses.mass + aba_mdiff
-    elif "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+    if label in ab_names:
         #print("--> adding 2-aminobenzamide")
         masses['name'] = masses.name + ' 2-AA'
         masses['mass'] = masses.mass + ab_mdiff
-    elif "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+    if label in pmp_names:
         #print("--> adding bis-PMP label")
         masses['name'] = masses.name + ' bis-PMP'
         masses['mass'] = masses.mass + pmp_mdiff
@@ -295,19 +303,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 mol_n = np.array(molecule_numbers[molecules[j]])
                 form_mol_n = form_n * mol_n
                 n = n + form_mol_n
-            if "procainamide" or "proca" or "procA" or "ProA" in label:
+            if label in proa_names:
                 p = np.array([formulas['proca'][i]] * len(masses.index))
                 n = n + p
-            if "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+            if label in pa_names:
                 p = np.array([formulas['pa'][i]] * len(masses.index))
                 n = n + p
-            if "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+            if label in aba_names:
                 p = np.array([formulas['aba'][i]] * len(masses.index))
                 n = n + p
-            if "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+            if label in ab_names:
                 p = np.array([formulas['ab'][i]] * len(masses.index))
                 n = n + p
-            if "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+            if label in pmp_names:
                 p = np.array([formulas['pmp'][i]] * len(masses.index))
                 n = n + p
             atom_list.append(list(n))
@@ -343,19 +351,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 mol_n = np.array(molecule_numbers[molecules[j]])
                 form_mol_n = form_n * mol_n
                 n = n + form_mol_n
-            if "procainamide" or "proca" or "procA" or "ProA" in label:
+            if label in proa_names:
                 p = np.array([formulas['proca'][i]] * len(masses.index))
                 n = n + p
-            if "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+            if label in pa_names:
                 p = np.array([formulas['pa'][i]] * len(masses.index))
                 n = n + p
-            if "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+            if label in aba_names:
                 p = np.array([formulas['aba'][i]] * len(masses.index))
                 n = n + p
-            if "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+            if label in ab_names:
                 p = np.array([formulas['ab'][i]] * len(masses.index))
                 n = n + p
-            if "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+            if label in pmp_names:
                 p = np.array([formulas['pmp'][i]] * len(masses.index))
                 n = n + p
             atom_list.append(list(n))
@@ -400,19 +408,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 mol_n = np.array(molecule_numbers[molecules[j]])
                 form_mol_n = form_n * mol_n
                 n = n + form_mol_n
-            if "procainamide" or "proca" or "procA" or "ProA" in label:
+            if label in proa_names:
                 p = np.array([formulas['proca'][i]] * len(masses.index))
                 n = n + p
-            if "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+            if label in pa_names:
                 p = np.array([formulas['pa'][i]] * len(masses.index))
                 n = n + p
-            if "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+            if label in aba_names:
                 p = np.array([formulas['aba'][i]] * len(masses.index))
                 n = n + p
-            if "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+            if label in ab_names:
                 p = np.array([formulas['ab'][i]] * len(masses.index))
                 n = n + p
-            if "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+            if label in pmp_names:
                 p = np.array([formulas['pmp'][i]] * len(masses.index))
                 n = n + p
             atom_list.append(list(n))
@@ -456,19 +464,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 mol_n = np.array(molecule_numbers[molecules[j]])
                 form_mol_n = form_n * mol_n
                 n = n + form_mol_n
-            if "procainamide" or "proca" or "procA" or "ProA" in label:
+            if label in proa_names:
                 p = np.array([formulas['proca'][i]] * len(masses.index))
                 n = n + p
-            if "2-ap" or "2-AP" or "pa" or "PA" or "2-aminopyridine" in label:
+            if label in pa_names:
                 p = np.array([formulas['pa'][i]] * len(masses.index))
                 n = n + p
-            if "2-aa" or "2-AA" or "aba" or "ABA" or "2-aminobenzoic acid" in label:
+            if label in aba_names:
                 p = np.array([formulas['aba'][i]] * len(masses.index))
                 n = n + p
-            if "2-ab" or "2-AB" or "ab" or "AB" or "2-aminobenzamide" in label:
+            if label in ab_names:
                 p = np.array([formulas['ab'][i]] * len(masses.index))
                 n = n + p
-            if "pmp" or "PMP" or "1-phenyl-3-methyl-5-pyrazolone" in label:
+            if label in pmp_names:
                 p = np.array([formulas['pmp'][i]] * len(masses.index))
                 n = n + p
             atom_list.append(list(n))

@@ -253,7 +253,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['mass'] = masses.mass + aba_mdiff
     if label in ab_names:
         #print("--> adding 2-aminobenzamide")
-        masses['name'] = masses.name + ' 2-AA'
+        masses['name'] = masses.name + ' 2-AB'
         masses['mass'] = masses.mass + ab_mdiff
     if label in pmp_names:
         #print("--> adding bis-PMP label")

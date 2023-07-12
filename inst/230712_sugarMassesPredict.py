@@ -108,7 +108,7 @@ modifications_neutral = {"anhydrobridge",
                          "dehydrated"}
 
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI"):
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long"):
     dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
@@ -531,15 +531,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             if "ESI" in ion_type:
                 masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
                 masses_neutral['[M+Cl]-'] = masses_neutral.mass + ion_mdiff['Cl'] + e_mdiff
-                masses_neutral['[M+CHOO]-'] = masses_neutral.mass + ion_mdiff['CHOO'] + e_mdiff
-                masses_neutral['[M-2H]-2'] = (masses_neutral.mass - 2 * ion_mdiff['H'] + 2 * e_mdiff) / 2
-                masses_neutral['[M+2Cl]-2'] = (masses_neutral.mass + 2 * ion_mdiff['Cl'] + 2 * e_mdiff) / 2
-                masses_neutral['[M+2CHOO]-2'] = (masses_neutral.mass + 2 * ion_mdiff['CHOO'] + 2 * e_mdiff) / 2
-                masses_neutral['[M+Cl-H]-2'] = (masses_neutral.mass + ion_mdiff['Cl'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
-                masses_neutral['[M+CHOO-H]-2'] = (masses_neutral.mass + ion_mdiff['CHOO'] - ion_mdiff[
-                    'H'] + 2 * e_mdiff) / 2
-                masses_neutral['[M+CHOO+Cl]-2'] = (masses_neutral.mass + ion_mdiff['CHOO'] + ion_mdiff[
-                    'Cl'] + 2 * e_mdiff) / 2
             if "MALDI" in ion_type:
                 masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
         if "pos" in polarity:
@@ -651,12 +642,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
               masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 1))
               masses_anionic = masses_anionic.rename({'[M-1H]-1': '[M-H]-'}, axis=1)
               masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
-              masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-              masses_anionic['[M+2Cl]-2'] = (masses_anionic.mass + 2 * ion_mdiff['Cl'] + 2 * e_mdiff) / 2
-              masses_anionic['[M+2CHOO]-2'] = (masses_anionic.mass + 2 * ion_mdiff['CHOO'] + 2 * e_mdiff) / 2
-              masses_anionic['[M+Cl-H]-2'] = (masses_anionic.mass + ion_mdiff['Cl'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
-              masses_anionic['[M+CHOO-H]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] - ion_mdiff['H'] + 2 * e_mdiff) / 2
-              masses_anionic['[M+CHOO+Cl]-2'] = (masses_anionic.mass + ion_mdiff['CHOO'] + ion_mdiff['Cl'] + 2 * e_mdiff) / 2
           if "pos" in polarity:
             masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
             masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff

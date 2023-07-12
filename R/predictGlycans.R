@@ -76,6 +76,7 @@ predictGlycans <- function(param){
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulphate = double_sulphate)
   format = param@format
+  library(tidyverse)
   if(format == "long"){
     df.l <- df %>% 
       #make long

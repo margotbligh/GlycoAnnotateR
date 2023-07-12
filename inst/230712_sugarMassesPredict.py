@@ -233,10 +233,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_s1 = masses.loc[masses['sulphate'] >= 1]
         masses_s2 = masses_s1
         masses_s2.sulphate = masses_s1.sulphate + masses_s1.dp
-        masses_s2.name = masses_s2.name.str.replace("-sulphate-\d{1,2}", "")
+        masses_s2.name = masses_s2.name.str.replace("-sulphate-\d{1,2}", "", regex=True)
         masses_s2.name = masses_s2.name + '-sulphate-' + masses_s2.sulphate.astype(str)
         masses_s2.mass = masses_s2.mass + modifications_mdiff['sulphate'] * masses_s2.dp
-        masses = masses.append(masses_s2).reset_index()
+        masses = masses.concat(masses_s2).reset_index()
         del masses_s1
         del masses_s2
     if label in proa_names:
@@ -266,7 +266,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['unsaturated'] = 1
         masses['unsaturated'] = 0
         masses_a.mass = masses.mass + modifications_mdiff['unsaturated']
-        masses = masses.append(masses_a).reset_index()
+        masses = masses.concat(masses_a).reset_index()
         del masses_a
     if alditol_option == 'y':
         #print("--> adding alditol sugars")
@@ -275,7 +275,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['alditol'] = 1
         masses['alditol'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['alditol']
-        masses = masses.append(masses_a).reset_index(drop=True)
+        masses = masses.concat(masses_a).reset_index(drop=True)
         del masses_a
     if dehydrated_option == 'y':
         #print("--> adding dehydration to sugars")
@@ -284,7 +284,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['dehydrated'] = 1
         masses['dehydrated'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
-        masses = masses.append(masses_a).reset_index(drop=True)
+        masses = masses.concat(masses_a).reset_index(drop=True)
         del masses_a
     #print("\nstep #3: building formulas")
     #print("----------------------------------------\n")

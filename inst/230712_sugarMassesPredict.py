@@ -334,8 +334,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
             else:
                 formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero
-        formulas_final = formulas_final.str.replace("\D0", "")
+        # fix to remove atoms with zero and the 1 next to nitrogen
+        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
+        formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
     if "none" in modifications and pent_option == False:
         dp = masses.dp
@@ -382,8 +383,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
             else:
                 formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero
+        # fix to remove atoms with zero and the 1 next to nitrogen
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
+        formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
     if "none" not in modifications and pent_option == True:
         if unsaturated_option == 'y':
@@ -439,8 +441,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
             else:
                 formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero
+        # fix to remove atoms with zero and the 1 next to nitrogen
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
+        formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
     if "none" not in modifications and pent_option == False:
         if unsaturated_option == 'y':
@@ -495,8 +498,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
             else:
                 formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero
-        formulas_final = formulas_final.str.replace("\D0", "")
+        # fix to remove atoms with zero and the 1 next to nitrogen
+        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
+        formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
     #print("\nstep #4: filtering based on number of modifications per monomer")
     #print("----------------------------------------------------------------\n")

@@ -11,7 +11,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Imports:
 	reticulate
+Imports:
 	tidyr
+Imports:
 	dplyr
 Config/reticulate:
   list(

@@ -75,5 +75,77 @@ predictGlycans <- function(param){
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulphate = double_sulphate)
+  format = param@format
+  if(format == "long"){
+    df.l <- df %>% 
+      #make long
+      tidyr::pivot_longer(cols = starts_with("[M"),
+                          names_to = "ion",
+                          values_to = "mz") %>% 
+      #remove ions outside scan range
+      tidyr::drop_na(mz) %>% 
+      #calculate ion formula
+      dplyr::mutate(C = str_split_i(formula, "C", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    H = str_split_i(formula, "H", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    N = str_split_i(formula, "N", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    O = str_split_i(formula, "O", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    P = str_split_i(formula, "P", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    S = str_split_i(formula, "S", 2) %>% 
+                      sub("\\D.*", "", .) %>% 
+                      as.numeric(),
+                    ion_effect = gsub("\\[M|\\].*", "", ion),
+                    delta_H = sub(".*([+-]\\d*H).*", "\\1", ion_effect) %>% 
+                      sub("[-+]\\d[^H].*|[-+][A-G, I-Z].*", "", .) %>% 
+                      sub("H", "", .) %>% 
+                      sub("^-$", -1, .) %>% 
+                      sub("^\\+$", 1, .) %>% as.numeric())
+    df.l$delta_H[df.l$ion_effect == "+NH4"] <- 4
+    df.l <- df.l %>% 
+      mutate(delta_N = sub(".*([+-]\\d*N[^a]).*", "\\1", ion_effect) %>% 
+               sub("[+-]Na", "", .) %>% 
+               sub("[-+]\\d[^N].*|[-+][A-M, O-Z].*|[A-M, O-Z]", "", .) %>% 
+               sub("N", "", .) %>% 
+               sub("^-$", -1, .) %>% 
+               sub("^\\+$", 1, .) %>% as.numeric(),
+             delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
+               sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
+               sub("Cl", "", .) %>% 
+               sub("^-$", -1, .) %>% 
+               sub("^\\+$", 1, .) %>% as.numeric(),
+             delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
+               sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
+               sub("Na", "", .) %>% 
+               sub("^-$", -1, .) %>% 
+               sub("^\\+$", 1, .) %>% as.numeric(),
+             delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
+               sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
+               sub("K", "", .) %>% 
+               sub("^-$", -1, .) %>% 
+               sub("^\\+$", 1, .) %>% as.numeric())
+    df.l[is.na(df.l)] <- 0
+    df.l <- df.l %>% 
+      mutate(ion_formula = paste0("C", C, 
+                                  "Cl", delta_Cl,
+                                  "H", H + delta_H,
+                                  "K", delta_K,
+                                  "N", N + delta_N,
+                                  "Na", delta_Na,
+                                  "O", O,
+                                  "S", S, "P", P) %>% 
+    gsub("[A-Z]0|[A-Z][a-z]0", "", .))
+    df <- df.l %>% 
+      select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
+    
+}
   return(df)
 }

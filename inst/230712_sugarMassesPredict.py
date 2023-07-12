@@ -218,7 +218,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         name = "hex-" + hex.astype(str)
         for i in range(m):
             name = name + "-" + modifications[i] + "-" + modification_numbers[modifications[i]].astype(str)
-        name = name.str.replace("-\D+-0", "")
+        name = name.str.replace("-\D+-0", "", regex=True)
         name = name.str.replace("hex-0-", "")
         mass = masses.mass.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
         for i in range(m):
@@ -236,7 +236,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_s2.name = masses_s2.name.str.replace("-sulphate-\d{1,2}", "", regex=True)
         masses_s2.name = masses_s2.name + '-sulphate-' + masses_s2.sulphate.astype(str)
         masses_s2.mass = masses_s2.mass + modifications_mdiff['sulphate'] * masses_s2.dp
-        masses = masses.append(masses_s2).reset_index()
+        masses = masses.concat(masses_s2).reset_index()
         del masses_s1
         del masses_s2
     if label in proa_names:

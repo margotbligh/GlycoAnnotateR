@@ -40,7 +40,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            nmod_max = "numeric",
            double_sulphate = "logical",
            label = "character",
-           ion_type = "character"
+           ion_type = "character",
+           format = "character"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -51,7 +52,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            nmod_max = 1,
            double_sulphate = FALSE,
            label = "none",
-           ion_type = "ESI"
+           ion_type = "ESI",
+           format = "long"
          ),
          validity = function(object) {
            msg <- character()
@@ -85,11 +87,20 @@ predictGlycansParam = setClass("predictGlycansParam",
                class(object@double_sulphate) != "logical")
              msg <- c(msg, paste0("'double_sulphate' has to be a logical of",
                                   " length 1."))
-           if(length(object@label) != 1 | !any(object@label %in% c("none", 
-                                                                   "procainamide")))
+           possible_labels <- c("none", "procainamide", "proca","procA", "ProA",
+                                "2-ap","2-AP","pa","PA","2-aminopyridine",
+                                "2-aa", "2-AA","aba", "ABA","2-aminobenzoic acid",
+                                "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide",
+                                "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone")
+           if(length(object@label) != 1 | !any(object@label %in% possible_labels))
              msg <- c(msg, paste0("'label' has to be a character",
                                   " of length 1",
-                                  " containing 'none' or 'procainamide"))
+                                  " containing ",
+                                  possible_labels))
+           if(length(object@format) != 1 | !any(object@format %in% c("wide", "long")))
+             msg <- c(msg, paste0("'format' has to be a character",
+                                  " of length 1. the only allowed options",
+                                  " are 'wide' and 'long'"))
            if (length(msg) >= 1)
              print(msg)
            else

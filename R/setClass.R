@@ -59,59 +59,59 @@ predictGlycansParam = setClass("predictGlycansParam",
          ),
          validity = function(object) {
            msg <- character()
-           if (length(object@dp) != 2 | any(object@dp < 0)){
+           if (length(object@dp) != 2 | any(object@dp < 0))
              msg <- c(msg, paste0("'dp' has to be a numeric",
                                   " of length 2 with only positive",
-                                  " values."))}
-           if(!any(object@polarity %in% c("neg", "pos"))){
+                                  " values."))
+           if(!any(object@polarity %in% c("neg", "pos")))
              msg <- c(msg, paste0("'polarity' has to be a character",
-                                  " containing 'pos' and/or 'neg"))}
-           if (length(object@scan_range) != 2 | any(object@scan_range < 0)){
+                                  " containing 'pos' and/or 'neg"))
+           if (length(object@scan_range) != 2 | any(object@scan_range < 0))
              msg <- c(msg, paste0("'scan_range' has to be a numeric",
                                   " of length 2 with only positive",
-                                  " values."))}
+                                  " values."))
            if (length(object@pent_option) != 1 | 
-               class(object@pent_option) != "logical"){
+               class(object@pent_option) != "logical")
              msg <- c(msg, paste0("'pent_option' has to be a logical of",
-                                  " length 1."))}
+                                  " length 1."))
            possible_modifications <-  c('none', 'all', 'carboxyl', 'phosphate', 
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated', 
                                         'alditol', 'amino','dehydrated','sulphate')
-           if (!all(object@modifications %in% possible_modifications)){
+           if (!all(object@modifications %in% possible_modifications))
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",
-                                         collapse = ", "), "."))}
-           if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0)){
+                                         collapse = ", "), "."))
+           if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0))
              msg <- c(msg, paste0("'nmod_max' has to be positive numeric",
-                                  " of length 1."))}
+                                  " of length 1."))
            if (length(object@double_sulphate) != 1 | 
-               class(object@double_sulphate) != "logical"){
+               class(object@double_sulphate) != "logical")
              msg <- c(msg, paste0("'double_sulphate' has to be a logical of",
-                                  " length 1."))}
+                                  " length 1."))
            possible_labels <- c("none", "procainamide", "proca","procA", "ProA",
                                 "2-ap","2-AP","pa","PA","2-aminopyridine",
                                 "2-aa", "2-AA","aba", "ABA","2-aminobenzoic acid",
                                 "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide",
                                 "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone")
-           if(length(object@label) != 1 | !any(object@label %in% possible_labels)){
+           if(length(object@label) != 1 | !any(object@label %in% possible_labels))
              msg <- c(msg, paste0("'label' has to be a character",
                                   " of length 1",
                                   " containing ",
-                                  possible_labels))}
-           if(length(object@format) != 1 | !any(object@format %in% c("wide", "long"))){
+                                  possible_labels))
+           if(length(object@format) != 1 | !any(object@format %in% c("wide", "long")))
              msg <- c(msg, paste0("'format' has to be a character",
                                   " of length 1. the only allowed options",
-                                  " are 'wide' and 'long'"))}
-           if(!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1{
+                                  " are 'wide' and 'long'"))
+           if(!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1
              msg <- c(msg, paste0("'ion_type' has to be a character",
                                   " of length 1. the options are 'ESI' or 'MALDI'"))
-             })
+             }
            possible_adducts <- c("H", "Na", "NH4", "K", "Cl", "CHOO", "nH")
-           if (!all(object@adducts %in% possible_adducts)){
+           if (!all(object@adducts %in% possible_adducts))
              msg <- c(msg, paste0("valid options for 'adducts' are: ",
                                   paste0("'", possible_adducts, "'",
-                                         collapse = ", "), "."))}
+                                         collapse = ", "), "."))
            if (length(msg) >= 1)
              print(msg)
            else

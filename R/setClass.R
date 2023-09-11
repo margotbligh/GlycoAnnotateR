@@ -55,7 +55,7 @@ predictGlycansParam = setClass("predictGlycansParam",
            label = "none",
            ion_type = "ESI",
            format = "long",
-           adducts = c("H", "Cl", "nH")
+           adducts = "all"
          ),
          validity = function(object) {
            msg <- character()

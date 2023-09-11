@@ -49,7 +49,7 @@
 #' 
 
 predictGlycans <- function(param){
-  path <- paste(system.file(package="glycanPredict"), "230712_sugarMassesPredict.py", sep="/")
+  path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict.py", sep="/")
   #check if pandas installed
   if(!reticulate::py_module_available("pandas")){
     reticulate::py_install("pandas")
@@ -70,11 +70,12 @@ predictGlycans <- function(param){
   double_sulphate = param@double_sulphate
   label = param@label
   ion_type = param@ion_type
+  adducts = param@adducts
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
-                       double_sulphate = double_sulphate)
+                       double_sulphate = double_sulphate, adducts = adducts)
   format = param@format
   library(magrittr)
   if(format == "long"){
@@ -143,7 +144,8 @@ predictGlycans <- function(param){
                                   "Na", delta_Na,
                                   "O", O,
                                   "S", S, "P", P) %>% 
-    gsub("[A-Z]0|[A-Z][a-z]0", "", .))
+               gsub("[A-Z]0|[A-Z][a-z]0", "", .)
+      )
     df <- df.l %>% 
       select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     

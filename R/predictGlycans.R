@@ -87,22 +87,22 @@ predictGlycans <- function(param){
       #remove ions outside scan range
       tidyr::drop_na(mz) %>% 
       #calculate ion formula
-      dplyr::mutate(C = str_split_i(formula, "C", 2) %>% 
+      dplyr::mutate(C = stringr::str_split_i(formula, "C", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
-                    H = str_split_i(formula, "H", 2) %>% 
+                    H = stringr::str_split_i(formula, "H", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
-                    N = str_split_i(formula, "N", 2) %>% 
+                    N = stringr::str_split_i(formula, "N", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
-                    O = str_split_i(formula, "O", 2) %>% 
+                    O = stringr::str_split_i(formula, "O", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
-                    P = str_split_i(formula, "P", 2) %>% 
+                    P = stringr::str_split_i(formula, "P", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
-                    S = str_split_i(formula, "S", 2) %>% 
+                    S = stringr::str_split_i(formula, "S", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
                     ion_effect = gsub("\\[M|\\].*", "", ion),

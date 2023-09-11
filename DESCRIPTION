@@ -17,6 +17,8 @@ Imports:
 	magrittr
 Imports:
 	dplyr
+Imports:
+	stringr
 Config/reticulate:
   list(
     packages = list(

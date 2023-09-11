@@ -103,10 +103,10 @@ predictGlycansParam = setClass("predictGlycansParam",
              msg <- c(msg, paste0("'format' has to be a character",
                                   " of length 1. the only allowed options",
                                   " are 'wide' and 'long'"))
-           if(!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1
+           if(!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1)
              msg <- c(msg, paste0("'ion_type' has to be a character",
                                   " of length 1. the options are 'ESI' or 'MALDI'"))
-             }
+             
            possible_adducts <- c("H", "Na", "NH4", "K", "Cl", "CHOO", "nH")
            if (!all(object@adducts %in% possible_adducts))
              msg <- c(msg, paste0("valid options for 'adducts' are: ",

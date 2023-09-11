@@ -113,42 +113,42 @@ predictGlycans <- function(param){
                       sub("^\\+$", 1, .) %>% as.numeric())
     df.l$delta_H[df.l$ion_effect == "+NH4"] <- 4
     df.l <- df.l %>% 
-      mutate(delta_N = sub(".*([+-]\\d*N[^a]).*", "\\1", ion_effect) %>% 
-               sub("[+-]Na", "", .) %>% 
-               sub("[-+]\\d[^N].*|[-+][A-M, O-Z].*|[A-M, O-Z]", "", .) %>% 
-               sub("N", "", .) %>% 
-               sub("^-$", -1, .) %>% 
-               sub("^\\+$", 1, .) %>% as.numeric(),
-             delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
-               sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
-               sub("Cl", "", .) %>% 
-               sub("^-$", -1, .) %>% 
-               sub("^\\+$", 1, .) %>% as.numeric(),
-             delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
-               sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
-               sub("Na", "", .) %>% 
-               sub("^-$", -1, .) %>% 
-               sub("^\\+$", 1, .) %>% as.numeric(),
-             delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
-               sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
-               sub("K", "", .) %>% 
-               sub("^-$", -1, .) %>% 
-               sub("^\\+$", 1, .) %>% as.numeric())
+      dplyr::mutate(delta_N = sub(".*([+-]\\d*N[^a]).*", "\\1", ion_effect) %>% 
+                      sub("[+-]Na", "", .) %>% 
+                      sub("[-+]\\d[^N].*|[-+][A-M, O-Z].*|[A-M, O-Z]", "", .) %>% 
+                      sub("N", "", .) %>% 
+                      sub("^-$", -1, .) %>% 
+                      sub("^\\+$", 1, .) %>% as.numeric(),
+                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
+                      sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
+                      sub("Cl", "", .) %>% 
+                      sub("^-$", -1, .) %>% 
+                      sub("^\\+$", 1, .) %>% as.numeric(),
+                    delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
+                      sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
+                      sub("Na", "", .) %>% 
+                      sub("^-$", -1, .) %>% 
+                      sub("^\\+$", 1, .) %>% as.numeric(),
+                    delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
+                      sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
+                      sub("K", "", .) %>% 
+                      sub("^-$", -1, .) %>% 
+                      sub("^\\+$", 1, .) %>% as.numeric())
     df.l[is.na(df.l)] <- 0
     df.l <- df.l %>% 
-      mutate(ion_formula = paste0("C", C, 
-                                  "Cl", delta_Cl,
-                                  "H", H + delta_H,
-                                  "K", delta_K,
-                                  "N", N + delta_N,
-                                  "Na", delta_Na,
-                                  "O", O,
-                                  "S", S, "P", P) %>% 
-               gsub("[A-Z]0|[A-Z][a-z]0", "", .)
+      dplyr::mutate(ion_formula = paste0("C", C, 
+                                         "Cl", delta_Cl,
+                                         "H", H + delta_H,
+                                         "K", delta_K,
+                                         "N", N + delta_N,
+                                         "Na", delta_Na,
+                                         "O", O,
+                                         "S", S, "P", P) %>% 
+                      gsub("[A-Z]0|[A-Z][a-z]0", "", .)
       )
     df <- df.l %>% 
-      select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
+      dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     
-}
+  }
   return(df)
 }

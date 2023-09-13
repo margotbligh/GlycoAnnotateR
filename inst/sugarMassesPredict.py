@@ -578,7 +578,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     for i in range(len(ions)):
                         masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['K'] * (i+1))  + e_mdiff
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
-                        masses_anionic = masses_anionic.rename({'[M-2H+1Na]-': '[M-2H+K]-'}, axis=1)
+                        masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
                 if a == "NH4" or adducts == "all":
                     H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                     Me_ions = [x - 1 for x in H_ions]

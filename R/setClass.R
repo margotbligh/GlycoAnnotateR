@@ -94,16 +94,16 @@ predictGlycansParam = setClass("predictGlycansParam",
                                 "2-aa", "2-AA","aba", "ABA","2-aminobenzoic acid",
                                 "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide",
                                 "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone")
-           if(length(object@label) != 1 | !any(object@label %in% possible_labels))
+           if (length(object@label) != 1 | !any(object@label %in% possible_labels))
              msg <- c(msg, paste0("'label' has to be a character",
                                   " of length 1",
                                   " containing ",
                                   possible_labels))
-           if(length(object@format) != 1 | !any(object@format %in% c("wide", "long")))
+           if (length(object@format) != 1 | !any(object@format %in% c("wide", "long")))
              msg <- c(msg, paste0("'format' has to be a character",
                                   " of length 1. the only allowed options",
                                   " are 'wide' and 'long'"))
-           if(!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1)
+           if (!object@ion_type %in% c("ESI", "MALDI") | length(object@ion_type) != 1)
              msg <- c(msg, paste0("'ion_type' has to be a character",
                                   " of length 1. the options are 'ESI' or 'MALDI'"))
              

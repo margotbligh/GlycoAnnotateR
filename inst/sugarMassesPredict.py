@@ -560,8 +560,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         elif len(anionic_mod_used) == 1:
             masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].astype(int)
         if "MALDI" in ion_type and "neg" in polarity:
+            masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
             for a in adducts:
-                masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
                 if a == "Na" or adducts == "all":
                     H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                     Me_ions = [x - 1 for x in H_ions]

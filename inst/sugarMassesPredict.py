@@ -109,6 +109,7 @@ modifications_neutral = {"anhydrobridge",
 
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
+    adducts = list(adducts)
     dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
@@ -531,6 +532,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             for a in adducts:
                 if a == 'H':
                     masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
+                    next
                 if a == 'Cl':
                     masses_neutral['[M+Cl]-'] = masses_neutral.mass + ion_mdiff['Cl'] + e_mdiff
                 if a == 'CHOO':

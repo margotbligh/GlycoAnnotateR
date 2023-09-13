@@ -559,33 +559,45 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses_anionic['nmod_anionic'] = masses_anionic.nmod_anionic.astype(int)
         elif len(anionic_mod_used) == 1:
             masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].astype(int)
-        if "MALDI" in ion_type and "neg" in polarity:
-            masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
+        if "MALDI" in ion_type:
             for a in adducts:
-                if a == "Na" or adducts == "all":
-                    H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
-                    Me_ions = [x - 1 for x in H_ions]
-                    ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "Na]-")
-                    for i in range(len(ions)):
-                        masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['Na'] * (i+1))  + e_mdiff
-                        masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
-                        masses_anionic = masses_anionic.rename({'[M-2H+1Na]-': '[M-2H+Na]-'}, axis=1)
-                if a == "K" or adducts == "all":
-                    H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
-                    Me_ions = [x - 1 for x in H_ions]
-                    ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "K]-")
-                    for i in range(len(ions)):
-                        masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['K'] * (i+1))  + e_mdiff
-                        masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
-                        masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
-                if a == "NH4" or adducts == "all":
-                    H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
-                    Me_ions = [x - 1 for x in H_ions]
-                    ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "NH4]-")
-                    for i in range(len(ions)):
-                        masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['NH4'] * (i+1))  + e_mdiff
-                        masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
-                        masses_anionic = masses_anionic.rename({'[M-2H+1NH4]-': '[M-2H+NH4]-'}, axis=1)
+                if "pos" in polarity:
+                    for a in adducts:
+                        if a == 'H' or adducts == 'all':
+                            masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
+                        if a == 'Na' or adducts == 'all':
+                            masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
+                        if a == 'NH4' or adducts == 'all':
+                            masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
+                        if a == 'K' or adducts == 'all':
+                            masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
+                if "neg" in polarity:
+                    if a == "H" or adducts == "all":
+                        masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
+                    if a == "Na" or adducts == "all":
+                        H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
+                        Me_ions = [x - 1 for x in H_ions]
+                        ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "Na]-")
+                        for i in range(len(ions)):
+                            masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i + 2)) + (ion_mdiff['Na'] * (i + 1)) + e_mdiff
+                            masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
+                            masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
+                    if a == "K" or adducts == "all":
+                        H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
+                        Me_ions = [x - 1 for x in H_ions]
+                        ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "K]-")
+                        for i in range(len(ions)):
+                            masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['K'] * (i+1))  + e_mdiff
+                            masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
+                            masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
+                    if a == "NH4" or adducts == "all":
+                        H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
+                        Me_ions = [x - 1 for x in H_ions]
+                        ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "NH4]-")
+                        for i in range(len(ions)):
+                            masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['NH4'] * (i+1))  + e_mdiff
+                            masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
+                            masses_anionic = masses_anionic.rename({'[M-2H+1NH4]-': '[M-2H+NH4]-'}, axis=1)
         if "ESI" in ion_type:
             if "neg" in polarity:
                 if "nH" in adducts or adducts == "all":

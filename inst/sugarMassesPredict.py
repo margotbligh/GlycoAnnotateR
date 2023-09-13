@@ -640,21 +640,21 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         # calculate m/z values for neutral molecules
         if "neg" in polarity:
             for a in adducts:
-                if a == 'H' or adducts == 'all':
+                if a == 'H':
                     masses['[M-H]-'] = masses.mass - ion_mdiff['H'] + e_mdiff
-                if a == 'Cl' or adducts == 'all':
+                if a == 'Cl':
                     masses['[M+Cl]-'] = masses.mass + ion_mdiff['Cl'] + e_mdiff
-                if a == 'CHOO' or adducts == 'all':
+                if a == 'CHOO':
                     masses['[M+CHOO]-'] = masses.mass + ion_mdiff['CHOO'] + e_mdiff
         if "pos" in polarity:
             for a in adducts:
-                if a == 'H' or adducts == 'all':
+                if a == 'H':
                     masses['[M+H]+'] = masses.mass + ion_mdiff['H'] - e_mdiff
-                if a == 'Na' or adducts == 'all':
+                if a == 'Na':
                     masses['[M+Na]+'] = masses.mass + ion_mdiff['Na'] - e_mdiff
-                if a == 'NH4' or adducts == 'all':
+                if a == 'NH4':
                     masses['[M+NH4]+'] = masses.mass + ion_mdiff['NH4'] - e_mdiff
-                if a == 'K' or adducts == 'all':
+                if a == 'K':
                     masses['[M+K]+'] = masses.mass + ion_mdiff['K'] - e_mdiff
         # filter neutral molecules based on scan range
         # set values outside range to NaN

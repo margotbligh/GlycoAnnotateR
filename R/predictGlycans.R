@@ -70,7 +70,7 @@ predictGlycans <- function(param){
   double_sulphate = param@double_sulphate
   label = param@label
   ion_type = param@ion_type
-  adducts = param@adducts
+  adducts = as.list(param@adducts)
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,

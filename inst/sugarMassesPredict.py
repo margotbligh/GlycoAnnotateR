@@ -625,17 +625,17 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             # filter anionic molecules based on scan range
             # set values outside range to NaN
             # remove rows where all ions are outside range
-        my_cols = list(masses_anionic.filter(like='[M', axis=1).columns)
-        masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] >= scan_range[0])
-        masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] <= scan_range[1])
-        masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
+        #my_cols = list(masses_anionic.filter(like='[M', axis=1).columns)
+        #masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] >= scan_range[0])
+        #masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] <= scan_range[1])
+        #masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
         # concatenate dataframes and format nicely to only have useful columns
         masses_final = pd.concat([masses_anionic, masses_neutral])
-        bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
-        bad_cols.update(modifications_anionic)
-        bad_cols.update(modifications_neutral)
-        cols_del = list(set(masses_final.columns).intersection(bad_cols))
-        masses_final = masses_final.drop(columns=cols_del)
+        #bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
+        #bad_cols.update(modifications_anionic)
+        #bad_cols.update(modifications_neutral)
+        #cols_del = list(set(masses_final.columns).intersection(bad_cols))
+        #masses_final = masses_final.drop(columns=cols_del)
     if len(list(set(modifications).intersection(modifications_anionic))) == 0:
         # calculate m/z values for neutral molecules
         if "neg" in polarity:

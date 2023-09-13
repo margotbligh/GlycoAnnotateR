@@ -529,21 +529,21 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         # calculate m/z values for NEUTRAL molecules
         if "neg" in polarity:
             for a in adducts:
-                if a == 'H' or adducts == 'all':
+                if a == 'H':
                     masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
-                if a == 'Cl' or adducts == 'all':
+                if a == 'Cl':
                     masses_neutral['[M+Cl]-'] = masses_neutral.mass + ion_mdiff['Cl'] + e_mdiff
-                if a == 'CHOO' or adducts == 'all':
+                if a == 'CHOO':
                     masses_neutral['[M+CHOO]-'] = masses_neutral.mass + ion_mdiff['CHOO'] + e_mdiff
         if "pos" in polarity:
             for a in adducts:
-                if a == 'H' or adducts == 'all':
+                if a == 'H':
                     masses_neutral['[M+H]+'] = masses_neutral.mass + ion_mdiff['H'] - e_mdiff
-                if a == 'Na' or adducts == 'all':
+                if a == 'Na':
                     masses_neutral['[M+Na]+'] = masses_neutral.mass + ion_mdiff['Na'] - e_mdiff
-                if a == 'NH4' or adducts == 'all':
+                if a == 'NH4':
                     masses_neutral['[M+NH4]+'] = masses_neutral.mass + ion_mdiff['NH4'] - e_mdiff
-                if a == 'K' or adducts == 'all':
+                if a == 'K':
                     masses_neutral['[M+K]+'] = masses_neutral.mass + ion_mdiff['K'] - e_mdiff
         # filter neutral molecules based on scan range
         # set values outside range to NaN
@@ -563,18 +563,18 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             for a in adducts:
                 if "pos" in polarity:
                     for a in adducts:
-                        if a == 'H' or adducts == 'all':
+                        if a == 'H':
                             masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
-                        if a == 'Na' or adducts == 'all':
+                        if a == 'Na':
                             masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
-                        if a == 'NH4' or adducts == 'all':
+                        if a == 'NH4':
                             masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
-                        if a == 'K' or adducts == 'all':
+                        if a == 'K':
                             masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
                 if "neg" in polarity:
-                    if a == "H" or adducts == "all":
+                    if a == "H":
                         masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
-                    if a == "Na" or adducts == "all":
+                    if a == "Na":
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         Me_ions = [x - 1 for x in H_ions]
                         ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "Na]-")
@@ -582,7 +582,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                             masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i + 2)) + (ion_mdiff['Na'] * (i + 1)) + e_mdiff
                             masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
                             masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
-                    if a == "K" or adducts == "all":
+                    if a == "K":
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         Me_ions = [x - 1 for x in H_ions]
                         ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "K]-")
@@ -590,7 +590,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                             masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['K'] * (i+1))  + e_mdiff
                             masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
                             masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
-                    if a == "NH4" or adducts == "all":
+                    if a == "NH4" :
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         Me_ions = [x - 1 for x in H_ions]
                         ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "NH4]-")
@@ -608,19 +608,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 1))
                         masses_anionic = masses_anionic.rename({'[M-1H]-1': '[M-H]-'}, axis=1)
                 for a in adducts:
-                    if a == 'Cl' or adducts == 'all':
+                    if a == 'Cl':
                         masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
-                    if a == 'CHOO' or adducts == 'all':
+                    if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
             if "pos" in polarity:
                 for a in adducts:
-                    if a == 'H' or adducts == 'all':
+                    if a == 'H':
                         masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
-                    if a == 'Na' or adducts == 'all':
+                    if a == 'Na':
                         masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
-                    if a == 'NH4' or adducts == 'all':
+                    if a == 'NH4':
                         masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
-                    if a == 'K' or adducts == 'all':
+                    if a == 'K':
                         masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
             # filter anionic molecules based on scan range
             # set values outside range to NaN

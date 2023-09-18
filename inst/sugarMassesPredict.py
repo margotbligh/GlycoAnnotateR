@@ -445,7 +445,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
-        del dp, hex, pent, molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
+        del molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" not in modifications and pent_option == False:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')

@@ -112,6 +112,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
+    print(adducts)
     if "all" in modifications:
         modifications = possible_modifications
     if "sulphate" in modifications:

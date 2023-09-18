@@ -5,6 +5,7 @@ import numpy as np
 import itertools
 import math
 import re
+from operator import itemgetter
 
 # suppress warnings
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -294,214 +295,32 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         del masses_a
     #print("\nstep #3: building formulas")
     #print("----------------------------------------\n")
-    if "none" in modifications and pent_option == True:
-        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex,'pent': masses.pent})
-        molecules = list(molecule_numbers.drop('dp', axis=1).columns)
-        atom_names = ["C", "H", "N", "O", "S", "P"]
-        atom_list = []
-        for i in range(len(atom_names)):
-            n = np.array([0] * len(masses.index))
-            for j in range(len(molecules)):
-                form_n = np.array([formulas[molecules[j]][i]] * len(masses.index))
-                mol_n = np.array(molecule_numbers[molecules[j]])
-                form_mol_n = form_n * mol_n
-                n = n + form_mol_n
+    molecules = list(masses.drop(['dp', "name", "mass"], axis=1).columns)
+    molecule_numbers = np.array(masses[molecules])
+    atom_names = ["C", "H", "N", "O", "S", "P"]
+    for i in range(len(atom_names)):
+            atom = atom_names[i]
+            tmp = np.multiply(np.array(molecule_numbers), np.array([list(map(itemgetter(i), [formulas.get(key) for key in molecules]))]).repeat(len(masses), axis=0)).sum(axis=1)
+            water_loss = np.multiply(np.array(masses.dp)-1, formulas['water'][i])
+            tmp = tmp + water_loss
             if label in proa_names:
-                p = np.array([formulas['proca'][i]] * len(masses.index))
-                n = n + p
+                tmp = tmp + [formulas['proca'][i]]
             if label in pa_names:
-                p = np.array([formulas['pa'][i]] * len(masses.index))
-                n = n + p
+                tmp = tmp + [formulas['pa'][i]]
             if label in aba_names:
-                p = np.array([formulas['aba'][i]] * len(masses.index))
-                n = n + p
+                tmp = tmp + [formulas['aba'][i]]
             if label in ab_names:
-                p = np.array([formulas['ab'][i]] * len(masses.index))
-                n = n + p
+                tmp = tmp + [formulas['ab'][i]]
             if label in pmp_names:
-                p = np.array([formulas['pmp'][i]] * len(masses.index))
-                n = n + p
-            atom_list.append(list(n))
-        # remove molecules from formula for glycosidic bonds
-        atom_list_2 = []
-        for i in range(len(atom_names)):
-            n = np.array(atom_list[i])
-            form_n = np.array([formulas['water'][i]] * len(masses.index))
-            mol_n = np.array(molecule_numbers['dp'] - 1)
-            form_mol_n = form_n * mol_n
-            n = n + form_mol_n
-            atom_list_2.append(list(n))
-        # concatenate to build formulas
-        for i in range(len(atom_names)):
-            if i == 0:
-                formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-            else:
-                formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero and the 1 next to nitrogen
-        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
-        formulas_final = formulas_final.str.replace("N1O", "NO")
-        masses['formula'] = formulas_final
-        del molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
-    if "none" in modifications and pent_option == False:
-        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex})
-        molecules = list(molecule_numbers.drop('dp', axis=1).columns)
-        atom_names = ["C", "H", "N", "O", "S", "P"]
-        atom_list = []
-        for i in range(len(atom_names)):
-            n = np.array([0] * len(masses.index))
-            for j in range(len(molecules)):
-                form_n = np.array([formulas[molecules[j]][i]] * len(masses.index))
-                mol_n = np.array(molecule_numbers[molecules[j]])
-                form_mol_n = form_n * mol_n
-                n = n + form_mol_n
-            if label in proa_names:
-                p = np.array([formulas['proca'][i]] * len(masses.index))
-                n = n + p
-            if label in pa_names:
-                p = np.array([formulas['pa'][i]] * len(masses.index))
-                n = n + p
-            if label in aba_names:
-                p = np.array([formulas['aba'][i]] * len(masses.index))
-                n = n + p
-            if label in ab_names:
-                p = np.array([formulas['ab'][i]] * len(masses.index))
-                n = n + p
-            if label in pmp_names:
-                p = np.array([formulas['pmp'][i]] * len(masses.index))
-                n = n + p
-            atom_list.append(list(n))
-        # remove molecules from formula for glycosidic bonds
-        atom_list_2 = []
-        for i in range(len(atom_names)):
-            n = np.array(atom_list[i])
-            form_n = np.array([formulas['water'][i]] * len(masses.index))
-            mol_n = np.array(molecule_numbers['dp'] - 1)
-            form_mol_n = form_n * mol_n
-            n = n + form_mol_n
-            atom_list_2.append(list(n))
-        # concatenate to build formulas
-        for i in range(len(atom_names)):
-            if i == 0:
-                formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-            else:
-                formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero and the 1 next to nitrogen
-        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
-        formulas_final = formulas_final.str.replace("N1O", "NO")
-        masses['formula'] = formulas_final
-        del molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
-    if "none" not in modifications and pent_option == True:
-        if unsaturated_option == 'y':
-            modifications.append('unsaturated')
-        if alditol_option == 'y':
-            modifications.append('alditol')
-        if dehydrated_option == 'y':
-            modifications.append('dehydrated')
-        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex,'pent': masses.pent})
-        modification_numbers = masses[modifications]
-        molecule_numbers = pd.concat([molecule_numbers, modification_numbers], axis=1)
-        molecules = list(molecule_numbers.drop('dp', axis=1).columns)
-        atom_names = ["C", "H", "N", "O", "S", "P"]
-        atom_list = []
-        for i in range(len(atom_names)):
-            n = np.array([0] * len(masses.index))
-            for j in range(len(molecules)):
-                form_n = np.array([formulas[molecules[j]][i]] * len(masses.index))
-                mol_n = np.array(molecule_numbers[molecules[j]])
-                form_mol_n = form_n * mol_n
-                n = n + form_mol_n
-            if label in proa_names:
-                p = np.array([formulas['proca'][i]] * len(masses.index))
-                n = n + p
-            if label in pa_names:
-                p = np.array([formulas['pa'][i]] * len(masses.index))
-                n = n + p
-            if label in aba_names:
-                p = np.array([formulas['aba'][i]] * len(masses.index))
-                n = n + p
-            if label in ab_names:
-                p = np.array([formulas['ab'][i]] * len(masses.index))
-                n = n + p
-            if label in pmp_names:
-                p = np.array([formulas['pmp'][i]] * len(masses.index))
-                n = n + p
-            atom_list.append(list(n))
-        # remove molecules from formula for glycosidic bonds
-        atom_list_2 = []
-        for i in range(len(atom_names)):
-            n = np.array(atom_list[i])
-            form_n = np.array([formulas['water'][i]] * len(masses.index))
-            mol_n = np.array(molecule_numbers['dp'] - 1)
-            form_mol_n = form_n * mol_n
-            n = n + form_mol_n
-            atom_list_2.append(list(n))
-        # concatenate to build formulas
-        for i in range(len(atom_names)):
-            if i == 0:
-                formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-            else:
-                formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero and the 1 next to nitrogen
-        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
-        formulas_final = formulas_final.str.replace("N1O", "NO")
-        masses['formula'] = formulas_final
-        del molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
-    if "none" not in modifications and pent_option == False:
-        if unsaturated_option == 'y':
-            modifications.append('unsaturated')
-        if alditol_option == 'y':
-            modifications.append('alditol')
-        if dehydrated_option == 'y':
-            modifications.append('dehydrated')
-        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex})
-        modification_numbers = masses[modifications]
-        molecule_numbers = pd.concat([molecule_numbers, modification_numbers], axis=1)
-        molecules = list(molecule_numbers.drop('dp', axis=1).columns)
-        atom_names = ["C", "H", "N", "O", "S", "P"]
-        atom_list = []
-        for i in range(len(atom_names)):
-            n = np.array([0] * len(masses.index))
-            for j in range(len(molecules)):
-                form_n = np.array([formulas[molecules[j]][i]] * len(masses.index))
-                mol_n = np.array(molecule_numbers[molecules[j]])
-                form_mol_n = form_n * mol_n
-                n = n + form_mol_n
-            if label in proa_names:
-                p = np.array([formulas['proca'][i]] * len(masses.index))
-                n = n + p
-            if label in pa_names:
-                p = np.array([formulas['pa'][i]] * len(masses.index))
-                n = n + p
-            if label in aba_names:
-                p = np.array([formulas['aba'][i]] * len(masses.index))
-                n = n + p
-            if label in ab_names:
-                p = np.array([formulas['ab'][i]] * len(masses.index))
-                n = n + p
-            if label in pmp_names:
-                p = np.array([formulas['pmp'][i]] * len(masses.index))
-                n = n + p
-            atom_list.append(list(n))
-        # remove molecules from formula for glycosidic bonds
-        atom_list_2 = []
-        for i in range(len(atom_names)):
-            n = np.array(atom_list[i])
-            form_n = np.array([formulas['water'][i]] * len(masses.index))
-            mol_n = np.array(molecule_numbers['dp'] - 1)
-            form_mol_n = form_n * mol_n
-            n = n + form_mol_n
-            atom_list_2.append(list(n))
-        # concatenate to build formulas
-        for i in range(len(atom_names)):
-            if i == 0:
-                formulas_final = atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-            else:
-                formulas_final = formulas_final.astype(str) + atom_names[i] + pd.Series(atom_list_2[i]).astype(str)
-        # fix to remove atoms with zero and the 1 next to nitrogen
-        formulas_final = formulas_final.str.replace("\D0", "", regex=True)
-        formulas_final = formulas_final.str.replace("N1O", "NO")
-        masses['formula'] = formulas_final
-        del molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
+                tmp = tmp + [formulas['ab'][i]]
+            masses[atom] = list(tmp)
+    masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
+    masses['formula'] = masses['formula'].str.replace("\D0", "", regex=True)
+    masses['formula'] = masses['formula'].str.replace("N1O", "NO")
+    masses['formula'] = masses['formula'].str.replace("P1", "P")
+    masses['formula'] = masses['formula'].str.replace("S1$", "S", regex=True)
+    masses = masses.drop(atom_names, axis = 1)
+    del tmp, water_loss, molecule_numbers, molecules
     #print("\nstep #4: filtering based on number of modifications per monomer")
     #print("----------------------------------------------------------------\n")
     if "none" not in modifications:

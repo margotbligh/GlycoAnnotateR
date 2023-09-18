@@ -111,6 +111,8 @@ modifications_neutral = {"anhydrobridge",
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
     if type(adducts)==str:
         adducts = [adducts]
+    if adducts == 'all':
+        adducts = ['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
     dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
@@ -340,6 +342,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
+        del dp, hex, pent, molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" in modifications and pent_option == False:
         dp = masses.dp
         hex = masses.hex
@@ -389,6 +392,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
+        del dp, hex, molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" not in modifications and pent_option == True:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')
@@ -447,6 +451,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
+        del dp, hex, pent, molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" not in modifications and pent_option == False:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')
@@ -504,6 +509,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
+        del dp, hex, pent, molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
     #print("\nstep #4: filtering based on number of modifications per monomer")
     #print("----------------------------------------------------------------\n")
     if "none" not in modifications:

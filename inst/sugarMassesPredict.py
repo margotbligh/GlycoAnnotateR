@@ -600,6 +600,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                             masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i+2)) + (ion_mdiff['NH4'] * (i+1))  + e_mdiff
                             masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
                             masses_anionic = masses_anionic.rename({'[M-2H+1NH4]-': '[M-2H+NH4]-'}, axis=1)
+                    if a == 'Cl':
+                        masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
+                    if a == 'CHOO':
+                        masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
         if "ESI" in ion_type:
             if "neg" in polarity:
                 if "nH" in adducts or adducts == "all":

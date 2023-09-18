@@ -642,7 +642,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         # calculate m/z values for neutral molecules
         if "neg" in polarity:
             for a in adducts:
-                if a == 'H':
+                if a == 'O':
                     masses['[M-H]-'] = masses.mass - ion_mdiff['H'] + e_mdiff
                 if a == 'CHOO':
                     print(a)

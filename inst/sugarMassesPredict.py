@@ -295,10 +295,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #3: building formulas")
     #print("----------------------------------------\n")
     if "none" in modifications and pent_option == True:
-        dp = masses.dp
-        hex = masses.hex
-        pent = masses.pent
-        molecule_numbers = pd.DataFrame({'dp': dp,'hex': hex,'pent': pent})
+        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex,'pent': masses.pent})
         molecules = list(molecule_numbers.drop('dp', axis=1).columns)
         atom_names = ["C", "H", "N", "O", "S", "P"]
         atom_list = []
@@ -344,11 +341,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
-        del dp, hex, pent, molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
+        del molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" in modifications and pent_option == False:
-        dp = masses.dp
-        hex = masses.hex
-        molecule_numbers = pd.DataFrame({'dp': dp,'hex': hex})
+        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex})
         molecules = list(molecule_numbers.drop('dp', axis=1).columns)
         atom_names = ["C", "H", "N", "O", "S", "P"]
         atom_list = []
@@ -394,7 +389,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
-        del dp, hex, molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
+        del molecule_numbers, molecules, atom_list, atom_list_2, formulas_final
     if "none" not in modifications and pent_option == True:
         if unsaturated_option == 'y':
             modifications.append('unsaturated')
@@ -402,10 +397,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             modifications.append('alditol')
         if dehydrated_option == 'y':
             modifications.append('dehydrated')
-        dp = masses.dp
-        hex = masses.hex
-        pent = masses.pent
-        molecule_numbers = pd.DataFrame({'dp': dp,'hex': hex,'pent': pent})
+        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex,'pent': masses.pent})
         modification_numbers = masses[modifications]
         molecule_numbers = pd.concat([molecule_numbers, modification_numbers], axis=1)
         molecules = list(molecule_numbers.drop('dp', axis=1).columns)
@@ -461,9 +453,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             modifications.append('alditol')
         if dehydrated_option == 'y':
             modifications.append('dehydrated')
-        dp = masses.dp
-        hex = masses.hex
-        molecule_numbers = pd.DataFrame({'dp': dp,'hex': hex})
+        molecule_numbers = pd.DataFrame({'dp': masses.dp,'hex': masses.hex})
         modification_numbers = masses[modifications]
         molecule_numbers = pd.concat([molecule_numbers, modification_numbers], axis=1)
         molecules = list(molecule_numbers.drop('dp', axis=1).columns)
@@ -511,7 +501,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         formulas_final = formulas_final.str.replace("\D0", "", regex=True)
         formulas_final = formulas_final.str.replace("N1O", "NO")
         masses['formula'] = formulas_final
-        del dp, hex, pent, molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
+        del molecule_numbers, modification_numbers, molecules, atom_list, atom_list_2, formulas_final
     #print("\nstep #4: filtering based on number of modifications per monomer")
     #print("----------------------------------------------------------------\n")
     if "none" not in modifications:
@@ -536,6 +526,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_anionic = masses[masses['name'].str.contains('|'.join(anionic_mod_used))]
         masses_all = masses.merge(masses_anionic.drop_duplicates(), how='left', indicator=True)
         masses_neutral = masses_all[masses_all._merge == 'left_only']
+        del masses_all
         # calculate m/z values for NEUTRAL molecules
         if "neg" in polarity:
             for a in adducts:
@@ -645,6 +636,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
         # concatenate dataframes and format nicely to only have useful columns
         masses_final = pd.concat([masses_anionic, masses_neutral])
+        del masses_anionic, masses_neutral
         bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
         bad_cols.update(modifications_anionic)
         bad_cols.update(modifications_neutral)

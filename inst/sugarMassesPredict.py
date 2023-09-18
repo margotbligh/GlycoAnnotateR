@@ -110,6 +110,8 @@ modifications_neutral = {"anhydrobridge",
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
     dp_range_list = list(range(dp[0], dp[1] + 1))
+    if type(adducts)==str:
+        adducts = [adducts]
     #print("step #1: getting arguments")
     #print("----------------------------------------")
     print(adducts, 'bli')
@@ -532,7 +534,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             for a in adducts:
                 if a == 'H':
                     masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
-                    next
                 if a == 'Cl':
                     masses_neutral['[M+Cl]-'] = masses_neutral.mass + ion_mdiff['Cl'] + e_mdiff
                 if a == 'CHOO':
@@ -583,7 +584,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         for i in range(len(ions)):
                             masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * (i + 2)) + (ion_mdiff['Na'] * (i + 1)) + e_mdiff
                             masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i + 2))
-                            masses_anionic = masses_anionic.rename({'[M-2H+1K]-': '[M-2H+K]-'}, axis=1)
+                            masses_anionic = masses_anionic.rename({'[M-2H+1Na]-': '[M-2H+Na]-'}, axis=1)
                     if a == "K":
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         Me_ions = [x - 1 for x in H_ions]
@@ -642,13 +643,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         # calculate m/z values for neutral molecules
         if "neg" in polarity:
             for a in adducts:
-                if a == 'O':
+                if a == 'H':
                     masses['[M-H]-'] = masses.mass - ion_mdiff['H'] + e_mdiff
                 if a == 'CHOO':
-                    print(a)
                     masses['[M+CHOO]-'] = masses.mass + ion_mdiff['CHOO'] + e_mdiff
                 if a == 'Cl':
-                    print(a)
                     masses['[M+Cl]-'] = masses.mass + ion_mdiff['Cl'] + e_mdiff
         if "pos" in polarity:
             for a in adducts:

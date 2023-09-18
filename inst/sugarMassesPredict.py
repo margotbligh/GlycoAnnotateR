@@ -109,16 +109,16 @@ modifications_neutral = {"anhydrobridge",
 
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
-    if type(adducts)==str:
-        adducts = [adducts]
     if adducts == 'all':
         adducts = ['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
+    if type(adducts)==str:
+        adducts = [adducts]
     dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
     if "all" in modifications:
         modifications = possible_modifications
-    if "sulphate" in modifications:
+    if "sulphate" in modifications and len(modifications) > 1:
         modifications.append(modifications.pop(modifications.index('sulphate')))
     if "alditol" in modifications:
         alditol_option = 'y'
@@ -213,6 +213,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                'pent': pent})
         masses = pd.concat([masses, modification_numbers], axis=1)
         masses['mass'] = mass
+        del dp, hex, pent, modification_numbers, name, mass
     if "none" not in modifications and pent_option == False:
         #print("--> adding modifications")
         m = len(modifications)
@@ -232,6 +233,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                'hex': hex})
         masses = pd.concat([masses, modification_numbers], axis=1)
         masses['mass'] = mass
+        del dp, hex, modification_numbers, name, mass
     if "sulphate" in modifications and double_sulphate == True:
         #print("--> adding extra sulphate groups")
         masses_s1 = masses.loc[masses['sulphate'] >= 1]

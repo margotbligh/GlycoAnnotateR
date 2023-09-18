@@ -643,7 +643,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if "neg" in polarity:
             for a in adducts:
                 if a == 'H':
-                    print(a)
                     masses['[M-H]-'] = masses.mass - ion_mdiff['H'] + e_mdiff
                 if a == 'CHOO':
                     print(a)

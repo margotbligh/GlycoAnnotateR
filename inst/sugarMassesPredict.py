@@ -109,9 +109,9 @@ modifications_neutral = {"anhydrobridge",
 
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
-    dp_range_list = list(range(dp[0], dp[1] + 1))
     if type(adducts)==str:
         adducts = [adducts]
+    dp_range_list = list(range(dp[0], dp[1] + 1))
     #print("step #1: getting arguments")
     #print("----------------------------------------")
     if "all" in modifications:

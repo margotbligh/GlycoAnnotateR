@@ -298,8 +298,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     molecules = list(masses.drop(['dp', "name", "mass"], axis=1).columns)
     molecule_numbers = np.array(masses[molecules])
     atom_names = ["C", "H", "N", "O", "S", "P"]
+    print(masses)
+    print(atom_names)
     for i in range(len(atom_names)):
             atom = atom_names[i]
+            print(atom)
             tmp = np.multiply(np.array(molecule_numbers), np.array([list(map(itemgetter(i), [formulas.get(key) for key in molecules]))]).repeat(len(masses), axis=0)).sum(axis=1)
             water_loss = np.multiply(np.array(masses.dp)-1, formulas['water'][i])
             tmp = tmp + water_loss
@@ -454,13 +457,13 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] <= scan_range[1])
         masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
         # concatenate dataframes and format nicely to only have useful columns
-        masses_final = pd.concat([masses_anionic, masses_neutral])
+        masses = pd.concat([masses_anionic, masses_neutral])
         del masses_anionic, masses_neutral
         bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
         bad_cols.update(modifications_anionic)
         bad_cols.update(modifications_neutral)
-        cols_del = list(set(masses_final.columns).intersection(bad_cols))
-        masses_final = masses_final.drop(columns=cols_del)
+        cols_del = list(set(masses.columns).intersection(bad_cols))
+        masses = masses.drop(columns=cols_del)
     if len(list(set(modifications).intersection(modifications_anionic))) == 0:
         # calculate m/z values for neutral molecules
         if "neg" in polarity:
@@ -481,7 +484,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     masses['[M+NH4]+'] = masses.mass + ion_mdiff['NH4'] - e_mdiff
                 if a == 'K':
                     masses['[M+K]+'] = masses.mass + ion_mdiff['K'] - e_mdiff
-        # filter neutral molecules based on scan range
+        # filter molecules based on scan range
         # set values outside range to NaN
         # remove rows where all ions are outside range
         my_cols = list(masses.filter(like='[M', axis=1).columns)
@@ -489,12 +492,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
         masses = masses.dropna(subset=my_cols, how='all')
         # format nicely to only have useful columns
-        masses_final = masses
         bad_cols = {'level_0','index','alditol','hex','pent','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated'}
         bad_cols.update(modifications_neutral)
-        cols_del = list(set(masses_final.columns).intersection(bad_cols))
-        masses_final = masses_final.drop(columns=cols_del)
+        cols_del = list(set(masses.columns).intersection(bad_cols))
+        masses = masses.drop(columns=cols_del)
     #print("\nstep #6: returning ouput")
     #print("----------------------------------------------------------------\n")
-    masses_final = masses_final.reset_index(drop=True)
-    return(masses_final)
+    masses = masses.reset_index(drop=True)
+    return(masses)

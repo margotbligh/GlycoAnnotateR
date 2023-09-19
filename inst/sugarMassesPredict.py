@@ -111,7 +111,7 @@ modifications_neutral = {"anhydrobridge",
 
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
     if adducts == 'all':
-        adducts = ['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
+        adducts=['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
     if type(adducts)==str:
         adducts = [adducts]
     dp_range_list = list(range(dp[0], dp[1] + 1))
@@ -327,12 +327,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #4: filtering based on number of modifications per monomer")
     #print("----------------------------------------------------------------\n")
     if "none" not in modifications:
-        if unsaturated_option == 'y':
-            modifications.remove('unsaturated')
-        if alditol_option == 'y':
-            modifications.remove('alditol')
-        if dehydrated_option == 'y':
-            modifications.remove('dehydrated')
         masses['nmod'] = masses[modifications].sum(axis=1)
         masses['nmod_avg'] = masses.nmod / masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)

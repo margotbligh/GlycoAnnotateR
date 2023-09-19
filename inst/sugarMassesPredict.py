@@ -123,14 +123,17 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         modifications.append(modifications.pop(modifications.index('sulphate')))
     if "alditol" in modifications:
         alditol_option = 'y'
+        modifications.remove("alditol")
     elif "alditol" not in modifications:
         alditol_option = 'n'
     if "unsaturated" in modifications:
         unsaturated_option = 'y'
+        modifications.remove("unsaturated")
     elif "unsaturated" not in modifications:
         unsaturated_option = 'n'
     if "dehydrated" in modifications:
         dehydrated_option = 'y'
+        modifications.remove("dehydrated")
     elif "dehydrated" not in modifications:
         dehydrated_option = 'n'
     #calculate possible masses
@@ -300,7 +303,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     atom_names = ["C", "H", "N", "O", "S", "P"]
     for i in range(len(atom_names)):
             atom = atom_names[i]
-            print(atom)
             tmp = np.multiply(np.array(molecule_numbers), np.array([list(map(itemgetter(i), [formulas.get(key) for key in molecules]))]).repeat(len(masses), axis=0)).sum(axis=1)
             water_loss = np.multiply(np.array(masses.dp)-1, formulas['water'][i])
             tmp = tmp + water_loss

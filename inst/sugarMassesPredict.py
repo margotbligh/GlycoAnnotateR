@@ -184,8 +184,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         modification_numbers = pd.DataFrame(modification_numbers)
         modification_numbers.columns = modifications
         return modification_numbers
-    def round_up_to_even_divide(n):
-        return math.ceil(n / 2)
     if pent_option == 1:
         #print("--> getting pentose masses")
         masses = getPentMasses(masses)
@@ -337,14 +335,24 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #5: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:
-        # create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
-        anionic_mod_used = list(set(modifications).intersection(modifications_anionic))
-        masses_anionic = masses[masses['name'].str.contains('|'.join(anionic_mod_used))]
-        masses_all = masses.merge(masses_anionic.drop_duplicates(), how='left', indicator=True)
-        masses_neutral = masses_all[masses_all._merge == 'left_only']
-        del masses_all
-        # calculate m/z values for NEUTRAL molecules
+        if "pos" in polarity:
+            for a in adducts:
+                if a == 'H':
+                    masses['[M+H]+'] = masses.mass + ion_mdiff['H'] - e_mdiff
+                if a == 'Na':
+                    masses['[M+Na]+'] = masses.mass + ion_mdiff['Na'] - e_mdiff
+                if a == 'NH4':
+                    masses['[M+NH4]+'] = masses.mass + ion_mdiff['NH4'] - e_mdiff
+                if a == 'K':
+                    masses['[M+K]+'] = masses.mass + ion_mdiff['K'] - e_mdiff
         if "neg" in polarity:
+            #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
+            anionic_mod_used = list(set(modifications).intersection(modifications_anionic))
+            masses_anionic = masses[masses['name'].str.contains('|'.join(anionic_mod_used))]
+            masses_all = masses.merge(masses_anionic.drop_duplicates(), how='left', indicator=True)
+            masses_neutral = masses_all[masses_all._merge == 'left_only']
+            del masses_all
+            # calculate m/z values for NEUTRAL molecules
             for a in adducts:
                 if a == 'H':
                     masses_neutral['[M-H]-'] = masses_neutral.mass - ion_mdiff['H'] + e_mdiff
@@ -352,43 +360,15 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     masses_neutral['[M+Cl]-'] = masses_neutral.mass + ion_mdiff['Cl'] + e_mdiff
                 if a == 'CHOO':
                     masses_neutral['[M+CHOO]-'] = masses_neutral.mass + ion_mdiff['CHOO'] + e_mdiff
-        if "pos" in polarity:
-            for a in adducts:
-                if a == 'H':
-                    masses_neutral['[M+H]+'] = masses_neutral.mass + ion_mdiff['H'] - e_mdiff
-                if a == 'Na':
-                    masses_neutral['[M+Na]+'] = masses_neutral.mass + ion_mdiff['Na'] - e_mdiff
-                if a == 'NH4':
-                    masses_neutral['[M+NH4]+'] = masses_neutral.mass + ion_mdiff['NH4'] - e_mdiff
-                if a == 'K':
-                    masses_neutral['[M+K]+'] = masses_neutral.mass + ion_mdiff['K'] - e_mdiff
-        # filter neutral molecules based on scan range
-        # set values outside range to NaN
-        # remove rows where all ions are outside range
-        my_cols = list(masses_neutral.filter(like='[M', axis=1).columns)
-        masses_neutral[my_cols] = masses_neutral[my_cols].where(masses_neutral[my_cols] >= scan_range[0])
-        masses_neutral[my_cols] = masses_neutral[my_cols].where(masses_neutral[my_cols] <= scan_range[1])
-        masses_neutral = masses_neutral.dropna(subset=my_cols, how='all')
-        # calculate m/z values for ANIONIC molecules
-        # calculate number of anionic groups
-        if len(anionic_mod_used) > 1:
-            masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].sum(axis=1)
-            masses_anionic['nmod_anionic'] = masses_anionic.nmod_anionic.astype(int)
-        elif len(anionic_mod_used) == 1:
-            masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].astype(int)
-        if "MALDI" in ion_type:
-            for a in adducts:
-                if "pos" in polarity:
-                    for a in adducts:
-                        if a == 'H':
-                            masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
-                        if a == 'Na':
-                            masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
-                        if a == 'NH4':
-                            masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
-                        if a == 'K':
-                            masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
-                if "neg" in polarity:
+            # calculate m/z values for ANIONIC molecules
+            # calculate number of anionic groups
+            if len(anionic_mod_used) > 1:
+                masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].sum(axis=1)
+                masses_anionic['nmod_anionic'] = masses_anionic.nmod_anionic.astype(int)
+            elif len(anionic_mod_used) == 1:
+                masses_anionic['nmod_anionic'] = masses_anionic[anionic_mod_used].astype(int)
+            if "MALDI" in ion_type:
+                for a in adducts:
                     if a == "H":
                         masses_anionic['[M-H]-'] = masses_anionic.mass - ion_mdiff['H'] + e_mdiff
                     if a == "Na":
@@ -419,9 +399,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
                     if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-        if "ESI" in ion_type:
-            if "neg" in polarity:
-                if "nH" in adducts or adducts == "all":
+            if "ESI" in ion_type:
+                if "nH" in adducts:
                     ions = list(range(1, masses_anionic.nmod_anionic.max() + 1))
                     ions = list("[M-" + pd.Series(ions).astype(str) + "H]-" + pd.Series(ions).astype(str))
                     for i in range(len(ions)):
@@ -433,26 +412,12 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
                     if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-            if "pos" in polarity:
-                for a in adducts:
-                    if a == 'H':
-                        masses_anionic['[M+H]+'] = masses_anionic.mass + ion_mdiff['H'] - e_mdiff
-                    if a == 'Na':
-                        masses_anionic['[M+Na]+'] = masses_anionic.mass + ion_mdiff['Na'] - e_mdiff
-                    if a == 'NH4':
-                        masses_anionic['[M+NH4]+'] = masses_anionic.mass + ion_mdiff['NH4'] - e_mdiff
-                    if a == 'K':
-                        masses_anionic['[M+K]+'] = masses_anionic.mass + ion_mdiff['K'] - e_mdiff
-            # filter anionic molecules based on scan range
-            # set values outside range to NaN
-            # remove rows where all ions are outside range
-        my_cols = list(masses_anionic.filter(like='[M', axis=1).columns)
-        masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] >= scan_range[0])
-        masses_anionic[my_cols] = masses_anionic[my_cols].where(masses_anionic[my_cols] <= scan_range[1])
-        masses_anionic = masses_anionic.dropna(subset=my_cols, how='all')
-        # concatenate dataframes and format nicely to only have useful columns
-        masses = pd.concat([masses_anionic, masses_neutral])
-        del masses_anionic, masses_neutral
+            masses = pd.concat([masses_anionic, masses_neutral])
+            del masses_anionic, masses_neutral
+        my_cols = list(masses.filter(like='[M', axis=1).columns)
+        masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])
+        masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
+        masses = masses.dropna(subset=my_cols, how='all')
         bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
         bad_cols.update(modifications_anionic)
         bad_cols.update(modifications_neutral)

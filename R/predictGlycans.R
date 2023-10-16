@@ -98,15 +98,21 @@ predictGlycans <- function(param){
                     N = stringr::str_split_i(formula, "N", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
+                    N = dplyr::case_when(grepl("N", formula) & is.na(N) ~ 1,
+                                         TRUE ~ N),
                     O = stringr::str_split_i(formula, "O", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
                     P = stringr::str_split_i(formula, "P", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
+                    P = dplyr::case_when(grepl("P", formula) & is.na(P) ~ 1,
+                                         TRUE ~ P),
                     S = stringr::str_split_i(formula, "S", 2) %>% 
                       sub("\\D.*", "", .) %>% 
                       as.numeric(),
+                    S = dplyr::case_when(grepl("S", formula) & is.na(S) ~ 1,
+                                         TRUE ~ S),
                     ion_effect = gsub("\\[M|\\].*", "", ion),
                     delta_H = sub(".*([+-]\\d*H).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^H].*|[-+][A-G, I-Z].*", "", .) %>% 
@@ -146,7 +152,7 @@ predictGlycans <- function(param){
                                          "Na", delta_Na,
                                          "O", O,
                                          "S", S, "P", P) %>% 
-                      gsub("[A-Z]0|[A-Z][a-z]0", "", .)
+                      gsub("[A-Z]0|Na0|Cl0", "", .)
       )
     df <- df.l %>% 
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))

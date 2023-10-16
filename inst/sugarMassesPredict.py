@@ -307,7 +307,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_s2.name = masses_s2.name.str.replace("-sulphate-\d{1,2}", "", regex=True)
         masses_s2.name = masses_s2.name + '-sulphate-' + masses_s2.sulphate.astype(str)
         masses_s2.mass = masses_s2.mass + modifications_mdiff['sulphate'] * masses_s2.dp
-        masses = masses.append(masses_s2).reset_index()
+        #masses = masses.append(masses_s2).reset_index()
+        masses = pd.concat([masses, masses_s2]).reset_index()
         del masses_s1
         del masses_s2
     if label in proa_names:
@@ -551,4 +552,5 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #7: returning ouput")
     #print("----------------------------------------------------------------\n")
     masses = masses.reset_index(drop=True)
+    masses = masses.sort_values(by = ["dp", "mass"])
     return(masses)

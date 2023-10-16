@@ -108,8 +108,75 @@ modifications_neutral = {"anhydrobridge",
                          "amino",
                          "dehydrated"}
 
+#names
+names_iupac = {
+    "hex" : 'Hex',
+    'pent' : 'Pen',
+    "sulphate": 'Sulfate',
+    "anhydrobridge": 'Anhydro',
+    "omethyl": 'O-Methyl',
+    "carboxyl": 'CarboxylicAcid',
+    "nacetyl": 'N-Acetyl',
+    "oacetyl": 'O-Acetyl',
+    "phosphate": 'Phosphate',
+    "deoxy": 'DeoxyHex',
+    "unsaturated": 'Unsaturated',
+    "alditol": 'Alditol',
+    "amino": 'Amino',
+    "dehydrated": 'Dehydrated'
+}
+names_glycoct = {
+    "hex": 'HEX',
+    'pent': 'PEN',
+    "sulphate": 'SO4',
+    "anhydrobridge": 'ANH',
+    "omethyl": 'OMe',
+    "carboxyl": 'COOH',
+    "nacetyl": 'NAc',
+    "oacetyl": 'Ac',
+    "phosphate": 'PO4',
+    "deoxy": 'DHEX',
+    "unsaturated": 'UNS',
+    "alditol": 'ALD',
+    "amino": 'NH2',
+    "dehydrated": 'Y'
+}
+names_oxford = {
+    "hex": 'H',
+    'pent': 'P',
+    "sulphate": 'S',
+    "anhydrobridge": 'A',
+    "omethyl": 'M',
+    "carboxyl": 'U',
+    "nacetyl": 'N',
+    "oacetyl": 'Ac',
+    "phosphate": 'P',
+    "deoxy": 'D',
+    "unsaturated": 'U',
+    "alditol": 'A',
+    "amino": 'Am',
+    "dehydrated": 'Y'
+}
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all"):
+#brackets
+bracket_mapping = {
+    "hex": '()',
+    'pent': '()',
+    "sulphate": '[]',
+    "anhydrobridge": '[]',
+    "omethyl": '[]',
+    "carboxyl": '[]',
+    "nacetyl": '[]',
+    "oacetyl": '[]',
+    "phosphate": '[]',
+    "deoxy": '()',
+    "unsaturated": '[]',
+    "alditol": '[]',
+    "amino": '[]',
+    "dehydrated": '[]'
+}
+
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all", naming = "IUPAC"):
     if adducts == 'all':
         adducts=['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
     if type(adducts)==str:
@@ -163,6 +230,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         pent = pd.Series(dpRepeats(dp_range_list))
         hex = dp - pent
         name = "hex-" + hex.astype(str) + "-pent-" + pent.astype(str)
+        name = name.str.replace("hex-0-", "")
+        name = name.str.replace("-pent-0", "")
         mass = masses.mass.repeat(masses.dp.array + 1).reset_index(drop=True)
         mass = mass + pent * pent_mdiff
         masses = pd.DataFrame({'dp': dp,
@@ -188,9 +257,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         #print("--> getting pentose masses")
         masses = getPentMasses(masses)
     #add modifications
-    if "none" in modifications and pent_option == True:
-        masses.name = masses.name.str.replace("hex-0-", "")
-        masses.name = masses.name.str.replace("-pent-0", "")
     if "none" not in modifications and pent_option == True:
         #print("--> adding modifications")
         m = len(modifications)
@@ -332,7 +398,34 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         indexDelete = masses[masses.hex < masses.anhydrobridge].index
         masses.drop(indexDelete, inplace=True)
         masses = masses.reset_index()
-    #print("\nstep #5: calculating m/z values of ions")
+    #print("\nstep #5: configuring names to convention")
+    #print("----------------------------------------------------------------\n")
+    #reorder modifications
+    if "deoxy" in modifications: modifications.insert(0, modifications.pop(modifications.index('deoxy')))
+    if pent_option==False:
+        if "none" not in modifications: molecules_names = ['hex'] + modifications
+        else: molecules_names = ['hex']
+    if pent_option==True:
+        if "none" not in modifications: molecules_names = ['hex', 'pent'] + modifications
+        else: molecules_names = ['hex', 'pent']
+    #remove rows with deoxypentose
+    if "deoxy" in modifications and pent_option==True:
+        masses = masses[masses['deoxy'] <= masses['hex']]
+    #get numbers
+    molecule_numbers = masses[molecules_names]
+    #subtract deoxy from hex
+    if "deoxy" in modifications:
+        molecule_numbers["hex"] = molecule_numbers.hex - molecule_numbers.deoxy
+    if "IUPAC" in naming:
+        masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
+            f'{names_iupac[name]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
+    if "GlycoCT" in naming:
+        masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
+            f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
+    if "Oxford" in naming:
+        masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
+            names_oxford[name] + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
+    #print("\nstep #6: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:
         if "pos" in polarity:
@@ -418,7 +511,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])
         masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
         masses = masses.dropna(subset=my_cols, how='all')
-        bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x'}
+        bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x', 'name'}
         bad_cols.update(modifications_anionic)
         bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
@@ -451,11 +544,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
         masses = masses.dropna(subset=my_cols, how='all')
         # format nicely to only have useful columns
-        bad_cols = {'level_0','index','alditol','hex','pent','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated'}
+        bad_cols = {'level_0','index','alditol','hex','pent','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated','name'}
         bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
         masses = masses.drop(columns=cols_del)
-    #print("\nstep #6: returning ouput")
+    #print("\nstep #7: returning ouput")
     #print("----------------------------------------------------------------\n")
     masses = masses.reset_index(drop=True)
     return(masses)

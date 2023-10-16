@@ -24,6 +24,7 @@
 #' @slot double_sulphate Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.
 #' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
+#' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
 #' 
 #' @inherit predictGlycans details
 #' 

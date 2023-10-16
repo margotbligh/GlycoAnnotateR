@@ -42,7 +42,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            label = "character",
            ion_type = "character",
            format = "character",
-           adducts = "character"
+           adducts = "character",
+           naming = "character"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -55,7 +56,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            label = "none",
            ion_type = "ESI",
            format = "long",
-           adducts = "all"
+           adducts = "all",
+           naming = "IUPAC"
          ),
          validity = function(object) {
            msg <- character()
@@ -111,6 +113,11 @@ predictGlycansParam = setClass("predictGlycansParam",
            if (!all(object@adducts %in% possible_adducts))
              msg <- c(msg, paste0("valid options for 'adducts' are: ",
                                   paste0("'", possible_adducts, "'",
+                                         collapse = ", "), "."))
+           possible_namings <- c("IUPAC", "GlycoCT", "Oxford")
+           if (!all(object@naming %in% possible_namings))
+             msg <- c(msg, paste0("valid options for 'naming' are: ",
+                                  paste0("'", possible_namings, "'",
                                          collapse = ", "), "."))
            if (length(msg) >= 1)
              print(msg)

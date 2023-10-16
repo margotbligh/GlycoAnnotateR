@@ -404,10 +404,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "deoxy" in modifications: modifications.insert(0, modifications.pop(modifications.index('deoxy')))
     if pent_option==False:
         if "none" not in modifications: molecules_names = ['hex'] + modifications
-        if modifications == "none": molecules_names = ['hex']
+        else: molecules_names = ['hex']
     if pent_option==True:
         if "none" not in modifications: molecules_names = ['hex', 'pent'] + modifications
-        if modifications == "none": molecules_names = ['hex', 'pent']
+        else: molecules_names = ['hex', 'pent']
     #remove rows with deoxypentose
     if "deoxy" in modifications and pent_option==True:
         masses = masses[masses['deoxy'] <= masses['hex']]

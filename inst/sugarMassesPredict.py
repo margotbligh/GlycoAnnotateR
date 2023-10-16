@@ -176,10 +176,6 @@ bracket_mapping = {
     "dehydrated": '[]'
 }
 
-out = predict_sugars(naming = ['IUPAC', 'GlycoCT', 'Oxford'],
-                     modifications = ['deoxy', 'sulphate'])
-
-
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all", naming = "IUPAC"):
     if adducts == 'all':
         adducts=['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']

@@ -176,9 +176,9 @@ bracket_mapping = {
     "dehydrated": '[]'
 }
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = "all", naming = "IUPAC"):
-    if adducts == 'all':
-        adducts=['H', 'Cl', 'CHOO', 'nH', 'Na', 'NH4', 'K']
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC"):
+    if 'all' in adducts:
+        adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
     if type(adducts)==str:
         adducts = [adducts]
     dp_range_list = list(range(dp[0], dp[1] + 1))
@@ -493,7 +493,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
             if "ESI" in ion_type:
-                if "nH" in adducts:
+                if "H" in adducts:
                     ions = list(range(1, masses_anionic.nmod_anionic.max() + 1))
                     ions = list("[M-" + pd.Series(ions).astype(str) + "H]-" + pd.Series(ions).astype(str))
                     for i in range(len(ions)):

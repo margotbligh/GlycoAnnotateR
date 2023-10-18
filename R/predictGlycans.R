@@ -81,6 +81,14 @@ predictGlycans <- function(param){
   format = param@format
   library(magrittr)
   if(format == "long"){
+    as.num = function(x, na.strings = "NA") {
+      stopifnot(is.character(x))
+      na = x %in% na.strings
+      x[na] = "0"
+      x = as.numeric(x)
+      x[na] = NA_real_
+      x
+    }
     df.l <- df %>% 
       #make long
       tidyr::pivot_longer(cols = starts_with("[M"),
@@ -91,26 +99,26 @@ predictGlycans <- function(param){
       #calculate ion formula
       dplyr::mutate(C = stringr::str_split_i(formula, "C", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     H = stringr::str_split_i(formula, "H", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     N = stringr::str_split_i(formula, "N", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     N = dplyr::case_when(grepl("N", formula) & is.na(N) ~ 1,
                                          TRUE ~ N),
                     O = stringr::str_split_i(formula, "O", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     P = stringr::str_split_i(formula, "P", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     P = dplyr::case_when(grepl("P", formula) & is.na(P) ~ 1,
                                          TRUE ~ P),
                     S = stringr::str_split_i(formula, "S", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     S = dplyr::case_when(grepl("S", formula) & is.na(S) ~ 1,
                                          TRUE ~ S),
                     ion_effect = gsub("\\[M|\\].*", "", ion),
@@ -118,7 +126,8 @@ predictGlycans <- function(param){
                       sub("[-+]\\d[^H].*|[-+][A-G, I-Z].*", "", .) %>% 
                       sub("H", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric())
+                      sub("^\\+$", 1, .) %>% 
+                      as.num())
     df.l$delta_H[df.l$ion_effect == "+NH4"] <- 4
     df.l <- df.l %>% 
       dplyr::mutate(delta_N = sub(".*([+-]\\d*N[^a]).*", "\\1", ion_effect) %>% 
@@ -126,22 +135,26 @@ predictGlycans <- function(param){
                       sub("[-+]\\d[^N].*|[-+][A-M, O-Z].*|[A-M, O-Z]", "", .) %>% 
                       sub("N", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
-                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
+                      sub("^\\+$", 1, .) %>% 
+                      as.num(),
+                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>%  
                       sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
                       sub("Cl", "", .) %>% 
-                      sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
+                      sub("^-$", "-1", .) %>% 
+                      sub("^\\+$", "1", .) %>% 
+                      as.num(na.strings = "+CHOO"),
                     delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
                       sub("Na", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
+                      sub("^\\+$", 1, .) %>% 
+                      as.num(na.strings = "+NH4"),
                     delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
                       sub("K", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric())
+                      sub("^\\+$", 1, .) %>% 
+                      as.num())
     df.l[is.na(df.l)] <- 0
     df.l <- df.l %>% 
       dplyr::mutate(ion_formula = paste0("C", C, 

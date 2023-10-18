@@ -425,7 +425,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
     if "Oxford" in naming:
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
-            names_oxford[name] + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
+            f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(row[name]) for name in
+            molecules_names if row[name] != 0), axis=1)
     #print("\nstep #6: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:

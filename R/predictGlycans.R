@@ -137,12 +137,12 @@ predictGlycans <- function(param){
                       sub("^-$", -1, .) %>% 
                       sub("^\\+$", 1, .) %>% 
                       as.num(),
-                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
+                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>%  
                       sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
                       sub("Cl", "", .) %>% 
-                      sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% 
-                      as.num(),
+                      sub("^-$", "-1", .) %>% 
+                      sub("^\\+$", "1", .) %>% 
+                      as.num(na.strings = "+CHOO"),
                     delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
                       sub("Na", "", .) %>% 

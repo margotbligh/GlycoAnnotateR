@@ -148,7 +148,7 @@ predictGlycans <- function(param){
                       sub("Na", "", .) %>% 
                       sub("^-$", -1, .) %>% 
                       sub("^\\+$", 1, .) %>% 
-                      as.num(),
+                      as.num(na.strings = "+NH4"),
                     delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
                       sub("K", "", .) %>% 

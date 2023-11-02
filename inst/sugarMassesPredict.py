@@ -362,10 +362,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #3: building formulas")
     #print("----------------------------------------\n")
     molecules = list(masses.drop(['dp', "name", "mass"], axis=1).columns)
-    print(molecules)
     if "index" in molecules:
         molecules.remove("index")
         masses = masses.drop(columns=['index'])
+    print(molecules)
     molecule_numbers = np.array(masses[molecules])
     atom_names = ["C", "H", "N", "O", "S", "P"]
     for i in range(len(atom_names)):

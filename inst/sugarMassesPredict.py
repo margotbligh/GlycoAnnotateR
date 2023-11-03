@@ -176,6 +176,22 @@ bracket_mapping = {
     "dehydrated": '[]'
 }
 
+
+#predictGlycansParam(dp = c(1, 12),
+                             modifications = c("deoxy", "dehydrated", "sulphate"),
+                             pent_option = F,
+                             double_sulphate = T,
+                             nmod_max = 4,
+                             scan_range = c(240, 1600),
+                             adducts = c("Na", "H"),
+                             polarity = "neg",
+                             ion_type = "MALDI",
+                             format = "long",
+                             naming = "GlycoCT")
+
+out = predict_sugars(modifications = ["deoxy", "dehydrated", "sulphate"], double_sulphate = True, nmod_max=4, adducts=["Na", "H"],
+polarity = "neg", ion_type = "MALDI", naming = "IUPAC")
+
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC"):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
@@ -413,6 +429,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "deoxy" in modifications and pent_option==True:
         masses = masses[masses['deoxy'] <= masses['hex']]
     #get numbers
+    if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
+    if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
+    if dehydrated_option == 'y': molecules_names = ['dehydrated'] + molecules_names
     molecule_numbers = masses[molecules_names]
     #subtract deoxy from hex
     if "deoxy" in modifications:

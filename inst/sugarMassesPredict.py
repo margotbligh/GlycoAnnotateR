@@ -176,22 +176,6 @@ bracket_mapping = {
     "dehydrated": '[]'
 }
 
-
-#predictGlycansParam(dp = c(1, 12),
-                             modifications = c("deoxy", "dehydrated", "sulphate"),
-                             pent_option = F,
-                             double_sulphate = T,
-                             nmod_max = 4,
-                             scan_range = c(240, 1600),
-                             adducts = c("Na", "H"),
-                             polarity = "neg",
-                             ion_type = "MALDI",
-                             format = "long",
-                             naming = "GlycoCT")
-
-out = predict_sugars(modifications = ["deoxy", "dehydrated", "sulphate"], double_sulphate = True, nmod_max=4, adducts=["Na", "H"],
-polarity = "neg", ion_type = "MALDI", naming = "IUPAC")
-
 def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC"):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']

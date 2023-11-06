@@ -338,7 +338,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['unsaturated'] = 1
         masses['unsaturated'] = 0
         masses_a.mass = masses.mass + modifications_mdiff['unsaturated']
-        masses = masses.append(masses_a).reset_index()
+        masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
     if alditol_option == 'y':
         #print("--> adding alditol sugars")
@@ -347,7 +347,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['alditol'] = 1
         masses['alditol'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['alditol']
-        masses = masses.append(masses_a).reset_index(drop=True)
+        masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
     if dehydrated_option == 'y':
         #print("--> adding dehydration to sugars")
@@ -356,7 +356,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['dehydrated'] = 1
         masses['dehydrated'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
-        masses = masses.append(masses_a).reset_index(drop=True)
+        masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
     #print("\nstep #3: building formulas")
     #print("----------------------------------------\n")
@@ -413,6 +413,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "deoxy" in modifications and pent_option==True:
         masses = masses[masses['deoxy'] <= masses['hex']]
     #get numbers
+    if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
+    if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
+    if dehydrated_option == 'y': molecules_names = ['dehydrated'] + molecules_names
     molecule_numbers = masses[molecules_names]
     #subtract deoxy from hex
     if "deoxy" in modifications:

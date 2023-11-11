@@ -5,10 +5,6 @@
 \alias{predictGlycansParam-class}
 \alias{predictGlycansParam}
 \title{predictGlycansParam class}
-\usage{
-pgp <- predictGlycansParam()
-df <- predictGlycans(param = pgp)
-}
 \description{
 An S4 class that contains the parameters for glycan prediction.
 Once created the predictGlycansParam object should be supplied to the function
@@ -63,12 +59,14 @@ For more details see the vignette:
 \item{\code{label}}{Are sugars labelled? Currently only accepts 'none' or 'procainamide'.}
 
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
+
+\item{\code{naming}}{Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'}
 }}
 
 \examples{
 pgp <- predictGlycansParam()
 pgp@dp <- c(1,7)
-pgp@ESI_mode <- 'neg'
+pgp@polarity <- 'neg'
 pgp@scan_range <- c(150, 1300)
 pgp@modifications <- c('sulphate', 'carboxyl')
 pgp@double_sulphate <- TRUE

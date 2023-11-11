@@ -11,9 +11,6 @@
 #' @export predictGlycansParam
 #' @exportClass predictGlycansParam
 #' 
-#' @usage 
-#' pgp <- predictGlycansParam()
-#' df <- predictGlycans(param = pgp)
 #' 
 #' @slot dp Degree of polymerisation range (numeric, length 2).
 #' @slot polarity ionisation mode used. Accepts 'pos' or 'neg'.

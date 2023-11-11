@@ -165,8 +165,8 @@ predictGlycans <- function(param){
                                          "Na", delta_Na,
                                          "O", O,
                                          "S", S, "P", P) %>% 
-                      gsub("[A-Z]0|Na0|Cl0", "", .)
-      )
+                      gsub("[A-Z]0|Na0|Cl0", "", .) %>% 
+                      gsub("(\\b|\\D)1(\\b|\\D)", "\\1\\2", .))
     df <- df.l %>% 
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     

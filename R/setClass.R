@@ -88,6 +88,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0))
              msg <- c(msg, paste0("'nmod_max' has to be positive numeric",
                                   " of length 1."))
+           if(object@nmod_max > 3)
+             msg <- c(msg, paste0("'nmod_max' cannot be greater than 3"))
            if (length(object@double_sulphate) != 1 | 
                class(object@double_sulphate) != "logical")
              msg <- c(msg, paste0("'double_sulphate' has to be a logical of",

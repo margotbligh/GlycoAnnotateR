@@ -423,23 +423,22 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "IUPAC" in naming:
         masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
             f'{names_iupac[name]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
-        if unsaturated_option == 'y': masses['IUPAC name'] = str.replace("Unsaturated1", "Unsaturated", regex=True)
-        if alditol_option == 'y': masses['IUPAC name'] = str.replace("Alditol1", "Alditol", regex=True)
-        if dehydrated_option == 'y': masses['IUPAC name'] = str.replace("Dehydrated1", "Dehydrated", regex=True)
-        masses['formula'].str.replace("\D0", "", regex=True)
+        if unsaturated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Unsaturated1", "Unsaturated", regex=True)
+        if alditol_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Alditol1", "Alditol", regex=True)
+        if dehydrated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Dehydrated1", "Dehydrated", regex=True)
     if "GlycoCT" in naming:
         masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)
-        if unsaturated_option == 'y': masses['GlycoCT name'] = str.replace("UNS1", "UNS", regex=True)
-        if alditol_option == 'y': masses['GlycoCT name'] = str.replace("ALD1", "ALD", regex=True)
-        if dehydrated_option == 'y': masses['GlycoCT name'] = str.replace("Y1", "Y", regex=True)
+        if unsaturated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("UNS1", "UNS", regex=True)
+        if alditol_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("ALD1", "ALD", regex=True)
+        if dehydrated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("Y1", "Y", regex=True)
     if "Oxford" in naming:
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(row[name]) for name in
             molecules_names if row[name] != 0), axis=1)
-        if unsaturated_option == 'y': masses['Oxford name'] = str.replace("U", "U", regex=True)
-        if alditol_option == 'y': masses['Oxford name'] = str.replace("o1", "o", regex=True)
-        if dehydrated_option == 'y': masses['Oxford name'] = str.replace("Y1", "Y", regex=True)
+        if unsaturated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("U", "U", regex=True)
+        if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("o1", "o", regex=True)
+        if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("Y1", "Y", regex=True)
     #print("\nstep #6: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:

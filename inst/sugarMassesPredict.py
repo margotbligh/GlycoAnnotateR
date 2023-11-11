@@ -37,7 +37,7 @@ modifications_mdiff = {
     "oacetyl": 42.010565,
     "phosphate": 79.966333,
     "deoxy": -15.994915,
-    "unsaturated": -2.015650,
+    "unsaturated": -water_mass,
     "alditol": 2.015650,
     "amino": -0.984016,
     "dehydrated": -water_mass
@@ -86,7 +86,7 @@ formulas = {
     "phosphate": [0, 1, 0, 3, 0, 1],
     "deoxy": [0, 0, 0, -1, 0, 0],
     "proca": [13, 21, 3, 0, 0, 0],
-    "unsaturated": [0, -2, 0, 0, 0, 0],
+    "unsaturated":  [0, -2, 0, -1, 0, 0],
     "alditol": [0, +2, 0, 0, 0, 0],
     "amino": [0, +1, +1, -1, 0, 0],
     "dehydrated": [0, -2, 0, -1, 0, 0],

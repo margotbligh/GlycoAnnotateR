@@ -264,20 +264,26 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     print("----------------------------------------\n")
     if "none" not in modifications and pent_option == True:
         m = len(modifications)
+        print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        masses = pd.DataFrame({'dp': masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
-                               'name': masses.name.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
-                               'hex': masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
-                               'pent': masses.pent.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)})
+        print("-->expanding array")
+        masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
+                              columns = ["dp", "hex", "pent", "mass"])
         masses = pd.concat([masses, modification_numbers], axis=1)
-        del modification_numbers,
+        print("-->filtering by nmod_max")
+        masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
+        masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
+        masses = masses.drop('nmod_avg', axis=1)
+        del modification_numbers
     if "none" not in modifications and pent_option == False:
         m = len(modifications)
+        print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        masses = pd.DataFrame({'dp': masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
-                               'name': masses.name.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
-                               'hex': masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)})
+        print("-->expanding array")
+        masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
+                              columns = ["dp", "hex", "mass"])
         masses = pd.concat([masses, modification_numbers], axis=1)
+        print("-->filtering by nmod_max")
         masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)

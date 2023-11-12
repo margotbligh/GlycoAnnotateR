@@ -218,11 +218,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     print("--> getting hexose masses")
     def getHexMasses(dp_range_list):
         dp = pd.Series(dp_range_list)
-        name = "hex-" + dp.astype(str)
         hex = dp
         mass = dp * hex_mass - (dp - 1) * water_mass
         masses = pd.DataFrame({'dp': dp,
-                               'name': name,
                                'hex': hex.astype(int),
                                'mass': mass})
         return masses
@@ -237,13 +235,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         dp = masses.dp.repeat(masses.dp.array + 1).reset_index(drop=True)
         pent = pd.Series(dpRepeats(dp_range_list))
         hex = dp - pent
-        name = "hex-" + hex.astype(str) + "-pent-" + pent.astype(str)
-        name = name.str.replace("hex-0-", "")
-        name = name.str.replace("-pent-0", "")
         mass = masses.mass.repeat(masses.dp.array + 1).reset_index(drop=True)
         mass = mass + pent * pent_mdiff
         masses = pd.DataFrame({'dp': dp,
-                               'name': name,
                                'hex': hex,
                                'pent': pent,
                                'mass': mass})
@@ -270,81 +264,50 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     print("----------------------------------------\n")
     if "none" not in modifications and pent_option == True:
         m = len(modifications)
-        dp = masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
-        hex = masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
-        pent = masses.pent.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        name = "hex-" + hex.astype(str) + "-pent-" + pent.astype(str)
-        for i in range(m):
-            name = name + "-" + modifications[i] + "-" + modification_numbers[modifications[i]].astype(str)
-        name = name.str.replace("-\D+-0", "", regex=True)
-        name = name.str.replace("hex-0-", "")
-        mass = masses.mass.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
-        for i in range(m):
-            mass = mass + modifications_mdiff[modifications[i]] * modification_numbers[modifications[i]]
-        masses = pd.DataFrame({'dp': dp,
-                               'name': name,
-                               'hex': hex,
-                               'pent': pent})
+        masses = pd.DataFrame({'dp': masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
+                               'name': masses.name.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
+                               'hex': masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
+                               'pent': masses.pent.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)})
         masses = pd.concat([masses, modification_numbers], axis=1)
-        masses['mass'] = mass
-        del dp, hex, pent, modification_numbers, name, mass
+        del modification_numbers,
     if "none" not in modifications and pent_option == False:
-        #print("--> adding modifications")
         m = len(modifications)
-        dp = masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
-        hex = masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        name = "hex-" + hex.astype(str)
-        for i in range(m):
-            name = name + "-" + modifications[i] + "-" + modification_numbers[modifications[i]].astype(str)
-        name = name.str.replace("-\D+-0", "", regex=True)
-        name = name.str.replace("hex-0-", "")
-        mass = masses.mass.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
-        for i in range(m):
-            mass = mass + modifications_mdiff[modifications[i]] * modification_numbers[modifications[i]]
-        masses = pd.DataFrame({'dp': dp,
-                               'name': name,
-                               'hex': hex})
+        masses = pd.DataFrame({'dp': masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
+                               'name': masses.name.repeat((masses.dp.array + 1) ** m).reset_index(drop=True),
+                               'hex': masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)})
         masses = pd.concat([masses, modification_numbers], axis=1)
-        masses['mass'] = mass
-        del dp, hex, modification_numbers, name, mass
+        masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
+        masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
+        masses = masses.drop('nmod_avg', axis=1)
+        del modification_numbers
     if "sulphate" in modifications and double_sulphate == True:
         #print("--> adding extra sulphate groups")
         masses_s1 = masses.loc[masses['sulphate'] >= 1]
         masses_s2 = masses_s1
         masses_s2.sulphate = masses_s1.sulphate + masses_s1.dp
-        masses_s2.name = masses_s2.name.str.replace("-sulphate-\d{1,2}", "", regex=True)
-        masses_s2.name = masses_s2.name + '-sulphate-' + masses_s2.sulphate.astype(str)
-        masses_s2.mass = masses_s2.mass + modifications_mdiff['sulphate'] * masses_s2.dp
-        #masses = masses.append(masses_s2).reset_index()
         masses = pd.concat([masses, masses_s2]).reset_index()
         del masses_s1
         del masses_s2
     if label in proa_names:
         #print("--> adding procainamide label")
-        masses['name'] = masses.name + ' procA'
         masses['mass'] = masses.mass + proca_mdiff
     if label in pa_names:
         #print("--> adding 2-aminopyridine")
-        masses['name'] = masses.name + ' 2-PA'
         masses['mass'] = masses.mass + pa_mdiff
     if label in aba_names:
         #print("--> adding 2-aminobenzoic acid label")
-        masses['name'] = masses.name + ' 2-AA'
         masses['mass'] = masses.mass + aba_mdiff
     if label in ab_names:
         #print("--> adding 2-aminobenzamide")
-        masses['name'] = masses.name + ' 2-AB'
         masses['mass'] = masses.mass + ab_mdiff
     if label in pmp_names:
         #print("--> adding bis-PMP label")
-        masses['name'] = masses.name + ' bis-PMP'
         masses['mass'] = masses.mass + pmp_mdiff
     if unsaturated_option == 'y':
         #print("--> adding unsaturated sugars")
         masses_a = masses.copy()
-        masses_a.name = "unsaturated-" + masses.name
         masses_a['unsaturated'] = 1
         masses['unsaturated'] = 0
         masses_a.mass = masses.mass + modifications_mdiff['unsaturated']
@@ -353,7 +316,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if alditol_option == 'y':
         #print("--> adding alditol sugars")
         masses_a = masses.copy()
-        masses_a.name = "alditol-" + masses_a.name
         masses_a['alditol'] = 1
         masses['alditol'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['alditol']
@@ -362,7 +324,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if dehydrated_option == 'y':
         #print("--> adding dehydration to sugars")
         masses_a = masses.copy()
-        masses_a.name = "dehydrated-" + masses_a.name
         masses_a['dehydrated'] = 1
         masses['dehydrated'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
@@ -370,28 +331,29 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         del masses_a
     print("\nstep #4: building formulas")
     print("----------------------------------------\n")
-    molecules = list(masses.drop(['dp', "name", "mass"], axis=1).columns)
+    molecules = list(masses.drop(['dp', "mass"], axis=1).columns)
     if "index" in molecules:
         molecules.remove("index")
         masses = masses.drop(columns=['index'])
     molecule_numbers = np.array(masses[molecules])
     atom_names = ["C", "H", "N", "O", "S", "P"]
     for i in range(len(atom_names)):
-            atom = atom_names[i]
-            tmp = np.multiply(np.array(molecule_numbers), np.array([list(map(itemgetter(i), [formulas.get(key) for key in molecules]))]).repeat(len(masses), axis=0)).sum(axis=1)
-            water_loss = np.multiply(np.array(masses.dp)-1, formulas['water'][i])
-            tmp = tmp + water_loss
-            if label in proa_names:
-                tmp = tmp + [formulas['proca'][i]]
-            if label in pa_names:
-                tmp = tmp + [formulas['pa'][i]]
-            if label in aba_names:
-                tmp = tmp + [formulas['aba'][i]]
-            if label in ab_names:
+        atom = atom_names[i]
+        tmp = np.multiply(np.array(molecule_numbers), np.array([list(map(itemgetter(i), [formulas.get(key) for key in molecules]))]).repeat(len(masses), axis=0)).sum(axis=1)
+        water_loss = np.multiply(np.array(masses.dp)-1, formulas['water'][i])
+        tmp = tmp + water_loss
+        if label in proa_names:
+            tmp = tmp + [formulas['proca'][i]]
+        if label in pa_names:
+            tmp = tmp + [formulas['pa'][i]]
+        if label in aba_names:
+            tmp = tmp + [formulas['aba'][i]]
+        if label in ab_names:
+            tmp = tmp + [formulas['ab'][i]]
+        if label in pmp_names:
                 tmp = tmp + [formulas['ab'][i]]
-            if label in pmp_names:
-                tmp = tmp + [formulas['ab'][i]]
-            masses[atom] = list(tmp)
+        masses[atom] = list(tmp)
+        print("added to formula" + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
     masses['formula'] = masses['formula'].str.replace("\D0", "", regex=True)
     masses['formula'] = masses['formula'].str.replace("N1O", "NO")
@@ -399,17 +361,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     masses['formula'] = masses['formula'].str.replace("S1$", "S", regex=True)
     masses = masses.drop(atom_names, axis = 1)
     del tmp, water_loss, molecule_numbers, molecules
-    print("\nstep #5: filtering based on number of modifications per monomer")
-    print("----------------------------------------------------------------\n")
-    if "none" not in modifications:
-        masses['nmod'] = masses[modifications].sum(axis=1)
-        masses['nmod_avg'] = masses.nmod / masses.dp
-        masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
     if 'anhydrobridge' in modifications and pent_option == True:
         indexDelete = masses[masses.hex < masses.anhydrobridge].index
         masses.drop(indexDelete, inplace=True)
         masses = masses.reset_index()
-    print("\nstep #6: configuring names to convention")
+    print("\nstep #5: configuring names to convention")
     print("----------------------------------------------------------------\n")
     #reorder modifications
     if "sialicacid" in modifications: modifications.insert(0, modifications.pop(modifications.index('sialicacid')))

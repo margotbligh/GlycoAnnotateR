@@ -46,7 +46,7 @@ pgp <- predictGlycansParam()
 pgp@dp <- c(1,7)
 pgp@polarity <- 'neg'
 pgp@scan_range <- c(150, 1300)
-pgp@modifications <- c('sulphate', 'carboxyl')
+pgp@modifications <- c('sulphate', 'carboxylicacid')
 pgp@double_sulphate <- TRUE
 predicted.df <- predictGlycans(param = pgp)
 

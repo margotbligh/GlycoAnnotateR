@@ -16,7 +16,7 @@
 #' @slot polarity ionisation mode used. Accepts 'pos' or 'neg'.
 #' @slot scan_range Scan range used during MS. (numeric, length 2).
 #' @slot pent_option Logical: Should pentose monomers be included? 
-#' @slot modifications Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
+#' @slot modifications Modifications to be considered. Any combination of 'carboxylicacid', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
 #' @slot nmod_max Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulphate Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.
 #' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
@@ -74,7 +74,7 @@ predictGlycansParam = setClass("predictGlycansParam",
                class(object@pent_option) != "logical")
              msg <- c(msg, paste0("'pent_option' has to be a logical of",
                                   " length 1."))
-           possible_modifications <-  c('none', 'all', 'carboxyl', 'phosphate', 
+           possible_modifications <-  c('none', 'all', 'carboxylicacid', 'phosphate', 
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated', 
                                         'alditol', 'amino','dehydrated','sulphate')

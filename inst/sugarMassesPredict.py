@@ -11,7 +11,7 @@ from operator import itemgetter
 pd.options.mode.chained_assignment = None  # default='warn'
 
 #possible modifications
-possible_modifications = ['carboxyl',
+possible_modifications = ['carboxylicacid',
                           'phosphate',
                           'deoxy',
                           'nacetyl',
@@ -32,7 +32,7 @@ modifications_mdiff = {
     "sulphate": 79.956817,
     "anhydrobridge": -water_mass,
     "omethyl": 14.01565,
-    "carboxyl": 13.979265,
+    "carboxylicacid": 13.979265,
     "nacetyl": 41.026549,
     "oacetyl": 42.010565,
     "phosphate": 79.966333,
@@ -80,7 +80,7 @@ formulas = {
     "sulphate": [0, 0, 0, 3, 1, 0],
     "anhydrobridge": [0, -2, 0, -1, 0, 0],
     "omethyl": [1, 2, 0, 0, 0, 0],
-    "carboxyl": [0, -2, 0, 1, 0, 0],
+    "carboxylicacid": [0, -2, 0, 1, 0, 0],
     "nacetyl": [2, 3, 1, 0, 0, 0],
     "oacetyl": [2, 2, 0, 1, 0, 0],
     "phosphate": [0, 1, 0, 3, 0, 1],
@@ -98,7 +98,7 @@ formulas = {
 # modification types
 modifications_anionic = {"sulphate",
                          "phosphate",
-                         "carboxyl"}
+                         "carboxylicacid"}
 modifications_neutral = {"anhydrobridge",
                          "omethyl",
                          "nacetyl",
@@ -115,7 +115,7 @@ names_iupac = {
     "sulphate": 'Sulfate',
     "anhydrobridge": 'AnhydroBridge',
     "omethyl": 'O-Methyl',
-    "carboxyl": 'CarboxylicAcid',
+    "carboxylicacid": 'CarboxylicAcid',
     "nacetyl": 'N-Acetyl',
     "oacetyl": 'O-Acetyl',
     "phosphate": 'Phosphate',
@@ -131,7 +131,7 @@ names_glycoct = {
     "sulphate": 'SO4',
     "anhydrobridge": 'ANH',
     "omethyl": 'OMe',
-    "carboxyl": 'COOH',
+    "carboxylicacid": 'COOH',
     "nacetyl": 'NAc',
     "oacetyl": 'Ac',
     "phosphate": 'PO4',
@@ -147,7 +147,7 @@ names_oxford = {
     "sulphate": 'S',
     "anhydrobridge": 'B',
     "omethyl": 'M',
-    "carboxyl": 'A',
+    "carboxylicacid": 'A',
     "nacetyl": 'N',
     "oacetyl": 'Ac',
     "phosphate": 'P',
@@ -165,7 +165,7 @@ bracket_mapping = {
     "sulphate": '[]',
     "anhydrobridge": '[]',
     "omethyl": '[]',
-    "carboxyl": '[]',
+    "carboxylicacid": '[]',
     "nacetyl": '[]',
     "oacetyl": '[]',
     "phosphate": '[]',

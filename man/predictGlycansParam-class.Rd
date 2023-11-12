@@ -50,7 +50,7 @@ For more details see the vignette:
 
 \item{\code{pent_option}}{Logical: Should pentose monomers be included?}
 
-\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
+\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
 
 \item{\code{nmod_max}}{Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.}
 
@@ -68,7 +68,7 @@ pgp <- predictGlycansParam()
 pgp@dp <- c(1,7)
 pgp@polarity <- 'neg'
 pgp@scan_range <- c(150, 1300)
-pgp@modifications <- c('sulphate', 'carboxyl')
+pgp@modifications <- c('sulphate', 'carboxylicacid')
 pgp@double_sulphate <- TRUE
 predicted.df <- predictGlycans(param = pgp)
 

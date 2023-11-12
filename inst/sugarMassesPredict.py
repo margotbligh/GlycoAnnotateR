@@ -190,8 +190,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if type(adducts)==str:
         adducts = [adducts]
     dp_range_list = list(range(dp[0], dp[1] + 1))
-    #print("step #1: getting arguments")
-    #print("----------------------------------------")
+    print("\nstep #1: getting arguments")
+    print("----------------------------------------")
     if "all" in modifications:
         modifications = possible_modifications
     if "sulphate" in modifications and len(modifications) > 1:
@@ -212,10 +212,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     elif "dehydrated" not in modifications:
         dehydrated_option = 'n'
     #calculate possible masses
-    #print("\nstep #2: calculating all possible masses")
-    #print("----------------------------------------\n")
+    print("\nstep #2: calculating all possible masses")
+    print("----------------------------------------\n")
     # build hexose molecules
-    #print("--> getting hexose masses")
+    print("--> getting hexose masses")
     def getHexMasses(dp_range_list):
         dp = pd.Series(dp_range_list)
         name = "hex-" + dp.astype(str)
@@ -258,6 +258,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             elif pent_option == False:
                 modification_numbers = modification_numbers + \
                                        list(itertools.product(a, repeat=m))
+            print("added modifications for dp" + str(i))
         modification_numbers = pd.DataFrame(modification_numbers)
         modification_numbers.columns = modifications
         return modification_numbers
@@ -265,8 +266,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         #print("--> getting pentose masses")
         masses = getPentMasses(masses)
     #add modifications
+    print("\nstep #3: adding modifications")
+    print("----------------------------------------\n")
     if "none" not in modifications and pent_option == True:
-        #print("--> adding modifications")
         m = len(modifications)
         dp = masses.dp.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
         hex = masses.hex.repeat((masses.dp.array + 1) ** m).reset_index(drop=True)
@@ -366,8 +368,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
         masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
-    #print("\nstep #3: building formulas")
-    #print("----------------------------------------\n")
+    print("\nstep #4: building formulas")
+    print("----------------------------------------\n")
     molecules = list(masses.drop(['dp', "name", "mass"], axis=1).columns)
     if "index" in molecules:
         molecules.remove("index")
@@ -397,8 +399,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     masses['formula'] = masses['formula'].str.replace("S1$", "S", regex=True)
     masses = masses.drop(atom_names, axis = 1)
     del tmp, water_loss, molecule_numbers, molecules
-    #print("\nstep #4: filtering based on number of modifications per monomer")
-    #print("----------------------------------------------------------------\n")
+    print("\nstep #5: filtering based on number of modifications per monomer")
+    print("----------------------------------------------------------------\n")
     if "none" not in modifications:
         masses['nmod'] = masses[modifications].sum(axis=1)
         masses['nmod_avg'] = masses.nmod / masses.dp
@@ -407,8 +409,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         indexDelete = masses[masses.hex < masses.anhydrobridge].index
         masses.drop(indexDelete, inplace=True)
         masses = masses.reset_index()
-    #print("\nstep #5: configuring names to convention")
-    #print("----------------------------------------------------------------\n")
+    print("\nstep #6: configuring names to convention")
+    print("----------------------------------------------------------------\n")
     #reorder modifications
     if "sialicacid" in modifications: modifications.insert(0, modifications.pop(modifications.index('sialicacid')))
     if "deoxy" in modifications: modifications.insert(0, modifications.pop(modifications.index('deoxy')))
@@ -454,8 +456,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if unsaturated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("U", "U", regex=True)
         if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("o1", "o", regex=True)
         if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("Y1", "Y", regex=True)
-    #print("\nstep #6: calculating m/z values of ions")
-    #print("----------------------------------------------------------------\n")
+    print("\nstep #7: calculating m/z values of ions")
+    print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:
         if "pos" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
@@ -625,8 +627,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
         masses = masses.drop(columns=cols_del)
-    #print("\nstep #7: returning ouput")
-    #print("----------------------------------------------------------------\n")
+    print("\nstep #8: returning ouput")
+    print("----------------------------------------------------------------\n")
     masses = masses.reset_index(drop=True)
     masses = masses.sort_values(by = ["dp", "mass"])
     return(masses)

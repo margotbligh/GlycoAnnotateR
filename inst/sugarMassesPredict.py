@@ -34,6 +34,7 @@ modifications_mdiff = {
     "anhydrobridge": -water_mass,
     "omethyl": 14.01565,
     "carboxylicacid": 13.979265,
+    "sialicacid" : 129.042594,
     "nacetyl": 41.026549,
     "oacetyl": 42.010565,
     "phosphate": 79.966333,

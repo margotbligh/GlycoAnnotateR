@@ -12,6 +12,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 #possible modifications
 possible_modifications = ['carboxylicacid',
+                          'sialicacid',
                           'phosphate',
                           'deoxy',
                           'nacetyl',
@@ -81,6 +82,7 @@ formulas = {
     "anhydrobridge": [0, -2, 0, -1, 0, 0],
     "omethyl": [1, 2, 0, 0, 0, 0],
     "carboxylicacid": [0, -2, 0, 1, 0, 0],
+    "sialicacid": [5, 7, 1, 3, 0, 0],
     "nacetyl": [2, 3, 1, 0, 0, 0],
     "oacetyl": [2, 2, 0, 1, 0, 0],
     "phosphate": [0, 1, 0, 3, 0, 1],
@@ -98,7 +100,8 @@ formulas = {
 # modification types
 modifications_anionic = {"sulphate",
                          "phosphate",
-                         "carboxylicacid"}
+                         "carboxylicacid",
+                         "sialicacid"}
 modifications_neutral = {"anhydrobridge",
                          "omethyl",
                          "nacetyl",
@@ -116,6 +119,7 @@ names_iupac = {
     "anhydrobridge": 'AnhydroBridge',
     "omethyl": 'O-Methyl',
     "carboxylicacid": 'CarboxylicAcid',
+    "sialicacid": "NeuAc",
     "nacetyl": 'N-Acetyl',
     "oacetyl": 'O-Acetyl',
     "phosphate": 'Phosphate',
@@ -132,6 +136,7 @@ names_glycoct = {
     "anhydrobridge": 'ANH',
     "omethyl": 'OMe',
     "carboxylicacid": 'COOH',
+    "sialicacid": "SIA",
     "nacetyl": 'NAc',
     "oacetyl": 'Ac',
     "phosphate": 'PO4',
@@ -148,6 +153,7 @@ names_oxford = {
     "anhydrobridge": 'B',
     "omethyl": 'M',
     "carboxylicacid": 'A',
+    "sialicacid": 'SA',
     "nacetyl": 'N',
     "oacetyl": 'Ac',
     "phosphate": 'P',
@@ -170,6 +176,7 @@ bracket_mapping = {
     "oacetyl": '[]',
     "phosphate": '[]',
     "deoxy": '()',
+    "sialicacid": '()',
     "unsaturated": '[]',
     "alditol": '[]',
     "amino": '[]',
@@ -402,6 +409,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #print("\nstep #5: configuring names to convention")
     #print("----------------------------------------------------------------\n")
     #reorder modifications
+    if "sialicacid" in modifications: modifications.insert(0, modifications.pop(modifications.index('sialicacid')))
     if "deoxy" in modifications: modifications.insert(0, modifications.pop(modifications.index('deoxy')))
     if pent_option==False:
         if "none" not in modifications: molecules_names = ['hex'] + modifications
@@ -412,6 +420,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #remove rows with deoxypentose
     if "deoxy" in modifications and pent_option==True:
         masses = masses[masses['deoxy'] <= masses['hex']]
+    # remove rows with sialicacid pentose
+    if "sialicacid" in modifications and pent_option == True:
+        masses = masses[masses['sialicacid'] <= masses['hex']]
     #get numbers
     if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
     if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
@@ -420,6 +431,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #subtract deoxy from hex
     if "deoxy" in modifications:
         molecule_numbers["hex"] = molecule_numbers.hex - molecule_numbers.deoxy
+    #subtract sialicacid from hex
+    if "sialicacid" in modifications:
+        molecule_numbers["hex"] = molecule_numbers.hex - molecule_numbers.sialicacid
     if "IUPAC" in naming:
         masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
             f'{names_iupac[name]}' + str(row[name]) for name in molecules_names if row[name] != 0), axis=1)

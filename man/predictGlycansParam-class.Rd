@@ -50,7 +50,7 @@ For more details see the vignette:
 
 \item{\code{pent_option}}{Logical: Should pentose monomers be included?}
 
-\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
+\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid','phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
 
 \item{\code{nmod_max}}{Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.}
 

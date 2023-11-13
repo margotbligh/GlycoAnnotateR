@@ -489,6 +489,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             del masses_anionic, masses_neutral
         if "neg" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
+            anionic_mod_used = list(set(modifications).intersection(modifications_anionic))
             masses_anionic = masses[masses[anionic_mod_used].gt(0).any(axis=1)]
             masses_neutral = masses[masses[anionic_mod_used].eq(0).all(axis=1)]
             # calculate m/z values for NEUTRAL molecules

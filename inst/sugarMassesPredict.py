@@ -271,7 +271,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                               columns = ["dp", "hex", "pent", "mass"])
         masses = pd.concat([masses, modification_numbers], axis=1)
         print("-->filtering by nmod_max")
-        masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
+        masses['nmod_avg'] = masses[modifications].sum(axis=1)/ masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)
         del modification_numbers
@@ -359,7 +359,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in pmp_names:
                 tmp = tmp + [formulas['ab'][i]]
         masses[atom] = list(tmp)
-        print("added to formula" + atom)
+        print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
     masses['formula'] = masses['formula'].str.replace("\D0", "", regex=True)
     masses['formula'] = masses['formula'].str.replace("N1O", "NO")
@@ -424,10 +424,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if "pos" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
             anionic_mod_used = list(set(modifications).intersection(modifications_anionic))
-            masses_anionic = masses[masses['name'].str.contains('|'.join(anionic_mod_used))]
-            masses_all = masses.merge(masses_anionic.drop_duplicates(), how='left', indicator=True)
-            masses_neutral = masses_all[masses_all._merge == 'left_only']
-            del masses_all
+            masses_anionic = masses[masses[anionic_mod_used].gt(0).any(axis=1)]
+            masses_neutral = masses[masses[anionic_mod_used].eq(0).all(axis=1)]
             # calculate m/z values for NEUTRAL molecules
             for a in adducts:
                 if a == 'H':
@@ -481,11 +479,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             del masses_anionic, masses_neutral
         if "neg" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
-            anionic_mod_used = list(set(modifications).intersection(modifications_anionic))
-            masses_anionic = masses[masses['name'].str.contains('|'.join(anionic_mod_used))]
-            masses_all = masses.merge(masses_anionic.drop_duplicates(), how='left', indicator=True)
-            masses_neutral = masses_all[masses_all._merge == 'left_only']
-            del masses_all
+            masses_anionic = masses[masses[anionic_mod_used].gt(0).any(axis=1)]
+            masses_neutral = masses[masses[anionic_mod_used].eq(0).all(axis=1)]
             # calculate m/z values for NEUTRAL molecules
             for a in adducts:
                 if a == 'H':

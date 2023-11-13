@@ -270,11 +270,16 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
                               columns = ["dp", "hex", "pent", "mass"])
         masses = pd.concat([masses, modification_numbers], axis=1)
+        del modification_numbers
         print("-->filtering by nmod_max")
         masses['nmod_avg'] = masses[modifications].sum(axis=1)/ masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)
-        del modification_numbers
+        print("-->calculating masses")
+        modification_masses = masses.apply(
+            lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
+        masses['mass'] += modification_masses
+        del modification_masses
     if "none" not in modifications and pent_option == False:
         m = len(modifications)
         print("-->getting modification numbers")
@@ -283,11 +288,16 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
                               columns = ["dp", "hex", "mass"])
         masses = pd.concat([masses, modification_numbers], axis=1)
+        del modification_numbers
         print("-->filtering by nmod_max")
         masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)
-        del modification_numbers
+        print("-->calculating masses")
+        modification_masses = masses.apply(
+            lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
+        masses['mass'] += modification_masses
+        del modification_masses
     if "sulphate" in modifications and double_sulphate == True:
         #print("--> adding extra sulphate groups")
         masses_s1 = masses.loc[masses['sulphate'] >= 1]

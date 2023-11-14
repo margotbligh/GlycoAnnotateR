@@ -239,30 +239,25 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     # build hexose molecules
     print("--> getting hexose masses")
     def getHexMasses(dp_range_list):
-        dp = pd.Series(dp_range_list)
-        hex = dp
+        dp = np.array(dp_range_list, dtype=int)
         mass = dp * hex_mass - (dp - 1) * water_mass
-        masses = pd.DataFrame({'dp': dp,
-                               'hex': hex.astype(int),
-                               'mass': mass})
+        masses = np.column_stack((dp, dp, mass))
         return masses
     masses = getHexMasses(dp_range_list)
     #define additional functions
     def dpRepeats(dp_range_list):
-        repeats_list = []
         for i in dp_range_list:
-            repeats_list = repeats_list + list(range(0, i + 1))
+            index = dp_range_list.index(i)
+            if index == 0 : repeats_list = np.arange(i+1)
+            if index > 0: repeats_list = np.concatenate((repeats_list,np.arange(i+1)))
         return repeats_list
     def getPentMasses(masses):
-        dp = masses.dp.repeat(masses.dp.array + 1).reset_index(drop=True)
-        pent = pd.Series(dpRepeats(dp_range_list))
+        dp = np.repeat(masses[:,1], masses[:,1].astype(int)+1, axis = 0)
+        pent = dpRepeats(dp_range_list)
         hex = dp - pent
-        mass = masses.mass.repeat(masses.dp.array + 1).reset_index(drop=True)
+        mass = np.repeat(masses[:,2], masses[:,1].astype(int)+1, axis = 0)
         mass = mass + pent * pent_mdiff
-        masses = pd.DataFrame({'dp': dp,
-                               'hex': hex,
-                               'pent': pent,
-                               'mass': mass})
+        masses = np.column_stack((dp, hex, pent, mass))
         return masses
     def getModificationNumbers(dp_range_list, m, pent_option, modifications):
         for i in dp_range_list:
@@ -278,7 +273,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 if index == 0: modification_numbers = b
                 if index > 0: modification_numbers = np.concatenate((modification_numbers, b), axis = 0)
             print("added modifications for dp" + str(i))
-        modification_numbers = pd.DataFrame(modification_numbers, columns = modifications)
         return modification_numbers
     if pent_option == 1:
         #print("--> getting pentose masses")
@@ -291,26 +285,33 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
         print("-->expanding array")
-        masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
-                              columns = ["dp", "hex", "pent", "mass"])
-        masses = pd.concat([masses, modification_numbers], axis=1)
-        del modification_numbers
+        masses = np.repeat(masses, repeats=(masses[:,0].astype(int)+1) ** m, axis=0)
+        masses = np.column_stack((masses, modification_numbers))
         print("-->filtering by nmod_max")
-        masses['nmod_avg'] = masses[modifications].sum(axis=1)/ masses.dp
-        masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
-        masses = masses.drop('nmod_avg', axis=1)
+        nmod_sums =  np.sum(modification_numbers, axis = 1)
+        nmod_avg = nmod_sums / masses[:,0]
+        nmod_avg_filter = nmod_avg <= nmod_max
+        masses = masses[nmod_avg_filter]
+        del modification_numbers, nmod_sums, nmod_avg, nmod_avg_filter
+        masses_columns = ['dp', 'hex', 'pent', 'mass'] + modifications
         #subtract deoxy from hex
         if "deoxy" in modifications:
             # remove rows with deoxypentose
-            masses = masses[masses['deoxy'] <= masses['hex']]
+            hex_index = masses_columns.index('hex')
+            deoxy_index = masses_columns.index('deoxy')
+            masses = masses[masses[:, deoxy_index] <= masses[:, hex_index]]
             print("-->converting deoxy modifications into deoxy monomers")
-            masses["hex"] = masses.hex - masses.deoxy
+            masses[:,hex_index] = masses[:,hex_index] - masses[:,deoxy_index]
         # subtract sialicacid from hex
         if "sialicacid" in modifications:
             # remove rows with sialicacid pentose
-            masses = masses[masses['sialicacid'] <= masses['hex']]
+            hex_index = masses_columns.index('hex')
+            sialicacid_index = masses_columns.index('sialicacid')
+            masses = masses[masses[:, sialicacid_index] <= masses[:, hex_index]]
             print("-->converting sialic acid modifications into monomers")
-            masses["hex"] = masses.hex - masses.sialicacid
+            masses[:,hex_index] = masses[:,hex_index] - masses[:,sialicacid_index]
+        print("-->converting to pandas dataframe from array")
+        masses = pd.DataFrame(masses, columns=masses_columns)
         if "nglycan" in glycan_linkage:
             print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]
@@ -341,22 +342,30 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
         print("-->expanding array")
-        masses = pd.DataFrame(np.repeat(masses.to_numpy(), repeats=(masses.dp.array + 1) ** m, axis=0),
-                              columns = ["dp", "hex", "mass"])
-        masses = pd.concat([masses, modification_numbers], axis=1)
-        del modification_numbers
+        masses = np.repeat(masses, repeats=(masses[:,0].astype(int)+1) ** m, axis=0)
+        masses = np.column_stack((masses, modification_numbers))
         print("-->filtering by nmod_max")
-        masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
-        masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
-        masses = masses.drop('nmod_avg', axis=1)
+        nmod_sums =  np.sum(modification_numbers, axis = 1)
+        nmod_avg = nmod_sums / masses[:,0]
+        nmod_avg_filter = nmod_avg <= nmod_max
+        masses = masses[nmod_avg_filter]
+        del modification_numbers, nmod_sums, nmod_avg, nmod_avg_filter
+        masses_columns = ['dp', 'hex', 'mass'] + modifications
         #subtract deoxy from hex
         if "deoxy" in modifications:
+            hex_index = masses_columns.index('hex')
+            deoxy_index = masses_columns.index('deoxy')
             print("-->converting deoxy modifications into deoxy monomers")
-            masses["hex"] = masses.hex - masses.deoxy
+            masses[:,hex_index] = masses[:,hex_index] - masses[:,deoxy_index]
         # subtract sialicacid from hex
         if "sialicacid" in modifications:
+            # remove rows with sialicacid pentose
+            hex_index = masses_columns.index('hex')
+            sialicacid_index = masses_columns.index('sialicacid')
             print("-->converting sialic acid modifications into monomers")
-            masses["hex"] = masses.hex - masses.sialicacid
+            masses[:,hex_index] = masses[:,hex_index] - masses[:,sialicacid_index]
+        print("-->converting to pandas dataframe from array")
+        masses = pd.DataFrame(masses, columns=masses_columns)
         if "nglycan" in glycan_linkage:
             print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]

@@ -265,18 +265,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                'mass': mass})
         return masses
     def getModificationNumbers(dp_range_list, m, pent_option, modifications):
-        modification_numbers = []
         for i in dp_range_list:
             a = list(range(0, i + 1))
             if pent_option == True:
-                modification_numbers = modification_numbers + \
-                                       list(itertools.product(a, repeat=m)) * (i + 1)
+                b = np.array(a)[np.rollaxis(np.indices((len(a),) * m), 0, m + 1).reshape(-1, m)]
+                b = np.tile(b,(i+1,1))
+                if i == 1: modification_numbers = b
+                else: modification_numbers = np.concatenate((modification_numbers, b), axis=0)
             elif pent_option == False:
-                modification_numbers = modification_numbers + \
-                                       list(itertools.product(a, repeat=m))
+                b = np.array(a)[np.rollaxis(np.indices((len(a),) * m), 0, m + 1).reshape(-1, m)]
+                if i == 1: modification_numbers = b
+                else: modification_numbers = np.concatenate((modification_numbers, b), axis = 0)
             print("added modifications for dp" + str(i))
-        modification_numbers = pd.DataFrame(modification_numbers)
-        modification_numbers.columns = modifications
+        modification_numbers = pd.DataFrame(modification_numbers, columns = modifications)
         return modification_numbers
     if pent_option == 1:
         #print("--> getting pentose masses")

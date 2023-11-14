@@ -271,11 +271,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 b = np.array(a)[np.rollaxis(np.indices((len(a),) * m), 0, m + 1).reshape(-1, m)]
                 b = np.tile(b,(i+1,1))
                 if i == 1: modification_numbers = b
-                else: modification_numbers = np.concatenate((modification_numbers, b), axis=0)
-            elif pent_option == False:
+                if i > 1: modification_numbers = np.concatenate((modification_numbers, b), axis=0)
+            if pent_option == False:
                 b = np.array(a)[np.rollaxis(np.indices((len(a),) * m), 0, m + 1).reshape(-1, m)]
                 if i == 1: modification_numbers = b
-                else: modification_numbers = np.concatenate((modification_numbers, b), axis = 0)
+                if i > 1: modification_numbers = np.concatenate((modification_numbers, b), axis = 0)
             print("added modifications for dp" + str(i))
         modification_numbers = pd.DataFrame(modification_numbers, columns = modifications)
         return modification_numbers

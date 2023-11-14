@@ -61,6 +61,8 @@ For more details see the vignette:
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
 
 \item{\code{naming}}{Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'}
+
+\item{\code{glycan_linkage}}{Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'}
 }}
 
 \examples{

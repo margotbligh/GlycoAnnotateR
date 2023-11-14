@@ -83,11 +83,11 @@ formulas = {
     "anhydrobridge": [0, -2, 0, -1, 0, 0],
     "omethyl": [1, 2, 0, 0, 0, 0],
     "carboxylicacid": [0, -2, 0, 1, 0, 0],
-    "sialicacid": [5, 7, 1, 3, 0, 0],
+    "sialicacid": [9, 17, 1, 8, 0, 0],
     "nacetyl": [2, 3, 1, 0, 0, 0],
     "oacetyl": [2, 2, 0, 1, 0, 0],
     "phosphate": [0, 1, 0, 3, 0, 1],
-    "deoxy": [0, 0, 0, -1, 0, 0],
+    "deoxy": [6, 12, 0, 5, 0, 0],
     "proca": [13, 21, 3, 0, 0, 0],
     "unsaturated":  [0, -2, 0, -1, 0, 0],
     "alditol": [0, +2, 0, 0, 0, 0],
@@ -184,7 +184,29 @@ bracket_mapping = {
     "dehydrated": '[]'
 }
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC"):
+#n-glycan limits
+nglycan_limits = {
+    "hex": 20,
+    "nacetyl": 20,
+    "deoxy": 6,
+    "sialicacid": 5,
+    "pent": 4,
+    "sulphate": 3,
+    "phosphate": 2,
+    "amino": 0
+}
+oglycan_limits = {
+    "hex": 14,
+    "nacetyl": 14,
+    "deoxy": 6,
+    "sialicacid": 7,
+    "pen": 3,
+    "sulphate": 6,
+    "phosphate": 6,
+    "amino": 2
+}
+
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"]):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
     if type(adducts)==str:
@@ -275,6 +297,38 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['nmod_avg'] = masses[modifications].sum(axis=1)/ masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)
+        #subtract deoxy from hex
+        if "deoxy" in modifications:
+            # remove rows with deoxypentose
+            masses = masses[masses['deoxy'] <= masses['hex']]
+            print("-->converting deoxy modifications into deoxy monomers")
+            masses["hex"] = masses.hex - masses.deoxy
+        # subtract sialicacid from hex
+        if "sialicacid" in modifications:
+            # remove rows with sialicacid pentose
+            masses = masses[masses['sialicacid'] <= masses['hex']]
+            print("-->converting sialic acid modifications into monomers")
+            masses["hex"] = masses.hex - masses.sialicacid
+        if "nglycan" in glycan_linkage:
+            print("-->filtering by N-glycan limits")
+            masses = masses[masses['hex'] != 0]
+            relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
+            conditions = masses[relevant_columns].apply(lambda col: col.le(nglycan_limits.get(col.name, float('inf'))), axis=0)
+            masses = masses[conditions.all(axis=1)]
+            if "sulphate" and "phosphate" in modifications:
+                masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
+            if "deoxy" in modifications:
+                masses = masses[masses['deoxy']+1 <= masses['hex']]
+            if "sialicacid" and "nacetyl" in modifications:
+                to_remove = masses[(masses['nacetyl'] <= 2) & ((masses['hex'] - masses['nacetyl']) > 2) & masses['sialicacid'] != 0]
+                masses.drop(to_remove.index, axis=0, inplace=True)
+                del to_remove
+        if "oglycan" in glycan_linkage:
+            print("-->filtering by O-glycan limits")
+            relevant_columns = list(set(masses.columns) & set(oglycan_limits.keys()))
+            conditions = masses[relevant_columns].apply(lambda col: col.le(oglycan_limits.get(col.name, float('inf'))),
+                                                        axis=0)
+            masses = masses[conditions.all(axis=1)]
         print("-->calculating masses")
         modification_masses = masses.apply(
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
@@ -293,6 +347,34 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['nmod_avg'] = masses[modifications].sum(axis=1) / masses.dp
         masses = masses.drop(masses[masses.nmod_avg > nmod_max].index)
         masses = masses.drop('nmod_avg', axis=1)
+        #subtract deoxy from hex
+        if "deoxy" in modifications:
+            print("-->converting deoxy modifications into deoxy monomers")
+            masses["hex"] = masses.hex - masses.deoxy
+        # subtract sialicacid from hex
+        if "sialicacid" in modifications:
+            print("-->converting sialic acid modifications into monomers")
+            masses["hex"] = masses.hex - masses.sialicacid
+        if "nglycan" in glycan_linkage:
+            print("-->filtering by N-glycan limits")
+            masses = masses[masses['hex'] != 0]
+            relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
+            conditions = masses[relevant_columns].apply(lambda col: col.le(nglycan_limits.get(col.name, float('inf'))), axis=0)
+            masses = masses[conditions.all(axis=1)]
+            if "sulphate" and "phosphate" in modifications:
+                masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
+            if "deoxy" in modifications:
+                masses = masses[masses['deoxy']+1 <= masses['hex']]
+            if "sialicacid" and "nacetyl" in modifications:
+                to_remove = masses[(masses['nacetyl'] <= 2) & ((masses['hex'] - masses['nacetyl']) > 2) & masses['sialicacid'] != 0]
+                masses.drop(to_remove.index, axis=0, inplace=True)
+                del to_remove
+        if "oglycan" in glycan_linkage:
+            print("-->filtering by O-glycan limits")
+            relevant_columns = list(set(masses.columns) & set(oglycan_limits.keys()))
+            conditions = masses[relevant_columns].apply(lambda col: col.le(oglycan_limits.get(col.name, float('inf'))),
+                                                        axis=0)
+            masses = masses[conditions.all(axis=1)]
         print("-->calculating masses")
         modification_masses = masses.apply(
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
@@ -392,35 +474,33 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if pent_option==True:
         if "none" not in modifications: molecules_names = ['hex', 'pent'] + modifications
         else: molecules_names = ['hex', 'pent']
-    #remove rows with deoxypentose
-    if "deoxy" in modifications and pent_option==True:
-        masses = masses[masses['deoxy'] <= masses['hex']]
-    # remove rows with sialicacid pentose
-    if "sialicacid" in modifications and pent_option == True:
-        masses = masses[masses['sialicacid'] <= masses['hex']]
     #get numbers
     if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
     if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
     if dehydrated_option == 'y': molecules_names = ['dehydrated'] + molecules_names
     molecule_numbers = masses[molecules_names]
-    #subtract deoxy from hex
-    if "deoxy" in modifications:
-        molecule_numbers["hex"] = molecule_numbers.hex - molecule_numbers.deoxy
-    #subtract sialicacid from hex
-    if "sialicacid" in modifications:
-        molecule_numbers["hex"] = molecule_numbers.hex - molecule_numbers.sialicacid
     if "IUPAC" in naming:
         masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
             f'{names_iupac[name]}' + str(int(row[name])) for name in molecules_names if row[name] != 0), axis=1)
         if unsaturated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Unsaturated1", "Unsaturated", regex=True)
         if alditol_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Alditol1", "Alditol", regex=True)
         if dehydrated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Dehydrated1", "Dehydrated", regex=True)
+        if label in proa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' procA'
+        if label in pa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-PA'
+        if label in aba_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
+        if label in ab_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AB'
+        if label in pmp_names: masses['IUPAC name'] = masses['IUPAC name'] + ' bis-PMP'
     if "GlycoCT" in naming:
         masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in molecules_names if row[name] != 0), axis=1)
         if unsaturated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("UNS1", "UNS", regex=True)
         if alditol_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("ALD1", "ALD", regex=True)
         if dehydrated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("Y1", "Y", regex=True)
+        if label in proa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' procA'
+        if label in pa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-PA'
+        if label in aba_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
+        if label in ab_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AB'
+        if label in pmp_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' bis-PMP'
     if "Oxford" in naming:
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in
@@ -428,6 +508,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if unsaturated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("U", "U", regex=True)
         if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("o1", "o", regex=True)
         if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("Y1", "Y", regex=True)
+        if label in proa_names: masses['Oxford name'] = masses['Oxford name'] + ' procA'
+        if label in pa_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-PA'
+        if label in aba_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
+        if label in ab_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AB'
+        if label in pmp_names: masses['Oxford name'] = masses['Oxford name'] + ' bis-PMP'
     print("\nstep #7: calculating m/z values of ions")
     print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:

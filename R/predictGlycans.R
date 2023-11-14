@@ -72,12 +72,13 @@ predictGlycans <- function(param){
   ion_type = param@ion_type
   adducts = as.list(param@adducts)
   naming = as.list(param@naming)
+  glycan_linkage = as.list(param@glycan_linkage)
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulphate = double_sulphate, adducts = adducts,
-                       naming = naming)
+                       naming = naming, glycan_linkage = glycan_linkage)
   format = param@format
   library(magrittr)
   if(format == "long"){

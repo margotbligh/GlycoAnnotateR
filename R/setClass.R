@@ -22,6 +22,7 @@
 #' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
+#' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'
 #' 
 #' @inherit predictGlycans details
 #' 
@@ -41,7 +42,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            ion_type = "character",
            format = "character",
            adducts = "character",
-           naming = "character"
+           naming = "character",
+           glycan_linkage = "character"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -55,7 +57,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            ion_type = "ESI",
            format = "long",
            adducts = "all",
-           naming = "IUPAC"
+           naming = "IUPAC",
+           glycan_linkage = "none"
          ),
          validity = function(object) {
            msg <- character()
@@ -119,6 +122,9 @@ predictGlycansParam = setClass("predictGlycansParam",
              msg <- c(msg, paste0("valid options for 'naming' are: ",
                                   paste0("'", possible_namings, "'",
                                          collapse = ", "), "."))
+           if (!object@glycan_linkage %in% c("nglycan", "oglycan", "none"))
+             msg <- c(msg, paste0("valid options for 'glycan_linkage' are: ",
+                                  "none, nglycan or oglycan"))
            if (length(msg) >= 1)
              print(msg)
            else

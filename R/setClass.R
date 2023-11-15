@@ -11,20 +11,18 @@
 #' @export predictGlycansParam
 #' @exportClass predictGlycansParam
 #' 
-#' @usage 
-#' pgp <- predictGlycansParam()
-#' df <- predictGlycans(param = pgp)
 #' 
 #' @slot dp Degree of polymerisation range (numeric, length 2).
 #' @slot polarity ionisation mode used. Accepts 'pos' or 'neg'.
 #' @slot scan_range Scan range used during MS. (numeric, length 2).
 #' @slot pent_option Logical: Should pentose monomers be included? 
-#' @slot modifications Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
+#' @slot modifications Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid','phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
 #' @slot nmod_max Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulphate Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.
 #' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
+#' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'
 #' 
 #' @inherit predictGlycans details
 #' 
@@ -44,7 +42,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            ion_type = "character",
            format = "character",
            adducts = "character",
-           naming = "character"
+           naming = "character",
+           glycan_linkage = "character"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -58,7 +57,8 @@ predictGlycansParam = setClass("predictGlycansParam",
            ion_type = "ESI",
            format = "long",
            adducts = "all",
-           naming = "IUPAC"
+           naming = "IUPAC",
+           glycan_linkage = "none"
          ),
          validity = function(object) {
            msg <- character()
@@ -77,7 +77,8 @@ predictGlycansParam = setClass("predictGlycansParam",
                class(object@pent_option) != "logical")
              msg <- c(msg, paste0("'pent_option' has to be a logical of",
                                   " length 1."))
-           possible_modifications <-  c('none', 'all', 'carboxyl', 'phosphate', 
+           possible_modifications <-  c('none', 'all', 'carboxylicacid', 
+                                        'sialicacid', 'phosphate', 
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated', 
                                         'alditol', 'amino','dehydrated','sulphate')
@@ -85,9 +86,10 @@ predictGlycansParam = setClass("predictGlycansParam",
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",
                                          collapse = ", "), "."))
-           if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0))
-             msg <- c(msg, paste0("'nmod_max' has to be positive numeric",
-                                  " of length 1."))
+           if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0) | 
+               any(object@nmod_max > 3))
+             msg <- c(msg, paste0("'nmod_max' has to be numeric",
+                                  " of length 1 between 1 and 3."))
            if (length(object@double_sulphate) != 1 | 
                class(object@double_sulphate) != "logical")
              msg <- c(msg, paste0("'double_sulphate' has to be a logical of",
@@ -120,6 +122,9 @@ predictGlycansParam = setClass("predictGlycansParam",
              msg <- c(msg, paste0("valid options for 'naming' are: ",
                                   paste0("'", possible_namings, "'",
                                          collapse = ", "), "."))
+           if (!object@glycan_linkage %in% c("nglycan", "oglycan", "none"))
+             msg <- c(msg, paste0("valid options for 'glycan_linkage' are: ",
+                                  "none, nglycan or oglycan"))
            if (length(msg) >= 1)
              print(msg)
            else

@@ -12,7 +12,7 @@
 #' pgp@@dp <- c(1,7)
 #' pgp@@polarity <- 'neg'
 #' pgp@@scan_range <- c(150, 1300)
-#' pgp@@modifications <- c('sulphate', 'carboxyl')
+#' pgp@@modifications <- c('sulphate', 'carboxylicacid')
 #' pgp@@double_sulphate <- TRUE
 #' predicted.df <- predictGlycans(param = pgp)
 #' 
@@ -72,12 +72,13 @@ predictGlycans <- function(param){
   ion_type = param@ion_type
   adducts = as.list(param@adducts)
   naming = as.list(param@naming)
+  glycan_linkage = as.list(param@glycan_linkage)
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulphate = double_sulphate, adducts = adducts,
-                       naming = naming)
+                       naming = naming, glycan_linkage = glycan_linkage)
   format = param@format
   library(magrittr)
   if(format == "long"){
@@ -165,8 +166,8 @@ predictGlycans <- function(param){
                                          "Na", delta_Na,
                                          "O", O,
                                          "S", S, "P", P) %>% 
-                      gsub("[A-Z]0|Na0|Cl0", "", .)
-      )
+                      gsub("[A-Z]0|Na0|Cl0", "", .) %>% 
+                      gsub("(\\b|\\D)1(\\b|\\D)", "\\1\\2", .))
     df <- df.l %>% 
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     

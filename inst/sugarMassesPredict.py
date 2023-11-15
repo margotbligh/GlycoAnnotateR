@@ -391,7 +391,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
         del modification_masses
-    if "none" in modifications:
+    if isinstance(masses, (np.ndarray)):
         if pent_option == "True": masses = pd.DataFrame(masses, columns=['dp', 'hex', 'pent', 'mass'])
         if pent_option == "False": masses = pd.DataFrame(masses, columns=['dp', 'hex', 'mass'])
     if "sulphate" in modifications and double_sulphate == True:

@@ -294,7 +294,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     #add modifications
     print("\nstep #3: adding modifications")
     print("----------------------------------------\n")
-    if "none" not in modifications and pent_option == True and len(x) != 0:
+    if "none" not in modifications and pent_option == True and len(modifications) != 0:
         m = len(modifications)
         print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
@@ -351,7 +351,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
         del modification_masses
-    if "none" not in modifications and pent_option == False and len(x) != 0:
+    if "none" not in modifications and pent_option == False and len(modifications) != 0:
         m = len(modifications)
         print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
@@ -405,7 +405,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
         del modification_masses
-    if "none" in modifications or len(x) == 0:
+    if "none" in modifications or len(modifications) == 0:
         if pent_option == True: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'pent', 'mass'])
         if pent_option == False: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'mass'])
     if "sulphate" in modifications and double_sulphate == True:

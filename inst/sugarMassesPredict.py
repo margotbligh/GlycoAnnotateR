@@ -23,7 +23,8 @@ possible_modifications = ['carboxylicacid',
                           'alditol',
                           'amino',
                           'dehydrated',
-                          'sulphate']
+                          'sulphate',
+                         'aminopentyllinker']
 # hexose and water masses to build molecule base
 hex_mass = 180.06339
 water_mass = 18.010565
@@ -42,7 +43,8 @@ modifications_mdiff = {
     "unsaturated": -water_mass,
     "alditol": 2.015650,
     "amino": -0.984016,
-    "dehydrated": -water_mass
+    "dehydrated": -water_mass,
+  "aminopentyllinker": 85.089148
 }
 
 # mass differences for labels
@@ -96,7 +98,8 @@ formulas = {
     "pa": [5, 6, 2, -1, 0, 0] ,
     "aba": [7, 7, 1, 1, 0, 0] ,
     "pmp": [20, 18, 4, 1, 0, 0],
-    "ab": [7, 8, 2, 0, 0, 0]
+    "ab": [7, 8, 2, 0, 0, 0],
+  "aminopentyllinker": [5, 11, 1, 0, 0, 0]
 }
 # modification types
 modifications_anionic = {"sulphate",
@@ -110,7 +113,8 @@ modifications_neutral = {"anhydrobridge",
                          "deoxy",
                          "unsaturated",
                          "amino",
-                         "dehydrated"}
+                         "dehydrated",
+                        "aminopentyllinker"}
 
 #names
 names_iupac = {
@@ -128,7 +132,8 @@ names_iupac = {
     "unsaturated": 'Unsaturated',
     "alditol": 'Alditol',
     "amino": 'Amino',
-    "dehydrated": 'Dehydrated'
+    "dehydrated": 'Dehydrated',
+  "aminopentyllinker": "NH2Pent1"
 }
 names_glycoct = {
     "hex": 'HEX',
@@ -145,7 +150,8 @@ names_glycoct = {
     "unsaturated": 'UNS',
     "alditol": 'ALD',
     "amino": 'NH2',
-    "dehydrated": 'Y'
+    "dehydrated": 'Y',
+  "aminopentyllinker": "NH2Pent1"
 }
 names_oxford = {
     "hex": 'H',
@@ -162,7 +168,8 @@ names_oxford = {
     "unsaturated": 'U',
     "alditol": 'o',
     "amino": 'Am',
-    "dehydrated": 'Y'
+    "dehydrated": 'Y',
+  "aminopentyllinker": "NH2Pent1"
 }
 
 #brackets
@@ -181,7 +188,9 @@ bracket_mapping = {
     "unsaturated": '[]',
     "alditol": '[]',
     "amino": '[]',
-    "dehydrated": '[]'
+    "dehydrated": '[]',
+  "aminopentyllinker": '[]'
+  
 }
 
 #n-glycan limits
@@ -233,6 +242,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         modifications.remove("dehydrated")
     elif "dehydrated" not in modifications:
         dehydrated_option = 'n'
+    if "aminopentyllinker" in modifications:
+        aminopentyllinker_option = 'y'
+        modifications.remove("aminopentyllinker")
+    elif "aminopentyllinker" not in modifications:
+        aminopentyllinker_option = 'n'
     #calculate possible masses
     print("\nstep #2: calculating all possible masses")
     print("----------------------------------------\n")
@@ -441,6 +455,14 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
         masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
+    if aminopentyllinker_option == 'y':
+        #print("--> adding dehydration to sugars")
+        masses_a = masses.copy()
+        masses_a['aminopentyllinker'] = 1
+        masses['aminopentyllinker'] = 0
+        masses_a.mass = masses_a.mass + modifications_mdiff['aminopentyllinker']
+        masses = pd.concat([masses, masses_a]).reset_index(drop=True)
+        del masses_a
     print("\nstep #4: building formulas")
     print("----------------------------------------\n")
     molecules = list(masses.drop(['dp', "mass"], axis=1).columns)
@@ -492,6 +514,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
     if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
     if dehydrated_option == 'y': molecules_names = ['dehydrated'] + molecules_names
+    if aminopentyllinker_option == 'y': molecules_names = ['aminopentyllinker'] + molecules_names
     molecule_numbers = masses[molecules_names]
     if "IUPAC" in naming:
         masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
@@ -499,6 +522,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if unsaturated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Unsaturated1", "Unsaturated", regex=True)
         if alditol_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Alditol1", "Alditol", regex=True)
         if dehydrated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Dehydrated1", "Dehydrated", regex=True)
+        if aminopentyllinker_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("NH2Pent11", "NH2Pent1", regex=True)
         if label in proa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' procA'
         if label in pa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-PA'
         if label in aba_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
@@ -507,9 +531,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "GlycoCT" in naming:
         masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in molecules_names if row[name] != 0), axis=1)
-        if unsaturated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("UNS1", "UNS", regex=True)
-        if alditol_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("ALD1", "ALD", regex=True)
-        if dehydrated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("Y1", "Y", regex=True)
+        if alditol_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("[ALD]1", "[ALD]", regex=False)
+        if dehydrated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("[Y]1", "[Y]", regex=False)
+        if aminopentyllinker_option == 'y': masses['GlycoCT name'] = masses['IUPAC name'].str.replace("[NH2Pent1]1", "[NH2Pent1]", regex=False)
         if label in proa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' procA'
         if label in pa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-PA'
         if label in aba_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
@@ -519,9 +543,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in
             molecules_names if row[name] != 0), axis=1)
-        if unsaturated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("U", "U", regex=True)
-        if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("o1", "o", regex=True)
-        if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("Y1", "Y", regex=True)
+        if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("[o]1", "[o]", regex=False)
+        if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("[Y]1", "[Y]", regex=False)
+        if aminopentyllinker_option == 'y': masses['Oxford name'] = masses['IUPAC name'].str.replace("[NH2Pent1]1", "[NH2Pent1]", regex=False)
         if label in proa_names: masses['Oxford name'] = masses['Oxford name'] + ' procA'
         if label in pa_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-PA'
         if label in aba_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'

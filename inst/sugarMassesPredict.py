@@ -330,13 +330,17 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]
             relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
+            if "nacetyl" in modifications:
+                masses['hex'] = masses['hex'] - masses['nacetyl']
             conditions = masses[relevant_columns].apply(lambda col: col.le(nglycan_limits.get(col.name, float('inf'))), axis=0)
             masses = masses[conditions.all(axis=1)]
-            if "sulphate" and "phosphate" in modifications:
+            if "nacetyl" in modifications:
+                masses['hex'] = masses['hex'] + masses['nacetyl']
+            if "sulphate" in modifications and "phosphate" in modifications:
                 masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
             if "deoxy" in modifications:
                 masses = masses[masses['deoxy']+1 <= masses['hex']]
-            if "sialicacid" and "nacetyl" in modifications:
+            if "sialicacid" in modifications and "nacetyl" in modifications:
                 to_remove = masses[(masses['nacetyl'] <= 2) & ((masses['hex'] - masses['nacetyl']) > 2) & masses['sialicacid'] != 0]
                 masses.drop(to_remove.index, axis=0, inplace=True)
                 del to_remove
@@ -384,13 +388,17 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]
             relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
+            if "nacetyl" in modifications:
+                masses['hex'] = masses['hex'] - masses['nacetyl']
             conditions = masses[relevant_columns].apply(lambda col: col.le(nglycan_limits.get(col.name, float('inf'))), axis=0)
             masses = masses[conditions.all(axis=1)]
-            if "sulphate" and "phosphate" in modifications:
+            if "nacetyl" in modifications:
+                masses['hex'] = masses['hex'] + masses['nacetyl']
+            if "sulphate" in modifications and "phosphate" in modifications:
                 masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
             if "deoxy" in modifications:
                 masses = masses[masses['deoxy']+1 <= masses['hex']]
-            if "sialicacid" and "nacetyl" in modifications:
+            if "sialicacid" in modifications and "nacetyl" in modifications:
                 to_remove = masses[(masses['nacetyl'] <= 2) & ((masses['hex'] - masses['nacetyl']) > 2) & masses['sialicacid'] != 0]
                 masses.drop(to_remove.index, axis=0, inplace=True)
                 del to_remove

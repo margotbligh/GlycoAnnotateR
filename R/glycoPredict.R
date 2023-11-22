@@ -3,23 +3,23 @@
 #' @include setClass.R
 #'
 #' @description This function will predict all possible glycan molecules within the constraints of the parameters.
-#' @param param A \code{predictGlycansParam} object containing all parameters for the
-#'     predictGlycans function. See \link[glycanPredict]{predictGlycansParam-class}
+#' @param param A \code{glycoPredictParam} object containing all parameters for the
+#'     glycoPredict function. See \link[GlycoAnnotateR]{glycoPredictParam-class}
 #'
 #' @export
 #' @examples
-#' pgp <- predictGlycansParam()
+#' pgp <- glycoPredictParam()
 #' pgp@@dp <- c(1,7)
 #' pgp@@polarity <- 'neg'
 #' pgp@@scan_range <- c(150, 1300)
 #' pgp@@modifications <- c('sulphate', 'carboxylicacid')
 #' pgp@@double_sulphate <- TRUE
-#' predicted.df <- predictGlycans(param = pgp)
+#' predicted.df <- glycoPredict(param = pgp)
 #' 
 #' @details 
 #' This function is intended for “calculation” of all possible glycans (or sugars) 
 #' within a set of constraining parameters (contained within the 
-#' \code{predictGlycansParam} object). Specifically, the user indicates which 
+#' \code{glycoPredictParam} object). Specifically, the user indicates which 
 #' monomer types (hexose only or hexose and pentose), degree of polymerisation (length) 
 #' range and modification types should be included, the desired maximum 
 #' for the average number of modifications per monomer and whether 
@@ -37,19 +37,13 @@
 #' The function works by sourcing a python file and then using the function 
 #' encoded in the python script.
 #' 
-#' **Word of caution: please note that this tool will predict some sugars that 
-#' are not really ‘possible’ as the nature of sugar chemistry means that it 
-#' would take a long time to add in all the constraints!**
-#' 
-#' For more details see the vignette:
-#' \code{vignette("glycanPredict", package = "glycanPredict")}
 #' 
 #' @seealso 
-#' glycanPredict::predictGlycansParam()
+#' glycoAnnotateR::glycoPredictParam()
 #' 
 
-predictGlycans <- function(param){
-  path <- paste(system.file(package="glycanPredict"), "sugarMassesPredict.py", sep="/")
+glycoPredict <- function(param){
+  path <- paste(system.file(package="GlycoAnnotateR"), "sugarMassesPredict.py", sep="/")
   #check if pandas installed
   if(!reticulate::py_module_available("pandas")){
     reticulate::py_install("pandas")

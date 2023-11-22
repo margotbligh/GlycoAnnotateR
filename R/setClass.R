@@ -1,15 +1,15 @@
-#' predictGlycansParam class
+#' glycoPredictParam class
 #' 
 #' @description 
 #' An S4 class that contains the parameters for glycan prediction.
-#' Once created the predictGlycansParam object should be supplied to the function
-#' \link[glycanPredict]{predictGlycans} for glycan prediction constrained by the parameters contained
-#' in the \code{predictGlycansParam} object.
+#' Once created the glycoPredictParam object should be supplied to the function
+#' \link[GlycoAnnotateR]{glycoPredict} for glycan prediction constrained by the parameters contained
+#' in the \code{glycoPredictParam} object.
 #' 
-#' @seealso glycanPredict::predictGlycans()
+#' @seealso GlycoAnnotateR::glycoPredict()
 #' 
-#' @export predictGlycansParam
-#' @exportClass predictGlycansParam
+#' @export glycoPredictParam
+#' @exportClass glycoPredictParam
 #' 
 #' 
 #' @slot dp Degree of polymerisation range (numeric, length 2).
@@ -24,12 +24,12 @@
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
 #' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'
 #' 
-#' @inherit predictGlycans details
+#' @inherit glycoPredict details
 #' 
-#' @inherit predictGlycans examples
+#' @inherit glycoPredict examples
 #'
 
-predictGlycansParam = setClass("predictGlycansParam",
+glycoPredictParam = setClass("glycoPredictParam",
          slots = c(
            dp = "numeric",
            polarity = "character",

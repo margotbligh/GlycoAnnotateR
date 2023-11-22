@@ -4,7 +4,7 @@
 #'
 #' @description \code{glycoPredict()} predicts all possible glycan within the 
 #' constraints set by the \code{glycoPredictParam} object.
-#' @param param A \code{glycoPredictParam} object. See \link[GlycoAnnotateR]{glycoPredictParam-class}
+#' @param param A \code{glycoPredictParam} object. See \link[GlycoAnnotateR]{glycoPredictParam}
 #'
 #' @export 
 #' 

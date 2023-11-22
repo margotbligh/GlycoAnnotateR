@@ -14,7 +14,7 @@
 #' @slot pent_option Logical. Should pentose monomers be included? Default: \code{FALSE}.
 #' @slot modifications Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid',
 #' 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 
-#' 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
+#' 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate', 'aminopentyllinker' or 'all' or 'none' (default)
 #' @slot nmod_max Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1). 
 #' Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulphate Logical. Can monomers be double-sulphated. If \code{TRUE}, nmod_max needs to have a value of at least 2.

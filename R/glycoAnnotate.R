@@ -1,3 +1,44 @@
+#' Annotate m/z values with glycan compositions based on theoretical values
+#'
+#' @include setClass.R
+#' @include glycoPredict.R
+#'
+#' @description \code{glycoAnnotate()} annotates peaks or features in MS data,
+#' using either a pre-generated table by \link[GlycoAnnotateR]{glycoPredict} or
+#' by generating a new table. 
+#'
+#' @export
+#' 
+#' @slot data Dataframe containing data to be annotated.
+#' @slot mz_column Name of column containing m/z values.
+#' @slot mzmin_column
+#' @slot mzmax_column
+#' @slot pred_table description
+#' @slot param description
+#' @slot collapse description
+#' 
+#' @examples
+#' pgp <- glycoPredictParam()
+#' pgp@@dp <- c(1,7)
+#' pgp@@polarity <- 'neg'
+#' pgp@@scan_range <- c(150, 1300)
+#' pgp@@modifications <- c('sulphate', 'carboxylicacid')
+#' pgp@@double_sulphate <- TRUE
+#' predicted.df <- glycoPredict(param = pgp)
+#' 
+#' @details 
+#' \code{glycoPredict()} is used to predict masses and mass to charge ratios of all theoretically 
+#' possible glycans within a set of constraining parameters (defined in the 
+#' \code{glycoPredictParam} object). This package was written 
+#' for annotation of mass spec data (especially LC-MS) but if used for 
+#' other purposes either ionisation mode and very wide scan ranges can be given. 
+#' The function works by sourcing a python file and then using the function 
+#' encoded in the python script.
+#' 
+#' @seealso 
+#' glycoAnnotateR::glycoPredictParam()
+#' 
+
 glycoAnnotate <- function(data,
                           mz_column = 'mz',
                           mzmin_column = NULL,
@@ -16,13 +57,17 @@ glycoAnnotate <- function(data,
     stop("mz_column is not a column name in data.",
          " double check that mz_column is correct!")
   }
-  if (!is.null(mzmin_column) &  !mzmin_column %in% names(data)){
-    stop("mzmin_column is not a column name in data.",
-         " double check that mzmin_column is correct!")
+  if (!is.null(mzmin_column)){
+    if(!mzmin_column %in% names(data)){
+      stop("mzmin_column is not a column name in data.",
+           " double check that mzmin_column is correct!")
+    }
   }
-  if (!is.null(mzmax_column) &  !mzmax_column %in% names(data)){
-    stop("mzmax_column is not a column name in data",
-         ". double check that mzmax_column is correct!")
+  if (!is.null(mzmax_column)){
+    if(!mzmax_column %in% names(data)){
+      stop("mzmax_column is not a column name in data",
+           ". double check that mzmax_column is correct!")
+    }
   }
   if (!is.null(pred_table) & !is.null(param)){
     stop("pred_table and param supplied.", 

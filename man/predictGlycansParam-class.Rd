@@ -5,10 +5,6 @@
 \alias{predictGlycansParam-class}
 \alias{predictGlycansParam}
 \title{predictGlycansParam class}
-\usage{
-pgp <- predictGlycansParam()
-df <- predictGlycans(param = pgp)
-}
 \description{
 An S4 class that contains the parameters for glycan prediction.
 Once created the predictGlycansParam object should be supplied to the function
@@ -54,7 +50,7 @@ For more details see the vignette:
 
 \item{\code{pent_option}}{Logical: Should pentose monomers be included?}
 
-\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxyl', 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
+\item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid','phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
 
 \item{\code{nmod_max}}{Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.}
 
@@ -63,14 +59,18 @@ For more details see the vignette:
 \item{\code{label}}{Are sugars labelled? Currently only accepts 'none' or 'procainamide'.}
 
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
+
+\item{\code{naming}}{Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'}
+
+\item{\code{glycan_linkage}}{Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'}
 }}
 
 \examples{
 pgp <- predictGlycansParam()
 pgp@dp <- c(1,7)
-pgp@ESI_mode <- 'neg'
+pgp@polarity <- 'neg'
 pgp@scan_range <- c(150, 1300)
-pgp@modifications <- c('sulphate', 'carboxyl')
+pgp@modifications <- c('sulphate', 'carboxylicacid')
 pgp@double_sulphate <- TRUE
 predicted.df <- predictGlycans(param = pgp)
 

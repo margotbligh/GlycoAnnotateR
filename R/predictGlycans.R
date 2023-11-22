@@ -12,7 +12,7 @@
 #' pgp@@dp <- c(1,7)
 #' pgp@@polarity <- 'neg'
 #' pgp@@scan_range <- c(150, 1300)
-#' pgp@@modifications <- c('sulphate', 'carboxyl')
+#' pgp@@modifications <- c('sulphate', 'carboxylicacid')
 #' pgp@@double_sulphate <- TRUE
 #' predicted.df <- predictGlycans(param = pgp)
 #' 
@@ -71,14 +71,25 @@ predictGlycans <- function(param){
   label = param@label
   ion_type = param@ion_type
   adducts = as.list(param@adducts)
+  naming = as.list(param@naming)
+  glycan_linkage = as.list(param@glycan_linkage)
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
-                       double_sulphate = double_sulphate, adducts = adducts)
+                       double_sulphate = double_sulphate, adducts = adducts,
+                       naming = naming, glycan_linkage = glycan_linkage)
   format = param@format
   library(magrittr)
   if(format == "long"){
+    as.num = function(x, na.strings = "NA") {
+      stopifnot(is.character(x))
+      na = x %in% na.strings
+      x[na] = "0"
+      x = as.numeric(x)
+      x[na] = NA_real_
+      x
+    }
     df.l <- df %>% 
       #make long
       tidyr::pivot_longer(cols = starts_with("[M"),
@@ -89,28 +100,35 @@ predictGlycans <- function(param){
       #calculate ion formula
       dplyr::mutate(C = stringr::str_split_i(formula, "C", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     H = stringr::str_split_i(formula, "H", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     N = stringr::str_split_i(formula, "N", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
+                    N = dplyr::case_when(grepl("N", formula) & is.na(N) ~ 1,
+                                         TRUE ~ N),
                     O = stringr::str_split_i(formula, "O", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
                     P = stringr::str_split_i(formula, "P", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
+                    P = dplyr::case_when(grepl("P", formula) & is.na(P) ~ 1,
+                                         TRUE ~ P),
                     S = stringr::str_split_i(formula, "S", 2) %>% 
                       sub("\\D.*", "", .) %>% 
-                      as.numeric(),
+                      as.num(),
+                    S = dplyr::case_when(grepl("S", formula) & is.na(S) ~ 1,
+                                         TRUE ~ S),
                     ion_effect = gsub("\\[M|\\].*", "", ion),
                     delta_H = sub(".*([+-]\\d*H).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^H].*|[-+][A-G, I-Z].*", "", .) %>% 
                       sub("H", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric())
+                      sub("^\\+$", 1, .) %>% 
+                      as.num())
     df.l$delta_H[df.l$ion_effect == "+NH4"] <- 4
     df.l <- df.l %>% 
       dplyr::mutate(delta_N = sub(".*([+-]\\d*N[^a]).*", "\\1", ion_effect) %>% 
@@ -118,22 +136,26 @@ predictGlycans <- function(param){
                       sub("[-+]\\d[^N].*|[-+][A-M, O-Z].*|[A-M, O-Z]", "", .) %>% 
                       sub("N", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
-                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>% 
+                      sub("^\\+$", 1, .) %>% 
+                      as.num(),
+                    delta_Cl = sub(".*([+-]\\d*Cl).*", "\\1", ion_effect) %>%  
                       sub("[-+]\\d[^Cl].*|[-+][A-B, D-Z].*", "", .) %>% 
                       sub("Cl", "", .) %>% 
-                      sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
+                      sub("^-$", "-1", .) %>% 
+                      sub("^\\+$", "1", .) %>% 
+                      as.num(na.strings = "+CHOO"),
                     delta_Na = sub(".*([+-]\\d*Na).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^Na].*|[-+][A-M, O-Z].*", "", .) %>% 
                       sub("Na", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric(),
+                      sub("^\\+$", 1, .) %>% 
+                      as.num(na.strings = "+NH4"),
                     delta_K = sub(".*([+-]\\d*K).*", "\\1", ion_effect) %>% 
                       sub("[-+]\\d[^K].*|[-+][A-J, L-Z].*", "", .) %>% 
                       sub("K", "", .) %>% 
                       sub("^-$", -1, .) %>% 
-                      sub("^\\+$", 1, .) %>% as.numeric())
+                      sub("^\\+$", 1, .) %>% 
+                      as.num())
     df.l[is.na(df.l)] <- 0
     df.l <- df.l %>% 
       dplyr::mutate(ion_formula = paste0("C", C, 
@@ -144,8 +166,8 @@ predictGlycans <- function(param){
                                          "Na", delta_Na,
                                          "O", O,
                                          "S", S, "P", P) %>% 
-                      gsub("[A-Z]0|[A-Z][a-z]0", "", .)
-      )
+                      gsub("[A-Z]0|Na0|Cl0", "", .) %>% 
+                      gsub("(\\b|\\D)1(\\b|\\D)", "\\1\\2", .))
     df <- df.l %>% 
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     

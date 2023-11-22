@@ -81,7 +81,7 @@ predictGlycansParam = setClass("predictGlycansParam",
                                         'sialicacid', 'phosphate', 
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated', 
-                                        'alditol', 'amino','dehydrated','sulphate')
+                                        'alditol', 'amino','dehydrated','sulphate', 'aminopentyllinker')
            if (!all(object@modifications %in% possible_modifications))
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",

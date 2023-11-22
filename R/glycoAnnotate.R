@@ -21,7 +21,7 @@ glycoAnnotate <- function(data,
          " double check that mzmin_column is correct!")
   }
   if (!is.null(mzmax_column) &  !mzmax_column %in% names(data)){
-    stop("mzmax_column is not a column name in data"
+    stop("mzmax_column is not a column name in data",
          ". double check that mzmax_column is correct!")
   }
   if (!is.null(pred_table) & !is.null(param)){
@@ -36,7 +36,7 @@ glycoAnnotate <- function(data,
     if (!is.data.frame(pred_table)){
       stop("pred_table is not a dataframe!")
     }
-    if (!"mz" %in% names(pred_table))){
+    if (!"mz" %in% names(pred_table)){
       stop("pred_table does not contain column named 'mz'!")
     }
   }
@@ -79,7 +79,7 @@ glycoAnnotate <- function(data,
     pred_table <- GlycoAnnotateR::glycoPredict(param = param)
     
     if(!collapse_columns %in% names(pred_table))
-      stop("collapse_columns are not columns in the generated prediction table."
+      stop("collapse_columns are not columns in the generated prediction table.",
            "either remove collapse_columns or ensure they match columns!")
   }
   

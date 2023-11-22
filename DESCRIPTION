@@ -1,5 +1,5 @@
-Package: glycanPredict
-Title: Prediction of Glycan Masses
+Package: GlycoAnnotateR
+Title: Prediction and Annotation of Glycan Masses
 Version: 0.0.0.9000
 Authors@R: 
     person("Margot", "Bligh", , "mbligh«mai-bremen.de", role = c("aut", "cre"))
@@ -27,5 +27,6 @@ Suggests:
     knitr
 VignetteBuilder: knitr
 Collate: 
+    'glycoAnnotate.R'
     'setClass.R'
-    'predictGlycans.R'
+    'glycoPredict.R'

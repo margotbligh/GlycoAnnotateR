@@ -1,33 +1,32 @@
 #' glycoPredictParam class
 #' 
 #' @description 
-#' An S4 class that contains the parameters for glycan prediction.
-#' Once created the glycoPredictParam object should be supplied to the function
-#' \link[GlycoAnnotateR]{glycoPredict} for glycan prediction constrained by the parameters contained
-#' in the \code{glycoPredictParam} object.
+#' An S4 class that contains the parameters for \link[GlycoAnnotateR]{glycoPredict()} function.
 #' 
 #' @seealso GlycoAnnotateR::glycoPredict()
 #' 
 #' @export glycoPredictParam
 #' @exportClass glycoPredictParam
 #' 
-#' 
-#' @slot dp Degree of polymerisation range (numeric, length 2).
-#' @slot polarity ionisation mode used. Accepts 'pos' or 'neg'.
-#' @slot scan_range Scan range used during MS. (numeric, length 2).
-#' @slot pent_option Logical: Should pentose monomers be included? 
-#' @slot modifications Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid','phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
-#' @slot nmod_max Maximum number of modifications per monomer on average (default 1). Does not take into account unsaturated, alditol or dehydrated.
-#' @slot double_sulphate Logical: can monomers be double-sulphated. If \code{TRUE} you MUST give a value of at least 2 to nmod_max.
-#' @slot label Are sugars labelled? Currently only accepts 'none' or 'procainamide'.
+#' @slot dp Degree of polymerisation range. It must be a numeric vector of length 2. Default: c(1,6).
+#' @slot polarity Ionisation mode used. Accepts 'pos' or 'neg' (default).
+#' @slot scan_range Scan range used during MS. It must be a numeric vector of length 2. Default: c(175, 1400).
+#' @slot pent_option Logical. Should pentose monomers be included? Default: \code{FALSE}.
+#' @slot modifications Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid',
+#' 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl', 
+#' 'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)
+#' @slot nmod_max Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1). 
+#' Does not take into account unsaturated, alditol or dehydrated.
+#' @slot double_sulphate Logical. Can monomers be double-sulphated. If \code{TRUE}, nmod_max needs to have a value of at least 2.
+#' @slot label Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid", 
+#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
-#' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilties: 'none' (default), 'nglycan' or 'oglycan'
+#' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.
 #' 
 #' @inherit glycoPredict details
 #' 
 #' @inherit glycoPredict examples
-#'
 
 glycoPredictParam = setClass("glycoPredictParam",
          slots = c(

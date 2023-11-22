@@ -1,12 +1,13 @@
-#' Function to predict glycan masses and m/z values
+#' Predict masses and m/z values of theoretical glycans
 #'
 #' @include setClass.R
 #'
-#' @description This function will predict all possible glycan molecules within the constraints of the parameters.
-#' @param param A \code{glycoPredictParam} object containing all parameters for the
-#'     glycoPredict function. See \link[GlycoAnnotateR]{glycoPredictParam-class}
+#' @description \code{glycoPredict()} predicts all possible glycan within the 
+#' constraints set by the \code{glycoPredictParam} object.
+#' @param param A \code{glycoPredictParam} object. See \link[GlycoAnnotateR]{glycoPredictParam-class}
 #'
-#' @export
+#' @export 
+#' 
 #' @examples
 #' pgp <- glycoPredictParam()
 #' pgp@@dp <- c(1,7)
@@ -17,26 +18,13 @@
 #' predicted.df <- glycoPredict(param = pgp)
 #' 
 #' @details 
-#' This function is intended for “calculation” of all possible glycans (or sugars) 
-#' within a set of constraining parameters (contained within the 
-#' \code{glycoPredictParam} object). Specifically, the user indicates which 
-#' monomer types (hexose only or hexose and pentose), degree of polymerisation (length) 
-#' range and modification types should be included, the desired maximum 
-#' for the average number of modifications per monomer and whether 
-#' mono-/oligosaccharides are procainamide-labelled or not. There is also the 
-#' option for whether or not double sulphation of a single monomer is possible or not. 
-#' The function “builds” names, formulas and masses for all sugars possible 
-#' within the constraining parameters. The user also provides two parameters 
-#' related to mass spectrometry: ionisation mode (\code{ESI_mode}) and 
-#' scan range (\code{scan_range}). m/z values of ions are calculated 
-#' depending on the ionisation mode and modifications. Sugars which contain 
-#' no ions with m/z values within the given scan range are removed. The final 
-#' output is returned as a (wide format) dataframe. This package was written 
+#' \code{glycoPredict()} is used to predict masses and mass to charge ratios of all theoretically 
+#' possible glycans within a set of constraining parameters (defined in the 
+#' \code{glycoPredictParam} object). This package was written 
 #' for annotation of mass spec data (especially LC-MS) but if used for 
-#' other purposes either ionisation mode can be given and very wide scan ranges. 
+#' other purposes either ionisation mode and very wide scan ranges can be given. 
 #' The function works by sourcing a python file and then using the function 
 #' encoded in the python script.
-#' 
 #' 
 #' @seealso 
 #' glycoAnnotateR::glycoPredictParam()
@@ -67,6 +55,9 @@ glycoPredict <- function(param){
   adducts = as.list(param@adducts)
   naming = as.list(param@naming)
   glycan_linkage = as.list(param@glycan_linkage)
+  
+  message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param))
+  
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,

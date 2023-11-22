@@ -11,11 +11,18 @@
 #' 
 #' @slot data Dataframe containing data to be annotated.
 #' @slot mz_column Name of column containing m/z values.
-#' @slot mzmin_column
-#' @slot mzmax_column
+#' @slot mzmin_column OPTIONAL: Name of column containing minimum m/z data values.
+#' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
+#' values generated during peak picking.
+#' @slot mzmax_column OPTIONAL: Name of column containing maximum m/z data values.
+#' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
+#' values generated during peak picking.
 #' @slot pred_table description
 #' @slot param description
 #' @slot collapse description
+#' @slot collapse_columns
+#' @slot error
+#' @slot error_units
 #' 
 #' @examples
 #' pgp <- glycoPredictParam()
@@ -102,10 +109,11 @@ glycoAnnotate <- function(data,
   if (!is.logical(collapse)){
     stop("collapse is not a logical!")
   }
-  if (!is.null(collapse_columns) & !is.null(pred_table) & 
-      !collapse_columns %in% names(pred_table)){
-    stop("collapse_columns are not column names in pred_table!")
-  }
+  if (!is.null(collapse_columns) & !is.null(pred_table)){
+    if(!collapse_columns %in% names(pred_table)){
+      stop("collapse_columns are not column names in pred_table!")
+    }
+  } 
   if (!is.null(collapse_columns) & is.null(pred_table)){
     message("warning: collapse_columns provided but no pred_table...",
             "these must correspond to columns in the table newly generated",
@@ -212,11 +220,16 @@ glycoAnnotate <- function(data,
         dplyr::rename(mz = `i.mz`)
     }
   }
-  if(!is.null(mzmin_column) & "i.mzmin" %in% names(data_annot)){
+  if(!is.null(mzmin_column)){
+    if ("i.mzmin" %in% names(data_annot)){
       names(data_annot)[names(data_annot) == "i.mzmin"] <-  mzmin_column
-  }
-  if(!is.null(mzmax_column) & "i.mzmax" %in% names(data_annot)){
-    names(data_annot)[names(data_annot) == "i.mzmax"] <-  mzmin_column
+    }
+  } 
+  if(!is.null(mzmax_column)){
+    if("i.mzmax" %in% names(data_annot)){
+      names(data_annot)[names(data_annot) == "i.mzmax"] <-  mzmin_column
+      
+    }
   }
   
 }

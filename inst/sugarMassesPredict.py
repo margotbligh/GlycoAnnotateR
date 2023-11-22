@@ -421,6 +421,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_s1 = masses.loc[masses['sulphate'] >= 1]
         masses_s2 = masses_s1
         masses_s2.sulphate = masses_s1.sulphate + masses_s1.dp
+        masses_s2.mass = masses_s1.mass + masses_s1.dp * modifications_mdiff['sulphate']
         masses = pd.concat([masses, masses_s2]).reset_index()
         del masses_s1
         del masses_s2

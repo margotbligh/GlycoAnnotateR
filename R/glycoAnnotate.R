@@ -218,12 +218,12 @@ glycoAnnotate <- function(data,
       dplyr::select(!c('mzmin', 'mzmax'))
   }
   if('mz' %in% names(pred_table) & 'mz' %in% names(data)){
-    data_annot <-  data_annot %>% 
-      dplyr::rename(mz = `i.mz`)
     if(isFALSE(collapse)){
       data_annot <-  data_annot %>% 
         dplyr::rename(mz_pred = mz)
     }
+    data_annot <-  data_annot %>% 
+      dplyr::rename(mz = `i.mz`)
   }
   if(!is.null(mzmin_column)){
     if ("i.mzmin" %in% names(data_annot)){

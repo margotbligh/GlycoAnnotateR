@@ -14,7 +14,8 @@ Imports:
 	tidyr,
 	magrittr,
 	dplyr,
-	stringr
+	stringr,
+	data.table
 Config/reticulate:
   list(
     packages = list(

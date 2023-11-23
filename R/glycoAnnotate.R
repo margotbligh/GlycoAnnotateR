@@ -237,6 +237,7 @@ glycoAnnotate <- function(data,
     }
   }
   
+  return(data_annot)
 }
 
 

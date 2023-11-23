@@ -9,7 +9,9 @@
 #'
 #' @export
 #' 
-#' @slot data Dataframe containing data to be annotated.
+#' @slot data Dataframe containing data to be annotated. For example,
+#' feature dataframe from XCMS pre-processing (LC-MS or direct inject) 
+#' or features from Cardinal (MALDI).
 #' @slot mz_column Name of column containing m/z values.
 #' @slot mzmin_column OPTIONAL: Name of column containing minimum m/z data values.
 #' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
@@ -30,16 +32,22 @@
 #' afterwards on the output using ...
 #' @slot collapse_columns Columns to be pasted together before collapsing.
 #' Only needed if \code{collapse=TRUE} and non-default columns wanted - default is
-#' molecule name and ion.
+#' molecule name and ion. If prediction table provided to \code{pred_table} instead of 
+#' \code{param}, column names are required. 
 #' @slot error Numeric value - error used to create window for matching. mz values
 #' will be matched against theoretical mzs +- error.
 #' @slot error_units Units for error - can be 'ppm' or 'Da'
 #' 
 #' @examples
 #' 
-#' gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos")
-#' annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm')
+#' #with prediction parameters
+#' gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos", naming = "IUPAC")
+#' annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm', collapse = T)
 #' 
+#' #with prediction table
+#' gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos",  naming = "IUPAC")
+#' pred_table <- glycoPredict(param = gpp)
+#' annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.5, units = 'ppm', collapse = T, collapse_columns = c("IUPAC name", "ion"))
 #' 
 #' @seealso 
 #' glycoAnnotateR::glycoPredict()
@@ -110,7 +118,7 @@ glycoAnnotate <- function(data,
     stop("collapse is not a logical!")
   }
   if (!is.null(collapse_columns) & !is.null(pred_table)){
-    if(!collapse_columns %in% names(pred_table)){
+    if(!all(collapse_columns %in% names(pred_table))){
       stop("collapse_columns are not column names in pred_table!")
     }
   } 

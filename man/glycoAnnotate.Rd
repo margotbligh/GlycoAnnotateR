@@ -25,7 +25,9 @@ by generating a new table.
 \section{Slots}{
 
 \describe{
-\item{\code{data}}{Dataframe containing data to be annotated.}
+\item{\code{data}}{Dataframe containing data to be annotated. For example,
+feature dataframe from XCMS pre-processing (LC-MS or direct inject)
+or features from Cardinal (MALDI).}
 
 \item{\code{mz_column}}{Name of column containing m/z values.}
 
@@ -53,7 +55,8 @@ afterwards on the output using ...}
 
 \item{\code{collapse_columns}}{Columns to be pasted together before collapsing.
 Only needed if \code{collapse=TRUE} and non-default columns wanted - default is
-molecule name and ion.}
+molecule name and ion. If prediction table provided to \code{pred_table} instead of
+\code{param}, column names are required.}
 
 \item{\code{error}}{Numeric value - error used to create window for matching. mz values
 will be matched against theoretical mzs +- error.}
@@ -63,9 +66,14 @@ will be matched against theoretical mzs +- error.}
 
 \examples{
 
-gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos")
-annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm')
+#with prediction parameters
+gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos", naming = "IUPAC")
+annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm', collapse = T)
 
+#with prediction table
+gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos",  naming = "IUPAC")
+pred_table <- glycoPredict(param = gpp)
+annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.5, units = 'ppm', collapse = T, collapse_columns = c("IUPAC name", "ion"))
 
 }
 \seealso{

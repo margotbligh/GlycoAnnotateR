@@ -309,8 +309,7 @@ glycoAnnotationsCollapse <- function(annotated_data,
       stop("collapse_columns are not column names in annotated_data!")
   }
   nrow_distinct = dplyr::distinct(annotated_data, 
-                                  noncollapse_columns, 
-                                  .keep_all = Z) %>% 
+                                  dplyr::across(dplyr::all_of(noncollapse_columns))) %>% 
     nrow()
   nrow = nrow(annotated_data)
   if(nrow_distinct == nrow){

@@ -33,10 +33,10 @@
 glycoPredict <- function(param){
   path <- paste(system.file(package="GlycoAnnotateR"), "sugarMassesPredict.py", sep="/")
   #check if pandas installed
-  if(!reticulate::py_module_available("pandas")){
+  if(!reticulate::py_suppress_warnings(reticulate::py_module_available("pandas"))){
     reticulate::py_install("pandas")
   }
-  if(!reticulate::py_module_available("numpy")){
+  if(!reticulate::py_suppress_warnings(reticulate::py_module_available("numpy"))){
     reticulate::py_install("numpy")
   }
   #source python script

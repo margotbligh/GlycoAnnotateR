@@ -133,6 +133,11 @@ glycoAnnotate <- function(data,
           " and ion column names")
   }
   
+  if(!is.null(collapse_columns) & isFALSE(collapse)){
+    message('collapse_columns provided but collapse is FALSE, no collapse',
+            'will be performed')
+  }
+  
   #run glycoPredict
   if (!is.null(param)){
     message("Starting glycoPredict to generate possible annotations")
@@ -303,7 +308,10 @@ glycoAnnotationsCollapse <- function(annotated_data,
   if(!all(collapse_columns %in% names(annotated_data))){
       stop("collapse_columns are not column names in annotated_data!")
   }
-  nrow_distinct = dplyr::distinct(annotated_data) %>% nrow()
+  nrow_distinct = dplyr::distinct(annotated_data, 
+                                  noncollapse_columns, 
+                                  .keep_all = Z) %>% 
+    nrow()
   nrow = nrow(annotated_data)
   if(nrow_distinct == nrow){
     stop("all rows in annotated_data are distinct... no collapsing necessary :)")

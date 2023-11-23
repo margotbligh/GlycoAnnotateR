@@ -217,7 +217,7 @@ glycoAnnotate <- function(data,
     data_annot <- data_annot %>% 
       dplyr::select(!c('mzmin', 'mzmax'))
   }
-  if('mz' %in% names(pred_table) & 'mz' %in% names(data_annot)){
+  if('mz' %in% names(pred_table) & 'mz' %in% names(data)){
     data_annot <-  data_annot %>% 
       dplyr::rename(mz = `i.mz`)
     if(isFALSE(collapse)){

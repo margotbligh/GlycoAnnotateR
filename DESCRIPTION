@@ -27,6 +27,6 @@ Suggests:
     knitr
 VignetteBuilder: knitr
 Collate: 
-    'glycoAnnotate.R'
     'setClass.R'
     'glycoPredict.R'
+    'glycoAnnotate.R'

@@ -13,36 +13,36 @@
 #' @slot mz_column Name of column containing m/z values.
 #' @slot mzmin_column OPTIONAL: Name of column containing minimum m/z data values.
 #' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
-#' values generated during peak picking.
+#' values generated during peak picking. If not provided, mz value will be annotated
+#' if within range of theoretical mz +- error.
 #' @slot mzmax_column OPTIONAL: Name of column containing maximum m/z data values.
 #' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
-#' values generated during peak picking.
-#' @slot pred_table description
-#' @slot param description
-#' @slot collapse description
-#' @slot collapse_columns
-#' @slot error
-#' @slot error_units
+#' values generated during peak picking.If not provided, mz value will be annotated
+#' if within range of theoretical mz +- error.
+#' @slot pred_table Table generated previously by \link[GlycoAnnotateR]{glycoPredict}.
+#' @slot param \link[GlycoAnnotateR]{glycoPredictParam} object for generation of table
+#' of theoretical mz values for annotation.
+#' @slot collapse Logical. If \code{TRUE}, annotations will be 'collapsed' so that multiple
+#' annotations for one mz will be in the same row, comma separated (nrow of output is in
+#' this case equal to nrow of input data). If \code{FALSE} (default), it is possible
+#' that rows in the input dataframe are repeated with different annotations. The
+#' information on annotations is more detailed in this case. Collapsing can also be done 
+#' afterwards on the output using ...
+#' @slot collapse_columns Columns to be pasted together before collapsing.
+#' Only needed if \code{collapse=TRUE} and non-default columns wanted - default is
+#' molecule name and ion.
+#' @slot error Numeric value - error used to create window for matching. mz values
+#' will be matched against theoretical mzs +- error.
+#' @slot error_units Units for error - can be 'ppm' or 'Da'
 #' 
 #' @examples
-#' pgp <- glycoPredictParam()
-#' pgp@@dp <- c(1,7)
-#' pgp@@polarity <- 'neg'
-#' pgp@@scan_range <- c(150, 1300)
-#' pgp@@modifications <- c('sulphate', 'carboxylicacid')
-#' pgp@@double_sulphate <- TRUE
-#' predicted.df <- glycoPredict(param = pgp)
 #' 
-#' @details 
-#' \code{glycoPredict()} is used to predict masses and mass to charge ratios of all theoretically 
-#' possible glycans within a set of constraining parameters (defined in the 
-#' \code{glycoPredictParam} object). This package was written 
-#' for annotation of mass spec data (especially LC-MS) but if used for 
-#' other purposes either ionisation mode and very wide scan ranges can be given. 
-#' The function works by sourcing a python file and then using the function 
-#' encoded in the python script.
+#' gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos")
+#' annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm')
+#' 
 #' 
 #' @seealso 
+#' glycoAnnotateR::glycoPredict()
 #' glycoAnnotateR::glycoPredictParam()
 #' 
 

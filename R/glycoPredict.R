@@ -9,13 +9,13 @@
 #' @export 
 #' 
 #' @examples
-#' pgp <- glycoPredictParam()
-#' pgp@@dp <- c(1,7)
-#' pgp@@polarity <- 'neg'
-#' pgp@@scan_range <- c(150, 1300)
-#' pgp@@modifications <- c('sulphate', 'carboxylicacid')
-#' pgp@@double_sulphate <- TRUE
-#' predicted.df <- glycoPredict(param = pgp)
+#' gpp <- glycoPredictParam()
+#' gpp@@dp <- c(1,7)
+#' gpp@@polarity <- 'neg'
+#' gpp@@scan_range <- c(150, 1300)
+#' gpp@@modifications <- c('sulphate', 'carboxylicacid')
+#' gpp@@double_sulphate <- TRUE
+#' predicted.df <- glycoPredict(param = gpp)
 #' 
 #' @details 
 #' \code{glycoPredict()} is used to predict masses and mass to charge ratios of all theoretically 

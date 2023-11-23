@@ -30,7 +30,7 @@ encoded in the python script.
 
 \item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid',
 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl',
-'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate' or 'all' or 'none' (default)}
+'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate', 'aminopentyllinker' or 'all' or 'none' (default)}
 
 \item{\code{nmod_max}}{Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
 Does not take into account unsaturated, alditol or dehydrated.}
@@ -48,13 +48,13 @@ Does not take into account unsaturated, alditol or dehydrated.}
 }}
 
 \examples{
-pgp <- glycoPredictParam()
-pgp@dp <- c(1,7)
-pgp@polarity <- 'neg'
-pgp@scan_range <- c(150, 1300)
-pgp@modifications <- c('sulphate', 'carboxylicacid')
-pgp@double_sulphate <- TRUE
-predicted.df <- glycoPredict(param = pgp)
+gpp <- glycoPredictParam()
+gpp@dp <- c(1,7)
+gpp@polarity <- 'neg'
+gpp@scan_range <- c(150, 1300)
+gpp@modifications <- c('sulphate', 'carboxylicacid')
+gpp@double_sulphate <- TRUE
+predicted.df <- glycoPredict(param = gpp)
 
 }
 \seealso{

@@ -237,6 +237,19 @@ glycoAnnotate <- function(data,
     }
   }
   
+  if(is.null(mzmin_column)){
+    if ("i.mzmin" %in% names(data_annot)){
+      data_annot <- data_annot %>% 
+        dplyr::select(!c('i.mzmin')
+    }
+  } 
+  if(is.null(mzmax_column)){
+    if("i.mzmax" %in% names(data_annot)){
+      data_annot <- data_annot %>% 
+        dplyr::select(!c('i.mzmin')
+    }
+  }
+  
   return(data_annot)
 }
 

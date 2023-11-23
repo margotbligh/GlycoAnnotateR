@@ -207,15 +207,15 @@ glycoAnnotate <- function(data,
     data_annot <- data_annot %>%
       dplyr::group_by(across(all_of(group_column_names))) %>%
       dplyr::summarise(annotations = toString(annotations)) %>%
-      ungroup() %>%
-      distinct(across(all_of(c(group_column_names, "annotations"))))
+      dplyr::ungroup() %>%
+      dplyr::distinct(across(all_of(c(group_column_names, "annotations"))))
 
   }
   
   #format final df
   if(isFALSE(collapse)){
     data_annot <- data_annot %>% 
-      select(!c('mzmin', 'mzmax'))
+      dplyr::select(!c('mzmin', 'mzmax'))
   }
   if('mz' %in% names(pred_table) & 'mz' %in% names(data_annot)){
     data_annot <-  data_annot %>% 

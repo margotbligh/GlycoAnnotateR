@@ -51,7 +51,7 @@ annotations for one mz will be in the same row, comma separated (nrow of output 
 this case equal to nrow of input data). If \code{FALSE} (default), it is possible
 that rows in the input dataframe are repeated with different annotations. The
 information on annotations is more detailed in this case. Collapsing can also be done
-afterwards on the output using ...}
+afterwards on the output using \link[GlycoAnnotateR]{glycoAnnotationsCollapse}.}
 
 \item{\code{collapse_columns}}{Columns to be pasted together before collapsing.
 Only needed if \code{collapse=TRUE} and non-default columns wanted - default is
@@ -78,5 +78,6 @@ annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.
 }
 \seealso{
 glycoAnnotateR::glycoPredict()
+
 glycoAnnotateR::glycoPredictParam()
 }

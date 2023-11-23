@@ -29,7 +29,7 @@
 #' this case equal to nrow of input data). If \code{FALSE} (default), it is possible
 #' that rows in the input dataframe are repeated with different annotations. The
 #' information on annotations is more detailed in this case. Collapsing can also be done 
-#' afterwards on the output using ...
+#' afterwards on the output using \link[GlycoAnnotateR]{glycoAnnotationsCollapse}.
 #' @slot collapse_columns Columns to be pasted together before collapsing.
 #' Only needed if \code{collapse=TRUE} and non-default columns wanted - default is
 #' molecule name and ion. If prediction table provided to \code{pred_table} instead of 
@@ -49,9 +49,8 @@
 #' pred_table <- glycoPredict(param = gpp)
 #' annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.5, units = 'ppm', collapse = T, collapse_columns = c("IUPAC name", "ion"))
 #' 
-#' @seealso 
-#' glycoAnnotateR::glycoPredict()
-#' glycoAnnotateR::glycoPredictParam()
+#' @seealso glycoAnnotateR::glycoPredict()
+#' @seealso glycoAnnotateR::glycoPredictParam()
 #' 
 
 glycoAnnotate <- function(data,
@@ -261,8 +260,71 @@ glycoAnnotate <- function(data,
   return(data_annot)
 }
 
+#' Collapse annotated m/z values to have one row per peak/feature
+#'
+#' @include setClass.R
+#' @include glycoPredict.R
+#'
+#' @description \code{glycoAnnotationsCollapse()} collapses the output of
+#' \link[GlycoAnnotateR]{glycoAnnotate} in the case of multiple annotations
+#' per peak or feature so that there is one row per peak/feature with
+#' multiple annotations comma-separated. 
+#'
+#' @export
+#' 
+#' @slot annotated_data Dataframe annotated by \link[GlycoAnnotateR]{glycoAnnotate} 
+#' that has NOT been collapsed and has multiple annotations per peak/feature.
+#' @slot collapse_columns Names of columns to be pasted together before collapsing.
+#' Suggested is molecule name and ion. 
+#' @slot noncollapse_columns Names of columns that uniquely identify peaks and
+#' that should be retained after collapsing - these are generally the column
+#' names of your input dataframe before annotation.
+#' 
+#' @examples
+#' #annotate dataframe
+#' gpp <- glycoPredictParam(dp = c(1, 8), modifications = "deoxy", polarity = "pos", naming = "IUPAC")
+#' annotated_data <- glycoAnnotate(data = data, param = gpp, error = 1.5, units = 'ppm', collapse = F)
+#' 
+#' #collapse multiple annotations
+#' annotated_data_collapsed <- glycoAnnotationsCollapse(annotated_data = annotated_data, collapse_columns = c('IUPAC name', 'ion'), noncollapse_columns = c('mz', 'rt', 'sampleA', 'sampleB'))
+#' 
+#' @seealso glycoAnnotateR::glycoPredict()
+#' @seealso glycoAnnotateR::glycoPredictParam()
+#' @seealso glycoAnnotateR::glycoAnnotate()
 
 
+glycoAnnotationsCollapse <- function(annotated_data,
+                                collapse_columns,
+                                noncollapse_columns){
+  #run checks on input parameters
+  if (!is.data.frame(annotated_data)){
+    stop("annotated_data is not a dataframe!")
+  }
+  if(!all(collapse_columns %in% names(annotated_data))){
+      stop("collapse_columns are not column names in annotated_data!")
+  }
+  nrow_distinct = dplyr::distinct(annotated_data) %>% nrow()
+  nrow = nrow(annotated_data)
+  if(nrow_distinct == nrow){
+    stop("all rows in annotated_data are distinct... no collapsing necessary :)")
+  }
+
+  #collapse annotations
+  data.table::setDF(annotated_data)
+  message("Collapsing annotations")
+  
+  annotated_data_collapsed <- annotated_data %>% 
+    dplyr::mutate(annotations = paste0(apply(annotated_data[collapse_columns], 1, 
+                                             paste, collapse=':'))) %>% 
+    dplyr::group_by(across(all_of(noncollapse_columns))) %>%
+    dplyr::summarise(annotations = toString(annotations)) %>%
+    dplyr::ungroup() %>%
+    dplyr::distinct(across(all_of(c(noncollapse_columns, "annotations"))))
+  
+  return(annotated_data_collapsed)
+  
+}
+  
 
 
 

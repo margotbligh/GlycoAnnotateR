@@ -185,7 +185,7 @@ glycoAnnotate <- function(data,
   }
   
   #collapse annotations
-  setDF(data_annot)
+  data.table::setDF(data_annot)
   if(isTRUE(collapse) & nrow(data_annot) > nrow(data)){
     message("Collapsing annotations")
     

@@ -219,10 +219,10 @@ glycoAnnotate <- function(data,
   }
   if('mz' %in% names(pred_table) & 'mz' %in% names(data_annot)){
     data_annot <-  data_annot %>% 
-      dplyr::rename(mz_pred = mz)
+      dplyr::rename(mz = `i.mz`)
     if(isFALSE(collapse)){
       data_annot <-  data_annot %>% 
-        dplyr::rename(mz = `i.mz`)
+        dplyr::rename(mz_pred = mz)
     }
   }
   if(!is.null(mzmin_column)){

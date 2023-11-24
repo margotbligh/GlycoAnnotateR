@@ -42,7 +42,15 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 * Modifications, `modifications`
 
-* 
+  By default, each modification can occur once per monomer, and it is possible to have all modifications selected present on one monomer. After calculation of modified monomers they are filtered by the `nmod_max` term before output is returned. So, for example, for `modifications = c('deoxy', 'sulphate', 'carboxylicacid')`, the program will generate as one possible composition all three modifications on one monomer (i.e. 'DeoxyHex1 CarboxylicAcid1 Sulphate1'). If `nmod_max` is at the default 1, this composition will be filtered out before output is returned (as the `nmod` = 3). Sulphate is the only modification which is allowed to occur twice per mononer. For this, you need to set `double_sulphate=TRUE` and `nmod_max` to be at least 2.
+
+  The different modifications and their namings are summarised below:
+
+  
+
+  
+  * Sulphate, `'sulphate'`
+  * Phosphate, `'phosphate'`
 
 
 

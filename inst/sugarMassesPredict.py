@@ -85,7 +85,7 @@ formulas = {
     "anhydrobridge": [0, -2, 0, -1, 0, 0],
     "omethyl": [1, 2, 0, 0, 0, 0],
     "carboxylicacid": [0, -2, 0, 1, 0, 0],
-    "sialicacid": [9, 17, 1, 8, 0, 0],
+    "sialicacid": [11, 19, 1, 9, 0, 0],
     "nacetyl": [2, 3, 1, 0, 0, 0],
     "oacetyl": [2, 2, 0, 1, 0, 0],
     "phosphate": [0, 1, 0, 3, 0, 1],

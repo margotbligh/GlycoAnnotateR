@@ -21,7 +21,8 @@
 #' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
 #' values generated during peak picking.If not provided, mz value will be annotated
 #' if within range of theoretical mz +- error.
-#' @slot pred_table Table generated previously by \link[GlycoAnnotateR]{glycoPredict}.
+#' @slot pred_table Table generated previously by \link[GlycoAnnotateR]{glycoPredict}. 
+#' MUST BE LONG FORMAT - select \code{format='long'} when running prediction.
 #' @slot param \link[GlycoAnnotateR]{glycoPredictParam} object for generation of table
 #' of theoretical mz values for annotation.
 #' @slot collapse Logical. If \code{TRUE}, annotations will be 'collapsed' so that multiple
@@ -138,6 +139,11 @@ glycoAnnotate <- function(data,
             'will be performed')
   }
   
+  if(!is.null(param)){
+    if(param@format != "long"){
+      message('change "format" to long in param!')}
+  }
+  
   #run glycoPredict
   if (!is.null(param)){
     message("Starting glycoPredict to generate possible annotations")
@@ -220,7 +226,8 @@ glycoAnnotate <- function(data,
       dplyr::group_by(across(all_of(group_column_names))) %>%
       dplyr::summarise(annotations = toString(annotations)) %>%
       dplyr::ungroup() %>%
-      dplyr::distinct(across(all_of(c(group_column_names, "annotations"))))
+      dplyr::distinct(across(all_of(c(group_column_names, "annotations")))) %>% 
+      dplyr::mutate(annotations = sub('NA:NA', NA, annotations))
 
   }
   

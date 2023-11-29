@@ -215,7 +215,7 @@ oglycan_limits = {
     "amino": 2
 }
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"]):
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"], modification_limits = ):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
     if type(adducts)==str:
@@ -433,6 +433,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if 'oacetyl' in modifications:
             if 'amino' in modifications:
                 masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'])]
+        if modification_limits != 'none':
+            conditions = masses[list(modification_limits.keys())].apply(lambda col: col.le(modification_limits.get(col.name, float('inf'))), axis=0)
+            masses = masses[conditions.all(axis=1)]
     if "none" in modifications or len(modifications) == 0:
         if pent_option == True: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'pent', 'mass'])
         if pent_option == False: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'mass'])

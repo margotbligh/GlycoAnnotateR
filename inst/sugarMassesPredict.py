@@ -413,6 +413,26 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
         del modification_masses
+    if 'none' not in modifications and len(modifications) != 0:
+        if 'carboxylicacid' in modifications:
+            if 'phosphate' in modifications:
+                masses = masses[(masses['carboxylicacid'] + masses['phosphate'] <= masses['hex'])]
+            if 'anhydrobridge' in modifications:
+                masses = masses[(masses['carboxylicacid'] + masses['anhydrobridge'] <= masses['hex'])]
+            if 'deoxy' in modifications:
+                masses = masses[(masses['carboxylicacid'] <= masses['hex'])]
+        if 'anhydrobridge' in modifications:
+            if 'phosphate' in modifications:
+                masses = masses[(masses['anhydrobridge'] + masses['phosphate'] <= masses['hex'])]
+            if 'oacetyl' in modifications:
+                masses = masses[(masses['anhydrobridge'] + masses['oacetyl'] <= masses['hex'])]
+            if 'amino' in modifications:
+                masses = masses[(masses['anhydrobridge'] + masses['amino'] <= masses['hex'])]
+            if 'deoxy' in modifications:
+                masses = masses[(masses['anhydrobridge'] <= masses['hex'])]
+        if 'oacetyl' in modifications:
+            if 'amino' in modifications:
+                masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'])]
     if "none" in modifications or len(modifications) == 0:
         if pent_option == True: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'pent', 'mass'])
         if pent_option == False: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'mass'])

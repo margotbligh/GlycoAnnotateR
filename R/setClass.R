@@ -95,6 +95,9 @@ glycoPredictParam = setClass("glycoPredictParam",
                                            collapse = ", "), ".",
                                     "modification limits must be a list with",
                                     "names as modifications"))
+           if(object@modification_limits != "none")
+             if (!all(names(object@modification_limits) %in% object@modifications))
+               msg <- c(msg, paste0('names in modification limits do not match modifications!'))
            if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0) | 
                any(object@nmod_max > 3))
              msg <- c(msg, paste0("'nmod_max' has to be numeric",

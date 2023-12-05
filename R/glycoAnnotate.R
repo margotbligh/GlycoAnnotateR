@@ -251,7 +251,7 @@ glycoAnnotate <- function(data,
   } 
   if(!is.null(mzmax_column)){
     if("i.mzmax" %in% names(data_annot)){
-      names(data_annot)[names(data_annot) == "i.mzmax"] <-  mzmin_column
+      names(data_annot)[names(data_annot) == "i.mzmax"] <-  mzmax_column
       
     }
   }

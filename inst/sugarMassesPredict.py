@@ -479,6 +479,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a.mass = masses_a.mass + modifications_mdiff['alditol']
         masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
+        if 'anhydrobridge' in modifications:
+            masses = masses[(masses['anhydrobridge'] + masses['alditol'] <= masses['dp'])]
     if dehydrated_option == 'y':
         #print("--> adding dehydration to sugars")
         masses_a = masses.copy()

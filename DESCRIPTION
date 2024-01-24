@@ -17,6 +17,7 @@ Imports:
 	dplyr,
 	stringr,
 	data.table
+	xcms
 Config/reticulate:
   list(
     packages = list(
@@ -32,3 +33,4 @@ Collate:
     'setClass.R'
     'glycoPredict.R'
     'glycoAnnotate.R'
+    'glycoMS2Extract.R'

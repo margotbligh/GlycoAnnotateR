@@ -16,7 +16,8 @@ Imports:
 	magrittr,
 	dplyr,
 	stringr,
-	data.table
+	data.table,
+	xcms
 Config/reticulate:
   list(
     packages = list(

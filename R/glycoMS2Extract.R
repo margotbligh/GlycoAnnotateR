@@ -3,8 +3,9 @@
 #' @description This function extracts MS/MS spectra associated with 
 #' features annotated by \link[GlycoAnnotateR]{glycoAnnotate} function.
 
-#' @param data_ms2 (MSnbase::MSnExp), (MSnbase::OnDiskMSnExp) or (xcms::XCMSnExp) object with MS/MS spectra.
-#' @param data_features (xcms::XCMSnExp) with MS1 features defined by XCMS processing
+#' @param data_ms2 [MSnbase::MSnExp()], [MSnbase::OnDiskMSnExp()] or [xcms::XCMSnExp()]
+#'  object with MS/MS spectra.
+#' @param data_features [xcms::XCMSnExp()] with MS1 features defined by XCMS processing
 #' that were annotated by \link[GlycoAnnotateR]{glycoAnnotate}.
 #' @param annotations Output of \link[GlycoAnnotateR]{glycoAnnotate}. It needs to be a
 #'  `data.frame` with numerical columns named "mz" and "rt" (mz columns contains *m/z* 
@@ -14,10 +15,9 @@
 #' precursors are the features annotated by \link[GlycoAnnotateR]{glycoAnnotate} function.
 #'
 #' @export
-#' @import xcms
-#'
-#' @seealso glycoAnnotateR::glycoPredict()
-#' @seealso glycoAnnotateR::glycoPredictParam()
+#' 
+#' @seealso [GlycoAnnotateR::glycoPredict()]
+#' @seealso [GlycoAnnotateR::glycoPredictParam()]
 #'
 
 glycoMS2Extract = function(data_ms2, data_features, annotations){

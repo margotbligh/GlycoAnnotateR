@@ -45,6 +45,8 @@ Does not take into account unsaturated, alditol or dehydrated.}
 \item{\code{naming}}{Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'}
 
 \item{\code{glycan_linkage}}{Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.}
+
+\item{\code{modification_limits}}{Option to implement user created filters. Must be a named list, with names as modifications and values as limits.}
 }}
 
 \examples{

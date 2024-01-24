@@ -23,6 +23,7 @@
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
 #' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.
+#' @slot modification_limits Option to implement user created filters. Must be a named list, with names as modifications and values as limits.
 #' 
 #' @inherit glycoPredict details
 #' 
@@ -42,7 +43,8 @@ glycoPredictParam = setClass("glycoPredictParam",
            format = "character",
            adducts = "character",
            naming = "character",
-           glycan_linkage = "character"
+           glycan_linkage = "character",
+           modification_limits = "ANY"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -57,7 +59,8 @@ glycoPredictParam = setClass("glycoPredictParam",
            format = "long",
            adducts = "all",
            naming = "IUPAC",
-           glycan_linkage = "none"
+           glycan_linkage = "none",
+           modification_limits = "none"
          ),
          validity = function(object) {
            msg <- character()
@@ -85,6 +88,16 @@ glycoPredictParam = setClass("glycoPredictParam",
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",
                                          collapse = ", "), "."))
+           if(object@modification_limits != "none")
+             if (!all(names(object@modification_limits) %in% possible_modifications))
+               msg <- c(msg, paste0("valid options for 'modifications' are: ",
+                                    paste0("'", possible_modifications, "'",
+                                           collapse = ", "), ".",
+                                    "modification limits must be a list with",
+                                    "names as modifications"))
+           if(object@modification_limits != "none")
+             if (!all(names(object@modification_limits) %in% object@modifications))
+               msg <- c(msg, paste0('names in modification limits do not match modifications!'))
            if (length(object@nmod_max) != 1 | any(object@nmod_max <= 0) | 
                any(object@nmod_max > 3))
              msg <- c(msg, paste0("'nmod_max' has to be numeric",

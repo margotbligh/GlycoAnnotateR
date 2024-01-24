@@ -41,7 +41,8 @@ If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
 values generated during peak picking.If not provided, mz value will be annotated
 if within range of theoretical mz +- error.}
 
-\item{\code{pred_table}}{Table generated previously by \link[GlycoAnnotateR]{glycoPredict}.}
+\item{\code{pred_table}}{Table generated previously by \link[GlycoAnnotateR]{glycoPredict}.
+MUST BE LONG FORMAT - select \code{format='long'} when running prediction.}
 
 \item{\code{param}}{\link[GlycoAnnotateR]{glycoPredictParam} object for generation of table
 of theoretical mz values for annotation.}

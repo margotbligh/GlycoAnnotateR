@@ -16,7 +16,8 @@ Imports:
 	magrittr,
 	dplyr,
 	stringr,
-	data.table,
+	data.table
+biocViews:
 	xcms
 Config/reticulate:
   list(

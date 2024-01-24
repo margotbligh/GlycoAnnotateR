@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/404.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/glycoAnnotate.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/glycoAnnotationsCollapse.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/glycoMS2Extract.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/glycoPredict.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/glycoPredictParam-class.html</loc>
+  </url>
+  <url>
+    <loc>https://margotbligh.github.io/GlycoAnnotateR/reference/index.html</loc>
+  </url>
+</urlset>

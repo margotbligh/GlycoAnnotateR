@@ -589,46 +589,46 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if 'oacetyl' in modifications:
             if 'amino' in modifications:
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'] + masses['deoxy'])]
                 else:
-                    masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['oacetyl'] + masses['amino'] <= masses['hex'] )]
         if unsaturated_option == 'y':
             if 'nacetyl' in modifications:
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['unsaturated'] + masses['nacetyl'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['unsaturated'] + masses['nacetyl'] <= masses['hex'] ++ masses['deoxy'])]
                 else:
-                    masses = masses[(masses['unsaturated'] + masses['nacetyl'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['unsaturated'] + masses['nacetyl'] <= masses['hex'] )]
             if 'amino' in modifications:
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['unsaturated'] + masses['amino'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['unsaturated'] + masses['amino'] <= masses['hex'] + masses['deoxy'])]
                 else:
-                    masses = masses[(masses['unsaturated'] + masses['amino'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['unsaturated'] + masses['amino'] <= masses['hex'] )]
             if dehydrated_option == 'y':
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['unsaturated'] + masses['dehydrated'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['unsaturated'] + masses['dehydrated'] <= masses['hex'] + masses['deoxy'])]
                 else:
-                    masses = masses[(masses['unsaturated'] + masses['dehydrated'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['unsaturated'] + masses['dehydrated'] <= masses['hex'])]
             if alditol_option == 'y':
-                masses = masses[(masses['unsaturated'] + masses['alditol'] <= masses['hex'] + masses['pent'])]
+                masses = masses[(masses['unsaturated'] + masses['alditol'] <= masses['hex'])]
         if dehydrated_option == 'y':
             if 'nacetyl' in modifications:
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['dehydrated'] + masses['nacetyl'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['dehydrated'] + masses['nacetyl'] <= masses['hex'] + + masses['deoxy'])]
                 else:
-                    masses = masses[(masses['dehydrated'] + masses['nacetyl'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['dehydrated'] + masses['nacetyl'] <= masses['hex'] )]
             if 'amino' in modifications:
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['dehydrated'] + masses['amino'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['dehydrated'] + masses['amino'] <= masses['hex']  + masses['deoxy'])]
                 else:
-                    masses = masses[(masses['dehydrated'] + masses['amino'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['dehydrated'] + masses['amino'] <= masses['hex'] )]
         if alditol_option == 'y':
             if 'deoxy' in modifications:
-                masses = masses[(masses['alditol'] <= masses['hex'] + masses['pent'])]
+                masses = masses[(masses['alditol'] <= masses['hex'] )]
             if dehydrated_option == 'y':
                 if 'deoxy' in modifications:
-                    masses = masses[(masses['alditol'] + masses['dehydrated'] <= masses['hex'] + masses['pent'] + masses['deoxy'])]
+                    masses = masses[(masses['alditol'] + masses['dehydrated'] <= masses['hex'] +  masses['deoxy'])]
                 else:
-                    masses = masses[(masses['alditol'] + masses['dehydrated'] <= masses['hex'] + masses['pent'])]
+                    masses = masses[(masses['alditol'] + masses['dehydrated'] <= masses['hex'] )]
     if modification_limits != 'none':
         conditions = masses[list(modification_limits.keys())].apply(
             lambda col: col.le(modification_limits.get(col.name, float('inf'))), axis=0)

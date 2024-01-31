@@ -289,7 +289,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             print("added modifications for dp" + str(i))
         return modification_numbers
     if pent_option == 1:
-        #print("--> getting pentose masses")
+        print("--> getting pentose masses")
         masses = getPentMasses(masses)
     #add modifications
     print("\nstep #3: adding modifications")
@@ -426,19 +426,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         del masses_s1
         del masses_s2
     if label in proa_names:
-        #print("--> adding procainamide label")
+        print("--> adding procainamide label")
         masses['mass'] = masses.mass + proca_mdiff
     if label in pa_names:
-        #print("--> adding 2-aminopyridine")
+        print("--> adding 2-aminopyridine")
         masses['mass'] = masses.mass + pa_mdiff
     if label in aba_names:
-        #print("--> adding 2-aminobenzoic acid label")
+        print("--> adding 2-aminobenzoic acid label")
         masses['mass'] = masses.mass + aba_mdiff
     if label in ab_names:
-        #print("--> adding 2-aminobenzamide")
+        print("--> adding 2-aminobenzamide")
         masses['mass'] = masses.mass + ab_mdiff
     if label in pmp_names:
-        #print("--> adding bis-PMP label")
+        print("--> adding bis-PMP label")
         masses['mass'] = masses.mass + pmp_mdiff
     if unsaturated_option == 'y':
         #print("--> adding unsaturated sugars")

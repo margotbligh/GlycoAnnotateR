@@ -109,25 +109,29 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 Options are: `H`, `Na`, `NH4`, `K`, `Cl` and `CHOO`. The adducts generated depends on `adducts`, `polarity` and `ion type`. The resulting adducts are summarised in the table below:
 
+__NB: *n* is the number of anionic groups. Where relevant, ions will be generated with *n* values from 2-*n*. For example, in negative mode with MALDI and Na adducts, for a composition with four sulphate groups (*n* = 4) the adducts will include [M-2H+1Na]<sup>-</sup>, [M-3H+2Na]<sup>-</sup> and [M-4H+3Na]<sup>-</sup>.
+
 | **Adduct** | **Ion type** | **Polarity** | **Adducts generated**      |
 |------------|--------------|--------------|----------------------------|
 | H          | ESI          | Positive     | [M+H]<sup>+</sup>                     |
-|            |              | Negative     | [M-H]<sup>-</sup>, [M-nH]<sup>-*n*</sup>           |
+|            |              | Negative     | [M-H]<sup>-</sup>, [M-*n*H]<sup>-*n*</sup>           |
 |            | MALDI        | Positive     | [M+H]<sup>+</sup>                     |
 |            |              | Negative     | [M-H]<sup>-</sup>                     |
-| Na         | ESI          | Positive     | [M+Na]<sup>+</sup>, [M+*n*H+(*n*+1)Na]<sup>+</sup>   |
-|            |              | Negative     | [M+nH+(*n*-1)Na]<sup>-</sup>            |
-|            | MALDI        | Positive     | [M+Na]<sup>+</sup>, [M+*n*H+(*n*+1)Na]<sup>+</sup>   |
-| NH4        | ESI          | Positive     | [M+NH4]<sup>+</sup>, [M+*n*H+(*n*+1)NH4]<sup>+</sup> |
-|            | MALDI        | Positive     | [M+NH4]<sup>+</sup>, [M+*n*H+(*n*+1)NH4]<sup>+</sup> |
-|            |              | Negative     | [M+nH+(n-1)NH4]<sup>-</sup>           |
-| K          | ESI          | Positive     | [M+K]<sup>+</sup>, [M+*n*H+(*n*+1)K]<sup>+</sup>     |
-|            | MALDI        | Positive     | [M+K]<sup>+</sup>, [M+*n*H+(*n*+1)K]<sup>+</sup>     |
-|            |              | Negative     | [M+nH+(n-1)K]<sup>-</sup>             |
+| Na         | ESI          | Positive     | [M+Na]<sup>+</sup>, [M-*n*H+(*n*+1)Na]<sup>+</sup>   |
+|            |              | Negative     | [M-*n*H+(*n*-1)Na]<sup>-</sup>            |
+|            | MALDI        | Positive     | [M+Na]<sup>+</sup>, [M-*n*H+(*n*+1)Na]<sup>+</sup>   |
+|            |              | Negative     | [M+*n*H+(*n*-1)Na]<sup>-</sup>            |
+| NH4        | ESI          | Positive     | [M+NH4]<sup>+</sup>, [M-*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            | MALDI        | Positive     | [M+NH4]<sup>+</sup>, [M-*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            |              | Negative     | [M-*n*H+(*n*-1)NH4]<sup>-</sup>           |
+| K          | ESI          | Positive     | [M+K]<sup>+</sup>, [M-*n*H+(*n*+1)K]<sup>+</sup>     |
+|            | MALDI        | Positive     | [M+K]<sup>+</sup>, [M-*n*H+(*n*+1)K]<sup>+</sup>     |
+|            |              | Negative     | [M-*n*H+(*n*-1)K]<sup>-</sup>             |
 | Cl         | ESI          | Negative     | [M+Cl]<sup>-</sup>                    |
 |            | MALDI        | Negative     | [M+Cl]<sup>-</sup>                    |
 | CHOO       | ESI          | Negative     | [M+CHOO]<sup>-</sup>                  |
 |            | MALDI        | Negative     | [M+CHOO]<sup>-</sup>                  |
+
 
 
 

@@ -101,6 +101,35 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 ### Output and other parameters
 
+* Naming, `naming`
+
+  How should compositions be named? Options are `IUPAC`, `GlycoCT` and `Oxford`. As only compositions and not structures are given, conventions could not be followed closely, but common abbreviations from the conventions are used (see modifications table above).
+
+* Adducts, `adducts`
+
+Options are: `H`, `Na`, `NH4`, `K`, `Cl` and `CHOO`. The adducts generated depends on `adducts`, `polarity` and `ion type`. The resulting adducts are summarised in the table below:
+
+| **Adduct** | **Ion type** | **Polarity** | **Adducts generated**      |
+|------------|--------------|--------------|----------------------------|
+| H          | ESI          | Positive     | [M+H]<sup>+</sup>                     |
+|            |              | Negative     | [M-H]<sup>-</sup>, [M-nH]<sup>-*n*</sup>           |
+|            | MALDI        | Positive     | [M+H]<sup>+</sup>                     |
+|            |              | Negative     | [M-H]<sup>-</sup>                     |
+| Na         | ESI          | Positive     | [M+Na]<sup>+</sup>, [M+*n*H+(*n*+1)Na]<sup>+</sup>   |
+|            |              | Negative     | [M+nH+(*n*-1)Na]<sup>-</sup>            |
+|            | MALDI        | Positive     | [M+Na]<sup>+</sup>, [M+*n*H+(*n*+1)Na]<sup>+</sup>   |
+| NH4        | ESI          | Positive     | [M+NH4]<sup>+</sup>, [M+*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            | MALDI        | Positive     | [M+NH4]<sup>+</sup>, [M+*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            |              | Negative     | [M+nH+(n-1)NH4]<sup>-</sup>           |
+| K          | ESI          | Positive     | [M+K]<sup>+</sup>, [M+*n*H+(*n*+1)K]<sup>+</sup>     |
+|            | MALDI        | Positive     | [M+K]<sup>+</sup>, [M+*n*H+(*n*+1)K]<sup>+</sup>     |
+|            |              | Negative     | [M+nH+(n-1)K]<sup>-</sup>             |
+| Cl         | ESI          | Negative     | [M+Cl]<sup>-</sup>                    |
+|            | MALDI        | Negative     | [M+Cl]<sup>-</sup>                    |
+| CHOO       | ESI          | Negative     | [M+CHOO]<sup>-</sup>                  |
+|            | MALDI        | Negative     | [M+CHOO]<sup>-</sup>                  |
+
+
 
 
 

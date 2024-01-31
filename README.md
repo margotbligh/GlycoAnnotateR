@@ -38,7 +38,27 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 * Label, `label`
 
-  Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid", "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone". Common abbreviations or notations for these labels are generally accepted (e.g. 'pmp' or 'PMP' for the latter).
+  Are sugars labelled by reductive amination? Current supported labels are `none` (default) and those givin in the table below:
+
+| **Label**                      | **Accepted names**                                  |
+|--------------------------------|-----------------------------------------------------|
+| procainamide                   | "procainamide", "proca", "procA", "ProA"            |
+| 2-aminopyridine                | "2-ap", "2-AP", "pa", "PA", "2-aminopyridine"       |
+| 2-aminobenzoic acid            | "2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid" |
+| 2-aminobenzamide               | "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"      |
+| 1-phenyl-3-methyl-5-pyrazolone | "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"      |
+
+* Double sulphate, `double_sulphate`
+
+  Can monomers be disulphated? Logical option required. To work `sulphate` must be in modifications and `nmod_max` at least 2.
+
+* Glycan linkage, `glycan_linkage`
+
+  By default `none`. When `oglycan` or `nglycan` the limits described by Cooper et al. (2021) for the GlycoMod software are implemented. Rules are listed here: https://web.expasy.org/glycomod/glycomod-doc.html
+
+* Modification limits, `modification_limits`
+
+  User provided limits on monomers or modifications. Provide as a named list.
 
 * Modifications, `modifications`
 
@@ -46,11 +66,74 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
   The different modifications and their namings are summarised below:
 
-  
 
-  
-  * Sulphate, `'sulphate'`
-  * Phosphate, `'phosphate'`
+| **Modification**  | **Definition / description**                                                                                                                                                                                  | **IUPAC naming** | **GlycoCT naming** | **Oxford naming** |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|--------------------|-------------------|
+| carboxylicacid    | Effective loss of two hydrogens and gain of one oxygen to form a carboxylic acid group on C6. The modified monomer is commonly called a 'uronic acid'                                                         | CarboxylicAcid   | COOH               | A                 |
+| sialicacid        | Effect addition of C11H19N1O9 to hexose. Here, sialic acid only refers to N-Acetylneuraminic acid (Neu5Ac), the most common sialic acid. Predominantly found in complex mammalian glycans.                    | NeuAc            | SIA                | SA                |
+| phosphate         |                                                                                                                                                                                                               | Phosphate        | PO4                | P                 |
+| sulphate          | Addition of SO3. Only modification allowed to occur twice per monomer (see options for `double_sulphate`)                                                                                                     | Sulfate          | SO4                | S                 |
+| amino             | Gain of NH and loss of of O - result ofreplacing a hydroxyl group with an amino group.                                                                                                                        | Amino            | NH2                | Am                |
+| deoxy             | One hydroxyl group is replaced by an H atom. Fucose and rhamnose are two common deoxyhexoses. NB: GlycoAnnotateR currently only considers deoxyhexoses and not deoxypentoses.                                 | DeoxyHex         | DHEX               | D                 |
+| nacetyl           | Addition of an N-acetyl group (net change = +C2H3N) . Common example of N-acetylated hexose is N-acetylglucosamine. Note that here, N-acetylglucosamine would be termed in e.g. IUPAC naming Hex1 N-Acetyl1.  | N-Acetyl         | NAc                | N                 |
+| oacetyl           | Acetylation of a hydroxyl group (net change = +C2H2O).                                                                                                                                                        | O-Acetyl         | Ac                 | Ac                |
+| omethyl           | Addition of CH2 to an hydroxyl group. Natural modification, but can also be generated by permethylation.                                                                                                      | O-Methyl         | OMe                | M                 |
+| anhydrobridge     | Water loss formed by bridge between two hydroxyl groups. Occurs from C6 to C3, C2 or C1. Seen in e.g. carrageenans.                                                                                           | AnhydroBridge    | ANH                | B                 |
+| unsaturated       | Water loss to form a C-C double bond inside a ring. Seen for example in ulvans and are the target of polysaccharide lyases.                                                                                   | Unsaturated      | UNS                | U                 |
+| dehydrated        | Water loss that occurs during ionisation or other reactions.                                                                                                                                                  | Dehydrated       | Y                  | Y                 |
+| alditol           | Reducing end monomer is opened and the aldehyde reduced to an alcohol. Commonly done before PGC-LC to reduce anomer splitting of peaks. Refers to an alditol 'modification' not a monomer here.               | Alditol          | ALD                | o                 |
+| aminopentyllinker | Functional group used in synthetic chemistry. Can occur once per composition.                                                                                                                                 | NH2Pent1         | NH2Pent1           | NH2Pent1          |
+
+### Mass spec parameters
+
+* Scan range, `scan_range`
+
+  Scan range (*m/z*) used during acquisition. For prediction/computation purposes only this can be set very wide. Compositions with no adduct with an *m/z* value inside the scan range will be filtered out.
+
+* Polarity, `polarity`
+
+  Negative (`neg`) and/or positive (`pos`) ionisation polarity used during acquisition. Changes the adducts returned. See below for specific adducts generated.
+
+* Ionisation type, `ion_type`
+
+  ESI (`ESI`) and/or MALDI (`MALDI`) ionisation used. Changes the adducts returned (MALDI has only singly charged ions, ESI can have multiply charged). See below for specific adducts generated.
+
+
+### Output and other parameters
+
+* Naming, `naming`
+
+  How should compositions be named? Options are `IUPAC`, `GlycoCT` and `Oxford`. As only compositions and not structures are given, conventions could not be followed closely, but common abbreviations from the conventions are used (see modifications table above).
+
+* Adducts, `adducts`
+
+Options are: `H`, `Na`, `NH4`, `K`, `Cl` and `CHOO`. The adducts generated depends on `adducts`, `polarity` and `ion type`. The resulting adducts are summarised in the table below:
+
+__NB: *n* is the number of anionic groups. Where relevant, ions will be generated with *n* values from 2-*n*. For example, in negative mode with MALDI and Na adducts, for a composition with four sulphate groups (*n* = 4) the adducts will include [M-2H+1Na]<sup>-</sup>, [M-3H+2Na]<sup>-</sup> and [M-4H+3Na]<sup>-</sup>.
+
+| **Adduct** | **Ion type** | **Polarity** | **Adducts generated**      |
+|------------|--------------|--------------|----------------------------|
+| H          | ESI          | Positive     | [M+H]<sup>+</sup>                     |
+|            |              | Negative     | [M-H]<sup>-</sup>, [M-*n*H]<sup>-*n*</sup>           |
+|            | MALDI        | Positive     | [M+H]<sup>+</sup>                     |
+|            |              | Negative     | [M-H]<sup>-</sup>                     |
+| Na         | ESI          | Positive     | [M+Na]<sup>+</sup>, [M-*n*H+(*n*+1)Na]<sup>+</sup>   |
+|            |              | Negative     | [M-*n*H+(*n*-1)Na]<sup>-</sup>            |
+|            | MALDI        | Positive     | [M+Na]<sup>+</sup>, [M-*n*H+(*n*+1)Na]<sup>+</sup>   |
+|            |              | Negative     | [M+*n*H+(*n*-1)Na]<sup>-</sup>            |
+| NH4        | ESI          | Positive     | [M+NH4]<sup>+</sup>, [M-*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            | MALDI        | Positive     | [M+NH4]<sup>+</sup>, [M-*n*H+(*n*+1)NH4]<sup>+</sup> |
+|            |              | Negative     | [M-*n*H+(*n*-1)NH4]<sup>-</sup>           |
+| K          | ESI          | Positive     | [M+K]<sup>+</sup>, [M-*n*H+(*n*+1)K]<sup>+</sup>     |
+|            | MALDI        | Positive     | [M+K]<sup>+</sup>, [M-*n*H+(*n*+1)K]<sup>+</sup>     |
+|            |              | Negative     | [M-*n*H+(*n*-1)K]<sup>-</sup>             |
+| Cl         | ESI          | Negative     | [M+Cl]<sup>-</sup>                    |
+|            | MALDI        | Negative     | [M+Cl]<sup>-</sup>                    |
+| CHOO       | ESI          | Negative     | [M+CHOO]<sup>-</sup>                  |
+|            | MALDI        | Negative     | [M+CHOO]<sup>-</sup>                  |
+
+
+
 
 
 

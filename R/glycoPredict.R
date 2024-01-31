@@ -159,5 +159,9 @@ glycoPredict <- function(param){
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect"))
     
   }
+  
+  if (nrow(df) == 0){
+    warning('Output has zero rows! Check your scan range, adducts/polarity and DP range are sensible')
+  }
   return(df)
 }

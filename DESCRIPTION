@@ -6,7 +6,7 @@ Authors@R:
 Maintainer: Margot Bligh <mbligh@mpi-bremen.de>
 Description: This package is intended for "calculation" of all possible sugars / glycans within a set of constraining parameters. The function "builds" and returns names, formulas and masses. The user also provides parameters related to mass spectrometry.
 License: GPL-2
-URL: https://margotbligh.github.io/GlycoAnnotateR, https://github.com/margotbligh/GlycoAnnotateR
+URL: https://margotbligh.github.io/GlycoAnnotateR, https://github.com/margotbligh/GlycoAnnotateR, https://margotbligh.github.io/GlycoAnnotateR/
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
@@ -16,7 +16,10 @@ Imports:
 	magrittr,
 	dplyr,
 	stringr,
-	data.table
+	data.table,
+	xcms
+biocViews:
+	xcms
 Config/reticulate:
   list(
     packages = list(
@@ -32,3 +35,4 @@ Collate:
     'setClass.R'
     'glycoPredict.R'
     'glycoAnnotate.R'
+    'glycoMS2Extract.R'

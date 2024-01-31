@@ -151,7 +151,7 @@ glycoAnnotate <- function(data,
     
     if(isTRUE(collapse)){
       if(!is.null(collapse_columns)){
-        if(!collapse_columns %in% names(pred_table)){
+        if(!all(collapse_columns %in% names(pred_table))){
           stop("collapse_columns are not columns in the generated prediction table.",
                "either remove collapse_columns or ensure they match columns!")}
         

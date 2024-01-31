@@ -38,7 +38,27 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 * Label, `label`
 
-  Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid", "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone". Common abbreviations or notations for these labels are generally accepted (e.g. 'pmp' or 'PMP' for the latter).
+  Are sugars labelled by reductive amination? Current supported labels are `none` (default) and those givin in the table below:
+
+| **Label**                      | **Accepted names**                                  |
+|--------------------------------|-----------------------------------------------------|
+| procainamide                   | "procainamide", "proca", "procA", "ProA"            |
+| 2-aminopyridine                | "2-ap", "2-AP", "pa", "PA", "2-aminopyridine"       |
+| 2-aminobenzoic acid            | "2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid" |
+| 2-aminobenzamide               | "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"      |
+| 1-phenyl-3-methyl-5-pyrazolone | "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"      |
+
+* Double sulphate, `double_sulphate`
+
+  Can monomers be disulphated? Logical option required. To work `sulphate` must be in modifications and `nmod_max` at least 2.
+
+* Glycan linkage, `glycan_linkage`
+
+  By default `none`. When `oglycan` or `nglycan` the limits described by Cooper et al. (2021) for the GlycoMod software are implemented. Rules are listed here: https://web.expasy.org/glycomod/glycomod-doc.html
+
+* Modification limits, `modification_limits`
+
+  User provided limits on monomers or modifications. Provide as a named list.
 
 * Modifications, `modifications`
 
@@ -64,6 +84,22 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 | alditol           | Reducing end monomer is opened and the aldehyde reduced to an alcohol. Commonly done before PGC-LC to reduce anomer splitting of peaks. Refers to an alditol 'modification' not a monomer here.               | Alditol          | ALD                | o                 |
 | aminopentyllinker | Functional group used in synthetic chemistry. Can occur once per composition.                                                                                                                                 | NH2Pent1         | NH2Pent1           | NH2Pent1          |
 
+### Mass spec parameters
+
+* Scan range, `scan_range`
+
+  Scan range (*m/z*) used during acquisition. For prediction/computation purposes only this can be set very wide. Compositions with no adduct with an *m/z* value inside the scan range will be filtered out.
+
+* Polarity, `polarity`
+
+  Negative (`neg`) and/or positive (`pos`) ionisation polarity used during acquisition. Changes the adducts returned. See below for specific adducts generated.
+
+* Ionisation type, `ion_type`
+
+  ESI (`ESI`) and/or MALDI (`MALDI`) ionisation used. Changes the adducts returned (MALDI has only singly charged ions, ESI can have multiply charged). See below for specific adducts generated.
+
+
+### Output and other parameters
 
 
 

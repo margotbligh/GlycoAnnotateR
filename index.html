@@ -8,8 +8,8 @@
 <meta name="description" content='This package is intended for "calculation" of all possible sugars / glycans within a set of constraining parameters. The function "builds" and returns names, formulas and masses. The user also provides parameters related to mass spectrometry.'>
 <title>Prediction and Annotation of Glycan Masses • GlycoAnnotateR</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Prediction and Annotation of Glycan Masses">
 <meta property="og:description" content='This package is intended for "calculation" of all possible sugars / glycans within a set of constraining parameters. The function "builds" and returns names, formulas and masses. The user also provides parameters related to mass spectrometry.'>
@@ -72,7 +72,7 @@
 </h2>
 <p>This package can be installed directly from Github using devtools:</p>
 <pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'margotbligh/GlycoAnnotateR'</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'margotbligh/GlycoAnnotateR'</span><span class="op">)</span></span></code></pre>
 <p><strong>Please note that python is required for the package to function</strong>. If you do not have a local version of python available, please follow <a href="https://wiki.python.org/moin/BeginnersGuide/Download" class="external-link">instructions</a> to download and install.</p>
 </div>
 <div class="section level2">
@@ -97,20 +97,349 @@
 </li>
 <li>
 <p>Label, <code>label</code></p>
-<p>Are sugars labelled by reductive amination? Current supported labels are: “none”, “procainamide”,“2-aminobenzoic acid”, “2-aminobenzamide”, “1-phenyl-3-methyl-5-pyrazolone”. Common abbreviations or notations for these labels are generally accepted (e.g. ‘pmp’ or ‘PMP’ for the latter).</p>
+<p>Are sugars labelled by reductive amination? Current supported labels are <code>none</code> (default) and those givin in the table below:</p>
+</li>
+</ul>
+<table class="table">
+<colgroup>
+<col width="37%">
+<col width="62%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Label</strong></th>
+<th><strong>Accepted names</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>procainamide</td>
+<td>“procainamide”, “proca”, “procA”, “ProA”</td>
+</tr>
+<tr class="even">
+<td>2-aminopyridine</td>
+<td>“2-ap”, “2-AP”, “pa”, “PA”, “2-aminopyridine”</td>
+</tr>
+<tr class="odd">
+<td>2-aminobenzoic acid</td>
+<td>“2-aa”, “2-AA”, “aba”, “ABA”, “2-aminobenzoic acid”</td>
+</tr>
+<tr class="even">
+<td>2-aminobenzamide</td>
+<td>“2-ab”, “2-AB”, “ab”, “AB”, “2-aminobenzamide”</td>
+</tr>
+<tr class="odd">
+<td>1-phenyl-3-methyl-5-pyrazolone</td>
+<td>“pmp”, “PMP”, “1-phenyl-3-methyl-5-pyrazolone”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Double sulphate, <code>double_sulphate</code></p>
+<p>Can monomers be disulphated? Logical option required. To work <code>sulphate</code> must be in modifications and <code>nmod_max</code> at least 2.</p>
+</li>
+<li>
+<p>Glycan linkage, <code>glycan_linkage</code></p>
+<p>By default <code>none</code>. When <code>oglycan</code> or <code>nglycan</code> the limits described by Cooper et al. (2021) for the GlycoMod software are implemented. Rules are listed here: <a href="https://web.expasy.org/glycomod/glycomod-doc.html" class="external-link uri">https://web.expasy.org/glycomod/glycomod-doc.html</a></p>
+</li>
+<li>
+<p>Modification limits, <code>modification_limits</code></p>
+<p>User provided limits on monomers or modifications. Provide as a named list.</p>
 </li>
 <li>
 <p>Modifications, <code>modifications</code></p>
 <p>By default, each modification can occur once per monomer, and it is possible to have all modifications selected present on one monomer. After calculation of modified monomers they are filtered by the <code>nmod_max</code> term before output is returned. So, for example, for <code>modifications = c('deoxy', 'sulphate', 'carboxylicacid')</code>, the program will generate as one possible composition all three modifications on one monomer (i.e. ‘DeoxyHex1 CarboxylicAcid1 Sulphate1’). If <code>nmod_max</code> is at the default 1, this composition will be filtered out before output is returned (as the <code>nmod</code> = 3). Sulphate is the only modification which is allowed to occur twice per mononer. For this, you need to set <code>double_sulphate=TRUE</code> and <code>nmod_max</code> to be at least 2.</p>
 <p>The different modifications and their namings are summarised below:</p>
+</li>
+</ul>
+<table class="table">
+<colgroup>
+<col width="6%">
+<col width="73%">
+<col width="6%">
+<col width="7%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Modification</strong></th>
+<th><strong>Definition / description</strong></th>
+<th><strong>IUPAC naming</strong></th>
+<th><strong>GlycoCT naming</strong></th>
+<th><strong>Oxford naming</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>carboxylicacid</td>
+<td>Effective loss of two hydrogens and gain of one oxygen to form a carboxylic acid group on C6. The modified monomer is commonly called a ‘uronic acid’</td>
+<td>CarboxylicAcid</td>
+<td>COOH</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>sialicacid</td>
+<td>Effect addition of C11H19N1O9 to hexose. Here, sialic acid only refers to N-Acetylneuraminic acid (Neu5Ac), the most common sialic acid. Predominantly found in complex mammalian glycans.</td>
+<td>NeuAc</td>
+<td>SIA</td>
+<td>SA</td>
+</tr>
+<tr class="odd">
+<td>phosphate</td>
+<td></td>
+<td>Phosphate</td>
+<td>PO4</td>
+<td>P</td>
+</tr>
+<tr class="even">
+<td>sulphate</td>
+<td>Addition of SO3. Only modification allowed to occur twice per monomer (see options for <code>double_sulphate</code>)</td>
+<td>Sulfate</td>
+<td>SO4</td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td>amino</td>
+<td>Gain of NH and loss of of O - result ofreplacing a hydroxyl group with an amino group.</td>
+<td>Amino</td>
+<td>NH2</td>
+<td>Am</td>
+</tr>
+<tr class="even">
+<td>deoxy</td>
+<td>One hydroxyl group is replaced by an H atom. Fucose and rhamnose are two common deoxyhexoses. NB: GlycoAnnotateR currently only considers deoxyhexoses and not deoxypentoses.</td>
+<td>DeoxyHex</td>
+<td>DHEX</td>
+<td>D</td>
+</tr>
+<tr class="odd">
+<td>nacetyl</td>
+<td>Addition of an N-acetyl group (net change = +C2H3N) . Common example of N-acetylated hexose is N-acetylglucosamine. Note that here, N-acetylglucosamine would be termed in e.g. IUPAC naming Hex1 N-Acetyl1.</td>
+<td>N-Acetyl</td>
+<td>NAc</td>
+<td>N</td>
+</tr>
+<tr class="even">
+<td>oacetyl</td>
+<td>Acetylation of a hydroxyl group (net change = +C2H2O).</td>
+<td>O-Acetyl</td>
+<td>Ac</td>
+<td>Ac</td>
+</tr>
+<tr class="odd">
+<td>omethyl</td>
+<td>Addition of CH2 to an hydroxyl group. Natural modification, but can also be generated by permethylation.</td>
+<td>O-Methyl</td>
+<td>OMe</td>
+<td>M</td>
+</tr>
+<tr class="even">
+<td>anhydrobridge</td>
+<td>Water loss formed by bridge between two hydroxyl groups. Occurs from C6 to C3, C2 or C1. Seen in e.g. carrageenans.</td>
+<td>AnhydroBridge</td>
+<td>ANH</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>unsaturated</td>
+<td>Water loss to form a C-C double bond inside a ring. Seen for example in ulvans and are the target of polysaccharide lyases.</td>
+<td>Unsaturated</td>
+<td>UNS</td>
+<td>U</td>
+</tr>
+<tr class="even">
+<td>dehydrated</td>
+<td>Water loss that occurs during ionisation or other reactions.</td>
+<td>Dehydrated</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr class="odd">
+<td>alditol</td>
+<td>Reducing end monomer is opened and the aldehyde reduced to an alcohol. Commonly done before PGC-LC to reduce anomer splitting of peaks. Refers to an alditol ‘modification’ not a monomer here.</td>
+<td>Alditol</td>
+<td>ALD</td>
+<td>o</td>
+</tr>
+<tr class="even">
+<td>aminopentyllinker</td>
+<td>Functional group used in synthetic chemistry. Can occur once per composition.</td>
+<td>NH2Pent1</td>
+<td>NH2Pent1</td>
+<td>NH2Pent1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="mass-spec-parameters">Mass spec parameters<a class="anchor" aria-label="anchor" href="#mass-spec-parameters"></a>
+</h3>
 <ul>
-<li>Sulphate, <code>'sulphate'</code>
+<li>
+<p>Scan range, <code>scan_range</code></p>
+<p>Scan range (<em>m/z</em>) used during acquisition. For prediction/computation purposes only this can be set very wide. Compositions with no adduct with an <em>m/z</em> value inside the scan range will be filtered out.</p>
 </li>
-<li>Phosphate, <code>'phosphate'</code>
+<li>
+<p>Polarity, <code>polarity</code></p>
+<p>Negative (<code>neg</code>) and/or positive (<code>pos</code>) ionisation polarity used during acquisition. Changes the adducts returned. See below for specific adducts generated.</p>
+</li>
+<li>
+<p>Ionisation type, <code>ion_type</code></p>
+<p>ESI (<code>ESI</code>) and/or MALDI (<code>MALDI</code>) ionisation used. Changes the adducts returned (MALDI has only singly charged ions, ESI can have multiply charged). See below for specific adducts generated.</p>
 </li>
 </ul>
+</div>
+<div class="section level3">
+<h3 id="output-and-other-parameters">Output and other parameters<a class="anchor" aria-label="anchor" href="#output-and-other-parameters"></a>
+</h3>
+<ul>
+<li>
+<p>Naming, <code>naming</code></p>
+<p>How should compositions be named? Options are <code>IUPAC</code>, <code>GlycoCT</code> and <code>Oxford</code>. As only compositions and not structures are given, conventions could not be followed closely, but common abbreviations from the conventions are used (see modifications table above).</p>
 </li>
+<li><p>Adducts, <code>adducts</code></p></li>
 </ul>
+<p>Options are: <code>H</code>, <code>Na</code>, <code>NH4</code>, <code>K</code>, <code>Cl</code> and <code>CHOO</code>. The adducts generated depends on <code>adducts</code>, <code>polarity</code> and <code>ion type</code>. The resulting adducts are summarised in the table below:</p>
+<p>__NB: <em>n</em> is the number of anionic groups. Where relevant, ions will be generated with <em>n</em> values from 2-<em>n</em>. For example, in negative mode with MALDI and Na adducts, for a composition with four sulphate groups (<em>n</em> = 4) the adducts will include [M-2H+1Na]<sup>-</sup>, [M-3H+2Na]<sup>-</sup> and [M-4H+3Na]<sup>-</sup>.</p>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="17%">
+<col width="20%">
+<col width="20%">
+<col width="41%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Adduct</strong></th>
+<th><strong>Ion type</strong></th>
+<th><strong>Polarity</strong></th>
+<th><strong>Adducts generated</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>H</td>
+<td>ESI</td>
+<td>Positive</td>
+<td>[M+H]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M-H]<sup>-</sup>, [M-<em>n</em>H]<sup>-<em>n</em></sup>
+</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MALDI</td>
+<td>Positive</td>
+<td>[M+H]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M-H]<sup>-</sup>
+</td>
+</tr>
+<tr class="odd">
+<td>Na</td>
+<td>ESI</td>
+<td>Positive</td>
+<td>[M+Na]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)Na]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M-<em>n</em>H+(<em>n</em>-1)Na]<sup>-</sup>
+</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MALDI</td>
+<td>Positive</td>
+<td>[M+Na]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)Na]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M+<em>n</em>H+(<em>n</em>-1)Na]<sup>-</sup>
+</td>
+</tr>
+<tr class="odd">
+<td>NH4</td>
+<td>ESI</td>
+<td>Positive</td>
+<td>[M+NH4]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)NH4]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MALDI</td>
+<td>Positive</td>
+<td>[M+NH4]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)NH4]<sup>+</sup>
+</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M-<em>n</em>H+(<em>n</em>-1)NH4]<sup>-</sup>
+</td>
+</tr>
+<tr class="even">
+<td>K</td>
+<td>ESI</td>
+<td>Positive</td>
+<td>[M+K]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)K]<sup>+</sup>
+</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MALDI</td>
+<td>Positive</td>
+<td>[M+K]<sup>+</sup>, [M-<em>n</em>H+(<em>n</em>+1)K]<sup>+</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>Negative</td>
+<td>[M-<em>n</em>H+(<em>n</em>-1)K]<sup>-</sup>
+</td>
+</tr>
+<tr class="odd">
+<td>Cl</td>
+<td>ESI</td>
+<td>Negative</td>
+<td>[M+Cl]<sup>-</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MALDI</td>
+<td>Negative</td>
+<td>[M+Cl]<sup>-</sup>
+</td>
+</tr>
+<tr class="odd">
+<td>CHOO</td>
+<td>ESI</td>
+<td>Negative</td>
+<td>[M+CHOO]<sup>-</sup>
+</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>MALDI</td>
+<td>Negative</td>
+<td>[M+CHOO]<sup>-</sup>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

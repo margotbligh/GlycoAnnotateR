@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-01-31T14:27Z
+last_built: 2024-02-05T16:22Z
 urls:
   reference: https://margotbligh.github.io/GlycoAnnotateR/reference
   article: https://margotbligh.github.io/GlycoAnnotateR/articles

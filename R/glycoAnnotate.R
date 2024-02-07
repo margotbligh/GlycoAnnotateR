@@ -267,6 +267,13 @@ glycoAnnotate <- function(data,
     }
   }
 
+  if('i.mz' %in% names(data_annot)){
+    if('mz' %in% names(data_annot)){
+      names(data_annot)[names(data_annot) == "mz"] <-  'mz_pred'
+    }
+    names(data_annot)[names(data_annot) == "i.mz"] <-  'mz'
+  }
+
   return(data_annot)
 }
 

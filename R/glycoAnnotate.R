@@ -175,6 +175,9 @@ glycoAnnotate <- function(data,
                     mzmax = mz + error)
   }
 
+  #rename mz column in pred_table
+  names(pred_table)[names(pred_table) == 'mz'] <- 'mz_pred'
+
   #run annotation
   message("Starting annotation with predictions against data")
   if(!is.null(mzmin_column) & !is.null(mzmax_column)){
@@ -203,14 +206,14 @@ glycoAnnotate <- function(data,
   }
 
   #calculate mass error
-  if(mz_column == 'mz' | 'i.mz' %in% names(data_annot)){
+  if(mz_column == 'mz'){
     data_annot <- data_annot %>%
-      dplyr::mutate(mass_error = abs(`i.mz` - mz))
+      dplyr::mutate(mass_error = abs(mz - mz_pred))
   }
 
-  if(mz_column != 'mz' & !'i.mz' %in% names(data_annot)){
+  if(mz_column != 'mz'){
     data_annot <- data_annot %>%
-      dplyr::mutate(mass_error = abs(get(mz_column) - mz))
+      dplyr::mutate(mass_error = abs(get(mz_column) - mz_pred))
   }
 
   #collapse annotations
@@ -243,15 +246,9 @@ glycoAnnotate <- function(data,
   }
 
   #format final df
-  if(isFALSE(collapse)){
+  if(isFALSE(collapse) & is.null(mzmin_column) & is.null(mzmax_column)){
     data_annot <- data_annot %>%
       dplyr::select(!c('mzmin', 'mzmax'))
-  }
-  if('mz' %in% names(pred_table) & 'mz' %in% names(data)){
-    if(isFALSE(collapse)){
-      data_annot <-  data_annot %>%
-        dplyr::rename(mz_pred = mz)
-    }
   }
   if(!is.null(mzmin_column)){
     if ("i.mzmin" %in% names(data_annot)){
@@ -276,13 +273,6 @@ glycoAnnotate <- function(data,
       data_annot <- data_annot %>%
         dplyr::select(!'i.mzmax')
     }
-  }
-
-  if('i.mz' %in% names(data_annot)){
-    if('mz' %in% names(data_annot)){
-      names(data_annot)[names(data_annot) == "mz"] <-  'mz_pred'
-    }
-    names(data_annot)[names(data_annot) == "i.mz"] <-  'mz'
   }
 
   return(data_annot)

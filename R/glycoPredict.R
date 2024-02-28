@@ -117,7 +117,8 @@ glycoPredict <- function(param){
                       sub("^\\+$", 1, .) %>%
                       as.num(),
                     multiple_ammonium = dplyr::case_when(grepl('\\dNH4', ion) ~
-                                                           str_split_i(ion_effect, '\\+|N', 2) %>%
+                                                           stringr::str_split_i(ion_effect,
+                                                                                '\\+|N', 2) %>%
                                                            as.numeric(),
                                                          TRUE ~ NA),
                     delta_H = dplyr::case_when(grepl('\\dNH4', ion) ~
@@ -168,7 +169,7 @@ glycoPredict <- function(param){
                       gsub("(\\b|\\D)1(\\b|\\D)", "\\1\\2", .))
     df <- df.l %>%
       dplyr::select(!matches("delta_|^[[:upper:]][a,c]?$|_effect|multiple_")) %>%
-      dplyr::mutate(charge = str_split_i(ion, '\\]', 2) %>%
+      dplyr::mutate(charge = stringr::str_split_i(ion, '\\]', 2) %>%
                       sub('\\+$', '+1', .) %>%
                       sub('\\-$', '-1', .))
 

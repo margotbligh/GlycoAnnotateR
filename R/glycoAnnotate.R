@@ -210,7 +210,6 @@ glycoAnnotate <- function(data,
     data_annot <- data_annot %>%
       dplyr::mutate(mass_error = abs(mz - mz_pred))
   }
-
   if(mz_column != 'mz'){
     data_annot <- data_annot %>%
       dplyr::mutate(mass_error = abs(get(mz_column) - mz_pred))
@@ -246,7 +245,8 @@ glycoAnnotate <- function(data,
   }
 
   #format final df
-  if(isFALSE(collapse) & is.null(mzmin_column) & is.null(mzmax_column)){
+  if(isFALSE(collapse) & is.null(mzmin_column) & is.null(mzmax_column) &
+     !'mzmin' %in% names(data) & !'mzmax' %in% names(data)){
     data_annot <- data_annot %>%
       dplyr::select(!c('mzmin', 'mzmax'))
   }

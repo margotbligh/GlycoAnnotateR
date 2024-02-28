@@ -64,7 +64,7 @@ pmp_names = {"pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"}
 
 # mass differences for ions
 ion_mdiff = {
-    "H": 1.00782500000003,
+    "H": 1.00782504,
     "Na": 22.98977,
     "Cl": 34.968853,
     "CHOO": 44.997655,
@@ -72,7 +72,8 @@ ion_mdiff = {
     "K": 38.963708,
     "Ca": 39.962591
 }
-e_mdiff = 0.000548579909
+
+e_mdiff = 0.00054857990924
 
 # formulas
 
@@ -839,7 +840,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     Me_ions = [x + 1 for x in H_ions]
                     ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "Na]+")
                     for i in range(len(ions)):
-                        masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * i) + (ion_mdiff['Na'] * (i + 1)) + e_mdiff
+                        masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * i) + (ion_mdiff['Na'] * (i + 1)) - e_mdiff
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i))
                         masses_anionic = masses_anionic.rename({'[M-0H+1Na]+': '[M+Na]+'}, axis=1)
                         masses_anionic = masses_anionic.rename({'[M-1H+2Na]+': '[M-H+2Na]+'}, axis=1)
@@ -849,7 +850,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "K]+")
                     for i in range(len(ions)):
                         masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * i) + (
-                                    ion_mdiff['K'] * (i + 1)) + e_mdiff
+                                    ion_mdiff['K'] * (i + 1)) - e_mdiff
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i))
                         masses_anionic = masses_anionic.rename({'[M-0H+1K]+': '[M+K]+'}, axis=1)
                         masses_anionic = masses_anionic.rename({'[M-1H+2K]+': '[M-H+2K]+'}, axis=1)
@@ -859,7 +860,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     ions = list("[M-" + pd.Series(H_ions).astype(str) + "H+" + pd.Series(Me_ions).astype(str) + "NH4]+")
                     for i in range(len(ions)):
                         masses_anionic[ions[i]] = masses_anionic.mass - (ion_mdiff['H'] * i) + (
-                                    ion_mdiff['NH4'] * (i + 1)) + e_mdiff
+                                    ion_mdiff['NH4'] * (i + 1)) - e_mdiff
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i))
                         masses_anionic = masses_anionic.rename({'[M-0H+1NH4]+': '[M+NH4]+'}, axis=1)
                         masses_anionic = masses_anionic.rename({'[M-1H+2NH4]+': '[M-H+2NH4]+'}, axis=1)

@@ -26,25 +26,25 @@ possible_modifications = ['carboxylicacid',
                           'sulphate',
                          'aminopentyllinker']
 # hexose and water masses to build molecule base
-hex_mass = 180.06339
-water_mass = 18.010565
+hex_mass = 180.0633881
+water_mass = 18.01056468
 # mass differences for modifications
-pent_mdiff = -30.010566
+pent_mdiff = -30.01056468
 modifications_mdiff = {
-    "sulphate": 79.956817,
+    "sulphate": 79.95681486,
     "anhydrobridge": -water_mass,
-    "omethyl": 14.01565,
-    "carboxylicacid": 13.979265,
-    "sialicacid" : 129.042594,
-    "nacetyl": 41.026549,
-    "oacetyl": 42.010565,
-    "phosphate": 79.966333,
-    "deoxy": -15.994915,
+    "omethyl": 14.01565006,
+    "carboxylicacid": 13.97926456,
+    "sialicacid" : 129.0425931,
+    "nacetyl": 41.0265491,
+    "oacetyl": 42.01056468 ,
+    "phosphate": 79.96633052 ,
+    "deoxy": -15.99491462,
     "unsaturated": -water_mass,
-    "alditol": 2.015650,
-    "amino": -0.984016,
+    "alditol": 2.015650064,
+    "amino": -0.984015588,
     "dehydrated": -water_mass,
-  "aminopentyllinker": 85.089148
+  "aminopentyllinker": 85.08914935
 }
 
 # mass differences for labels
@@ -64,13 +64,13 @@ pmp_names = {"pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"}
 
 # mass differences for ions
 ion_mdiff = {
-    "H": 1.00782504,
-    "Na": 22.98977,
-    "Cl": 34.968853,
-    "CHOO": 44.997655,
-    "NH4": 18.034374,
-    "K": 38.963708,
-    "Ca": 39.962591
+    "H": 1.007825032,
+    "Na": 22.98976928,
+    "Cl": 34.96885268,
+    "CHOO": 44.997654272,
+    "NH4": 18.034374128,
+    "K": 38.96370668,
+    "Ca": 39.96259098
 }
 
 e_mdiff = 0.00054857990924

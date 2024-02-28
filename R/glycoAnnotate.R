@@ -202,6 +202,17 @@ glycoAnnotate <- function(data,
     data_annot <- data.table::foverlaps(data, pred_table)
   }
 
+  #calculate mass error
+  if(mz_column == 'mz' | 'i.mz' %in% names(data_annot)){
+    data_annot <- data_annot %>%
+      dplyr::mutate(mass_error = abs(`i.mz` - mz))
+  }
+
+  if(mz_column != 'mz' & !'i.mz' %in% names(data_annot)){
+    data_annot <- data_annot %>%
+      dplyr::mutate(mass_error = abs(get(mz_column) - mz))
+  }
+
   #collapse annotations
   data.table::setDF(data_annot)
   if(isTRUE(collapse) & nrow(data_annot) > nrow(data)){

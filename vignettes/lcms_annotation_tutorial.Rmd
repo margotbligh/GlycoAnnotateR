@@ -42,6 +42,7 @@ library(CAMERA)
 library(ggplot2)
 library(ggrepel)
 library(scales)
+library(stringr)
 ```
 
 # Pre-processing the data

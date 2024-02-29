@@ -29,7 +29,7 @@ We will first set up the environment by loading the required packages. xcms is u
 
 ```{r import packages, message=FALSE, warning=FALSE}
 library(GlycoAnnotateR)
-library(tidyverse)
+library(dplyr)
 library(xcms)
 library(CAMERA)
 library(ggplot2)

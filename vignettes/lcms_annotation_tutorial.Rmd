@@ -27,6 +27,13 @@ We will first set up the environment by loading the required packages. xcms is u
 
 # Load required packages
 
+```{r install CAMERA, echo=FALSE, include=FALSE}
+library(BiocManager)
+BiocManager::install('CAMERA', update = T)
+
+```
+
+
 ```{r import packages, message=FALSE, warning=FALSE}
 library(GlycoAnnotateR)
 library(dplyr)

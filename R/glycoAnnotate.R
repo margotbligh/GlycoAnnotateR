@@ -166,40 +166,50 @@ glycoAnnotate <- function(data,
       return(ppm)
     }
     pred_table <- pred_table %>%
-      dplyr::mutate(mzmin = mz - ppm_to_mz(mz, error),
-                    mzmax = mz + ppm_to_mz(mz, error))
+      dplyr::mutate(mzmin_match = mz - ppm_to_mz(mz, error),
+                    mzmax_match = mz + ppm_to_mz(mz, error))
   }
   if(error_units == 'Da'){
     pred_table <- pred_table %>%
-      dplyr::mutate(mzmin = mz - error,
-                    mzmax = mz + error)
+      dplyr::mutate(mzmin_match = mz - error,
+                    mzmax_match = mz + error)
   }
+
+  #rename mz column in pred_table
+  names(pred_table)[names(pred_table) == 'mz'] <- 'mz_pred'
 
   #run annotation
   message("Starting annotation with predictions against data")
   if(!is.null(mzmin_column) & !is.null(mzmax_column)){
-    if (mzmin_column != "mzmin"){
-      names(data)[names(data) == mzmin_column] <- "mzmin"
-    }
-    if (mzmax_column != "mzmax"){
-      names(data)[names(data) == mzmax_column] <- "mzmax"
-    }
+    data$mzmin_match <- data[, mzmin_column]
+    data$mzmax_match <- data[, mzmax_column]
+
     data.table::setDT(data)
     data.table::setDT(pred_table)
-    data.table::setkey(pred_table, mzmin, mzmax)
+    data.table::setkey(pred_table, mzmin_match, mzmax_match)
 
     data_annot <- data.table::foverlaps(data, pred_table)
   }
   if(is.null(mzmin_column) & is.null(mzmax_column)){
     data <- data %>%
-      dplyr::mutate(mzmin = get(mz_column),
-                    mzmax = get(mz_column))
+      dplyr::mutate(mzmin_match = get(mz_column),
+                    mzmax_match = get(mz_column))
 
     data.table::setDT(data)
     data.table::setDT(pred_table)
-    data.table::setkey(pred_table, mzmin, mzmax)
+    data.table::setkey(pred_table, mzmin_match, mzmax_match)
 
     data_annot <- data.table::foverlaps(data, pred_table)
+  }
+
+  #calculate mass error
+  if(mz_column == 'mz'){
+    data_annot <- data_annot %>%
+      dplyr::mutate(mass_error = abs(mz - mz_pred))
+  }
+  if(mz_column != 'mz'){
+    data_annot <- data_annot %>%
+      dplyr::mutate(mass_error = abs(get(mz_column) - mz_pred))
   }
 
   #collapse annotations
@@ -232,40 +242,10 @@ glycoAnnotate <- function(data,
   }
 
   #format final df
-  if(isFALSE(collapse)){
-    data_annot <- data_annot %>%
-      dplyr::select(!c('mzmin', 'mzmax'))
-  }
-  if('mz' %in% names(pred_table) & 'mz' %in% names(data)){
-    if(isFALSE(collapse)){
-      data_annot <-  data_annot %>%
-        dplyr::rename(mz_pred = mz)
-    }
-  }
-  if(!is.null(mzmin_column)){
-    if ("i.mzmin" %in% names(data_annot)){
-      names(data_annot)[names(data_annot) == "i.mzmin"] <-  mzmin_column
-    }
-  }
-  if(!is.null(mzmax_column)){
-    if("i.mzmax" %in% names(data_annot)){
-      names(data_annot)[names(data_annot) == "i.mzmax"] <-  mzmax_column
+  data_annot <- data_annot %>%
+    dplyr::select(!any_of(c('mzmin_match', 'mzmax_match',
+                            'i.mzmin_match', 'i.mzmax_match')))
 
-    }
-  }
-
-  if(is.null(mzmin_column)){
-    if ("i.mzmin" %in% names(data_annot)){
-      data_annot <- data_annot %>%
-        dplyr::select(!'i.mzmin')
-    }
-  }
-  if(is.null(mzmax_column)){
-    if("i.mzmax" %in% names(data_annot)){
-      data_annot <- data_annot %>%
-        dplyr::select(!'i.mzmax')
-    }
-  }
 
   return(data_annot)
 }

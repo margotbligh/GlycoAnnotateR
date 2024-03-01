@@ -70,8 +70,7 @@ pd
 
 #read in data with metadata df as phenodata
 all_data <- readMSData(files = fp, 
-                       pdata = new("NAnnotatedDataFrame", pd), 
-                       mode = "onDisk")
+                       pdata = new("NAnnotatedDataFrame", pd))
 ```
 
 ### Filter by retention time

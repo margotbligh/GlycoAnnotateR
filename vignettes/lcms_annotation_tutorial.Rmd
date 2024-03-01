@@ -70,7 +70,8 @@ pd
 
 #read in data with metadata df as phenodata
 all_data <- readMSData(files = fp, 
-                       pdata = new("NAnnotatedDataFrame", pd))
+                       pdata = new("NAnnotatedDataFrame", pd),
+                       mode = 'onDisk')
 ```
 
 ### Filter by retention time
@@ -137,18 +138,6 @@ plot(chr_dihexose_pk[[2]])
 plot(chr_dihexose_pk[[3]])
 ```
 
-In the XIC plots, we can see the defined peaks in the red boxes. 4 ppm seems to be appropriate, as the majority of *m/z* values within the peak fall within the red boxes.
-```{r XIC check peaks, message=FALSE, warning=FALSE, error=FALSE, fig.width=6, fig.height=6}
-#check peak definition by looking at XIC plots
-#extract data for larger m/z slice than 4 ppm to be able to see data around the peak
-data_ms1_pks %>% 
-  filterRt(rt = c(350, 550)) %>% 
-  filterMz(mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 6), 
-                  df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 6))) %>% 
-  plot(type = "XIC")
-```
-
-
 ### Peak merging
 
 We will merge the split peaks using the 'refineChromPeaks' function of xcms. Again, the parameters used will vary for each dataset.
@@ -171,14 +160,6 @@ chr_dihexose_pk_mg <- chromatogram(data_ms1_pks_mg,
 plot(chr_dihexose_pk_mg[[1]])
 plot(chr_dihexose_pk_mg[[2]])
 plot(chr_dihexose_pk_mg[[3]])
-```
-
-```{r XIC picked merged peaks, fig.height=6, fig.width=6}
-chr_dihexose_pk_mg %>% 
-  filterRt(rt = c(350, 550)) %>% 
-  filterMz(mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 6), 
-                  df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 6))) %>% 
-  plot(type = "XIC")
 ```
 
 ### Peak grouping (correspondence)

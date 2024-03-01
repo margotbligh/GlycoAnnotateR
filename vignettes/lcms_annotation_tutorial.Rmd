@@ -10,6 +10,10 @@ vignette: >
   %\VignetteIndexEntry{Glycan annotation with GlycoAnnotateR}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
+resource_files:
+  - ../inst/example_data//M31_20230717_stds_DDA_neg_06.mzML
+  - ../inst/example_data//M31_20230717_stds_MS1_neg_05.mzML
+  - ../inst/example_data//M31_20230718_stds_DDA_neg_04.mzML
 ---
 
 ```{r setup, include=FALSE}
@@ -159,7 +163,7 @@ data_ms1_pks_mg <- refineChromPeaks(data_ms1_pks, mpp)
 
 We can see in the chromatograms after peak merging that there is a single dihexose peak picked for each sample. The width of the peak captured in each sample is slightly different. We will not worry about that too much now, as the peaks will be grouped into features in the next step.
 
-```{r check merged chromatograms,  message=FALSE, warning=FALSE, error=FALSE, fig.width=6, fig.height=6, fig.show='hold'}
+```{r check merged chromatograms,  message=FALSE, warning=FALSE, error=FALSE, fig.width=6, fig.height=3, fig.show='hold'}
 #extract dihexose chromatogram +- 4 ppm
 chr_dihexose_pk_mg <- chromatogram(data_ms1_pks_mg,
                                 mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 4), 
@@ -168,15 +172,14 @@ chr_dihexose_pk_mg <- chromatogram(data_ms1_pks_mg,
 plot(chr_dihexose_pk_mg[[1]])
 plot(chr_dihexose_pk_mg[[2]])
 plot(chr_dihexose_pk_mg[[3]])
+```
 
-#check peak definition by looking at XIC plots
-#extract data for larger m/z slice than 3 ppm to be able to see data around the peak
-data_ms1_pks_mg %>% 
-  filterRt(rt = c(400, 500)) %>% 
+```{r XIC picked merged peaks, fig.height=6, fig.width=6}
+chr_dihexose_pk_mg %>% 
+  filterRt(rt = c(350, 550)) %>% 
   filterMz(mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 6), 
                   df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 6))) %>% 
   plot(type = "XIC")
-
 ```
 
 ### Peak grouping (correspondence)
@@ -379,7 +382,7 @@ dim(pl_annot_overlap2ranges)
 
 #print number of features annotated
 pl_annot_overlap2ranges %>% 
-  drop_na(dp) %>% 
+  filter(!is.na(dp)) %>% 
   distinct(mz) %>% 
   nrow()
 ```
@@ -417,7 +420,7 @@ dim(pl_annot_valueInRange)
 
 #print number of features annotated
 pl_annot_valueInRange %>% 
-  drop_na(dp) %>% 
+  filter(!is.na(dp)) %>% 
   distinct(mz) %>% 
   nrow()
 ```
@@ -820,7 +823,7 @@ any(is.na(ms2_df_annotP$annotations))
 ### Annotate fragments
 Now we can annotate the MS2 spectra. We change the `glycoPredictParam` parameters depending on the precursor annotation. Only fragments resulting from glycosidic bond breakage, dehydration, or loss of modified groups (e.g. desulphation) can be annotated by GlycoAnnotateR. 
 
-```{r annotate fragment ions, message=FALSE, warning=F}
+```{r annotate fragment ions, message=FALSE, warning=FALSE}
 #make a vector of the precursor annotations
 annotP <- ms2_df_annotP$annotations %>% unique()
 
@@ -926,7 +929,8 @@ for(i in 1:length(precursorMzs)){
     #plot lines
     geom_segment(aes(x = mz, xend = mz, y = 0, yend= intensity)) +
     #add mz values for annotated ions
-    geom_text(data = df %>% drop_na(annotations),
+    geom_text(data = df %>% 
+                filter(!is.na(annotations)),
               mapping = aes(x = mz, y = intensity + 0.5, 
                             label = round(mz, 4))) +
     #add annotations

@@ -10,12 +10,6 @@ vignette: >
   %\VignetteIndexEntry{Glycan annotation with GlycoAnnotateR}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
-pkgdown:
-  as_is: true
-resource_files:
-  - ../inst/example_data//M31_20230717_stds_DDA_neg_06.mzML
-  - ../inst/example_data//M31_20230717_stds_MS1_neg_05.mzML
-  - ../inst/example_data//M31_20230718_stds_DDA_neg_04.mzML
 ---
 
 ```{r setup, include=FALSE}
@@ -60,7 +54,10 @@ Now we import the data as an 'OnDiskMSnExp' object. A metadata or phenodata fram
 
 ```{r import data}
 #get filepaths of mzML files
-fp <- dir(path = '../inst/example_data/', pattern = '.mzML$', full.names = T)
+fp <- system.file(c('example_data/M31_20230717_stds_DDA_neg_06.mzML',
+                    'example_data/M31_20230717_stds_MS1_neg_05.mzML',
+                    'example_data/M31_20230718_stds_DDA_neg_04.mzML'), 
+                  package = 'GlycoAnnotateR')
 
 #make a metadata df
 pd <- data.frame(sample_name = gsub(".mzML|.*1[78]_", "", basename(fp)),

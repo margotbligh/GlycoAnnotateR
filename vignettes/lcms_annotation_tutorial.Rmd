@@ -10,6 +10,8 @@ vignette: >
   %\VignetteIndexEntry{Glycan annotation with GlycoAnnotateR}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
+pkgdown:
+  as_is: true
 resource_files:
   - ../inst/example_data//M31_20230717_stds_DDA_neg_06.mzML
   - ../inst/example_data//M31_20230717_stds_MS1_neg_05.mzML

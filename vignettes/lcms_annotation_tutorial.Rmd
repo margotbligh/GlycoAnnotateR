@@ -49,28 +49,16 @@ library(stringr)
 ## Import and prepare the data
 
 ### Import data
-Now we import the data as an 'OnDiskMSnExp' object. A metadata or phenodata frame is created here using the filepath names. You may need to change the path to the directory containing the example data.
+Now we import the data. An OnDiskMSnExp object (`all_data`) was created from mzML files with an associated phenodata (i.e. metadata) table. 
 
 
 ```{r import data}
-#get filepaths of mzML files
-fp <- system.file(c('example_data/M31_20230717_stds_DDA_neg_06.mzML',
-                    'example_data/M31_20230717_stds_MS1_neg_05.mzML',
-                    'example_data/M31_20230718_stds_DDA_neg_04.mzML'), 
-                  package = 'GlycoAnnotateR')
+#load data object
+fp <- system.file('extdata/data_MSnExp.rda', package = 'GlycoAnnotateR')
+load(fp)
 
-#make a metadata df
-pd <- data.frame(sample_name = gsub(".mzML|.*1[78]_", "", basename(fp)),
-                 frag = str_split_i(basename(fp), "_", 4),
-                 sample_type = str_split_i(basename(fp), "_", 3))
-
-#print the metadata df                 
-pd
-
-#read in data with metadata df as phenodata
-all_data <- readMSData(files = fp, 
-                       pdata = new("NAnnotatedDataFrame", pd),
-                       mode = 'onDisk')
+#print phenodata dataframe
+pData(all_data)
 ```
 
 ### Filter by retention time

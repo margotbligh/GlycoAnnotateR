@@ -2,7 +2,9 @@
 
 export(glycoAnnotate)
 export(glycoAnnotationsCollapse)
+export(glycoMS2Annotate)
 export(glycoMS2Extract)
 export(glycoPredict)
 export(glycoPredictParam)
+export(ppm_to_mz)
 exportClasses(glycoPredictParam)

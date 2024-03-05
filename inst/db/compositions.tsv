@@ -1,0 +1,1212 @@
+id	glytoucan_id	format_glyconnect	format_numeric	format_condensed	format_byonic	mass_monoisotopic	reviewed
+495	G32550BI	Hex:1 HexNAc:2	1,2,0,0,0,0,0,0,0,0,0,0,0,0	H1N2	HexNAc(2)Hex(1)	586.2222	True
+487	G47967RK	Hex:1 HexNAc:1 NeuGc:1	1,1,0,0,1,0,0,0,0,0,0,0,0,0	H1N1G1	HexNAc(1)Hex(1)NeuGc(1)	690.2331	True
+167	G22355FZ	Hex:1 HexNAc:2 dHex:1	1,2,1,0,0,0,0,0,0,0,0,0,0,0	H1N2F1	HexNAc(2)Hex(1)dHex(1)	732.2801	True
+717	G22355FZ	Hex:2 HexNAc:3 dHex:1	2,3,1,0,0,0,0,0,0,0,0,0,0,0	H2N3F1	HexNAc(3)Hex(2)dHex(1)	1097.4123	True
+334	G31685JQ	Hex:2 HexNAc:2 dHex:1	2,2,1,0,0,0,0,0,0,0,0,0,0,0	H2N2F1	HexNAc(2)Hex(2)dHex(1)	894.3329	True
+740	G74724QE	Hex:3 HexNAc:2 dHex:1	3,2,1,0,0,0,0,0,0,0,0,0,0,0	H3N2F1	HexNAc(2)Hex(3)dHex(1)	1056.3857	True
+769	G74724QE	Hex:1 HexNAc:3 dHex:1	1,3,1,0,0,0,0,0,0,0,0,0,0,0	H1N3F1	HexNAc(3)Hex(1)dHex(1)	935.3595	True
+660	G63628AV	Hex:2 HexNAc:2	2,2,0,0,0,0,0,0,0,0,0,0,0,0	H2N2	HexNAc(2)Hex(2)	748.275	True
+324	G63628AV	Hex:1 HexNAc:2 dHex:1 NeuAc:1	1,2,1,1,0,0,0,0,0,0,0,0,0,0	H1N2F1S1	HexNAc(2)Hex(1)dHex(1)NeuAc(1)	1023.3755	True
+683	G74722FL	Hex:1 HexNAc:1 NeuAc:1	1,1,0,1,0,0,0,0,0,0,0,0,0,0	H1N1S1	HexNAc(1)Hex(1)NeuAc(1)	674.2382	True
+588	G74722FL	Hex:1 HexNAc:2 dHex:1 NeuGc:1	1,2,1,0,1,0,0,0,0,0,0,0,0,0	H1N2F1G1	HexNAc(2)Hex(1)dHex(1)NeuGc(1)	1039.3704	True
+419	G74722FL	Hex:2 HexNAc:2 dHex:1 NeuGc:1	2,2,1,0,1,0,0,0,0,0,0,0,0,0	H2N2F1G1	HexNAc(2)Hex(2)dHex(1)NeuGc(1)	1201.4232	True
+224	G74722FL	Hex:2 HexNAc:2 dHex:2	2,2,2,0,0,0,0,0,0,0,0,0,0,0	H2N2F2	HexNAc(2)Hex(2)dHex(2)	1040.3908	True
+179	G74722FL	Hex:2 HexNAc:2 dHex:1 NeuAc:1	2,2,1,1,0,0,0,0,0,0,0,0,0,0	H2N2F1S1	HexNAc(2)Hex(2)dHex(1)NeuAc(1)	1185.4283	True
+461	G81006GJ	Hex:1 HexNAc:1 NeuAc:2	1,1,0,2,0,0,0,0,0,0,0,0,0,0	H1N1S2	HexNAc(1)Hex(1)NeuAc(2)	965.3336	True
+701	G19399OS	HexNAc:1 NeuAc:1	0,1,0,1,0,0,0,0,0,0,0,0,0,0	N1S1	HexNAc(1)NeuAc(1)	512.1854	True
+221	G29931IJ	Hex:1 HexNAc:1	1,1,0,0,0,0,0,0,0,0,0,0,0,0	H1N1	HexNAc(1)Hex(1)	383.1428	True
+272	G29931IJ	HexNAc:1	0,1,0,0,0,0,0,0,0,0,0,0,0,0	N1	HexNAc(1)	221.09	True
+172	G29931IJ	Hex:2 HexNAc:2 NeuAc:2	2,2,0,2,0,0,0,0,0,0,0,0,0,0	H2N2S2	HexNAc(2)Hex(2)NeuAc(2)	1330.4658	True
+533	G29931IJ	Hex:2 HexNAc:2 NeuAc:1	2,2,0,1,0,0,0,0,0,0,0,0,0,0	H2N2S1	HexNAc(2)Hex(2)NeuAc(1)	1039.3704	True
+635	G29931IJ	Hex:1 HexNAc:2 NeuAc:1	1,2,0,1,0,0,0,0,0,0,0,0,0,0	H1N2S1	HexNAc(2)Hex(1)NeuAc(1)	877.3176	True
+83	G29931IJ	Hex:1 HexNAc:2 dHex:1 Su:1	1,2,1,0,0,0,1,0,0,0,0,0,0,0	H1N2F1s1	HexNAc(2)Hex(1)dHex(1)Sulfo(1)	812.2369	True
+263	G29931IJ	Hex:1 HexNAc:1 dHex:1 Kdn:1	1,1,1,0,0,0,0,0,1,0,0,0,0,0	H1N1F1K1	HexNAc(1)Hex(1)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	779.2696	True
+226	G29931IJ	Hex:2 HexNAc:1 dHex:1 Su:1	2,1,1,0,0,0,1,0,0,0,0,0,0,0	H2N1F1s1	HexNAc(1)Hex(2)dHex(1)Sulfo(1)	771.2103	True
+462	G29931IJ	Hex:1 HexNAc:1 Su:1	1,1,0,0,0,0,1,0,0,0,0,0,0,0	H1N1s1	HexNAc(1)Hex(1)Sulfo(1)	463.0996	True
+591	G29931IJ	Hex:1 HexNAc:1 Kdn:1	1,1,0,0,0,0,0,0,1,0,0,0,0,0	H1N1K1	HexNAc(1)Hex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	633.2117	True
+121	G29931IJ	Hex:2 HexNAc:1 dHex:2 HexA:1	2,1,2,0,0,0,0,0,0,0,1,0,0,0	H2N1F2A1	HexNAc(1)Hex(2)dHex(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1013.3435	True
+465	G29931IJ	Hex:2 HexNAc:2 dHex:2 Su:1	2,2,2,0,0,0,1,0,0,0,0,0,0,0	H2N2F2s1	HexNAc(2)Hex(2)dHex(2)Sulfo(1)	1120.3476	True
+164	G29931IJ	Hex:3 HexNAc:1 dHex:2 Su:1	3,1,2,0,0,0,1,0,0,0,0,0,0,0	H3N1F2s1	HexNAc(1)Hex(3)dHex(2)Sulfo(1)	1079.321	True
+243	G29931IJ	Hex:2 HexNAc:2 dHex:3 Su:1 HexA:1	2,2,3,0,0,0,1,0,0,0,1,0,0,0	H2N2F3s1A1	HexNAc(2)Hex(2)dHex(3)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1442.4376	True
+566	G29931IJ	Hex:2 HexNAc:1 Su:1	2,1,0,0,0,0,1,0,0,0,0,0,0,0	H2N1s1	HexNAc(1)Hex(2)Sulfo(1)	625.1524	True
+584	G29931IJ	HexNAc:1 Kdn:1	0,1,0,0,0,0,0,0,1,0,0,0,0,0	N1K1	HexNAc(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	471.1589	True
+339	G29931IJ	Hex:1 HexNAc:2 Su:1	1,2,0,0,0,0,1,0,0,0,0,0,0,0	H1N2s1	HexNAc(2)Hex(1)Sulfo(1)	666.179	True
+707	G29931IJ	Hex:3 HexNAc:1 dHex:1 Su:1	3,1,1,0,0,0,1,0,0,0,0,0,0,0	H3N1F1s1	HexNAc(1)Hex(3)dHex(1)Sulfo(1)	933.2631	True
+283	G29931IJ	Hex:2 HexNAc:3 dHex:3	2,3,3,0,0,0,0,0,0,0,0,0,0,0	H2N3F3	HexNAc(3)Hex(2)dHex(3)	1389.5281	True
+357	G29931IJ	Hex:3 HexNAc:3 dHex:2	3,3,2,0,0,0,0,0,0,0,0,0,0,0	H3N3F2	HexNAc(3)Hex(3)dHex(2)	1405.523	True
+648	G81295CK	Hex:4 HexNAc:4	4,4,0,0,0,0,0,0,0,0,0,0,0,0	H4N4	HexNAc(4)Hex(4)	1478.5394	True
+157	G81295CK	Hex:2 HexNAc:3 dHex:4	2,3,4,0,0,0,0,0,0,0,0,0,0,0	H2N3F4	HexNAc(3)Hex(2)dHex(4)	1535.586	True
+202	G94854LT	Hex:3 HexNAc:3 dHex:1	3,3,1,0,0,0,0,0,0,0,0,0,0,0	H3N3F1	HexNAc(3)Hex(3)dHex(1)	1259.4651	True
+138	G51287LK	Hex:3 HexNAc:4 dHex:2	3,4,2,0,0,0,0,0,0,0,0,0,0,0	H3N4F2	HexNAc(4)Hex(3)dHex(2)	1608.6024	True
+677	G51287LK	Hex:3 HexNAc:3 dHex:3	3,3,3,0,0,0,0,0,0,0,0,0,0,0	H3N3F3	HexNAc(3)Hex(3)dHex(3)	1551.5809	True
+281	G51287LK	Hex:2 HexNAc:3 dHex:1 NeuAc:1	2,3,1,1,0,0,0,0,0,0,0,0,0,0	H2N3F1S1	HexNAc(3)Hex(2)dHex(1)NeuAc(1)	1388.5077	True
+388	G47681UP	Hex:3 HexNAc:3 NeuAc:1	3,3,0,1,0,0,0,0,0,0,0,0,0,0	H3N3S1	HexNAc(3)Hex(3)NeuAc(1)	1404.5026	True
+316	G47681UP	Hex:2 HexNAc:3 dHex:2 NeuAc:1	2,3,2,1,0,0,0,0,0,0,0,0,0,0	H2N3F2S1	HexNAc(3)Hex(2)dHex(2)NeuAc(1)	1534.5656	True
+106	G47681UP	Hex:3 HexNAc:3 dHex:1 NeuAc:1	3,3,1,1,0,0,0,0,0,0,0,0,0,0	H3N3F1S1	HexNAc(3)Hex(3)dHex(1)NeuAc(1)	1550.5605	True
+355	G47681UP	Hex:3 HexNAc:3 dHex:4	3,3,4,0,0,0,0,0,0,0,0,0,0,0	H3N3F4	HexNAc(3)Hex(3)dHex(4)	1697.6388	True
+742	G49874UX	Hex:3 HexNAc:4 dHex:1	3,4,1,0,0,0,0,0,0,0,0,0,0,0	H3N4F1	HexNAc(4)Hex(3)dHex(1)	1462.5445	True
+222	G49874UX	Hex:2 HexNAc:4 dHex:2	2,4,2,0,0,0,0,0,0,0,0,0,0,0	H2N4F2	HexNAc(4)Hex(2)dHex(2)	1446.5496	True
+747	G49874UX	Hex:2 HexNAc:4 dHex:3	2,4,3,0,0,0,0,0,0,0,0,0,0,0	H2N4F3	HexNAc(4)Hex(2)dHex(3)	1592.6075	True
+99	G49874UX	HexNAc:3 dHex:4 Kdn:1	0,3,4,0,0,0,0,0,1,0,0,0,0,0	N3F4K1	HexNAc(3)dHex(4)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1461.5493	True
+432	G49874UX	Hex:1 HexNAc:3 dHex:3 Kdn:1	1,3,3,0,0,0,0,0,1,0,0,0,0,0	H1N3F3K1	HexNAc(3)Hex(1)dHex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1477.5442	True
+604	G49874UX	Hex:1 HexNAc:3 dHex:1 Kdn:1	1,3,1,0,0,0,0,0,1,0,0,0,0,0	H1N3F1K1	HexNAc(3)Hex(1)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1185.4284	True
+46	G49874UX	Hex:1 HexNAc:3 dHex:4 Kdn:1	1,3,4,0,0,0,0,0,1,0,0,0,0,0	H1N3F4K1	HexNAc(3)Hex(1)dHex(4)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1623.6021	True
+413	G49874UX	Hex:1 HexNAc:2 dHex:4 Kdn:1	1,2,4,0,0,0,0,0,1,0,0,0,0,0	H1N2F4K1	HexNAc(2)Hex(1)dHex(4)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1420.5227	True
+593	G49874UX	Hex:2 HexNAc:2 dHex:4 Kdn:1	2,2,4,0,0,0,0,0,1,0,0,0,0,0	H2N2F4K1	HexNAc(2)Hex(2)dHex(4)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1582.5755	True
+402	G49874UX	HexNAc:3 dHex:3 Kdn:1	0,3,3,0,0,0,0,0,1,0,0,0,0,0	N3F3K1	HexNAc(3)dHex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1315.4914	True
+47	G49874UX	Hex:1 HexNAc:3 dHex:2 Kdn:1	1,3,2,0,0,0,0,0,1,0,0,0,0,0	H1N3F2K1	HexNAc(3)Hex(1)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1331.4863	True
+423	G49874UX	HexNAc:2 dHex:2 Kdn:1	0,2,2,0,0,0,0,0,1,0,0,0,0,0	N2F2K1	HexNAc(2)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	966.3541	True
+638	G49874UX	Hex:2 HexNAc:1 dHex:2 NeuAc:1	2,1,2,1,0,0,0,0,0,0,0,0,0,0	H2N1F2S1	HexNAc(1)Hex(2)dHex(2)NeuAc(1)	1128.4068	True
+469	G49874UX	Hex:1 HexNAc:3 dHex:1 NeuGc:1	1,3,1,0,1,0,0,0,0,0,0,0,0,0	H1N3F1G1	HexNAc(3)Hex(1)dHex(1)NeuGc(1)	1242.4498	True
+90	G49874UX	Hex:1 HexNAc:2 dHex:2 NeuGc:1	1,2,2,0,1,0,0,0,0,0,0,0,0,0	H1N2F2G1	HexNAc(2)Hex(1)dHex(2)NeuGc(1)	1185.4283	True
+270	G49874UX	Hex:1 HexNAc:2 dHex:2 NeuAc:1	1,2,2,1,0,0,0,0,0,0,0,0,0,0	H1N2F2S1	HexNAc(2)Hex(1)dHex(2)NeuAc(1)	1169.4334	True
+654	G49874UX	HexNAc:2 NeuAc:1	0,2,0,1,0,0,0,0,0,0,0,0,0,0	N2S1	HexNAc(2)NeuAc(1)	715.2648	True
+679	G49874UX	Hex:1 HexNAc:3 dHex:1 NeuAc:1	1,3,1,1,0,0,0,0,0,0,0,0,0,0	H1N3F1S1	HexNAc(3)Hex(1)dHex(1)NeuAc(1)	1226.4549	True
+803	G49874UX	Hex:3 HexNAc:1 Me:1	3,1,0,0,0,0,0,0,0,0,0,1,0,0	H3N1m1	HexNAc(1)Hex(3)Me(1) % this composition contains Me (not defined residue for Byonic)	721.2641	True
+228	G49874UX	Hex:1	1,0,0,0,0,0,0,0,0,0,0,0,0,0	H1	Hex(1)	180.0634	True
+795	G49874UX	Hex:2 HexNAc:1 Me:1	2,1,0,0,0,0,0,0,0,0,0,1,0,0	H2N1m1	HexNAc(1)Hex(2)Me(1) % this composition contains Me (not defined residue for Byonic)	559.2113	True
+136	G07133YY	Hex:2	2,0,0,0,0,0,0,0,0,0,0,0,0,0	H2	Hex(2)	342.1162	True
+212	G82930TB	Hex:3 HexNAc:1	3,1,0,0,0,0,0,0,0,0,0,0,0,0	H3N1	HexNAc(1)Hex(3)	707.2484	True
+699	G46831QF	Hex:2 HexNAc:1	2,1,0,0,0,0,0,0,0,0,0,0,0,0	H2N1	HexNAc(1)Hex(2)	545.1956	True
+340	G46831QF	Hex:1 HexNAc:2 NeuAc:2	1,2,0,2,0,0,0,0,0,0,0,0,0,0	H1N2S2	HexNAc(2)Hex(1)NeuAc(2)	1168.413	True
+494	G46831QF	Hex:2 HexNAc:2 dHex:1 NeuAc:2	2,2,1,2,0,0,0,0,0,0,0,0,0,0	H2N2F1S2	HexNAc(2)Hex(2)dHex(1)NeuAc(2)	1476.5237	True
+578	G46831QF	Hex:2 HexNAc:3 dHex:1 Su:1	2,3,1,0,0,0,1,0,0,0,0,0,0,0	H2N3F1s1	HexNAc(3)Hex(2)dHex(1)Sulfo(1)	1177.3691	True
+67	G46831QF	Hex:2 HexNAc:2 dHex:1 NeuAc:1 Su:1	2,2,1,1,0,0,1,0,0,0,0,0,0,0	H2N2F1S1s1	HexNAc(2)Hex(2)dHex(1)NeuAc(1)Sulfo(1)	1265.3851	True
+88	G60038ZA	Hex:2 HexNAc:2 NeuAc:2 Su:1	2,2,0,2,0,0,1,0,0,0,0,0,0,0	H2N2S2s1	HexNAc(2)Hex(2)NeuAc(2)Sulfo(1)	1410.4226	True
+317	G60038ZA	Hex:2 HexNAc:2 NeuAc:1 Su:1	2,2,0,1,0,0,1,0,0,0,0,0,0,0	H2N2S1s1	HexNAc(2)Hex(2)NeuAc(1)Sulfo(1)	1119.3272	True
+750	G60038ZA	Hex:1 HexNAc:2 NeuAc:1 Su:1	1,2,0,1,0,0,1,0,0,0,0,0,0,0	H1N2S1s1	HexNAc(2)Hex(1)NeuAc(1)Sulfo(1)	957.2744	True
+335	G60038ZA	Hex:2 HexNAc:2 dHex:1 NeuAc:2 Su:1	2,2,1,2,0,0,1,0,0,0,0,0,0,0	H2N2F1S2s1	HexNAc(2)Hex(2)dHex(1)NeuAc(2)Sulfo(1)	1556.4805	True
+613	G60038ZA	Hex:2 HexNAc:2 dHex:2 NeuAc:1 Su:1	2,2,2,1,0,0,1,0,0,0,0,0,0,0	H2N2F2S1s1	HexNAc(2)Hex(2)dHex(2)NeuAc(1)Sulfo(1)	1411.443	True
+745	G60038ZA	Hex:2 HexNAc:2 Su:1	2,2,0,0,0,0,1,0,0,0,0,0,0,0	H2N2s1	HexNAc(2)Hex(2)Sulfo(1)	828.2318	True
+493	G60038ZA	Hex:2 HexNAc:2 dHex:1 Su:1	2,2,1,0,0,0,1,0,0,0,0,0,0,0	H2N2F1s1	HexNAc(2)Hex(2)dHex(1)Sulfo(1)	974.2897	True
+34	G60038ZA	Hex:2 HexNAc:3 NeuAc:1	2,3,0,1,0,0,0,0,0,0,0,0,0,0	H2N3S1	HexNAc(3)Hex(2)NeuAc(1)	1242.4498	True
+386	G60038ZA	Hex:1 HexNAc:3 NeuAc:1	1,3,0,1,0,0,0,0,0,0,0,0,0,0	H1N3S1	HexNAc(3)Hex(1)NeuAc(1)	1080.397	True
+444	G60038ZA	Hex:3 HexNAc:3 dHex:1 NeuAc:2	3,3,1,2,0,0,0,0,0,0,0,0,0,0	H3N3F1S2	HexNAc(3)Hex(3)dHex(1)NeuAc(2)	1841.6559	True
+520	G60038ZA	Hex:3 HexNAc:3 dHex:2 NeuAc:2	3,3,2,2,0,0,0,0,0,0,0,0,0,0	H3N3F2S2	HexNAc(3)Hex(3)dHex(2)NeuAc(2)	1987.7138	True
+163	G18878GO	Hex:4 HexNAc:4 NeuAc:2	4,4,0,2,0,0,0,0,0,0,0,0,0,0	H4N4S2	HexNAc(4)Hex(4)NeuAc(2)	2060.7302	True
+383	G26403SG	Hex:5 HexNAc:5 NeuAc:2	5,5,0,2,0,0,0,0,0,0,0,0,0,0	H5N5S2	HexNAc(5)Hex(5)NeuAc(2)	2425.8624	True
+714	G37881RL	Hex:6 HexNAc:6 NeuAc:2	6,6,0,2,0,0,0,0,0,0,0,0,0,0	H6N6S2	HexNAc(6)Hex(6)NeuAc(2)	2790.9946	True
+146	G37881RL	Hex:3 HexNAc:3 NeuAc:2	3,3,0,2,0,0,0,0,0,0,0,0,0,0	H3N3S2	HexNAc(3)Hex(3)NeuAc(2)	1695.598	True
+156	G37881RL	Hex:2 HexNAc:3 dHex:2	2,3,2,0,0,0,0,0,0,0,0,0,0,0	H2N3F2	HexNAc(3)Hex(2)dHex(2)	1243.4702	True
+702	G37881RL	Hex:1 HexNAc:2 dHex:2	1,2,2,0,0,0,0,0,0,0,0,0,0,0	H1N2F2	HexNAc(2)Hex(1)dHex(2)	878.338	True
+541	G71838YU	HexNAc:2	0,2,0,0,0,0,0,0,0,0,0,0,0,0	N2	HexNAc(2)	424.1694	True
+359	G71838YU	Hex:1 HexNAc:3 dHex:2	1,3,2,0,0,0,0,0,0,0,0,0,0,0	H1N3F2	HexNAc(3)Hex(1)dHex(2)	1081.4174	True
+443	G71838YU	Hex:2 HexNAc:3	2,3,0,0,0,0,0,0,0,0,0,0,0,0	H2N3	HexNAc(3)Hex(2)	951.3544	True
+14	G60554YG	Hex:1 HexNAc:3	1,3,0,0,0,0,0,0,0,0,0,0,0,0	H1N3	HexNAc(3)Hex(1)	789.3016	True
+3	G76163CP	Hex:1 HexNAc:1 dHex:1	1,1,1,0,0,0,0,0,0,0,0,0,0,0	H1N1F1	HexNAc(1)Hex(1)dHex(1)	529.2007	True
+746	G76163CP	Hex:2 HexNAc:2 dHex:3	2,2,3,0,0,0,0,0,0,0,0,0,0,0	H2N2F3	HexNAc(2)Hex(2)dHex(3)	1186.4487	True
+574	G60145BJ	Hex:3 HexNAc:3	3,3,0,0,0,0,0,0,0,0,0,0,0,0	H3N3	HexNAc(3)Hex(3)	1113.4072	True
+169	G60145BJ	Hex:1 HexNAc:4 dHex:1	1,4,1,0,0,0,0,0,0,0,0,0,0,0	H1N4F1	HexNAc(4)Hex(1)dHex(1)	1138.4389	True
+36	G60145BJ	HexNAc:3	0,3,0,0,0,0,0,0,0,0,0,0,0,0	N3	HexNAc(3)	627.2488	True
+705	G59986YN	Hex:4 HexNAc:1	4,1,0,0,0,0,0,0,0,0,0,0,0,0	H4N1	HexNAc(1)Hex(4)	869.3012	True
+509	G63381RX	Hex:4 HexNAc:5 dHex:3	4,5,3,0,0,0,0,0,0,0,0,0,0,0	H4N5F3	HexNAc(5)Hex(4)dHex(3)	2119.7925	True
+341	G63381RX	Hex:2 HexNAc:4 dHex:1	2,4,1,0,0,0,0,0,0,0,0,0,0,0	H2N4F1	HexNAc(4)Hex(2)dHex(1)	1300.4917	True
+114	G75132WH	Hex:7 HexNAc:11 dHex:4	7,11,4,0,0,0,0,0,0,0,0,0,0,0	H7N11F4	HexNAc(11)Hex(7)dHex(4)	3970.4852	True
+694	G12728EY	Hex:5 HexNAc:6 dHex:3	5,6,3,0,0,0,0,0,0,0,0,0,0,0	H5N6F3	HexNAc(6)Hex(5)dHex(3)	2484.9247	True
+380	G82053YT	Hex:3 HexNAc:5 dHex:2	3,5,2,0,0,0,0,0,0,0,0,0,0,0	H3N5F2	HexNAc(5)Hex(3)dHex(2)	1811.6818	True
+751	G47448YK	Hex:4 HexNAc:4 dHex:3	4,4,3,0,0,0,0,0,0,0,0,0,0,0	H4N4F3	HexNAc(4)Hex(4)dHex(3)	1916.7131	True
+453	G22625SJ	Hex:5 HexNAc:5 dHex:3	5,5,3,0,0,0,0,0,0,0,0,0,0,0	H5N5F3	HexNAc(5)Hex(5)dHex(3)	2281.8453	True
+180	G70110VK	Hex:5 HexNAc:7 dHex:3	5,7,3,0,0,0,0,0,0,0,0,0,0,0	H5N7F3	HexNAc(7)Hex(5)dHex(3)	2688.0041	True
+176	G93450DV	Hex:5 HexNAc:8 dHex:3	5,8,3,0,0,0,0,0,0,0,0,0,0,0	H5N8F3	HexNAc(8)Hex(5)dHex(3)	2891.0835	True
+152	G34558ED	Hex:4 HexNAc:6 dHex:3	4,6,3,0,0,0,0,0,0,0,0,0,0,0	H4N6F3	HexNAc(6)Hex(4)dHex(3)	2322.8719	True
+128	G12709VH	Hex:6 HexNAc:9 dHex:3	6,9,3,0,0,0,0,0,0,0,0,0,0,0	H6N9F3	HexNAc(9)Hex(6)dHex(3)	3256.2157	True
+475	G98748DG	Hex:7 HexNAc:9 dHex:4	7,9,4,0,0,0,0,0,0,0,0,0,0,0	H7N9F4	HexNAc(9)Hex(7)dHex(4)	3564.3264	True
+455	G98748DG	HexNAc:5 dHex:2	0,5,2,0,0,0,0,0,0,0,0,0,0,0	N5F2	HexNAc(5)dHex(2)	1325.5234	True
+162	G98748DG	HexNAc:5	0,5,0,0,0,0,0,0,0,0,0,0,0,0	N5	HexNAc(5)	1033.4076	True
+182	G98748DG	HexNAc:4 dHex:1	0,4,1,0,0,0,0,0,0,0,0,0,0,0	N4F1	HexNAc(4)dHex(1)	976.3861	True
+753	G98748DG	HexNAc:7 dHex:2	0,7,2,0,0,0,0,0,0,0,0,0,0,0	N7F2	HexNAc(7)dHex(2)	1731.6822	True
+511	G98748DG	HexNAc:5 dHex:1	0,5,1,0,0,0,0,0,0,0,0,0,0,0	N5F1	HexNAc(5)dHex(1)	1179.4655	True
+141	G64162JC	Hex:3 HexNAc:2 dHex:2	3,2,2,0,0,0,0,0,0,0,0,0,0,0	H3N2F2	HexNAc(2)Hex(3)dHex(2)	1202.4436	True
+668	G64162JC	Hex:3 dHex:2	3,0,2,0,0,0,0,0,0,0,0,0,0,0	H3F2	Hex(3)dHex(2)	796.2848	True
+467	G11787ET	Hex:2 HexNAc:1 dHex:1	2,1,1,0,0,0,0,0,0,0,0,0,0,0	H2N1F1	HexNAc(1)Hex(2)dHex(1)	691.2535	True
+492	G11787ET	Hex:2 HexNAc:1 dHex:2	2,1,2,0,0,0,0,0,0,0,0,0,0,0	H2N1F2	HexNAc(1)Hex(2)dHex(2)	837.3114	True
+476	G11787ET	Hex:2 dHex:2	2,0,2,0,0,0,0,0,0,0,0,0,0,0	H2F2	Hex(2)dHex(2)	634.232	True
+537	G11787ET	HexNAc:4	0,4,0,0,0,0,0,0,0,0,0,0,0,0	N4	HexNAc(4)	830.3282	True
+43	G11787ET	HexNAc:1 dHex:1	0,1,1,0,0,0,0,0,0,0,0,0,0,0	N1F1	HexNAc(1)dHex(1)	367.1479	True
+778	G11787ET	HexNAc:3 dHex:1 Other:1	0,3,1,0,0,0,0,0,0,0,0,0,0,1	N3F1X1	HexNAc(3)dHex(1)Other(1) % this composition contains  (not defined residue for Byonic)	901.354	True
+280	G11787ET	HexNAc:3 dHex:1	0,3,1,0,0,0,0,0,0,0,0,0,0,0	N3F1	HexNAc(3)dHex(1)	773.3067	True
+326	G11787ET	HexNAc:2 Su:1	0,2,0,0,0,0,1,0,0,0,0,0,0,0	N2s1	HexNAc(2)Sulfo(1)	504.1262	True
+148	G11787ET	Hex:1 HexNAc:3 Su:1	1,3,0,0,0,0,1,0,0,0,0,0,0,0	H1N3s1	HexNAc(3)Hex(1)Sulfo(1)	869.2584	True
+437	G11787ET	Hex:1 HexNAc:3 dHex:1 Su:1	1,3,1,0,0,0,1,0,0,0,0,0,0,0	H1N3F1s1	HexNAc(3)Hex(1)dHex(1)Sulfo(1)	1015.3163	True
+201	G11787ET	Hex:2 HexNAc:3 Su:1	2,3,0,0,0,0,1,0,0,0,0,0,0,0	H2N3s1	HexNAc(3)Hex(2)Sulfo(1)	1031.3112	True
+111	G11787ET	HexNAc:3 Su:1	0,3,0,0,0,0,1,0,0,0,0,0,0,0	N3s1	HexNAc(3)Sulfo(1)	707.2056	True
+379	G11787ET	HexNAc:1 Su:1	0,1,0,0,0,0,1,0,0,0,0,0,0,0	N1s1	HexNAc(1)Sulfo(1)	301.0468	True
+51	G27945LI	Hex:1 HexNAc:1 NeuAc:1 NeuGc:1	1,1,0,1,1,0,0,0,0,0,0,0,0,0	H1N1S1G1	HexNAc(1)Hex(1)NeuAc(1)NeuGc(1)	981.3285	True
+65	G27945LI	Hex:1 HexNAc:1 NeuGc:2	1,1,0,0,2,0,0,0,0,0,0,0,0,0	H1N1G2	HexNAc(1)Hex(1)NeuGc(2)	997.3234	True
+507	G14669DU	Hex:3 HexNAc:2	3,2,0,0,0,0,0,0,0,0,0,0,0,0	H3N2	HexNAc(2)Hex(3)	910.3278	True
+711	G65895WS	Hex:5 HexNAc:5 NeuAc:1 Su:3	5,5,0,1,0,0,3,0,0,0,0,0,0,0	H5N5S1s3	HexNAc(5)Hex(5)NeuAc(1)Sulfo(3)	2374.6374	True
+721	G35235JV	Hex:4 HexNAc:4 Su:2	4,4,0,0,0,0,2,0,0,0,0,0,0,0	H4N4s2	HexNAc(4)Hex(4)Sulfo(2)	1638.453	True
+407	G22390HK	Hex:6 HexNAc:6 NeuAc:1 Su:4	6,6,0,1,0,0,4,0,0,0,0,0,0,0	H6N6S1s4	HexNAc(6)Hex(6)NeuAc(1)Sulfo(4)	2819.7264	True
+266	G55388KB	Hex:5 HexNAc:5 Su:3	5,5,0,0,0,0,3,0,0,0,0,0,0,0	H5N5s3	HexNAc(5)Hex(5)Sulfo(3)	2083.542	True
+126	G64916YQ	Hex:4 HexNAc:4 NeuGc:1 Su:3	4,4,0,0,1,0,3,0,0,0,0,0,0,0	H4N4G1s3	HexNAc(4)Hex(4)NeuGc(1)Sulfo(3)	2025.5001	True
+532	G67362RV	Hex:4 HexNAc:4 NeuAc:1 Su:3	4,4,0,1,0,0,3,0,0,0,0,0,0,0	H4N4S1s3	HexNAc(4)Hex(4)NeuAc(1)Sulfo(3)	2009.5052	True
+849	G47910AZ	Hex:6 HexNAc:6 NeuGc:1 Su:3	6,6,0,0,1,0,3,0,0,0,0,0,0,0	H6N6G1s3	HexNAc(6)Hex(6)NeuGc(1)Sulfo(3)	2755.7645	True
+285	G47910AZ	Hex:3 HexNAc:3 NeuAc:1 Su:1	3,3,0,1,0,0,1,0,0,0,0,0,0,0	H3N3S1s1	HexNAc(3)Hex(3)NeuAc(1)Sulfo(1)	1484.4594	True
+650	G65803RU	Hex:5 HexNAc:5 NeuAc:1 Su:2	5,5,0,1,0,0,2,0,0,0,0,0,0,0	H5N5S1s2	HexNAc(5)Hex(5)NeuAc(1)Sulfo(2)	2294.6806	True
+101	G99125HS	Hex:4 HexNAc:4 NeuGc:1 Su:2	4,4,0,0,1,0,2,0,0,0,0,0,0,0	H4N4G1s2	HexNAc(4)Hex(4)NeuGc(1)Sulfo(2)	1945.5433	True
+715	G99125HS	Hex:3 HexNAc:3 Su:1	3,3,0,0,0,0,1,0,0,0,0,0,0,0	H3N3s1	HexNAc(3)Hex(3)Sulfo(1)	1193.364	True
+550	G05363BU	Hex:5 HexNAc:5 NeuGc:1 Su:3	5,5,0,0,1,0,3,0,0,0,0,0,0,0	H5N5G1s3	HexNAc(5)Hex(5)NeuGc(1)Sulfo(3)	2390.6323	True
+589	G84220KD	Hex:6 HexNAc:6 Su:4	6,6,0,0,0,0,4,0,0,0,0,0,0,0	H6N6s4	HexNAc(6)Hex(6)Sulfo(4)	2528.631	True
+168	G99127MU	Hex:6 HexNAc:6 NeuGc:1 Su:4	6,6,0,0,1,0,4,0,0,0,0,0,0,0	H6N6G1s4	HexNAc(6)Hex(6)NeuGc(1)Sulfo(4)	2835.7213	True
+135	G99127MU	Hex:2 HexNAc:2 NeuGc:1	2,2,0,0,1,0,0,0,0,0,0,0,0,0	H2N2G1	HexNAc(2)Hex(2)NeuGc(1)	1055.3653	True
+278	G31688JN	Hex:4 HexNAc:4 NeuAc:1 Su:2	4,4,0,1,0,0,2,0,0,0,0,0,0,0	H4N4S1s2	HexNAc(4)Hex(4)NeuAc(1)Sulfo(2)	1929.5484	True
+262	G31850HL	Hex:5 HexNAc:5 NeuGc:1 Su:2	5,5,0,0,1,0,2,0,0,0,0,0,0,0	H5N5G1s2	HexNAc(5)Hex(5)NeuGc(1)Sulfo(2)	2310.6755	True
+850	G47759KR	Hex:6 HexNAc:6 NeuAc:1 Su:3	6,6,0,1,0,0,3,0,0,0,0,0,0,0	H6N6S1s3	HexNAc(6)Hex(6)NeuAc(1)Sulfo(3)	2739.7696	True
+96	G47759KR	Hex:3 HexNAc:3 NeuGc:1 Su:1	3,3,0,0,1,0,1,0,0,0,0,0,0,0	H3N3G1s1	HexNAc(3)Hex(3)NeuGc(1)Sulfo(1)	1500.4543	True
+478	G47759KR	Hex:2 HexNAc:2 dHex:3 Kdn:1	2,2,3,0,0,0,0,0,1,0,0,0,0,0	H2N2F3K1	HexNAc(2)Hex(2)dHex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1436.5176	True
+321	G47759KR	Hex:1 HexNAc:1 dHex:4 Kdn:2	1,1,4,0,0,0,0,0,2,0,0,0,0,0	H1N1F4K2	HexNAc(1)Hex(1)dHex(4)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	1467.5122	True
+592	G47759KR	Hex:2 HexNAc:2 dHex:2 Kdn:1	2,2,2,0,0,0,0,0,1,0,0,0,0,0	H2N2F2K1	HexNAc(2)Hex(2)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1290.4597	True
+414	G47759KR	Hex:1 HexNAc:2 dHex:2 Kdn:1	1,2,2,0,0,0,0,0,1,0,0,0,0,0	H1N2F2K1	HexNAc(2)Hex(1)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1128.4069	True
+549	G47759KR	Hex:1 HexNAc:2 dHex:1 Kdn:1	1,2,1,0,0,0,0,0,1,0,0,0,0,0	H1N2F1K1	HexNAc(2)Hex(1)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	982.349	True
+2	G47759KR	HexNAc:1 Kdn:2	0,1,0,0,0,0,0,0,2,0,0,0,0,0	N1K2	HexNAc(1)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	721.2278	True
+307	G47759KR	Hex:2 HexNAc:1 Su:1 HexA:1	2,1,0,0,0,0,1,0,0,0,1,0,0,0	H2N1s1A1	HexNAc(1)Hex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	801.1845	True
+399	G47759KR	Hex:3 HexNAc:1 dHex:2 Su:1 HexA:1	3,1,2,0,0,0,1,0,0,0,1,0,0,0	H3N1F2s1A1	HexNAc(1)Hex(3)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1255.3531	True
+562	G47759KR	Hex:3 HexNAc:1 dHex:1 Su:1 HexA:1	3,1,1,0,0,0,1,0,0,0,1,0,0,0	H3N1F1s1A1	HexNAc(1)Hex(3)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1109.2952	True
+619	G47759KR	Hex:2 HexNAc:1 dHex:1 Su:1 HexA:1	2,1,1,0,0,0,1,0,0,0,1,0,0,0	H2N1F1s1A1	HexNAc(1)Hex(2)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	947.2424	True
+686	G47759KR	Hex:1 HexNAc:1 Su:1 Kdn:1	1,1,0,0,0,0,1,0,1,0,0,0,0,0	H1N1s1K1	HexNAc(1)Hex(1)Sulfo(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	713.1685	True
+514	G47759KR	Hex:2 HexNAc:2 dHex:2 Su:2	2,2,2,0,0,0,2,0,0,0,0,0,0,0	H2N2F2s2	HexNAc(2)Hex(2)dHex(2)Sulfo(2)	1200.3044	True
+12	G47759KR	Hex:3 HexNAc:3 NeuAc:2 Su:1	3,3,0,2,0,0,1,0,0,0,0,0,0,0	H3N3S2s1	HexNAc(3)Hex(3)NeuAc(2)Sulfo(1)	1775.5548	True
+771	G47759KR	Hex:2 HexNAc:3 NeuAc:2	2,3,0,2,0,0,0,0,0,0,0,0,0,0	H2N3S2	HexNAc(3)Hex(2)NeuAc(2)	1533.5452	True
+290	G47759KR	Hex:1 HexNAc:1 dHex:2 Kdn:1	1,1,2,0,0,0,0,0,1,0,0,0,0,0	H1N1F2K1	HexNAc(1)Hex(1)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	925.3275	True
+17	G47759KR	Hex:2 HexNAc:3 dHex:3 Kdn:1	2,3,3,0,0,0,0,0,1,0,0,0,0,0	H2N3F3K1	HexNAc(3)Hex(2)dHex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1639.597	True
+664	G47759KR	Hex:1 HexNAc:2 dHex:3 Kdn:1	1,2,3,0,0,0,0,0,1,0,0,0,0,0	H1N2F3K1	HexNAc(2)Hex(1)dHex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1274.4648	True
+657	G47759KR	Hex:2 HexNAc:4	2,4,0,0,0,0,0,0,0,0,0,0,0,0	H2N4	HexNAc(4)Hex(2)	1154.4338	True
+655	G47759KR	Hex:1 HexNAc:2 dHex:1 NeuAc:2	1,2,1,2,0,0,0,0,0,0,0,0,0,0	H1N2F1S2	HexNAc(2)Hex(1)dHex(1)NeuAc(2)	1314.4709	True
+543	G47759KR	Hex:1 HexNAc:2 dHex:1 NeuAc:1 Su:1	1,2,1,1,0,0,1,0,0,0,0,0,0,0	H1N2F1S1s1	HexNAc(2)Hex(1)dHex(1)NeuAc(1)Sulfo(1)	1103.3323	True
+685	G46524LG	Hex:4 HexNAc:4 dHex:2 NeuAc:1	4,4,2,1,0,0,0,0,0,0,0,0,0,0	H4N4F2S1	HexNAc(4)Hex(4)dHex(2)NeuAc(1)	2061.7506	True
+350	G46687AB	Hex:4 HexNAc:4 dHex:1	4,4,1,0,0,0,0,0,0,0,0,0,0,0	H4N4F1	HexNAc(4)Hex(4)dHex(1)	1624.5973	True
+547	G31916IQ	Hex:4 HexNAc:4 NeuAc:1	4,4,0,1,0,0,0,0,0,0,0,0,0,0	H4N4S1	HexNAc(4)Hex(4)NeuAc(1)	1769.6348	True
+337	G25278BX	Hex:4 HexNAc:4 dHex:3 NeuAc:1	4,4,3,1,0,0,0,0,0,0,0,0,0,0	H4N4F3S1	HexNAc(4)Hex(4)dHex(3)NeuAc(1)	2207.8085	True
+25	G25278BX	Hex:3 HexNAc:2 dHex:1 NeuGc:1	3,2,1,0,1,0,0,0,0,0,0,0,0,0	H3N2F1G1	HexNAc(2)Hex(3)dHex(1)NeuGc(1)	1363.476	True
+667	G25278BX	Hex:3 HexNAc:2 dHex:2 NeuGc:1	3,2,2,0,1,0,0,0,0,0,0,0,0,0	H3N2F2G1	HexNAc(2)Hex(3)dHex(2)NeuGc(1)	1509.5339	True
+426	G25278BX	Hex:3 HexNAc:3 dHex:2 NeuGc:1	3,3,2,0,1,0,0,0,0,0,0,0,0,0	H3N3F2G1	HexNAc(3)Hex(3)dHex(2)NeuGc(1)	1712.6133	True
+63	G15531AF	Hex:3 HexNAc:2 NeuAc:1	3,2,0,1,0,0,0,0,0,0,0,0,0,0	H3N2S1	HexNAc(2)Hex(3)NeuAc(1)	1201.4232	True
+110	G25451PN	Hex:5 HexNAc:4 dHex:3	5,4,3,0,0,0,0,0,0,0,0,0,0,0	H5N4F3	HexNAc(4)Hex(5)dHex(3)	2078.7659	True
+582	G25451PN	Hex:2 HexNAc:3 dHex:2 NeuGc:1	2,3,2,0,1,0,0,0,0,0,0,0,0,0	H2N3F2G1	HexNAc(3)Hex(2)dHex(2)NeuGc(1)	1550.5605	True
+332	G88779RV	Hex:3 HexNAc:2 dHex:1 NeuAc:1	3,2,1,1,0,0,0,0,0,0,0,0,0,0	H3N2F1S1	HexNAc(2)Hex(3)dHex(1)NeuAc(1)	1347.4811	True
+213	G74430RZ	Hex:4 HexNAc:4 dHex:2	4,4,2,0,0,0,0,0,0,0,0,0,0,0	H4N4F2	HexNAc(4)Hex(4)dHex(2)	1770.6552	True
+756	G74430RZ	Hex:3 HexNAc:3 dHex:2 NeuAc:1	3,3,2,1,0,0,0,0,0,0,0,0,0,0	H3N3F2S1	HexNAc(3)Hex(3)dHex(2)NeuAc(1)	1696.6184	True
+481	G74430RZ	Hex:2 HexNAc:2 dHex:2 NeuGc:1	2,2,2,0,1,0,0,0,0,0,0,0,0,0	H2N2F2G1	HexNAc(2)Hex(2)dHex(2)NeuGc(1)	1347.4811	True
+796	G74430RZ	Hex:2 HexNAc:1 Pent:1 HexA:2 Other:1	2,1,0,0,0,1,0,0,0,0,2,0,0,1	H2N1P1A2X1	HexNAc(1)Hex(2)Pent(1)HexA(2)Other(1) % this composition contains HexA (not defined residue for Byonic)	1011.2915	True
+797	G74430RZ	Hex:2 HexNAc:1 Pent:1 Su:1 HexA:2 Other:1	2,1,0,0,0,1,1,0,0,0,2,0,0,1	H2N1P1s1A2X1	HexNAc(1)Hex(2)Pent(1)Sulfo(1)HexA(2)Other(1) % this composition contains HexA (not defined residue for Byonic)	1091.2483	True
+216	G73361JJ	Hex:4 HexNAc:2 dHex:2	4,2,2,0,0,0,0,0,0,0,0,0,0,0	H4N2F2	HexNAc(2)Hex(4)dHex(2)	1364.4964	True
+726	G73361JJ	Hex:1 HexNAc:1 dHex:1 NeuGc:1	1,1,1,0,1,0,0,0,0,0,0,0,0,0	H1N1F1G1	HexNAc(1)Hex(1)dHex(1)NeuGc(1)	836.291	True
+555	G73361JJ	HexNAc:1 NeuGc:1	0,1,0,0,1,0,0,0,0,0,0,0,0,0	N1G1	HexNAc(1)NeuGc(1)	528.1803	True
+330	G47518TP	Hex:6 HexNAc:5 NeuAc:3	6,5,0,3,0,0,0,0,0,0,0,0,0,0	H6N5S3	HexNAc(5)Hex(6)NeuAc(3)	2879.0106	True
+627	G15169WU	Hex:6 HexNAc:5 dHex:1 NeuAc:3	6,5,1,3,0,0,0,0,0,0,0,0,0,0	H6N5F1S3	HexNAc(5)Hex(6)dHex(1)NeuAc(3)	3025.0685	True
+538	G10256JP	Hex:3 HexNAc:5 dHex:1	3,5,1,0,0,0,0,0,0,0,0,0,0,0	H3N5F1	HexNAc(5)Hex(3)dHex(1)	1665.6239	True
+37	G70418MS	Hex:4 HexNAc:5 dHex:2	4,5,2,0,0,0,0,0,0,0,0,0,0,0	H4N5F2	HexNAc(5)Hex(4)dHex(2)	1973.7346	True
+378	G70418MS	Hex:1 HexNAc:1 dHex:1 NeuAc:1	1,1,1,1,0,0,0,0,0,0,0,0,0,0	H1N1F1S1	HexNAc(1)Hex(1)dHex(1)NeuAc(1)	820.2961	True
+177	G70418MS	Hex:2 HexNAc:4 dHex:1 NeuAc:1	2,4,1,1,0,0,0,0,0,0,0,0,0,0	H2N4F1S1	HexNAc(4)Hex(2)dHex(1)NeuAc(1)	1591.5871	True
+788	G70418MS	Hex:2 Other:1	2,0,0,0,0,0,0,0,0,0,0,0,0,1	H2X1	Hex(2)Other(1) % this composition contains  (not defined residue for Byonic)	568.2115	True
+254	G70418MS	HexNAc:2 NeuGc:1	0,2,0,0,1,0,0,0,0,0,0,0,0,0	N2G1	HexNAc(2)NeuGc(1)	731.2597	True
+229	G70418MS	Hex:1 HexNAc:2 NeuGc:1	1,2,0,0,1,0,0,0,0,0,0,0,0,0	H1N2G1	HexNAc(2)Hex(1)NeuGc(1)	893.3125	True
+360	G70418MS	Hex:2 HexNAc:3 NeuGc:1	2,3,0,0,1,0,0,0,0,0,0,0,0,0	H2N3G1	HexNAc(3)Hex(2)NeuGc(1)	1258.4447	True
+755	G70418MS	Hex:2 HexNAc:3 NeuGc:2	2,3,0,0,2,0,0,0,0,0,0,0,0,0	H2N3G2	HexNAc(3)Hex(2)NeuGc(2)	1565.535	True
+85	G70418MS	HexNAc:1 NeuGc:2	0,1,0,0,2,0,0,0,0,0,0,0,0,0	N1G2	HexNAc(1)NeuGc(2)	835.2706	True
+754	G70418MS	Hex:2 HexNAc:1 NeuGc:4	2,1,0,0,4,0,0,0,0,0,0,0,0,0	H2N1G4	HexNAc(1)Hex(2)NeuGc(4)	1773.5568	True
+761	G70418MS	Hex:2 HexNAc:3 NeuAc:1 NeuGc:1	2,3,0,1,1,0,0,0,0,0,0,0,0,0	H2N3S1G1	HexNAc(3)Hex(2)NeuAc(1)NeuGc(1)	1549.5401	True
+279	G70418MS	Hex:2 HexNAc:2 dHex:1 NeuGc:4	2,2,1,0,4,0,0,0,0,0,0,0,0,0	H2N2F1G4	HexNAc(2)Hex(2)dHex(1)NeuGc(4)	2122.6941	True
+542	G70418MS	Hex:2 HexNAc:3 NeuGc:4	2,3,0,0,4,0,0,0,0,0,0,0,0,0	H2N3G4	HexNAc(3)Hex(2)NeuGc(4)	2179.7156	True
+264	G70418MS	Hex:1 HexNAc:1 NeuGc:3	1,1,0,0,3,0,0,0,0,0,0,0,0,0	H1N1G3	HexNAc(1)Hex(1)NeuGc(3)	1304.4137	True
+687	G70418MS	Hex:2 HexNAc:1 NeuGc:3	2,1,0,0,3,0,0,0,0,0,0,0,0,0	H2N1G3	HexNAc(1)Hex(2)NeuGc(3)	1466.4665	True
+614	G70418MS	Hex:2 HexNAc:2 dHex:1 NeuGc:2	2,2,1,0,2,0,0,0,0,0,0,0,0,0	H2N2F1G2	HexNAc(2)Hex(2)dHex(1)NeuGc(2)	1508.5135	True
+396	G70418MS	Hex:2 HexNAc:3 NeuGc:3	2,3,0,0,3,0,0,0,0,0,0,0,0,0	H2N3G3	HexNAc(3)Hex(2)NeuGc(3)	1872.6253	True
+93	G47256GA	Hex:2 HexNAc:1 NeuGc:1	2,1,0,0,1,0,0,0,0,0,0,0,0,0	H2N1G1	HexNAc(1)Hex(2)NeuGc(1)	852.2859	True
+536	G47256GA	Hex:2 HexNAc:1 NeuGc:2	2,1,0,0,2,0,0,0,0,0,0,0,0,0	H2N1G2	HexNAc(1)Hex(2)NeuGc(2)	1159.3762	True
+681	G47256GA	Hex:2 HexNAc:2 dHex:2 NeuAc:1	2,2,2,1,0,0,0,0,0,0,0,0,0,0	H2N2F2S1	HexNAc(2)Hex(2)dHex(2)NeuAc(1)	1331.4862	True
+188	G21153FA	Hex:8 HexNAc:5 dHex:2	8,5,2,0,0,0,0,0,0,0,0,0,0,0	H8N5F2	HexNAc(5)Hex(8)dHex(2)	2621.9458	True
+244	G40142JY	Hex:8 HexNAc:5 dHex:3	8,5,3,0,0,0,0,0,0,0,0,0,0,0	H8N5F3	HexNAc(5)Hex(8)dHex(3)	2768.0037	True
+366	G63760GT	Hex:8 HexNAc:5 dHex:2 NeuAc:1	8,5,2,1,0,0,0,0,0,0,0,0,0,0	H8N5F2S1	HexNAc(5)Hex(8)dHex(2)NeuAc(1)	2913.0412	True
+158	G60232GL	Hex:5 HexNAc:1	5,1,0,0,0,0,0,0,0,0,0,0,0,0	H5N1	HexNAc(1)Hex(5)	1031.354	True
+420	G60232GL	Hex:2 dHex:1	2,0,1,0,0,0,0,0,0,0,0,0,0,0	H2F1	Hex(2)dHex(1)	488.1741	True
+680	G60232GL	Hex:2 dHex:2 HexA:1	2,0,2,0,0,0,0,0,0,0,1,0,0,0	H2F2A1	Hex(2)dHex(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	810.2641	True
+183	G60232GL	Hex:2 dHex:1 HexA:1	2,0,1,0,0,0,0,0,0,0,1,0,0,0	H2F1A1	Hex(2)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	664.2062	True
+545	G91331SN	Hex:4 HexNAc:2 NeuAc:1	4,2,0,1,0,0,0,0,0,0,0,0,0,0	H4N2S1	HexNAc(2)Hex(4)NeuAc(1)	1363.476	True
+32	G72291OX	Hex:4 HexNAc:3 NeuAc:1	4,3,0,1,0,0,0,0,0,0,0,0,0,0	H4N3S1	HexNAc(3)Hex(4)NeuAc(1)	1566.5554	True
+192	G50757KG	Hex:3 HexNAc:6 dHex:1	3,6,1,0,0,0,0,0,0,0,0,0,0,0	H3N6F1	HexNAc(6)Hex(3)dHex(1)	1868.7033	True
+66	G54567CI	Hex:3 HexNAc:5 NeuAc:2	3,5,0,2,0,0,0,0,0,0,0,0,0,0	H3N5S2	HexNAc(5)Hex(3)NeuAc(2)	2101.7568	True
+551	G14260UH	Hex:3 HexNAc:6	3,6,0,0,0,0,0,0,0,0,0,0,0,0	H3N6	HexNAc(6)Hex(3)	1722.6454	True
+329	G14260UH	Hex:2 HexNAc:5	2,5,0,0,0,0,0,0,0,0,0,0,0,0	H2N5	HexNAc(5)Hex(2)	1357.5132	True
+540	G14260UH	Hex:2 HexNAc:4 NeuAc:1	2,4,0,1,0,0,0,0,0,0,0,0,0,0	H2N4S1	HexNAc(4)Hex(2)NeuAc(1)	1445.5292	True
+84	G85228QD	Hex:3 HexNAc:5 dHex:1 NeuAc:1	3,5,1,1,0,0,0,0,0,0,0,0,0,0	H3N5F1S1	HexNAc(5)Hex(3)dHex(1)NeuAc(1)	1956.7193	True
+497	G85228QD	Hex:2 HexNAc:4 dHex:1 NeuAc:2	2,4,1,2,0,0,0,0,0,0,0,0,0,0	H2N4F1S2	HexNAc(4)Hex(2)dHex(1)NeuAc(2)	1882.6825	True
+749	G31936TA	Hex:3 HexNAc:5	3,5,0,0,0,0,0,0,0,0,0,0,0,0	H3N5	HexNAc(5)Hex(3)	1519.566	True
+624	G26915XM	Hex:3 HexNAc:6 dHex:1 NeuAc:2	3,6,1,2,0,0,0,0,0,0,0,0,0,0	H3N6F1S2	HexNAc(6)Hex(3)dHex(1)NeuAc(2)	2450.8941	True
+784	G26915XM	Hex:1 HexNAc:1 NeuAc:2 Ac:1	1,1,0,2,0,0,0,0,0,0,0,0,1,0	H1N1S2a1	HexNAc(1)Hex(1)NeuAc(2)Acetyl(1)	1007.3442	True
+785	G26915XM	Hex:1 HexNAc:1 NeuAc:2 Ac:2	1,1,0,2,0,0,0,0,0,0,0,0,2,0	H1N1S2a2	HexNAc(1)Hex(1)NeuAc(2)Acetyl(2)	1049.3548	True
+782	G26915XM	Hex:1 HexNAc:1 NeuAc:1 Ac:1	1,1,0,1,0,0,0,0,0,0,0,0,1,0	H1N1S1a1	HexNAc(1)Hex(1)NeuAc(1)Acetyl(1)	716.2488	True
+315	G26915XM	Hex:1 HexNAc:1 NeuGc:4	1,1,0,0,4,0,0,0,0,0,0,0,0,0	H1N1G4	HexNAc(1)Hex(1)NeuGc(4)	1611.504	True
+45	G06330RB	Hex:5 HexNAc:4 dHex:1 NeuAc:1 NeuGc:1	5,4,1,1,1,0,0,0,0,0,0,0,0,0	H5N4F1S1G1	HexNAc(4)Hex(5)dHex(1)NeuAc(1)NeuGc(1)	2384.8358	True
+712	G48414YA	Hex:5 HexNAc:4 NeuAc:2	5,4,0,2,0,0,0,0,0,0,0,0,0,0	H5N4S2	HexNAc(4)Hex(5)NeuAc(2)	2222.783	True
+311	G12579WK	Hex:5 HexNAc:4 NeuAc:1 NeuGc:1	5,4,0,1,1,0,0,0,0,0,0,0,0,0	H5N4S1G1	HexNAc(4)Hex(5)NeuAc(1)NeuGc(1)	2238.7779	True
+676	G84452RH	Hex:5 HexNAc:4 dHex:1 NeuAc:1	5,4,1,1,0,0,0,0,0,0,0,0,0,0	H5N4F1S1	HexNAc(4)Hex(5)dHex(1)NeuAc(1)	2077.7455	True
+70	G15488CF	Hex:5 HexNAc:4 dHex:1 NeuGc:2	5,4,1,0,2,0,0,0,0,0,0,0,0,0	H5N4F1G2	HexNAc(4)Hex(5)dHex(1)NeuGc(2)	2400.8307	True
+313	G15569GG	Hex:5 HexNAc:4 NeuGc:2	5,4,0,0,2,0,0,0,0,0,0,0,0,0	H5N4G2	HexNAc(4)Hex(5)NeuGc(2)	2254.7728	True
+735	G32259BI	Hex:5 HexNAc:4 NeuGc:1	5,4,0,0,1,0,0,0,0,0,0,0,0,0	H5N4G1	HexNAc(4)Hex(5)NeuGc(1)	1947.6825	True
+448	G22310AV	Hex:5 HexNAc:4 dHex:1 NeuAc:2	5,4,1,2,0,0,0,0,0,0,0,0,0,0	H5N4F1S2	HexNAc(4)Hex(5)dHex(1)NeuAc(2)	2368.8409	True
+393	G06356OH	Hex:5 HexNAc:4 NeuAc:1	5,4,0,1,0,0,0,0,0,0,0,0,0,0	H5N4S1	HexNAc(4)Hex(5)NeuAc(1)	1931.6876	True
+471	G07075ND	Hex:5 HexNAc:4 dHex:1 NeuGc:1	5,4,1,0,1,0,0,0,0,0,0,0,0,0	H5N4F1G1	HexNAc(4)Hex(5)dHex(1)NeuGc(1)	2093.7404	True
+173	G14994KB	Hex:4 HexNAc:4 dHex:1 NeuAc:1	4,4,1,1,0,0,0,0,0,0,0,0,0,0	H4N4F1S1	HexNAc(4)Hex(4)dHex(1)NeuAc(1)	1915.6927	True
+743	G14994KB	HexNAc:2 NeuAc:1 Su:1	0,2,0,1,0,0,1,0,0,0,0,0,0,0	N2S1s1	HexNAc(2)NeuAc(1)Sulfo(1)	795.2216	True
+387	G14994KB	Hex:2 HexNAc:3 dHex:1 NeuAc:1 Su:1	2,3,1,1,0,0,1,0,0,0,0,0,0,0	H2N3F1S1s1	HexNAc(3)Hex(2)dHex(1)NeuAc(1)Sulfo(1)	1468.4645	True
+107	G14994KB	Hex:2 HexNAc:3 NeuAc:1 Su:1	2,3,0,1,0,0,1,0,0,0,0,0,0,0	H2N3S1s1	HexNAc(3)Hex(2)NeuAc(1)Sulfo(1)	1322.4066	True
+612	G14994KB	Hex:1 HexNAc:3 dHex:1 NeuAc:1 Su:1	1,3,1,1,0,0,1,0,0,0,0,0,0,0	H1N3F1S1s1	HexNAc(3)Hex(1)dHex(1)NeuAc(1)Sulfo(1)	1306.4117	True
+616	G14994KB	Hex:1 HexNAc:1 NeuAc:1 Su:1	1,1,0,1,0,0,1,0,0,0,0,0,0,0	H1N1S1s1	HexNAc(1)Hex(1)NeuAc(1)Sulfo(1)	754.195	True
+766	G14994KB	Hex:2 HexNAc:2 dHex:1 NeuGc:6	2,2,1,0,6,0,0,0,0,0,0,0,0,0	H2N2F1G6	HexNAc(2)Hex(2)dHex(1)NeuGc(6)	2736.8747	True
+524	G14994KB	Hex:2 HexNAc:2 dHex:1 NeuGc:5	2,2,1,0,5,0,0,0,0,0,0,0,0,0	H2N2F1G5	HexNAc(2)Hex(2)dHex(1)NeuGc(5)	2429.7844	True
+291	G14994KB	Hex:2 HexNAc:2 dHex:1 NeuGc:3	2,2,1,0,3,0,0,0,0,0,0,0,0,0	H2N2F1G3	HexNAc(2)Hex(2)dHex(1)NeuGc(3)	1815.6038	True
+441	G14994KB	Hex:1 HexNAc:1 NeuGc:5	1,1,0,0,5,0,0,0,0,0,0,0,0,0	H1N1G5	HexNAc(1)Hex(1)NeuGc(5)	1918.5943	True
+276	G49644CL	Hex:2 HexNAc:1 NeuAc:1	2,1,0,1,0,0,0,0,0,0,0,0,0,0	H2N1S1	HexNAc(1)Hex(2)NeuAc(1)	836.291	True
+473	G08158TI	Hex:4 dHex:2	4,0,2,0,0,0,0,0,0,0,0,0,0,0	H4F2	Hex(4)dHex(2)	958.3376	True
+119	G08158TI	Hex:1 HexNAc:2 HexA:1	1,2,0,0,0,0,0,0,0,0,1,0,0,0	H1N2A1	HexNAc(2)Hex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	762.2543	True
+48	G08158TI	Hex:1 HexNAc:1 HexA:1	1,1,0,0,0,0,0,0,0,0,1,0,0,0	H1N1A1	HexNAc(1)Hex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	559.1749	True
+57	G08158TI	Hex:1 HexNAc:3 dHex:1 HexA:1	1,3,1,0,0,0,0,0,0,0,1,0,0,0	H1N3F1A1	HexNAc(3)Hex(1)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1111.3916	True
+44	G08158TI	Hex:2 HexNAc:5 dHex:2	2,5,2,0,0,0,0,0,0,0,0,0,0,0	H2N5F2	HexNAc(5)Hex(2)dHex(2)	1649.629	True
+297	G08158TI	Hex:1 HexNAc:3 HexA:1	1,3,0,0,0,0,0,0,0,0,1,0,0,0	H1N3A1	HexNAc(3)Hex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	965.3337	True
+496	G08158TI	Hex:1 HexNAc:2 NeuAc:2 Su:1	1,2,0,2,0,0,1,0,0,0,0,0,0,0	H1N2S2s1	HexNAc(2)Hex(1)NeuAc(2)Sulfo(1)	1248.3698	True
+175	G13661VV	Hex:4 HexNAc:2 dHex:1 NeuAc:1	4,2,1,1,0,0,0,0,0,0,0,0,0,0	H4N2F1S1	HexNAc(2)Hex(4)dHex(1)NeuAc(1)	1509.5339	True
+345	G00406II	Hex:4 HexNAc:2 dHex:1	4,2,1,0,0,0,0,0,0,0,0,0,0,0	H4N2F1	HexNAc(2)Hex(4)dHex(1)	1218.4385	True
+600	G65092SV	Hex:6 HexNAc:4	6,4,0,0,0,0,0,0,0,0,0,0,0,0	H6N4	HexNAc(4)Hex(6)	1802.645	True
+452	G23453IV	Hex:4 HexNAc:3	4,3,0,0,0,0,0,0,0,0,0,0,0,0	H4N3	HexNAc(3)Hex(4)	1275.46	True
+71	G23453IV	Hex:2 HexNAc:3 dHex:2 Su:1	2,3,2,0,0,0,1,0,0,0,0,0,0,0	H2N3F2s1	HexNAc(3)Hex(2)dHex(2)Sulfo(1)	1323.427	True
+737	G23453IV	Hex:1 HexNAc:3 NeuGc:1	1,3,0,0,1,0,0,0,0,0,0,0,0,0	H1N3G1	HexNAc(3)Hex(1)NeuGc(1)	1096.3919	True
+500	G23453IV	Hex:3 HexNAc:4	3,4,0,0,0,0,0,0,0,0,0,0,0,0	H3N4	HexNAc(4)Hex(3)	1316.4866	True
+401	G36447PT	Hex:3 HexNAc:4 NeuAc:3	3,4,0,3,0,0,0,0,0,0,0,0,0,0	H3N4S3	HexNAc(4)Hex(3)NeuAc(3)	2189.7728	True
+552	G36447PT	Hex:2 HexNAc:3 NeuAc:3	2,3,0,3,0,0,0,0,0,0,0,0,0,0	H2N3S3	HexNAc(3)Hex(2)NeuAc(3)	1824.6406	True
+719	G36447PT	Hex:1 HexNAc:3 NeuAc:2	1,3,0,2,0,0,0,0,0,0,0,0,0,0	H1N3S2	HexNAc(3)Hex(1)NeuAc(2)	1371.4924	True
+770	G36447PT	Hex:3 HexNAc:3 dHex:3 NeuAc:1	3,3,3,1,0,0,0,0,0,0,0,0,0,0	H3N3F3S1	HexNAc(3)Hex(3)dHex(3)NeuAc(1)	1842.6763	True
+117	G36447PT	Hex:1 NeuAc:1	1,0,0,1,0,0,0,0,0,0,0,0,0,0	H1S1	Hex(1)NeuAc(1)	471.1588	True
+234	G99375FM	Hex:3	3,0,0,0,0,0,0,0,0,0,0,0,0,0	H3	Hex(3)	504.169	True
+395	G81263BG	Hex:6 HexNAc:5 dHex:1 NeuAc:1	6,5,1,1,0,0,0,0,0,0,0,0,0,0	H6N5F1S1	HexNAc(5)Hex(6)dHex(1)NeuAc(1)	2442.8777	True
+205	G23863VK	Hex:5 HexNAc:4 dHex:1	5,4,1,0,0,0,0,0,0,0,0,0,0,0	H5N4F1	HexNAc(4)Hex(5)dHex(1)	1786.6501	True
+583	G72797UR	Hex:6 HexNAc:5 dHex:1	6,5,1,0,0,0,0,0,0,0,0,0,0,0	H6N5F1	HexNAc(5)Hex(6)dHex(1)	2151.7823	True
+127	G11629QQ	Hex:6 HexNAc:5 dHex:1 NeuAc:2	6,5,1,2,0,0,0,0,0,0,0,0,0,0	H6N5F1S2	HexNAc(5)Hex(6)dHex(1)NeuAc(2)	2733.9731	True
+678	G91473PK	Hex:5 HexNAc:5 dHex:1 NeuAc:2	5,5,1,2,0,0,0,0,0,0,0,0,0,0	H5N5F1S2	HexNAc(5)Hex(5)dHex(1)NeuAc(2)	2571.9203	True
+439	G02030ZB	Hex:5 HexNAc:5 dHex:1 NeuAc:1	5,5,1,1,0,0,0,0,0,0,0,0,0,0	H5N5F1S1	HexNAc(5)Hex(5)dHex(1)NeuAc(1)	2280.8249	True
+35	G91636VS	Hex:5 HexNAc:5 dHex:1	5,5,1,0,0,0,0,0,0,0,0,0,0,0	H5N5F1	HexNAc(5)Hex(5)dHex(1)	1989.7295	True
+597	G91636VS	dHex:1	0,0,1,0,0,0,0,0,0,0,0,0,0,0	F1	dHex(1)	164.0685	True
+445	G91636VS	Hex:3 HexNAc:3 dHex:1 Su:1	3,3,1,0,0,0,1,0,0,0,0,0,0,0	H3N3F1s1	HexNAc(3)Hex(3)dHex(1)Sulfo(1)	1339.4219	True
+900	G91636VS	Hex:29 dHex:31 Me:1	29,0,31,0,0,0,0,0,0,0,0,1,0,0	H29F31m1	Hex(29)dHex(31)Me(1) % this composition contains Me (not defined residue for Byonic)	9259.3524	True
+899	G91636VS	Hex:28 dHex:30 Me:1	28,0,30,0,0,0,0,0,0,0,0,1,0,0	H28F30m1	Hex(28)dHex(30)Me(1) % this composition contains Me (not defined residue for Byonic)	8951.2417	True
+10	G78790NZ	Hex:6 HexNAc:6	6,6,0,0,0,0,0,0,0,0,0,0,0,0	H6N6	HexNAc(6)Hex(6)	2208.8038	True
+277	G79568CQ	Hex:5 HexNAc:5	5,5,0,0,0,0,0,0,0,0,0,0,0,0	H5N5	HexNAc(5)Hex(5)	1843.6716	True
+499	G79568CQ	Hex:1 NeuGc:1	1,0,0,0,1,0,0,0,0,0,0,0,0,0	H1G1	Hex(1)NeuGc(1)	487.1537	True
+143	G57173NZ	Hex:5 HexNAc:4 NeuAc:4	5,4,0,4,0,0,0,0,0,0,0,0,0,0	H5N4S4	HexNAc(4)Hex(5)NeuAc(4)	2804.9738	True
+60	G28916LJ	Hex:5 HexNAc:4 NeuAc:3	5,4,0,3,0,0,0,0,0,0,0,0,0,0	H5N4S3	HexNAc(4)Hex(5)NeuAc(3)	2513.8784	True
+586	G28916LJ	Hex:1 dHex:1	1,0,1,0,0,0,0,0,0,0,0,0,0,0	H1F1	Hex(1)dHex(1)	326.1213	True
+91	G28916LJ	Hex:1 Pent:1	1,0,0,0,0,1,0,0,0,0,0,0,0,0	H1P1	Hex(1)Pent(1)	312.1057	True
+147	G28916LJ	Hex:1 Pent:2	1,0,0,0,0,2,0,0,0,0,0,0,0,0	H1P2	Hex(1)Pent(2)	444.148	True
+776	G28916LJ	HexNAc:1 Ph:1	0,1,0,0,0,0,0,1,0,0,0,0,0,0	N1p1	HexNAc(1)Phospho(1)	301.0563	True
+649	G70101JE	Hex:9 HexNAc:2	9,2,0,0,0,0,0,0,0,0,0,0,0,0	H9N2	HexNAc(2)Hex(9)	1882.6446	True
+275	G70422GF	Hex:4 HexNAc:6 NeuAc:5	4,6,0,5,0,0,0,0,0,0,0,0,0,0	H4N6S5	HexNAc(6)Hex(4)NeuAc(5)	3340.1752	True
+633	G62402DP	Hex:3 HexNAc:5 NeuAc:4	3,5,0,4,0,0,0,0,0,0,0,0,0,0	H3N5S4	HexNAc(5)Hex(3)NeuAc(4)	2683.9476	True
+408	G08486KQ	Hex:3 HexNAc:5 NeuAc:5	3,5,0,5,0,0,0,0,0,0,0,0,0,0	H3N5S5	HexNAc(5)Hex(3)NeuAc(5)	2975.043	True
+602	G08486KQ	Hex:2 HexNAc:4 NeuAc:3	2,4,0,3,0,0,0,0,0,0,0,0,0,0	H2N4S3	HexNAc(4)Hex(2)NeuAc(3)	2027.72	True
+744	G08486KQ	Hex:2 HexNAc:4 NeuAc:4	2,4,0,4,0,0,0,0,0,0,0,0,0,0	H2N4S4	HexNAc(4)Hex(2)NeuAc(4)	2318.8154	True
+1374	G08486KQ	Hex:10 Ph:2	10,0,0,0,0,0,0,2,0,0,0,0,0,0	H10p2	Hex(10)Phospho(2)	1798.4712	True
+132	G69791DF	Hex:4	4,0,0,0,0,0,0,0,0,0,0,0,0,0	H4	Hex(4)	666.2218	True
+1376	G69791DF	Hex:6 Ph:2	6,0,0,0,0,0,0,2,0,0,0,0,0,0	H6p2	Hex(6)Phospho(2)	1150.26	True
+184	G19275UG	Hex:6	6,0,0,0,0,0,0,0,0,0,0,0,0,0	H6	Hex(6)	990.3274	True
+1377	G19275UG	Hex:7 Ph:2	7,0,0,0,0,0,0,2,0,0,0,0,0,0	H7p2	Hex(7)Phospho(2)	1312.3128	True
+1378	G19275UG	Hex:8 Ph:2	8,0,0,0,0,0,0,2,0,0,0,0,0,0	H8p2	Hex(8)Phospho(2)	1474.3656	True
+780	G19275UG	Hex:1 Ph:1	1,0,0,0,0,0,0,1,0,0,0,0,0,0	H1p1	Hex(1)Phospho(1)	260.0297	True
+1379	G19275UG	Hex:5 Ph:2	5,0,0,0,0,0,0,2,0,0,0,0,0,0	H5p2	Hex(5)Phospho(2)	988.2072	True
+1386	G19275UG	Hex:11 Ph:2	11,0,0,0,0,0,0,2,0,0,0,0,0,0	H11p2	Hex(11)Phospho(2)	1960.524	True
+732	G12733WO	Hex:5	5,0,0,0,0,0,0,0,0,0,0,0,0,0	H5	Hex(5)	828.2746	True
+1373	G12733WO	Hex:9 Ph:2	9,0,0,0,0,0,0,2,0,0,0,0,0,0	H9p2	Hex(9)Phospho(2)	1636.4184	True
+1372	G12733WO	Hex:12 Ph:2	12,0,0,0,0,0,0,2,0,0,0,0,0,0	H12p2	Hex(12)Phospho(2)	2122.5768	True
+255	G17756LB	Hex:2 NeuAc:1	2,0,0,1,0,0,0,0,0,0,0,0,0,0	H2S1	Hex(2)NeuAc(1)	633.2116	True
+556	G17756LB	Hex:1 NeuAc:1 Pent:1	1,0,0,1,0,1,0,0,0,0,0,0,0,0	H1S1P1	Hex(1)NeuAc(1)Pent(1)	603.2011	True
+429	G16136DL	Hex:7 HexNAc:7 dHex:4	7,7,4,0,0,0,0,0,0,0,0,0,0,0	H7N7F4	HexNAc(7)Hex(7)dHex(4)	3158.1676	True
+903	G16136DL	Hex:63 HexNAc:65 dHex:31 Su:60	63,65,31,0,0,0,60,0,0,0,0,0,0,0	H63N65F31s60	HexNAc(65)Hex(63)dHex(31)Sulfo(60)	32752.7009	True
+642	G16136DL	HexA:1	0,0,0,0,0,0,0,0,0,0,1,0,0,0	A1	HexA(1) % this composition contains HexA (not defined residue for Byonic)	194.0427	True
+52	G04045FF	Pent:1	0,0,0,0,0,1,0,0,0,0,0,0,0,0	P1	Pent(1)	150.0529	True
+569	G05897GU	Hex:3 HexNAc:1 dHex:1	3,1,1,0,0,0,0,0,0,0,0,0,0,0	H3N1F1	HexNAc(1)Hex(3)dHex(1)	853.3063	True
+640	G05897GU	Hex:1 HexA:1	1,0,0,0,0,0,0,0,0,0,1,0,0,0	H1A1	Hex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	356.0955	True
+1	G05897GU	Hex:2 HexNAc:2 dHex:1 Pent:1	2,2,1,0,0,1,0,0,0,0,0,0,0,0	H2N2F1P1	HexNAc(2)Hex(2)dHex(1)Pent(1)	1026.3752	True
+464	G05897GU	Hex:1 HexNAc:2 dHex:1 Pent:1	1,2,1,0,0,1,0,0,0,0,0,0,0,0	H1N2F1P1	HexNAc(2)Hex(1)dHex(1)Pent(1)	864.3224	True
+704	G05897GU	Hex:1 HexNAc:2 Pent:1	1,2,0,0,0,1,0,0,0,0,0,0,0,0	H1N2P1	HexNAc(2)Hex(1)Pent(1)	718.2645	True
+457	G05897GU	Hex:3 HexNAc:2 dHex:1 Pent:1	3,2,1,0,0,1,0,0,0,0,0,0,0,0	H3N2F1P1	HexNAc(2)Hex(3)dHex(1)Pent(1)	1188.428	True
+451	G05897GU	Hex:4 HexNAc:3 dHex:2 Pent:1	4,3,2,0,0,1,0,0,0,0,0,0,0,0	H4N3F2P1	HexNAc(3)Hex(4)dHex(2)Pent(1)	1699.6181	True
+531	G05897GU	Hex:5 HexNAc:4 dHex:3 Pent:1	5,4,3,0,0,1,0,0,0,0,0,0,0,0	H5N4F3P1	HexNAc(4)Hex(5)dHex(3)Pent(1)	2210.8082	True
+688	G82592ZH	Hex:3 HexNAc:6 dHex:2	3,6,2,0,0,0,0,0,0,0,0,0,0,0	H3N6F2	HexNAc(6)Hex(3)dHex(2)	2014.7612	True
+142	G82592ZH	Hex:3 HexNAc:2 Pent:1	3,2,0,0,0,1,0,0,0,0,0,0,0,0	H3N2P1	HexNAc(2)Hex(3)Pent(1)	1042.3701	True
+74	G82592ZH	Hex:3 HexNAc:3 dHex:1 Pent:1	3,3,1,0,0,1,0,0,0,0,0,0,0,0	H3N3F1P1	HexNAc(3)Hex(3)dHex(1)Pent(1)	1391.5074	True
+225	G82592ZH	Hex:2 HexNAc:2 Pent:1	2,2,0,0,0,1,0,0,0,0,0,0,0,0	H2N2P1	HexNAc(2)Hex(2)Pent(1)	880.3173	True
+710	G82592ZH	Hex:5 HexNAc:3 Pent:1	5,3,0,0,0,1,0,0,0,0,0,0,0,0	H5N3P1	HexNAc(3)Hex(5)Pent(1)	1569.5551	True
+358	G82592ZH	Hex:3 HexNAc:3 Pent:1	3,3,0,0,0,1,0,0,0,0,0,0,0,0	H3N3P1	HexNAc(3)Hex(3)Pent(1)	1245.4495	True
+159	G82592ZH	Hex:4 HexNAc:3 Pent:1	4,3,0,0,0,1,0,0,0,0,0,0,0,0	H4N3P1	HexNAc(3)Hex(4)Pent(1)	1407.5023	True
+11	G06110VR	Hex:5 HexNAc:2	5,2,0,0,0,0,0,0,0,0,0,0,0,0	H5N2	HexNAc(2)Hex(5)	1234.4334	True
+603	G39188ZX	Hex:6 HexNAc:2	6,2,0,0,0,0,0,0,0,0,0,0,0,0	H6N2	HexNAc(2)Hex(6)	1396.4862	True
+695	G05724UK	Hex:7 HexNAc:2	7,2,0,0,0,0,0,0,0,0,0,0,0,0	H7N2	HexNAc(2)Hex(7)	1558.539	True
+139	G05724UK	Hex:3 HexNAc:4 Pent:1	3,4,0,0,0,1,0,0,0,0,0,0,0,0	H3N4P1	HexNAc(4)Hex(3)Pent(1)	1448.5289	True
+653	G05724UK	Hex:10 HexNAc:2	10,2,0,0,0,0,0,0,0,0,0,0,0,0	H10N2	HexNAc(2)Hex(10)	2044.6974	True
+691	G64527OM	Hex:8 HexNAc:2	8,2,0,0,0,0,0,0,0,0,0,0,0,0	H8N2	HexNAc(2)Hex(8)	1720.5918	True
+170	G24835MQ	Hex:4 HexNAc:5 NeuAc:1	4,5,0,1,0,0,0,0,0,0,0,0,0,0	H4N5S1	HexNAc(5)Hex(4)NeuAc(1)	1972.7142	True
+89	G23294PN	Hex:6 HexNAc:3 NeuAc:1	6,3,0,1,0,0,0,0,0,0,0,0,0,0	H6N3S1	HexNAc(3)Hex(6)NeuAc(1)	1890.661	True
+64	G23294PN	Hex:3 HexNAc:4 NeuAc:1	3,4,0,1,0,0,0,0,0,0,0,0,0,0	H3N4S1	HexNAc(4)Hex(3)NeuAc(1)	1607.582	True
+489	G72667IM	Hex:4 HexNAc:5 dHex:1 NeuAc:1	4,5,1,1,0,0,0,0,0,0,0,0,0,0	H4N5F1S1	HexNAc(5)Hex(4)dHex(1)NeuAc(1)	2118.7721	True
+628	G82463GQ	Hex:5 HexNAc:3 NeuAc:1	5,3,0,1,0,0,0,0,0,0,0,0,0,0	H5N3S1	HexNAc(3)Hex(5)NeuAc(1)	1728.6082	True
+666	G92654OJ	Hex:3 HexNAc:6 NeuAc:1	3,6,0,1,0,0,0,0,0,0,0,0,0,0	H3N6S1	HexNAc(6)Hex(3)NeuAc(1)	2013.7408	True
+232	G02628JF	Hex:3 HexNAc:6 dHex:2 NeuAc:1	3,6,2,1,0,0,0,0,0,0,0,0,0,0	H3N6F2S1	HexNAc(6)Hex(3)dHex(2)NeuAc(1)	2305.8566	True
+181	G81198YO	Hex:4 HexNAc:5 dHex:1 NeuAc:2	4,5,1,2,0,0,0,0,0,0,0,0,0,0	H4N5F1S2	HexNAc(5)Hex(4)dHex(1)NeuAc(2)	2409.8675	True
+466	G95977AE	Hex:4 HexNAc:5 dHex:2 NeuAc:1	4,5,2,1,0,0,0,0,0,0,0,0,0,0	H4N5F2S1	HexNAc(5)Hex(4)dHex(2)NeuAc(1)	2264.83	True
+368	G08110WX	Hex:3 HexNAc:6 dHex:1 NeuAc:1	3,6,1,1,0,0,0,0,0,0,0,0,0,0	H3N6F1S1	HexNAc(6)Hex(3)dHex(1)NeuAc(1)	2159.7987	True
+300	G25379SA	Hex:6 HexNAc:7 dHex:1	6,7,1,0,0,0,0,0,0,0,0,0,0,0	H6N7F1	HexNAc(7)Hex(6)dHex(1)	2557.9411	True
+338	G86234IN	Hex:5 HexNAc:8 dHex:1	5,8,1,0,0,0,0,0,0,0,0,0,0,0	H5N8F1	HexNAc(8)Hex(5)dHex(1)	2598.9677	True
+716	G32332VU	Hex:3 HexNAc:7 dHex:1	3,7,1,0,0,0,0,0,0,0,0,0,0,0	H3N7F1	HexNAc(7)Hex(3)dHex(1)	2071.7827	True
+206	G93683YO	Hex:4 HexNAc:7 dHex:1	4,7,1,0,0,0,0,0,0,0,0,0,0,0	H4N7F1	HexNAc(7)Hex(4)dHex(1)	2233.8355	True
+318	G23432EQ	Hex:4 HexNAc:5	4,5,0,0,0,0,0,0,0,0,0,0,0,0	H4N5	HexNAc(5)Hex(4)	1681.6188	True
+250	G89098OM	Hex:5 HexNAc:6 dHex:1	5,6,1,0,0,0,0,0,0,0,0,0,0,0	H5N6F1	HexNAc(6)Hex(5)dHex(1)	2192.8089	True
+348	G52358QA	Hex:4 HexNAc:9 dHex:1	4,9,1,0,0,0,0,0,0,0,0,0,0,0	H4N9F1	HexNAc(9)Hex(4)dHex(1)	2639.9943	True
+718	G96416FQ	Hex:3 HexNAc:8 dHex:1	3,8,1,0,0,0,0,0,0,0,0,0,0,0	H3N8F1	HexNAc(8)Hex(3)dHex(1)	2274.8621	True
+303	G51640FO	Hex:4 HexNAc:6 dHex:1	4,6,1,0,0,0,0,0,0,0,0,0,0,0	H4N6F1	HexNAc(6)Hex(4)dHex(1)	2030.7561	True
+637	G03382KH	Hex:4 HexNAc:5 dHex:1	4,5,1,0,0,0,0,0,0,0,0,0,0,0	H4N5F1	HexNAc(5)Hex(4)dHex(1)	1827.6767	True
+149	G35107SO	Hex:6 HexNAc:6 dHex:3 NeuAc:3	6,6,3,3,0,0,0,0,0,0,0,0,0,0	H6N6F3S3	HexNAc(6)Hex(6)dHex(3)NeuAc(3)	3520.2637	True
+271	G69834CE	Hex:7 HexNAc:6 dHex:1 NeuAc:4	7,6,1,4,0,0,0,0,0,0,0,0,0,0	H7N6F1S4	HexNAc(6)Hex(7)dHex(1)NeuAc(4)	3681.2961	True
+427	G52527GH	Hex:6 HexNAc:5 NeuAc:2	6,5,0,2,0,0,0,0,0,0,0,0,0,0	H6N5S2	HexNAc(5)Hex(6)NeuAc(2)	2587.9152	True
+40	G66088HZ	Hex:7 HexNAc:6 NeuAc:4	7,6,0,4,0,0,0,0,0,0,0,0,0,0	H7N6S4	HexNAc(6)Hex(7)NeuAc(4)	3535.2382	True
+30	G87932HN	Hex:3 HexNAc:6 dHex:1 Su:2	3,6,1,0,0,0,2,0,0,0,0,0,0,0	H3N6F1s2	HexNAc(6)Hex(3)dHex(1)Sulfo(2)	2028.6169	True
+246	G57196QI	Hex:3 HexNAc:6 Su:2	3,6,0,0,0,0,2,0,0,0,0,0,0,0	H3N6s2	HexNAc(6)Hex(3)Sulfo(2)	1882.559	True
+353	G44215PV	Hex:5 HexNAc:4 dHex:2	5,4,2,0,0,0,0,0,0,0,0,0,0,0	H5N4F2	HexNAc(4)Hex(5)dHex(2)	1932.708	True
+186	G75983OB	Hex:5 HexNAc:4 dHex:2 NeuAc:1	5,4,2,1,0,0,0,0,0,0,0,0,0,0	H5N4F2S1	HexNAc(4)Hex(5)dHex(2)NeuAc(1)	2223.8034	True
+647	G75983OB	Hex:4 HexNAc:4 dHex:2 Pent:1	4,4,2,0,0,1,0,0,0,0,0,0,0,0	H4N4F2P1	HexNAc(4)Hex(4)dHex(2)Pent(1)	1902.6975	True
+459	G75983OB	Hex:3 HexNAc:4 dHex:1 Pent:1	3,4,1,0,0,1,0,0,0,0,0,0,0,0	H3N4F1P1	HexNAc(4)Hex(3)dHex(1)Pent(1)	1594.5868	True
+77	G75983OB	Hex:3 HexNAc:1 Pent:1	3,1,0,0,0,1,0,0,0,0,0,0,0,0	H3N1P1	HexNAc(1)Hex(3)Pent(1)	839.2907	True
+165	G75983OB	Hex:4 HexNAc:1 dHex:1 Pent:1	4,1,1,0,0,1,0,0,0,0,0,0,0,0	H4N1F1P1	HexNAc(1)Hex(4)dHex(1)Pent(1)	1147.4014	True
+122	G59536GA	Hex:6 HexNAc:5 NeuAc:1	6,5,0,1,0,0,0,0,0,0,0,0,0,0	H6N5S1	HexNAc(5)Hex(6)NeuAc(1)	2296.8198	True
+428	G66951WQ	Hex:6 HexNAc:5 NeuAc:4	6,5,0,4,0,0,0,0,0,0,0,0,0,0	H6N5S4	HexNAc(5)Hex(6)NeuAc(4)	3170.106	True
+6	G66951WQ	Hex:4 HexNAc:4 dHex:1 Pent:1	4,4,1,0,0,1,0,0,0,0,0,0,0,0	H4N4F1P1	HexNAc(4)Hex(4)dHex(1)Pent(1)	1756.6396	True
+816	G66951WQ	Hex:4 HexNAc:4 dHex:1 Pent:1 Me:1	4,4,1,0,0,1,0,0,0,0,0,1,0,0	H4N4F1P1m1	HexNAc(4)Hex(4)dHex(1)Pent(1)Me(1) % this composition contains Me (not defined residue for Byonic)	1770.6553	True
+836	G66951WQ	Hex:5 HexNAc:6 Pent:1 Me:2	5,6,0,0,0,1,0,0,0,0,0,2,0,0	H5N6P1m2	HexNAc(6)Hex(5)Pent(1)Me(2) % this composition contains Me (not defined residue for Byonic)	2206.8247	True
+599	G66951WQ	Hex:5 HexNAc:6 dHex:2 Pent:1	5,6,2,0,0,1,0,0,0,0,0,0,0,0	H5N6F2P1	HexNAc(6)Hex(5)dHex(2)Pent(1)	2470.9091	True
+813	G66951WQ	Hex:4 HexNAc:4 Pent:1 Me:1	4,4,0,0,0,1,0,0,0,0,0,1,0,0	H4N4P1m1	HexNAc(4)Hex(4)Pent(1)Me(1) % this composition contains Me (not defined residue for Byonic)	1624.5974	True
+837	G66951WQ	Hex:5 HexNAc:6 dHex:1 Pent:1 Me:1	5,6,1,0,0,1,0,0,0,0,0,1,0,0	H5N6F1P1m1	HexNAc(6)Hex(5)dHex(1)Pent(1)Me(1) % this composition contains Me (not defined residue for Byonic)	2338.8669	True
+814	G66951WQ	Hex:4 HexNAc:4 Pent:1 Me:2	4,4,0,0,0,1,0,0,0,0,0,2,0,0	H4N4P1m2	HexNAc(4)Hex(4)Pent(1)Me(2) % this composition contains Me (not defined residue for Byonic)	1638.6131	True
+217	G66951WQ	Hex:4 HexNAc:2 Pent:1	4,2,0,0,0,1,0,0,0,0,0,0,0,0	H4N2P1	HexNAc(2)Hex(4)Pent(1)	1204.4229	True
+652	G66538GV	Hex:4 HexNAc:2	4,2,0,0,0,0,0,0,0,0,0,0,0,0	H4N2	HexNAc(2)Hex(4)	1072.3806	True
+207	G41917DR	Hex:5 HexNAc:4 dHex:1 NeuAc:2 Su:1	5,4,1,2,0,0,1,0,0,0,0,0,0,0	H5N4F1S2s1	HexNAc(4)Hex(5)dHex(1)NeuAc(2)Sulfo(1)	2448.7977	True
+608	G98846QS	Hex:5 HexNAc:4 dHex:1 NeuAc:1 Su:1	5,4,1,1,0,0,1,0,0,0,0,0,0,0	H5N4F1S1s1	HexNAc(4)Hex(5)dHex(1)NeuAc(1)Sulfo(1)	2157.7023	True
+144	G83545KK	Hex:5 HexNAc:4 Su:1	5,4,0,0,0,0,1,0,0,0,0,0,0,0	H5N4s1	HexNAc(4)Hex(5)Sulfo(1)	1720.549	True
+86	G46422KL	Hex:4 HexNAc:5 NeuAc:1 Su:1	4,5,0,1,0,0,1,0,0,0,0,0,0,0	H4N5S1s1	HexNAc(5)Hex(4)NeuAc(1)Sulfo(1)	2052.671	True
+512	G06816RN	Hex:4 HexNAc:4 dHex:1 Su:1	4,4,1,0,0,0,1,0,0,0,0,0,0,0	H4N4F1s1	HexNAc(4)Hex(4)dHex(1)Sulfo(1)	1704.5541	True
+342	G06816RN	Hex:3 HexNAc:4 Su:1	3,4,0,0,0,0,1,0,0,0,0,0,0,0	H3N4s1	HexNAc(4)Hex(3)Sulfo(1)	1396.4434	True
+741	G53572WH	Hex:4 HexNAc:4 Su:1	4,4,0,0,0,0,1,0,0,0,0,0,0,0	H4N4s1	HexNAc(4)Hex(4)Sulfo(1)	1558.4962	True
+535	G56345UO	Hex:4 HexNAc:5 Su:1	4,5,0,0,0,0,1,0,0,0,0,0,0,0	H4N5s1	HexNAc(5)Hex(4)Sulfo(1)	1761.5756	True
+630	G40671AG	Hex:3 HexNAc:5 Su:1	3,5,0,0,0,0,1,0,0,0,0,0,0,0	H3N5s1	HexNAc(5)Hex(3)Sulfo(1)	1599.5228	True
+237	G40671AG	Hex:3 HexNAc:3 dHex:1 Pent:3	3,3,1,0,0,3,0,0,0,0,0,0,0,0	H3N3F1P3	HexNAc(3)Hex(3)dHex(1)Pent(3)	1655.592	True
+129	G40671AG	Hex:3 HexNAc:3 dHex:1 Pent:2	3,3,1,0,0,2,0,0,0,0,0,0,0,0	H3N3F1P2	HexNAc(3)Hex(3)dHex(1)Pent(2)	1523.5497	True
+365	G40671AG	Hex:3 HexNAc:4 dHex:1 Pent:2	3,4,1,0,0,2,0,0,0,0,0,0,0,0	H3N4F1P2	HexNAc(4)Hex(3)dHex(1)Pent(2)	1726.6291	True
+736	G40671AG	Hex:3 HexNAc:4 dHex:1 Pent:3	3,4,1,0,0,3,0,0,0,0,0,0,0,0	H3N4F1P3	HexNAc(4)Hex(3)dHex(1)Pent(3)	1858.6714	True
+39	G40671AG	Hex:3 HexNAc:4 dHex:3 Pent:1	3,4,3,0,0,1,0,0,0,0,0,0,0,0	H3N4F3P1	HexNAc(4)Hex(3)dHex(3)Pent(1)	1886.7026	True
+242	G40671AG	Hex:3 HexNAc:4 dHex:2 Pent:2	3,4,2,0,0,2,0,0,0,0,0,0,0,0	H3N4F2P2	HexNAc(4)Hex(3)dHex(2)Pent(2)	1872.687	True
+530	G40671AG	Hex:3 HexNAc:3 dHex:3 Pent:1	3,3,3,0,0,1,0,0,0,0,0,0,0,0	H3N3F3P1	HexNAc(3)Hex(3)dHex(3)Pent(1)	1683.6232	True
+730	G40671AG	Hex:3 HexNAc:3 dHex:2 Pent:2	3,3,2,0,0,2,0,0,0,0,0,0,0,0	H3N3F2P2	HexNAc(3)Hex(3)dHex(2)Pent(2)	1669.6076	True
+575	G40671AG	Hex:3 HexNAc:3 dHex:2 Pent:1	3,3,2,0,0,1,0,0,0,0,0,0,0,0	H3N3F2P1	HexNAc(3)Hex(3)dHex(2)Pent(1)	1537.5653	True
+502	G40671AG	Hex:3 HexNAc:4 dHex:2 Pent:1	3,4,2,0,0,1,0,0,0,0,0,0,0,0	H3N4F2P1	HexNAc(4)Hex(3)dHex(2)Pent(1)	1740.6447	True
+293	G32673DL	Hex:3 HexNAc:6 Su:1	3,6,0,0,0,0,1,0,0,0,0,0,0,0	H3N6s1	HexNAc(6)Hex(3)Sulfo(1)	1802.6022	True
+450	G64327YL	Hex:5 HexNAc:4 dHex:1 Su:1	5,4,1,0,0,0,1,0,0,0,0,0,0,0	H5N4F1s1	HexNAc(4)Hex(5)dHex(1)Sulfo(1)	1866.6069	True
+55	G13441ZL	Hex:3 HexNAc:6 dHex:1 Su:1	3,6,1,0,0,0,1,0,0,0,0,0,0,0	H3N6F1s1	HexNAc(6)Hex(3)dHex(1)Sulfo(1)	1948.6601	True
+286	G11870QZ	Hex:4 HexNAc:3 dHex:1 NeuAc:1	4,3,1,1,0,0,0,0,0,0,0,0,0,0	H4N3F1S1	HexNAc(3)Hex(4)dHex(1)NeuAc(1)	1712.6133	True
+336	G54740VA	Hex:5 HexNAc:6 dHex:1 NeuAc:3	5,6,1,3,0,0,0,0,0,0,0,0,0,0	H5N6F1S3	HexNAc(6)Hex(5)dHex(1)NeuAc(3)	3066.0951	True
+288	G62461SM	Hex:6 HexNAc:6 dHex:1 NeuAc:3	6,6,1,3,0,0,0,0,0,0,0,0,0,0	H6N6F1S3	HexNAc(6)Hex(6)dHex(1)NeuAc(3)	3228.1479	True
+878	G62461SM	Hex:10 HexNAc:6 Pent:1 Me:7	10,6,0,0,0,1,0,0,0,0,0,7,0,0	H10N6P1m7	HexNAc(6)Hex(10)Pent(1)Me(7) % this composition contains Me (not defined residue for Byonic)	3087.1672	True
+879	G62461SM	Hex:10 HexNAc:6 dHex:1 Pent:1 Me:7	10,6,1,0,0,1,0,0,0,0,0,7,0,0	H10N6F1P1m7	HexNAc(6)Hex(10)dHex(1)Pent(1)Me(7) % this composition contains Me (not defined residue for Byonic)	3233.2251	True
+862	G62461SM	Hex:7 HexNAc:4 dHex:1 Pent:1 Me:4	7,4,1,0,0,1,0,0,0,0,0,4,0,0	H7N4F1P1m4	HexNAc(4)Hex(7)dHex(1)Pent(1)Me(4) % this composition contains Me (not defined residue for Byonic)	2298.8608	True
+824	G62461SM	Hex:5 HexNAc:4 Pent:1 Me:2	5,4,0,0,0,1,0,0,0,0,0,2,0,0	H5N4P1m2	HexNAc(4)Hex(5)Pent(1)Me(2) % this composition contains Me (not defined residue for Byonic)	1800.6659	True
+833	G62461SM	Hex:5 HexNAc:4 dHex:1 Pent:1 Me:2	5,4,1,0,0,1,0,0,0,0,0,2,0,0	H5N4F1P1m2	HexNAc(4)Hex(5)dHex(1)Pent(1)Me(2) % this composition contains Me (not defined residue for Byonic)	1946.7238	True
+872	G62461SM	Hex:9 HexNAc:6 Pent:1 Me:6	9,6,0,0,0,1,0,0,0,0,0,6,0,0	H9N6P1m6	HexNAc(6)Hex(9)Pent(1)Me(6) % this composition contains Me (not defined residue for Byonic)	2911.0987	True
+869	G62461SM	Hex:8 HexNAc:6 dHex:1 Pent:1 Me:5	8,6,1,0,0,1,0,0,0,0,0,5,0,0	H8N6F1P1m5	HexNAc(6)Hex(8)dHex(1)Pent(1)Me(5) % this composition contains Me (not defined residue for Byonic)	2881.0881	True
+860	G62461SM	Hex:7 HexNAc:4 Me:4	7,4,0,0,0,0,0,0,0,0,0,4,0,0	H7N4m4	HexNAc(4)Hex(7)Me(4) % this composition contains Me (not defined residue for Byonic)	2020.7606	True
+844	G62461SM	Hex:6 HexNAc:4 dHex:1 Pent:1 Me:3	6,4,1,0,0,1,0,0,0,0,0,3,0,0	H6N4F1P1m3	HexNAc(4)Hex(6)dHex(1)Pent(1)Me(3) % this composition contains Me (not defined residue for Byonic)	2122.7923	True
+843	G62461SM	Hex:6 HexNAc:4 Pent:1 Me:3	6,4,0,0,0,1,0,0,0,0,0,3,0,0	H6N4P1m3	HexNAc(4)Hex(6)Pent(1)Me(3) % this composition contains Me (not defined residue for Byonic)	1976.7344	True
+861	G62461SM	Hex:7 HexNAc:4 Pent:1 Me:4	7,4,0,0,0,1,0,0,0,0,0,4,0,0	H7N4P1m4	HexNAc(4)Hex(7)Pent(1)Me(4) % this composition contains Me (not defined residue for Byonic)	2152.8029	True
+873	G62461SM	Hex:9 HexNAc:6 dHex:1 Pent:1 Me:6	9,6,1,0,0,1,0,0,0,0,0,6,0,0	H9N6F1P1m6	HexNAc(6)Hex(9)dHex(1)Pent(1)Me(6) % this composition contains Me (not defined residue for Byonic)	3057.1566	True
+842	G62461SM	Hex:6 HexNAc:4 Me:3	6,4,0,0,0,0,0,0,0,0,0,3,0,0	H6N4m3	HexNAc(4)Hex(6)Me(3) % this composition contains Me (not defined residue for Byonic)	1844.6921	True
+9	G50045TK	Hex:5 HexNAc:4	5,4,0,0,0,0,0,0,0,0,0,0,0,0	H5N4	HexNAc(4)Hex(5)	1640.5922	True
+240	G20425TQ	Hex:6 HexNAc:5	6,5,0,0,0,0,0,0,0,0,0,0,0,0	H6N5	HexNAc(5)Hex(6)	2005.7244	True
+454	G57888GL	Hex:6 HexNAc:6 dHex:1 NeuAc:2	6,6,1,2,0,0,0,0,0,0,0,0,0,0	H6N6F1S2	HexNAc(6)Hex(6)dHex(1)NeuAc(2)	2937.0525	True
+100	G23092XT	Hex:7 HexNAc:6 NeuAc:3 Su:1	7,6,0,3,0,0,1,0,0,0,0,0,0,0	H7N6S3s1	HexNAc(6)Hex(7)NeuAc(3)Sulfo(1)	3324.0996	True
+31	G09285QR	Hex:6 HexNAc:5 NeuAc:1 Su:1	6,5,0,1,0,0,1,0,0,0,0,0,0,0	H6N5S1s1	HexNAc(5)Hex(6)NeuAc(1)Sulfo(1)	2376.7766	True
+236	G67596QA	Hex:7 HexNAc:10 dHex:1 NeuAc:4	7,10,1,4,0,0,0,0,0,0,0,0,0,0	H7N10F1S4	HexNAc(10)Hex(7)dHex(1)NeuAc(4)	4493.6137	True
+333	G28975ZZ	Hex:4 HexNAc:5 dHex:1 NeuAc:1 Su:1	4,5,1,1,0,0,1,0,0,0,0,0,0,0	H4N5F1S1s1	HexNAc(5)Hex(4)dHex(1)NeuAc(1)Sulfo(1)	2198.7289	True
+233	G16265OF	Hex:7 HexNAc:9 dHex:1 NeuAc:4	7,9,1,4,0,0,0,0,0,0,0,0,0,0	H7N9F1S4	HexNAc(9)Hex(7)dHex(1)NeuAc(4)	4290.5343	True
+287	G82233NS	Hex:5 HexNAc:4 NeuAc:1 Su:1	5,4,0,1,0,0,1,0,0,0,0,0,0,0	H5N4S1s1	HexNAc(4)Hex(5)NeuAc(1)Sulfo(1)	2011.6444	True
+645	G82233NS	Hex:5 HexNAc:4 dHex:1 Pent:1	5,4,1,0,0,1,0,0,0,0,0,0,0,0	H5N4F1P1	HexNAc(4)Hex(5)dHex(1)Pent(1)	1918.6924	True
+513	G82233NS	Hex:4 HexNAc:3 dHex:1 Pent:1	4,3,1,0,0,1,0,0,0,0,0,0,0,0	H4N3F1P1	HexNAc(3)Hex(4)dHex(1)Pent(1)	1553.5602	True
+759	G50738IZ	Hex:6 HexNAc:1	6,1,0,0,0,0,0,0,0,0,0,0,0,0	H6N1	HexNAc(1)Hex(6)	1193.4068	True
+674	G55394YE	Hex:8 HexNAc:1	8,1,0,0,0,0,0,0,0,0,0,0,0,0	H8N1	HexNAc(1)Hex(8)	1517.5124	True
+670	G18022IK	Hex:7 HexNAc:1	7,1,0,0,0,0,0,0,0,0,0,0,0,0	H7N1	HexNAc(1)Hex(7)	1355.4596	True
+720	G66760KM	Hex:5 HexNAc:5 NeuAc:1	5,5,0,1,0,0,0,0,0,0,0,0,0,0	H5N5S1	HexNAc(5)Hex(5)NeuAc(1)	2134.767	True
+470	G45883VE	Hex:7 HexNAc:7 dHex:1	7,7,1,0,0,0,0,0,0,0,0,0,0,0	H7N7F1	HexNAc(7)Hex(7)dHex(1)	2719.9939	True
+209	G70375MX	Hex:6 HexNAc:6 dHex:1	6,6,1,0,0,0,0,0,0,0,0,0,0,0	H6N6F1	HexNAc(6)Hex(6)dHex(1)	2354.8617	True
+377	G90093AU	Hex:7 HexNAc:6 dHex:1	7,6,1,0,0,0,0,0,0,0,0,0,0,0	H7N6F1	HexNAc(6)Hex(7)dHex(1)	2516.9145	True
+558	G72735IY	Hex:6 HexNAc:3	6,3,0,0,0,0,0,0,0,0,0,0,0,0	H6N3	HexNAc(3)Hex(6)	1599.5656	True
+817	G97229JI	Hex:4 HexNAc:4 dHex:2 Su:1	4,4,2,0,0,0,1,0,0,0,0,0,0,0	H4N4F2s1	HexNAc(4)Hex(4)dHex(2)Sulfo(1)	1850.612	True
+819	G45437MK	Hex:4 HexNAc:4 dHex:4 Su:1	4,4,4,0,0,0,1,0,0,0,0,0,0,0	H4N4F4s1	HexNAc(4)Hex(4)dHex(4)Sulfo(1)	2142.7278	True
+818	G19461LU	Hex:4 HexNAc:4 dHex:3 Su:1	4,4,3,0,0,0,1,0,0,0,0,0,0,0	H4N4F3s1	HexNAc(4)Hex(4)dHex(3)Sulfo(1)	1996.6699	True
+123	G82830MN	Hex:6 HexNAc:4 dHex:1 NeuAc:1	6,4,1,1,0,0,0,0,0,0,0,0,0,0	H6N4F1S1	HexNAc(4)Hex(6)dHex(1)NeuAc(1)	2239.7983	True
+534	G54612UD	Hex:4 HexNAc:5 NeuAc:2	4,5,0,2,0,0,0,0,0,0,0,0,0,0	H4N5S2	HexNAc(5)Hex(4)NeuAc(2)	2263.8096	True
+763	G83951ZY	Hex:4 HexNAc:6 NeuAc:2	4,6,0,2,0,0,0,0,0,0,0,0,0,0	H4N6S2	HexNAc(6)Hex(4)NeuAc(2)	2466.889	True
+372	G57581QG	Hex:8 HexNAc:7 dHex:1 NeuAc:4	8,7,1,4,0,0,0,0,0,0,0,0,0,0	H8N7F1S4	HexNAc(7)Hex(8)dHex(1)NeuAc(4)	4046.4283	True
+468	G39595FH	Hex:7 HexNAc:6 dHex:1 NeuAc:3	7,6,1,3,0,0,0,0,0,0,0,0,0,0	H7N6F1S3	HexNAc(6)Hex(7)dHex(1)NeuAc(3)	3390.2007	True
+508	G39595FH	Hex:10 HexNAc:9 dHex:1 NeuAc:4	10,9,1,4,0,0,0,0,0,0,0,0,0,0	H10N9F1S4	HexNAc(9)Hex(10)dHex(1)NeuAc(4)	4776.6927	True
+440	G91152KU	Hex:9 HexNAc:8 dHex:1 NeuAc:4	9,8,1,4,0,0,0,0,0,0,0,0,0,0	H9N8F1S4	HexNAc(8)Hex(9)dHex(1)NeuAc(4)	4411.5605	True
+827	G32169KA	Hex:5 HexNAc:4 NeuAc:2 Ac:1	5,4,0,2,0,0,0,0,0,0,0,0,1,0	H5N4S2a1	HexNAc(4)Hex(5)NeuAc(2)Acetyl(1)	2264.7936	True
+774	G90665LO	Hex:5 HexNAc:4 NeuAc:2 Ac:2	5,4,0,2,0,0,0,0,0,0,0,0,2,0	H5N4S2a2	HexNAc(4)Hex(5)NeuAc(2)Acetyl(2)	2306.8042	True
+62	G40221NN	Hex:4 HexNAc:4 dHex:1 NeuAc:1 Su:1	4,4,1,1,0,0,1,0,0,0,0,0,0,0	H4N4F1S1s1	HexNAc(4)Hex(4)dHex(1)NeuAc(1)Sulfo(1)	1995.6495	True
+529	G31966KA	Hex:6 HexNAc:4 dHex:1 NeuGc:1	6,4,1,0,1,0,0,0,0,0,0,0,0,0	H6N4F1G1	HexNAc(4)Hex(6)dHex(1)NeuGc(1)	2255.7932	True
+16	G25140YL	Hex:6 HexNAc:4 dHex:1 NeuAc:1 Su:1	6,4,1,1,0,0,1,0,0,0,0,0,0,0	H6N4F1S1s1	HexNAc(4)Hex(6)dHex(1)NeuAc(1)Sulfo(1)	2319.7551	True
+713	G29880MM	Hex:4 HexNAc:3 dHex:1	4,3,1,0,0,0,0,0,0,0,0,0,0,0	H4N3F1	HexNAc(3)Hex(4)dHex(1)	1421.5179	True
+196	G70894RY	Hex:9 HexNAc:8 dHex:1	9,8,1,0,0,0,0,0,0,0,0,0,0,0	H9N8F1	HexNAc(8)Hex(9)dHex(1)	3247.1789	True
+486	G31544HA	Hex:8 HexNAc:7 dHex:1	8,7,1,0,0,0,0,0,0,0,0,0,0,0	H8N7F1	HexNAc(7)Hex(8)dHex(1)	2882.0467	True
+223	G41882MT	Hex:7 HexNAc:6 NeuAc:1	7,6,0,1,0,0,0,0,0,0,0,0,0,0	H7N6S1	HexNAc(6)Hex(7)NeuAc(1)	2661.952	True
+113	G47012YE	Hex:7 HexNAc:6	7,6,0,0,0,0,0,0,0,0,0,0,0,0	H7N6	HexNAc(6)Hex(7)	2370.8566	True
+174	G47012YE	Hex:11 HexNAc:2	11,2,0,0,0,0,0,0,0,0,0,0,0,0	H11N2	HexNAc(2)Hex(11)	2206.7502	True
+81	G47012YE	Hex:12 HexNAc:2	12,2,0,0,0,0,0,0,0,0,0,0,0,0	H12N2	HexNAc(2)Hex(12)	2368.803	True
+554	G37570AP	Hex:6 HexNAc:7 dHex:1 NeuAc:4	6,7,1,4,0,0,0,0,0,0,0,0,0,0	H6N7F1S4	HexNAc(7)Hex(6)dHex(1)NeuAc(4)	3722.3227	True
+367	G56284ZY	Hex:3 HexNAc:6 dHex:3	3,6,3,0,0,0,0,0,0,0,0,0,0,0	H3N6F3	HexNAc(6)Hex(3)dHex(3)	2160.8191	True
+384	G48488CO	Hex:8 HexNAc:7 dHex:1 NeuAc:3	8,7,1,3,0,0,0,0,0,0,0,0,0,0	H8N7F1S3	HexNAc(7)Hex(8)dHex(1)NeuAc(3)	3755.3329	True
+301	G16208YZ	Hex:9 HexNAc:8 dHex:1 NeuAc:3	9,8,1,3,0,0,0,0,0,0,0,0,0,0	H9N8F1S3	HexNAc(8)Hex(9)dHex(1)NeuAc(3)	4120.4651	True
+273	G64394MX	Hex:7 HexNAc:6 dHex:1 NeuAc:2	7,6,1,2,0,0,0,0,0,0,0,0,0,0	H7N6F1S2	HexNAc(6)Hex(7)dHex(1)NeuAc(2)	3099.1053	True
+200	G05813WO	Hex:7 HexNAc:6 dHex:1 NeuAc:3 NeuGc:1	7,6,1,3,1,0,0,0,0,0,0,0,0,0	H7N6F1S3G1	HexNAc(6)Hex(7)dHex(1)NeuAc(3)NeuGc(1)	3697.291	True
+846	G94974XB	Hex:6 HexNAc:5 dHex:1 NeuAc:3 Ac:1	6,5,1,3,0,0,0,0,0,0,0,0,1,0	H6N5F1S3a1	HexNAc(5)Hex(6)dHex(1)NeuAc(3)Acetyl(1)	3067.0791	True
+309	G75154UG	Hex:8 HexNAc:7 dHex:1 NeuAc:3 NeuGc:1	8,7,1,3,1,0,0,0,0,0,0,0,0,0	H8N7F1S3G1	HexNAc(7)Hex(8)dHex(1)NeuAc(3)NeuGc(1)	4062.4232	True
+864	G98259QP	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:1	7,6,1,4,0,0,0,0,0,0,0,0,1,0	H7N6F1S4a1	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(1)	3723.3067	True
+370	G10773YW	Hex:6 HexNAc:3 dHex:1 NeuAc:1	6,3,1,1,0,0,0,0,0,0,0,0,0,0	H6N3F1S1	HexNAc(3)Hex(6)dHex(1)NeuAc(1)	2036.7189	True
+331	G34730YF	Hex:5 HexNAc:3 dHex:1 NeuAc:1	5,3,1,1,0,0,0,0,0,0,0,0,0,0	H5N3F1S1	HexNAc(3)Hex(5)dHex(1)NeuAc(1)	1874.6661	True
+888	G34730YF	Hex:19 HexNAc:18 NeuAc:2	19,18,0,2,0,0,0,0,0,0,0,0,0,0	H19N18S2	HexNAc(18)Hex(19)NeuAc(2)	7334.6338	True
+894	G34730YF	Hex:19 HexNAc:19 NeuAc:1	19,19,0,1,0,0,0,0,0,0,0,0,0,0	H19N19S1	HexNAc(19)Hex(19)NeuAc(1)	7246.6178	True
+897	G34730YF	Hex:19 HexNAc:19 dHex:1 NeuAc:1	19,19,1,1,0,0,0,0,0,0,0,0,0,0	H19N19F1S1	HexNAc(19)Hex(19)dHex(1)NeuAc(1)	7392.6757	True
+895	G34730YF	Hex:19 HexNAc:19 NeuAc:2	19,19,0,2,0,0,0,0,0,0,0,0,0,0	H19N19S2	HexNAc(19)Hex(19)NeuAc(2)	7537.7132	True
+891	G34730YF	Hex:19 HexNAc:18 dHex:1 NeuAc:2	19,18,1,2,0,0,0,0,0,0,0,0,0,0	H19N18F1S2	HexNAc(18)Hex(19)dHex(1)NeuAc(2)	7480.6917	True
+898	G34730YF	Hex:19 HexNAc:19 dHex:1 NeuAc:2	19,19,1,2,0,0,0,0,0,0,0,0,0,0	H19N19F1S2	HexNAc(19)Hex(19)dHex(1)NeuAc(2)	7683.7711	True
+886	G34730YF	Hex:19 HexNAc:18	19,18,0,0,0,0,0,0,0,0,0,0,0,0	H19N18	HexNAc(18)Hex(19)	6752.443	True
+896	G34730YF	Hex:19 HexNAc:19 dHex:1	19,19,1,0,0,0,0,0,0,0,0,0,0,0	H19N19F1	HexNAc(19)Hex(19)dHex(1)	7101.5803	True
+892	G34730YF	Hex:19 HexNAc:19	19,19,0,0,0,0,0,0,0,0,0,0,0,0	H19N19	HexNAc(19)Hex(19)	6955.5224	True
+887	G34730YF	Hex:19 HexNAc:18 NeuAc:1	19,18,0,1,0,0,0,0,0,0,0,0,0,0	H19N18S1	HexNAc(18)Hex(19)NeuAc(1)	7043.5384	True
+889	G34730YF	Hex:19 HexNAc:18 dHex:1	19,18,1,0,0,0,0,0,0,0,0,0,0,0	H19N18F1	HexNAc(18)Hex(19)dHex(1)	6898.5009	True
+890	G34730YF	Hex:19 HexNAc:18 dHex:1 NeuAc:1	19,18,1,1,0,0,0,0,0,0,0,0,0,0	H19N18F1S1	HexNAc(18)Hex(19)dHex(1)NeuAc(1)	7189.5963	True
+506	G33609NS	Hex:5 HexNAc:3	5,3,0,0,0,0,0,0,0,0,0,0,0,0	H5N3	HexNAc(3)Hex(5)	1437.5128	True
+161	G82119TF	Hex:5 HexNAc:3 dHex:1	5,3,1,0,0,0,0,0,0,0,0,0,0,0	H5N3F1	HexNAc(3)Hex(5)dHex(1)	1583.5707	True
+567	G34617SM	Hex:7 HexNAc:6 dHex:1 NeuAc:1	7,6,1,1,0,0,0,0,0,0,0,0,0,0	H7N6F1S1	HexNAc(6)Hex(7)dHex(1)NeuAc(1)	2808.0099	True
+371	G72886NH	Hex:8 HexNAc:7 dHex:1 NeuAc:2	8,7,1,2,0,0,0,0,0,0,0,0,0,0	H8N7F1S2	HexNAc(7)Hex(8)dHex(1)NeuAc(2)	3464.2375	True
+50	G58598BO	Hex:8 HexNAc:7 dHex:1 NeuAc:1	8,7,1,1,0,0,0,0,0,0,0,0,0,0	H8N7F1S1	HexNAc(7)Hex(8)dHex(1)NeuAc(1)	3173.1421	True
+689	G52589SM	Hex:7 HexNAc:5 dHex:1	7,5,1,0,0,0,0,0,0,0,0,0,0,0	H7N5F1	HexNAc(5)Hex(7)dHex(1)	2313.8351	True
+231	G13728QT	Hex:7 HexNAc:5 dHex:1 NeuAc:1	7,5,1,1,0,0,0,0,0,0,0,0,0,0	H7N5F1S1	HexNAc(5)Hex(7)dHex(1)NeuAc(1)	2604.9305	True
+690	G81375TC	Hex:8 HexNAc:5 dHex:1	8,5,1,0,0,0,0,0,0,0,0,0,0,0	H8N5F1	HexNAc(5)Hex(8)dHex(1)	2475.8879	True
+252	G46902YN	Hex:6 HexNAc:4 dHex:1	6,4,1,0,0,0,0,0,0,0,0,0,0,0	H6N4F1	HexNAc(4)Hex(6)dHex(1)	1948.7029	True
+421	G66621EA	Hex:7 HexNAc:4 dHex:1	7,4,1,0,0,0,0,0,0,0,0,0,0,0	H7N4F1	HexNAc(4)Hex(7)dHex(1)	2110.7557	True
+241	G17276XO	Hex:8 HexNAc:5 dHex:1 NeuAc:1	8,5,1,1,0,0,0,0,0,0,0,0,0,0	H8N5F1S1	HexNAc(5)Hex(8)dHex(1)NeuAc(1)	2766.9833	True
+634	G61053JL	Hex:9 HexNAc:5 dHex:1	9,5,1,0,0,0,0,0,0,0,0,0,0,0	H9N5F1	HexNAc(5)Hex(9)dHex(1)	2637.9407	True
+289	G68796US	Hex:5 HexNAc:4 dHex:1 NeuAc:3	5,4,1,3,0,0,0,0,0,0,0,0,0,0	H5N4F1S3	HexNAc(4)Hex(5)dHex(1)NeuAc(3)	2659.9363	True
+840	G93180LE	Hex:6 HexNAc:2 Ph:1	6,2,0,0,0,0,0,1,0,0,0,0,0,0	H6N2p1	HexNAc(2)Hex(6)Phospho(1)	1476.4525	True
+852	G14889BN	Hex:7 HexNAc:2 Ph:1	7,2,0,0,0,0,0,1,0,0,0,0,0,0	H7N2p1	HexNAc(2)Hex(7)Phospho(1)	1638.5053	True
+841	G23869AA	Hex:6 HexNAc:3 Ph:1	6,3,0,0,0,0,0,1,0,0,0,0,0,0	H6N3p1	HexNAc(3)Hex(6)Phospho(1)	1679.5319	True
+787	G23869AA	Hex:1 HexNAc:1 dHex:1 Me:2	1,1,1,0,0,0,0,0,0,0,0,2,0,0	H1N1F1m2	HexNAc(1)Hex(1)dHex(1)Me(2) % this composition contains Me (not defined residue for Byonic)	557.2321	True
+786	G23869AA	Hex:1 HexNAc:1 dHex:1 Me:1	1,1,1,0,0,0,0,0,0,0,0,1,0,0	H1N1F1m1	HexNAc(1)Hex(1)dHex(1)Me(1) % this composition contains Me (not defined residue for Byonic)	543.2164	True
+528	G23869AA	Hex:13 HexNAc:2	13,2,0,0,0,0,0,0,0,0,0,0,0,0	H13N2	HexNAc(2)Hex(13)	2530.8558	True
+577	G69946AU	Hex:3 HexNAc:7 dHex:1 Su:1	3,7,1,0,0,0,1,0,0,0,0,0,0,0	H3N7F1s1	HexNAc(7)Hex(3)dHex(1)Sulfo(1)	2151.7395	True
+661	G20014JD	Hex:4 HexNAc:6 dHex:1 NeuAc:1 Su:1	4,6,1,1,0,0,1,0,0,0,0,0,0,0	H4N6F1S1s1	HexNAc(6)Hex(4)dHex(1)NeuAc(1)Sulfo(1)	2401.8083	True
+322	G37246US	Hex:3 HexNAc:5 dHex:1 Su:1	3,5,1,0,0,0,1,0,0,0,0,0,0,0	H3N5F1s1	HexNAc(5)Hex(3)dHex(1)Sulfo(1)	1745.5807	True
+204	G70752JY	Hex:3 HexNAc:7 Su:1	3,7,0,0,0,0,1,0,0,0,0,0,0,0	H3N7s1	HexNAc(7)Hex(3)Sulfo(1)	2005.6816	True
+369	G03824ER	Hex:4 HexNAc:6 NeuAc:1 Su:1	4,6,0,1,0,0,1,0,0,0,0,0,0,0	H4N6S1s1	HexNAc(6)Hex(4)NeuAc(1)Sulfo(1)	2255.7504	True
+302	G03824ER	Hex:10 HexNAc:6 dHex:1	10,6,1,0,0,0,0,0,0,0,0,0,0,0	H10N6F1	HexNAc(6)Hex(10)dHex(1)	3003.0729	True
+295	G53729WJ	Hex:9 HexNAc:6 dHex:1	9,6,1,0,0,0,0,0,0,0,0,0,0,0	H9N6F1	HexNAc(6)Hex(9)dHex(1)	2841.0201	True
+390	G11243PG	Hex:8 HexNAc:6 dHex:1	8,6,1,0,0,0,0,0,0,0,0,0,0,0	H8N6F1	HexNAc(6)Hex(8)dHex(1)	2678.9673	True
+698	G76613WN	Hex:7 HexNAc:4	7,4,0,0,0,0,0,0,0,0,0,0,0,0	H7N4	HexNAc(4)Hex(7)	1964.6978	True
+809	G76613WN	Hex:3 HexNAc:4 dHex:1 Other:2	3,4,1,0,0,0,0,0,0,0,0,0,0,2	H3N4F1X2	HexNAc(4)Hex(3)dHex(1)Other(2) % this composition contains  (not defined residue for Byonic)	1710.5773	True
+808	G76613WN	Hex:3 HexNAc:4 dHex:1 Other:1	3,4,1,0,0,0,0,0,0,0,0,0,0,1	H3N4F1X1	HexNAc(4)Hex(3)dHex(1)Other(1) % this composition contains  (not defined residue for Byonic)	1586.5609	True
+806	G76613WN	Hex:3 HexNAc:3 dHex:1 Other:2	3,3,1,0,0,0,0,0,0,0,0,0,0,2	H3N3F1X2	HexNAc(3)Hex(3)dHex(1)Other(2) % this composition contains  (not defined residue for Byonic)	1507.4979	True
+805	G76613WN	Hex:3 HexNAc:3 dHex:1 Other:1	3,3,1,0,0,0,0,0,0,0,0,0,0,1	H3N3F1X1	HexNAc(3)Hex(3)dHex(1)Other(1) % this composition contains  (not defined residue for Byonic)	1383.4815	True
+94	G66163OV	Hex:6 HexNAc:5 dHex:2	6,5,2,0,0,0,0,0,0,0,0,0,0,0	H6N5F2	HexNAc(5)Hex(6)dHex(2)	2297.8402	True
+580	G19972YZ	Hex:9 HexNAc:8	9,8,0,0,0,0,0,0,0,0,0,0,0,0	H9N8	HexNAc(8)Hex(9)	3101.121	True
+725	G77582RK	Hex:8 HexNAc:7	8,7,0,0,0,0,0,0,0,0,0,0,0,0	H8N7	HexNAc(7)Hex(8)	2735.9888	True
+773	G25637MV	Hex:5 HexNAc:2 dHex:1	5,2,1,0,0,0,0,0,0,0,0,0,0,0	H5N2F1	HexNAc(2)Hex(5)dHex(1)	1380.4913	True
+762	G84820NF	Hex:6 HexNAc:3 dHex:1	6,3,1,0,0,0,0,0,0,0,0,0,0,0	H6N3F1	HexNAc(3)Hex(6)dHex(1)	1745.6235	True
+259	G86226EA	Hex:7 HexNAc:4 NeuAc:1	7,4,0,1,0,0,0,0,0,0,0,0,0,0	H7N4S1	HexNAc(4)Hex(7)NeuAc(1)	2255.7932	True
+24	G47196YN	Hex:7 HexNAc:4 NeuAc:2	7,4,0,2,0,0,0,0,0,0,0,0,0,0	H7N4S2	HexNAc(4)Hex(7)NeuAc(2)	2546.8886	True
+515	G56784JY	Hex:5 HexNAc:4 dHex:2 NeuAc:2	5,4,2,2,0,0,0,0,0,0,0,0,0,0	H5N4F2S2	HexNAc(4)Hex(5)dHex(2)NeuAc(2)	2514.8988	True
+682	G56784JY	HexNAc:2 dHex:2	0,2,2,0,0,0,0,0,0,0,0,0,0,0	N2F2	HexNAc(2)dHex(2)	716.2852	True
+631	G56784JY	HexNAc:1 dHex:2	0,1,2,0,0,0,0,0,0,0,0,0,0,0	N1F2	HexNAc(1)dHex(2)	513.2058	True
+178	G56784JY	HexNAc:2 dHex:1	0,2,1,0,0,0,0,0,0,0,0,0,0,0	N2F1	HexNAc(2)dHex(1)	570.2273	True
+325	G21643DJ	Hex:3 HexNAc:4 dHex:3	3,4,3,0,0,0,0,0,0,0,0,0,0,0	H3N4F3	HexNAc(4)Hex(3)dHex(3)	1754.6603	True
+615	G93656SY	Hex:7 HexNAc:6 NeuAc:2	7,6,0,2,0,0,0,0,0,0,0,0,0,0	H7N6S2	HexNAc(6)Hex(7)NeuAc(2)	2953.0474	True
+772	G93656SY	Hex:5 HexNAc:5 dHex:1 Kdn:2	5,5,1,0,0,0,0,0,2,0,0,0,0,0	H5N5F1K2	HexNAc(5)Hex(5)dHex(1)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	2489.8673	True
+284	G93656SY	Hex:5 HexNAc:4 Kdn:2	5,4,0,0,0,0,0,0,2,0,0,0,0,0	H5N4K2	HexNAc(4)Hex(5)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	2140.73	True
+219	G93656SY	Hex:6 HexNAc:6 Kdn:3	6,6,0,0,0,0,0,0,3,0,0,0,0,0	H6N6K3	HexNAc(6)Hex(6)Kdn(3) % this composition contains Kdn (not defined residue for Byonic)	2959.0105	True
+5	G93656SY	Hex:6 HexNAc:6 dHex:1 Kdn:3	6,6,1,0,0,0,0,0,3,0,0,0,0,0	H6N6F1K3	HexNAc(6)Hex(6)dHex(1)Kdn(3) % this composition contains Kdn (not defined residue for Byonic)	3105.0684	True
+13	G93656SY	Hex:5 HexNAc:5 Kdn:2	5,5,0,0,0,0,0,0,2,0,0,0,0,0	H5N5K2	HexNAc(5)Hex(5)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	2343.8094	True
+33	G93656SY	Hex:5 HexNAc:4 dHex:1 Kdn:2	5,4,1,0,0,0,0,0,2,0,0,0,0,0	H5N4F1K2	HexNAc(4)Hex(5)dHex(1)Kdn(2) % this composition contains Kdn (not defined residue for Byonic)	2286.7879	True
+573	G33022UX	Hex:4 HexNAc:3 dHex:1 Su:1	4,3,1,0,0,0,1,0,0,0,0,0,0,0	H4N3F1s1	HexNAc(3)Hex(4)dHex(1)Sulfo(1)	1501.4747	True
+26	G39891VF	Hex:7 HexNAc:5 NeuAc:1	7,5,0,1,0,0,0,0,0,0,0,0,0,0	H7N5S1	HexNAc(5)Hex(7)NeuAc(1)	2458.8726	True
+433	G25418HZ	Hex:6 HexNAc:4 NeuAc:1	6,4,0,1,0,0,0,0,0,0,0,0,0,0	H6N4S1	HexNAc(4)Hex(6)NeuAc(1)	2093.7404	True
+572	G52114WE	Hex:8 HexNAc:6 dHex:1 NeuAc:1	8,6,1,1,0,0,0,0,0,0,0,0,0,0	H8N6F1S1	HexNAc(6)Hex(8)dHex(1)NeuAc(1)	2970.0627	True
+210	G49084LP	Hex:8 HexNAc:6 NeuAc:1	8,6,0,1,0,0,0,0,0,0,0,0,0,0	H8N6S1	HexNAc(6)Hex(8)NeuAc(1)	2824.0048	True
+811	G95158TF	Hex:3 HexNAc:8 dHex:4 Other:3	3,8,4,0,0,0,0,0,0,0,0,0,0,3	H3N8F4X3	HexNAc(8)Hex(3)dHex(4)Other(3) % this composition contains  (not defined residue for Byonic)	3103.2248	True
+901	G27840GS	Hex:3 HexNAc:10 dHex:4 Other:4	3,10,4,0,0,0,0,0,0,0,0,0,0,4	H3N10F4X4	HexNAc(10)Hex(3)dHex(4)Other(4) % this composition contains  (not defined residue for Byonic)	3639.4466	True
+438	G26759AS	Hex:3 HexNAc:8	3,8,0,0,0,0,0,0,0,0,0,0,0,0	H3N8	HexNAc(8)Hex(3)	2128.8042	True
+446	G72398FA	Hex:3 HexNAc:7	3,7,0,0,0,0,0,0,0,0,0,0,0,0	H3N7	HexNAc(7)Hex(3)	1925.7248	True
+570	G66766XF	Hex:4 HexNAc:7	4,7,0,0,0,0,0,0,0,0,0,0,0,0	H4N7	HexNAc(7)Hex(4)	2087.7776	True
+621	G75607BQ	Hex:6 HexNAc:7	6,7,0,0,0,0,0,0,0,0,0,0,0,0	H6N7	HexNAc(7)Hex(6)	2411.8832	True
+364	G12849CJ	Hex:7 HexNAc:3	7,3,0,0,0,0,0,0,0,0,0,0,0,0	H7N3	HexNAc(3)Hex(7)	1761.6184	True
+672	G03842KQ	Hex:7 HexNAc:3 dHex:1	7,3,1,0,0,0,0,0,0,0,0,0,0,0	H7N3F1	HexNAc(3)Hex(7)dHex(1)	1907.6763	True
+598	G39619TI	Hex:5 HexNAc:6	5,6,0,0,0,0,0,0,0,0,0,0,0,0	H5N6	HexNAc(6)Hex(5)	2046.751	True
+82	G76329HL	Hex:5 HexNAc:8	5,8,0,0,0,0,0,0,0,0,0,0,0,0	H5N8	HexNAc(8)Hex(5)	2452.9098	True
+639	G70822IO	Hex:5 HexNAc:5 dHex:2	5,5,2,0,0,0,0,0,0,0,0,0,0,0	H5N5F2	HexNAc(5)Hex(5)dHex(2)	2135.7874	True
+752	G49278EO	Hex:4 HexNAc:5 dHex:1 Su:1	4,5,1,0,0,0,1,0,0,0,0,0,0,0	H4N5F1s1	HexNAc(5)Hex(4)dHex(1)Sulfo(1)	1907.6335	True
+651	G75155SG	Hex:3 HexNAc:4 dHex:1 Su:1	3,4,1,0,0,0,1,0,0,0,0,0,0,0	H3N4F1s1	HexNAc(4)Hex(3)dHex(1)Sulfo(1)	1542.5013	True
+112	G17739US	Hex:4 HexNAc:5 dHex:2 Su:1	4,5,2,0,0,0,1,0,0,0,0,0,0,0	H4N5F2s1	HexNAc(5)Hex(4)dHex(2)Sulfo(1)	2053.6914	True
+610	G90335NR	Hex:6 HexNAc:5 dHex:1 NeuGc:3	6,5,1,0,3,0,0,0,0,0,0,0,0,0	H6N5F1G3	HexNAc(5)Hex(6)dHex(1)NeuGc(3)	3073.0532	True
+560	G90335NR	Hex:15 HexNAc:2	15,2,0,0,0,0,0,0,0,0,0,0,0,0	H15N2	HexNAc(2)Hex(15)	2854.9614	True
+669	G90335NR	Hex:14 HexNAc:2	14,2,0,0,0,0,0,0,0,0,0,0,0,0	H14N2	HexNAc(2)Hex(14)	2692.9086	True
+885	G90335NR	Hex:14 HexNAc:2 Ph:1	14,2,0,0,0,0,0,1,0,0,0,0,0,0	H14N2p1	HexNAc(2)Hex(14)Phospho(1)	2772.8749	True
+160	G55383ZG	Hex:4 HexNAc:3 dHex:2	4,3,2,0,0,0,0,0,0,0,0,0,0,0	H4N3F2	HexNAc(3)Hex(4)dHex(2)	1567.5758	True
+435	G35305EF	Hex:5 HexNAc:6 NeuAc:1	5,6,0,1,0,0,0,0,0,0,0,0,0,0	H5N6S1	HexNAc(6)Hex(5)NeuAc(1)	2337.8464	True
+155	G12793SR	Hex:7 HexNAc:6 NeuAc:3	7,6,0,3,0,0,0,0,0,0,0,0,0,0	H7N6S3	HexNAc(6)Hex(7)NeuAc(3)	3244.1428	True
+392	G02315DX	Hex:6 HexNAc:6 NeuAc:1	6,6,0,1,0,0,0,0,0,0,0,0,0,0	H6N6S1	HexNAc(6)Hex(6)NeuAc(1)	2499.8992	True
+59	G13694XX	Hex:6 HexNAc:6 NeuAc:3	6,6,0,3,0,0,0,0,0,0,0,0,0,0	H6N6S3	HexNAc(6)Hex(6)NeuAc(3)	3082.09	True
+53	G48584BU	Hex:4 HexNAc:6	4,6,0,0,0,0,0,0,0,0,0,0,0,0	H4N6	HexNAc(6)Hex(4)	1884.6982	True
+483	G99966GV	Hex:4 HexNAc:6 NeuAc:1	4,6,0,1,0,0,0,0,0,0,0,0,0,0	H4N6S1	HexNAc(6)Hex(4)NeuAc(1)	2175.7936	True
+804	G99966GV	Hex:3 HexNAc:2 Ph:1	3,2,0,0,0,0,0,1,0,0,0,0,0,0	H3N2p1	HexNAc(2)Hex(3)Phospho(1)	990.2941	True
+748	G99966GV	Hex:11 HexNAc:10	11,10,0,0,0,0,0,0,0,0,0,0,0,0	H11N10	HexNAc(10)Hex(11)	3831.3854	True
+75	G10039CR	Hex:10 HexNAc:9	10,9,0,0,0,0,0,0,0,0,0,0,0,0	H10N9	HexNAc(9)Hex(10)	3466.2532	True
+346	G10039CR	Hex:10 HexNAc:9 dHex:1	10,9,1,0,0,0,0,0,0,0,0,0,0,0	H10N9F1	HexNAc(9)Hex(10)dHex(1)	3612.3111	True
+546	G10039CR	Hex:11 HexNAc:10 dHex:1	11,10,1,0,0,0,0,0,0,0,0,0,0,0	H11N10F1	HexNAc(10)Hex(11)dHex(1)	3977.4433	True
+436	G10039CR	Hex:2 NeuAc:1 Pent:1 Su:1 HexA:1	2,0,0,1,0,1,1,0,0,0,1,0,0,0	H2S1P1s1A1	Hex(2)NeuAc(1)Pent(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1021.2428	True
+611	G10039CR	Hex:2 Pent:1 Su:1 HexA:1	2,0,0,0,0,1,1,0,0,0,1,0,0,0	H2P1s1A1	Hex(2)Pent(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	730.1474	True
+343	G10039CR	Hex:3 HexNAc:4 NeuAc:2	3,4,0,2,0,0,0,0,0,0,0,0,0,0	H3N4S2	HexNAc(4)Hex(3)NeuAc(2)	1898.6774	True
+709	G47122SX	Hex:9 HexNAc:1	9,1,0,0,0,0,0,0,0,0,0,0,0,0	H9N1	HexNAc(1)Hex(9)	1679.5652	True
+706	G47122SX	Hex:10 HexNAc:1	10,1,0,0,0,0,0,0,0,0,0,0,0,0	H10N1	HexNAc(1)Hex(10)	1841.618	True
+73	G26864OJ	Hex:6 HexNAc:5 NeuAc:5	6,5,0,5,0,0,0,0,0,0,0,0,0,0	H6N5S5	HexNAc(5)Hex(6)NeuAc(5)	3461.2014	True
+8	G26864OJ	Hex:5 HexNAc:4 dHex:2 Pent:1	5,4,2,0,0,1,0,0,0,0,0,0,0,0	H5N4F2P1	HexNAc(4)Hex(5)dHex(2)Pent(1)	2064.7503	True
+522	G30230ON	Hex:7 HexNAc:6 dHex:1 NeuGc:4	7,6,1,0,4,0,0,0,0,0,0,0,0,0	H7N6F1G4	HexNAc(6)Hex(7)dHex(1)NeuGc(4)	3745.2757	True
+97	G46309AS	Hex:4 HexNAc:3 dHex:1 NeuGc:1	4,3,1,0,1,0,0,0,0,0,0,0,0,0	H4N3F1G1	HexNAc(3)Hex(4)dHex(1)NeuGc(1)	1728.6082	True
+362	G46283XF	Hex:4 HexNAc:3 NeuGc:1	4,3,0,0,1,0,0,0,0,0,0,0,0,0	H4N3G1	HexNAc(3)Hex(4)NeuGc(1)	1582.5503	True
+559	G00776MW	Hex:7 HexNAc:6 NeuAc:5	7,6,0,5,0,0,0,0,0,0,0,0,0,0	H7N6S5	HexNAc(6)Hex(7)NeuAc(5)	3826.3336	True
+214	G00776MW	Hex:4 HexNAc:4 Pent:1	4,4,0,0,0,1,0,0,0,0,0,0,0,0	H4N4P1	HexNAc(4)Hex(4)Pent(1)	1610.5817	True
+328	G80333GO	Hex:3 HexNAc:4 dHex:1 NeuAc:1	3,4,1,1,0,0,0,0,0,0,0,0,0,0	H3N4F1S1	HexNAc(4)Hex(3)dHex(1)NeuAc(1)	1753.6399	True
+760	G08362LC	Hex:5 HexNAc:5 dHex:1 NeuGc:1	5,5,1,0,1,0,0,0,0,0,0,0,0,0	H5N5F1G1	HexNAc(5)Hex(5)dHex(1)NeuGc(1)	2296.8198	True
+304	G80223IX	Hex:6 HexNAc:4 dHex:2	6,4,2,0,0,0,0,0,0,0,0,0,0,0	H6N4F2	HexNAc(4)Hex(6)dHex(2)	2094.7608	True
+409	G80223IX	NeuAc:2	0,0,0,2,0,0,0,0,0,0,0,0,0,0	S2	NeuAc(2)	600.2014	True
+118	G86500WE	Hex:6 HexNAc:4 NeuAc:2	6,4,0,2,0,0,0,0,0,0,0,0,0,0	H6N4S2	HexNAc(4)Hex(6)NeuAc(2)	2384.8358	True
+659	G69073PY	Hex:6 HexNAc:4 NeuAc:3	6,4,0,3,0,0,0,0,0,0,0,0,0,0	H6N4S3	HexNAc(4)Hex(6)NeuAc(3)	2675.9312	True
+347	G44748WB	Hex:5 HexNAc:3 NeuAc:2	5,3,0,2,0,0,0,0,0,0,0,0,0,0	H5N3S2	HexNAc(3)Hex(5)NeuAc(2)	2019.7036	True
+607	G60723UL	Hex:8 HexNAc:6 NeuAc:2	8,6,0,2,0,0,0,0,0,0,0,0,0,0	H8N6S2	HexNAc(6)Hex(8)NeuAc(2)	3115.1002	True
+521	G18618EA	Hex:7 HexNAc:5 NeuAc:3	7,5,0,3,0,0,0,0,0,0,0,0,0,0	H7N5S3	HexNAc(5)Hex(7)NeuAc(3)	3041.0634	True
+153	G83853UX	Hex:8 HexNAc:6 NeuAc:3	8,6,0,3,0,0,0,0,0,0,0,0,0,0	H8N6S3	HexNAc(6)Hex(8)NeuAc(3)	3406.1956	True
+256	G35294LF	Hex:7 HexNAc:5 NeuAc:2	7,5,0,2,0,0,0,0,0,0,0,0,0,0	H7N5S2	HexNAc(5)Hex(7)NeuAc(2)	2749.968	True
+211	G08919AM	Hex:4 HexNAc:3 NeuAc:2	4,3,0,2,0,0,0,0,0,0,0,0,0,0	H4N3S2	HexNAc(3)Hex(4)NeuAc(2)	1857.6508	True
+847	G85618VM	Hex:6 HexNAc:5 dHex:1 NeuAc:3 Su:1	6,5,1,3,0,0,1,0,0,0,0,0,0,0	H6N5F1S3s1	HexNAc(5)Hex(6)dHex(1)NeuAc(3)Sulfo(1)	3105.0253	True
+848	G01629KW	Hex:6 HexNAc:5 dHex:1 NeuAc:3 Su:2	6,5,1,3,0,0,2,0,0,0,0,0,0,0	H6N5F1S3s2	HexNAc(5)Hex(6)dHex(1)NeuAc(3)Sulfo(2)	3184.9821	True
+863	G27696FL	Hex:7 HexNAc:5 dHex:1 NeuAc:2 Su:1	7,5,1,2,0,0,1,0,0,0,0,0,0,0	H7N5F1S2s1	HexNAc(5)Hex(7)dHex(1)NeuAc(2)Sulfo(1)	2975.9827	True
+28	G92081HT	Hex:7 HexNAc:5 dHex:1 NeuAc:2	7,5,1,2,0,0,0,0,0,0,0,0,0,0	H7N5F1S2	HexNAc(5)Hex(7)dHex(1)NeuAc(2)	2896.0259	True
+154	G07303WY	Hex:3 HexNAc:3 NeuGc:1	3,3,0,0,1,0,0,0,0,0,0,0,0,0	H3N3G1	HexNAc(3)Hex(3)NeuGc(1)	1420.4975	True
+349	G78355JG	Hex:3 HexNAc:2 NeuAc:2	3,2,0,2,0,0,0,0,0,0,0,0,0,0	H3N2S2	HexNAc(2)Hex(3)NeuAc(2)	1492.5186	True
+27	G78355JG	Hex:2 Su:1	2,0,0,0,0,0,1,0,0,0,0,0,0,0	H2s1	Hex(2)Sulfo(1)	422.073	True
+792	G78355JG	Hex:2 NeuAc:1 Ac:1	2,0,0,1,0,0,0,0,0,0,0,0,1,0	H2S1a1	Hex(2)NeuAc(1)Acetyl(1)	675.2222	True
+504	G10508JF	Hex:4 HexNAc:2 dHex:1 NeuAc:2	4,2,1,2,0,0,0,0,0,0,0,0,0,0	H4N2F1S2	HexNAc(2)Hex(4)dHex(1)NeuAc(2)	1800.6293	True
+684	G73372SB	Hex:4 HexNAc:2 dHex:2 NeuAc:1	4,2,2,1,0,0,0,0,0,0,0,0,0,0	H4N2F2S1	HexNAc(2)Hex(4)dHex(2)NeuAc(1)	1655.5918	True
+265	G71569SN	Hex:5 HexNAc:3 dHex:2 NeuAc:1	5,3,2,1,0,0,0,0,0,0,0,0,0,0	H5N3F2S1	HexNAc(3)Hex(5)dHex(2)NeuAc(1)	2020.724	True
+38	G71569SN	Hex:2 HexNAc:1 dHex:1 NeuAc:1	2,1,1,1,0,0,0,0,0,0,0,0,0,0	H2N1F1S1	HexNAc(1)Hex(2)dHex(1)NeuAc(1)	982.3489	True
+257	G24859TW	Hex:7 HexNAc:5 NeuAc:4	7,5,0,4,0,0,0,0,0,0,0,0,0,0	H7N5S4	HexNAc(5)Hex(7)NeuAc(4)	3332.1588	True
+220	G60543KZ	Hex:4 HexNAc:2 dHex:4	4,2,4,0,0,0,0,0,0,0,0,0,0,0	H4N2F4	HexNAc(2)Hex(4)dHex(4)	1656.6122	True
+306	G23826RL	Hex:6 HexNAc:2 dHex:2	6,2,2,0,0,0,0,0,0,0,0,0,0,0	H6N2F2	HexNAc(2)Hex(6)dHex(2)	1688.602	True
+460	G20593DD	Hex:4 HexNAc:1 dHex:1	4,1,1,0,0,0,0,0,0,0,0,0,0,0	H4N1F1	HexNAc(1)Hex(4)dHex(1)	1015.3591	True
+78	G23581QL	Hex:3 HexNAc:1 dHex:2	3,1,2,0,0,0,0,0,0,0,0,0,0,0	H3N1F2	HexNAc(1)Hex(3)dHex(2)	999.3642	True
+308	G23581QL	Hex:1 HexNAc:1 NeuAc:3	1,1,0,3,0,0,0,0,0,0,0,0,0,0	H1N1S3	HexNAc(1)Hex(1)NeuAc(3)	1256.429	True
+166	G78502KD	Hex:3 HexNAc:9 dHex:1	3,9,1,0,0,0,0,0,0,0,0,0,0,0	H3N9F1	HexNAc(9)Hex(3)dHex(1)	2477.9415	True
+857	G60723SV	Hex:7 HexNAc:3 dHex:1 Ph:1	7,3,1,0,0,0,0,1,0,0,0,0,0,0	H7N3F1p1	HexNAc(3)Hex(7)dHex(1)Phospho(1)	1987.6426	True
+853	G97183VL	Hex:7 HexNAc:2 Ph:2	7,2,0,0,0,0,0,2,0,0,0,0,0,0	H7N2p2	HexNAc(2)Hex(7)Phospho(2)	1718.4716	True
+856	G61138BO	Hex:7 HexNAc:3 NeuAc:1 Ph:1	7,3,0,1,0,0,0,1,0,0,0,0,0,0	H7N3S1p1	HexNAc(3)Hex(7)NeuAc(1)Phospho(1)	2132.6801	True
+855	G33282QL	Hex:7 HexNAc:3 Ph:1	7,3,0,0,0,0,0,1,0,0,0,0,0,0	H7N3p1	HexNAc(3)Hex(7)Phospho(1)	1841.5847	True
+858	G61962FK	Hex:7 HexNAc:3 dHex:1 NeuAc:1 Ph:1	7,3,1,1,0,0,0,1,0,0,0,0,0,0	H7N3F1S1p1	HexNAc(3)Hex(7)dHex(1)NeuAc(1)Phospho(1)	2278.738	True
+822	G90448RI	Hex:5 HexNAc:2 Ph:1	5,2,0,0,0,0,0,1,0,0,0,0,0,0	H5N2p1	HexNAc(2)Hex(5)Phospho(1)	1314.3997	True
+431	G90448RI	Hex:4 HexNAc:5 dHex:1 Su:1 HexA:1	4,5,1,0,0,0,1,0,0,0,1,0,0,0	H4N5F1s1A1	HexNAc(5)Hex(4)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2083.6656	True
+404	G87015RU	Hex:5 HexNAc:6 dHex:1 NeuAc:2	5,6,1,2,0,0,0,0,0,0,0,0,0,0	H5N6F1S2	HexNAc(6)Hex(5)dHex(1)NeuAc(2)	2774.9997	True
+501	G56344DH	Hex:4 HexNAc:1 dHex:2	4,1,2,0,0,0,0,0,0,0,0,0,0,0	H4N1F2	HexNAc(1)Hex(4)dHex(2)	1161.417	True
+22	G45652AG	Hex:3 dHex:1	3,0,1,0,0,0,0,0,0,0,0,0,0,0	H3F1	Hex(3)dHex(1)	650.2269	True
+29	G80269JV	Hex:5 HexNAc:4 NeuGc:3	5,4,0,0,3,0,0,0,0,0,0,0,0,0	H5N4G3	HexNAc(4)Hex(5)NeuGc(3)	2561.8631	True
+703	G20577LS	Hex:9 HexNAc:6 dHex:5	9,6,5,0,0,0,0,0,0,0,0,0,0,0	H9N6F5	HexNAc(6)Hex(9)dHex(5)	3425.2517	True
+693	G60177UT	Hex:6 HexNAc:4 dHex:3	6,4,3,0,0,0,0,0,0,0,0,0,0,0	H6N4F3	HexNAc(4)Hex(6)dHex(3)	2240.8187	True
+187	G99198RV	Hex:8 HexNAc:5 dHex:4	8,5,4,0,0,0,0,0,0,0,0,0,0,0	H8N5F4	HexNAc(5)Hex(8)dHex(4)	2914.0616	True
+249	G51895WL	Hex:6 HexNAc:2 dHex:1	6,2,1,0,0,0,0,0,0,0,0,0,0,0	H6N2F1	HexNAc(2)Hex(6)dHex(1)	1542.5441	True
+425	G83400DU	Hex:7 HexNAc:2 dHex:1	7,2,1,0,0,0,0,0,0,0,0,0,0,0	H7N2F1	HexNAc(2)Hex(7)dHex(1)	1704.5969	True
+595	G83400DU	Hex:2 dHex:1 NeuAc:1	2,0,1,1,0,0,0,0,0,0,0,0,0,0	H2F1S1	Hex(2)dHex(1)NeuAc(1)	779.2695	True
+115	G40943ZI	Hex:3 HexNAc:1 NeuAc:1	3,1,0,1,0,0,0,0,0,0,0,0,0,0	H3N1S1	HexNAc(1)Hex(3)NeuAc(1)	998.3438	True
+456	G37834XB	Hex:3 HexNAc:1 NeuAc:2	3,1,0,2,0,0,0,0,0,0,0,0,0,0	H3N1S2	HexNAc(1)Hex(3)NeuAc(2)	1289.4392	True
+505	G91255CS	Hex:3 HexNAc:9	3,9,0,0,0,0,0,0,0,0,0,0,0,0	H3N9	HexNAc(9)Hex(3)	2331.8836	True
+503	G20829UZ	Hex:3 HexNAc:10	3,10,0,0,0,0,0,0,0,0,0,0,0,0	H3N10	HexNAc(10)Hex(3)	2534.963	True
+72	G20829UZ	Hex:12 HexNAc:12 dHex:1	12,12,1,0,0,0,0,0,0,0,0,0,0,0	H12N12F1	HexNAc(12)Hex(12)dHex(1)	4545.6549	True
+729	G20829UZ	Hex:11 HexNAc:11 dHex:2	11,11,2,0,0,0,0,0,0,0,0,0,0,0	H11N11F2	HexNAc(11)Hex(11)dHex(2)	4326.5806	True
+215	G20829UZ	Hex:10 HexNAc:10 dHex:2	10,10,2,0,0,0,0,0,0,0,0,0,0,0	H10N10F2	HexNAc(10)Hex(10)dHex(2)	3961.4484	True
+474	G19603RR	Hex:8 HexNAc:8 dHex:1	8,8,1,0,0,0,0,0,0,0,0,0,0,0	H8N8F1	HexNAc(8)Hex(8)dHex(1)	3085.1261	True
+130	G19603RR	Hex:11 HexNAc:11 dHex:1	11,11,1,0,0,0,0,0,0,0,0,0,0,0	H11N11F1	HexNAc(11)Hex(11)dHex(1)	4180.5227	True
+351	G19603RR	Hex:10 HexNAc:10 dHex:1	10,10,1,0,0,0,0,0,0,0,0,0,0,0	H10N10F1	HexNAc(10)Hex(10)dHex(1)	3815.3905	True
+422	G10148VG	Hex:8 HexNAc:8 dHex:2	8,8,2,0,0,0,0,0,0,0,0,0,0,0	H8N8F2	HexNAc(8)Hex(8)dHex(2)	3231.184	True
+430	G88976TU	Hex:7 HexNAc:7 dHex:2	7,7,2,0,0,0,0,0,0,0,0,0,0,0	H7N7F2	HexNAc(7)Hex(7)dHex(2)	2866.0518	True
+218	G18639PA	Hex:9 HexNAc:9 dHex:2	9,9,2,0,0,0,0,0,0,0,0,0,0,0	H9N9F2	HexNAc(9)Hex(9)dHex(2)	3596.3162	True
+344	G39643OJ	Hex:9 HexNAc:9 dHex:1	9,9,1,0,0,0,0,0,0,0,0,0,0,0	H9N9F1	HexNAc(9)Hex(9)dHex(1)	3450.2583	True
+434	G94309NZ	Hex:8 HexNAc:9 dHex:1	8,9,1,0,0,0,0,0,0,0,0,0,0,0	H8N9F1	HexNAc(9)Hex(8)dHex(1)	3288.2055	True
+352	G29501UT	Hex:6 HexNAc:6 dHex:2	6,6,2,0,0,0,0,0,0,0,0,0,0,0	H6N6F2	HexNAc(6)Hex(6)dHex(2)	2500.9196	True
+692	G81165WG	Hex:6 HexNAc:2 dHex:3	6,2,3,0,0,0,0,0,0,0,0,0,0,0	H6N2F3	HexNAc(2)Hex(6)dHex(3)	1834.6599	True
+510	G81165WG	Hex:5 HexNAc:3 dHex:2 Pent:1	5,3,2,0,0,1,0,0,0,0,0,0,0,0	H5N3F2P1	HexNAc(3)Hex(5)dHex(2)Pent(1)	1861.6709	True
+643	G46665ZP	Hex:6 HexNAc:5 dHex:1 NeuAc:2 NeuGc:1	6,5,1,2,1,0,0,0,0,0,0,0,0,0	H6N5F1S2G1	HexNAc(5)Hex(6)dHex(1)NeuAc(2)NeuGc(1)	3041.0634	True
+834	G97428EW	Hex:5 HexNAc:4 dHex:1 NeuAc:2 Ac:1	5,4,1,2,0,0,0,0,0,0,0,0,1,0	H5N4F1S2a1	HexNAc(4)Hex(5)dHex(1)NeuAc(2)Acetyl(1)	2410.8515	True
+305	G04672QB	Hex:5 HexNAc:6 dHex:2	5,6,2,0,0,0,0,0,0,0,0,0,0,0	H5N6F2	HexNAc(6)Hex(5)dHex(2)	2338.8668	True
+253	G11911BT	Hex:4 HexNAc:6 dHex:2	4,6,2,0,0,0,0,0,0,0,0,0,0,0	H4N6F2	HexNAc(6)Hex(4)dHex(2)	2176.814	True
+269	G13238MZ	Hex:7 HexNAc:7 dHex:1 NeuAc:3 Su:1	7,7,1,3,0,0,1,0,0,0,0,0,0,0	H7N7F1S3s1	HexNAc(7)Hex(7)dHex(1)NeuAc(3)Sulfo(1)	3673.2369	True
+239	G50911BZ	Hex:6 HexNAc:5 NeuAc:2 Su:1	6,5,0,2,0,0,1,0,0,0,0,0,0,0	H6N5S2s1	HexNAc(5)Hex(6)NeuAc(2)Sulfo(1)	2667.872	True
+298	G65766QU	Hex:6 HexNAc:7 dHex:1 NeuAc:2 Su:1	6,7,1,2,0,0,1,0,0,0,0,0,0,0	H6N7F1S2s1	HexNAc(7)Hex(6)dHex(1)NeuAc(2)Sulfo(1)	3220.0887	True
+20	G28209TJ	Hex:6 HexNAc:5 dHex:1 NeuAc:2 Su:1	6,5,1,2,0,0,1,0,0,0,0,0,0,0	H6N5F1S2s1	HexNAc(5)Hex(6)dHex(1)NeuAc(2)Sulfo(1)	2813.9299	True
+299	G57097ZE	Hex:6 HexNAc:5 dHex:1 NeuAc:1 Su:2	6,5,1,1,0,0,2,0,0,0,0,0,0,0	H6N5F1S1s2	HexNAc(5)Hex(6)dHex(1)NeuAc(1)Sulfo(2)	2602.7913	True
+208	G72755ZH	Hex:6 HexNAc:6 dHex:1 NeuAc:2 Su:1	6,6,1,2,0,0,1,0,0,0,0,0,0,0	H6N6F1S2s1	HexNAc(6)Hex(6)dHex(1)NeuAc(2)Sulfo(1)	3017.0093	True
+56	G83487DQ	Hex:7 HexNAc:7 dHex:1 NeuAc:1 Su:3	7,7,1,1,0,0,3,0,0,0,0,0,0,0	H7N7F1S1s3	HexNAc(7)Hex(7)dHex(1)NeuAc(1)Sulfo(3)	3250.9597	True
+418	G62168IR	Hex:7 HexNAc:7 dHex:1 NeuAc:2 Su:2	7,7,1,2,0,0,2,0,0,0,0,0,0,0	H7N7F1S2s2	HexNAc(7)Hex(7)dHex(1)NeuAc(2)Sulfo(2)	3462.0983	True
+757	G02620FP	Hex:7 HexNAc:6 NeuAc:2 Su:2	7,6,0,2,0,0,2,0,0,0,0,0,0,0	H7N6S2s2	HexNAc(6)Hex(7)NeuAc(2)Sulfo(2)	3112.961	True
+424	G80961YY	Hex:7 HexNAc:8 dHex:1 NeuAc:2 Su:2	7,8,1,2,0,0,2,0,0,0,0,0,0,0	H7N8F1S2s2	HexNAc(8)Hex(7)dHex(1)NeuAc(2)Sulfo(2)	3665.1777	True
+361	G64160PL	Hex:7 HexNAc:6 dHex:1 NeuAc:3 Su:1	7,6,1,3,0,0,1,0,0,0,0,0,0,0	H7N6F1S3s1	HexNAc(6)Hex(7)dHex(1)NeuAc(3)Sulfo(1)	3470.1575	True
+131	G03622KA	Hex:7 HexNAc:8 NeuAc:2 Su:2	7,8,0,2,0,0,2,0,0,0,0,0,0,0	H7N8S2s2	HexNAc(8)Hex(7)NeuAc(2)Sulfo(2)	3519.1198	True
+490	G49356OF	Hex:5 HexNAc:4 dHex:1 Su:2	5,4,1,0,0,0,2,0,0,0,0,0,0,0	H5N4F1s2	HexNAc(4)Hex(5)dHex(1)Sulfo(2)	1946.5637	True
+724	G54330GJ	Hex:6 HexNAc:5 dHex:1 Su:2	6,5,1,0,0,0,2,0,0,0,0,0,0,0	H6N5F1s2	HexNAc(5)Hex(6)dHex(1)Sulfo(2)	2311.6959	True
+294	G94222SG	Hex:7 HexNAc:7 NeuAc:1 Su:3	7,7,0,1,0,0,3,0,0,0,0,0,0,0	H7N7S1s3	HexNAc(7)Hex(7)NeuAc(1)Sulfo(3)	3104.9018	True
+527	G94788LD	Hex:7 HexNAc:6 dHex:1 NeuAc:2 Su:2	7,6,1,2,0,0,2,0,0,0,0,0,0,0	H7N6F1S2s2	HexNAc(6)Hex(7)dHex(1)NeuAc(2)Sulfo(2)	3259.0189	True
+49	G69560OI	Hex:6 HexNAc:5 NeuAc:1 Su:2	6,5,0,1,0,0,2,0,0,0,0,0,0,0	H6N5S1s2	HexNAc(5)Hex(6)NeuAc(1)Sulfo(2)	2456.7334	True
+485	G99025FY	Hex:6 HexNAc:5 Su:2	6,5,0,0,0,0,2,0,0,0,0,0,0,0	H6N5s2	HexNAc(5)Hex(6)Sulfo(2)	2165.638	True
+636	G75325GX	Hex:6 HexNAc:6 dHex:1 NeuAc:1 Su:2	6,6,1,1,0,0,2,0,0,0,0,0,0,0	H6N6F1S1s2	HexNAc(6)Hex(6)dHex(1)NeuAc(1)Sulfo(2)	2805.8707	True
+587	G40843RG	Hex:6 HexNAc:5 dHex:1 Su:3	6,5,1,0,0,0,3,0,0,0,0,0,0,0	H6N5F1s3	HexNAc(5)Hex(6)dHex(1)Sulfo(3)	2391.6527	True
+405	G14796IU	Hex:6 HexNAc:4 dHex:1 NeuAc:2	6,4,1,2,0,0,0,0,0,0,0,0,0,0	H6N4F1S2	HexNAc(4)Hex(6)dHex(1)NeuAc(2)	2530.8937	True
+245	G54285KU	Hex:6 HexNAc:4 dHex:3 NeuAc:1	6,4,3,1,0,0,0,0,0,0,0,0,0,0	H6N4F3S1	HexNAc(4)Hex(6)dHex(3)NeuAc(1)	2531.9141	True
+783	G54285KU	Hex:1 HexNAc:1 NeuAc:1 Ph:1	1,1,0,1,0,0,0,1,0,0,0,0,0,0	H1N1S1p1	HexNAc(1)Hex(1)NeuAc(1)Phospho(1)	754.2045	True
+564	G86795LJ	Hex:6 HexNAc:5 dHex:2 NeuAc:1	6,5,2,1,0,0,0,0,0,0,0,0,0,0	H6N5F2S1	HexNAc(5)Hex(6)dHex(2)NeuAc(1)	2588.9356	True
+197	G96170OK	Hex:6 HexNAc:7 dHex:1 NeuAc:3	6,7,1,3,0,0,0,0,0,0,0,0,0,0	H6N7F1S3	HexNAc(7)Hex(6)dHex(1)NeuAc(3)	3431.2273	True
+731	G33791AF	Hex:6 HexNAc:5 dHex:2 NeuAc:2	6,5,2,2,0,0,0,0,0,0,0,0,0,0	H6N5F2S2	HexNAc(5)Hex(6)dHex(2)NeuAc(2)	2880.031	True
+539	G30769VJ	Hex:7 HexNAc:6 dHex:2	7,6,2,0,0,0,0,0,0,0,0,0,0,0	H7N6F2	HexNAc(6)Hex(7)dHex(2)	2662.9724	True
+553	G74741QU	Hex:6 HexNAc:7 dHex:1 NeuAc:2	6,7,1,2,0,0,0,0,0,0,0,0,0,0	H6N7F1S2	HexNAc(7)Hex(6)dHex(1)NeuAc(2)	3140.1319	True
+150	G97268YK	Hex:6 HexNAc:7 dHex:1 NeuAc:1	6,7,1,1,0,0,0,0,0,0,0,0,0,0	H6N7F1S1	HexNAc(7)Hex(6)dHex(1)NeuAc(1)	2849.0365	True
+646	G97268YK	Hex:3 HexNAc:2 dHex:1 Su:1	3,2,1,0,0,0,1,0,0,0,0,0,0,0	H3N2F1s1	HexNAc(2)Hex(3)dHex(1)Sulfo(1)	1136.3425	True
+381	G97268YK	Hex:4 HexNAc:4 dHex:3 Pent:1	4,4,3,0,0,1,0,0,0,0,0,0,0,0	H4N4F3P1	HexNAc(4)Hex(4)dHex(3)Pent(1)	2048.7554	True
+601	G97268YK	Hex:2 HexNAc:2 dHex:1 HexA:1	2,2,1,0,0,0,0,0,0,0,1,0,0,0	H2N2F1A1	HexNAc(2)Hex(2)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1070.365	True
+312	G97268YK	Hex:3 HexNAc:1 dHex:1 HexA:1	3,1,1,0,0,0,0,0,0,0,1,0,0,0	H3N1F1A1	HexNAc(1)Hex(3)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1029.3384	True
+190	G97268YK	Hex:2 HexNAc:2 dHex:2 Su:1 HexA:1	2,2,2,0,0,0,1,0,0,0,1,0,0,0	H2N2F2s1A1	HexNAc(2)Hex(2)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1296.3797	True
+292	G97268YK	Hex:4 HexNAc:3 dHex:1 Su:1 HexA:1	4,3,1,0,0,0,1,0,0,0,1,0,0,0	H4N3F1s1A1	HexNAc(3)Hex(4)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1677.5068	True
+7	G97268YK	Hex:3 HexNAc:2 dHex:2 Su:1	3,2,2,0,0,0,1,0,0,0,0,0,0,0	H3N2F2s1	HexNAc(2)Hex(3)dHex(2)Sulfo(1)	1282.4004	True
+261	G97268YK	Hex:4 HexNAc:3 dHex:2 Su:1 HexA:1	4,3,2,0,0,0,1,0,0,0,1,0,0,0	H4N3F2s1A1	HexNAc(3)Hex(4)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1823.5647	True
+248	G97268YK	Hex:3 HexNAc:2 dHex:1 Su:1 HexA:1	3,2,1,0,0,0,1,0,0,0,1,0,0,0	H3N2F1s1A1	HexNAc(2)Hex(3)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1312.3746	True
+310	G97268YK	Hex:3 HexNAc:2 dHex:2 Su:1 HexA:1	3,2,2,0,0,0,1,0,0,0,1,0,0,0	H3N2F2s1A1	HexNAc(2)Hex(3)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1458.4325	True
+758	G97268YK	Hex:2 HexNAc:1 dHex:1 HexA:1	2,1,1,0,0,0,0,0,0,0,1,0,0,0	H2N1F1A1	HexNAc(1)Hex(2)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	867.2856	True
+568	G97268YK	Hex:1 HexNAc:2 dHex:2 Su:1	1,2,2,0,0,0,1,0,0,0,0,0,0,0	H1N2F2s1	HexNAc(2)Hex(1)dHex(2)Sulfo(1)	958.2948	True
+116	G97268YK	Hex:3 HexNAc:3 dHex:2 Su:1 HexA:1	3,3,2,0,0,0,1,0,0,0,1,0,0,0	H3N3F2s1A1	HexNAc(3)Hex(3)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1661.5119	True
+400	G97268YK	Hex:3 HexNAc:2 dHex:1 HexA:1	3,2,1,0,0,0,0,0,0,0,1,0,0,0	H3N2F1A1	HexNAc(2)Hex(3)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1232.4178	True
+605	G97268YK	Hex:4 HexNAc:2 dHex:1 HexA:1	4,2,1,0,0,0,0,0,0,0,1,0,0,0	H4N2F1A1	HexNAc(2)Hex(4)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1394.4706	True
+19	G97268YK	Hex:3 HexNAc:2 dHex:1 HexA:2	3,2,1,0,0,0,0,0,0,0,2,0,0,0	H3N2F1A2	HexNAc(2)Hex(3)dHex(1)HexA(2) % this composition contains HexA (not defined residue for Byonic)	1408.4499	True
+768	G97268YK	Hex:3 HexNAc:3 dHex:1 Su:1 HexA:1	3,3,1,0,0,0,1,0,0,0,1,0,0,0	H3N3F1s1A1	HexNAc(3)Hex(3)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1515.454	True
+416	G88756OE	Hex:8 HexNAc:7 dHex:2	8,7,2,0,0,0,0,0,0,0,0,0,0,0	H8N7F2	HexNAc(7)Hex(8)dHex(2)	3028.1046	True
+323	G71560PC	Hex:7 HexNAc:6 dHex:2 NeuAc:4	7,6,2,4,0,0,0,0,0,0,0,0,0,0	H7N6F2S4	HexNAc(6)Hex(7)dHex(2)NeuAc(4)	3827.354	True
+662	G87108ET	Hex:8 HexNAc:7 NeuAc:4	8,7,0,4,0,0,0,0,0,0,0,0,0,0	H8N7S4	HexNAc(7)Hex(8)NeuAc(4)	3900.3704	True
+518	G34423JR	Hex:6 HexNAc:5 NeuGc:1	6,5,0,0,1,0,0,0,0,0,0,0,0,0	H6N5G1	HexNAc(5)Hex(6)NeuGc(1)	2312.8147	True
+739	G24382MA	Hex:5 HexNAc:4 NeuAc:1 NeuGc:2	5,4,0,1,2,0,0,0,0,0,0,0,0,0	H5N4S1G2	HexNAc(4)Hex(5)NeuAc(1)NeuGc(2)	2545.8682	True
+98	G83201DL	Hex:5 HexNAc:4 NeuAc:2 NeuGc:1	5,4,0,2,1,0,0,0,0,0,0,0,0,0	H5N4S2G1	HexNAc(4)Hex(5)NeuAc(2)NeuGc(1)	2529.8733	True
+472	G73028DK	Hex:6 HexNAc:5 NeuAc:1 NeuGc:2	6,5,0,1,2,0,0,0,0,0,0,0,0,0	H6N5S1G2	HexNAc(5)Hex(6)NeuAc(1)NeuGc(2)	2911.0004	True
+617	G46842SD	Hex:6 HexNAc:5 NeuGc:2	6,5,0,0,2,0,0,0,0,0,0,0,0,0	H6N5G2	HexNAc(5)Hex(6)NeuGc(2)	2619.905	True
+354	G06290IR	Hex:6 HexNAc:5 NeuAc:2 NeuGc:1	6,5,0,2,1,0,0,0,0,0,0,0,0,0	H6N5S2G1	HexNAc(5)Hex(6)NeuAc(2)NeuGc(1)	2895.0055	True
+641	G31973KL	Hex:6 HexNAc:5 NeuAc:1 NeuGc:1	6,5,0,1,1,0,0,0,0,0,0,0,0,0	H6N5S1G1	HexNAc(5)Hex(6)NeuAc(1)NeuGc(1)	2603.9101	True
+282	G29972TM	Hex:6 HexNAc:5 NeuGc:3	6,5,0,0,3,0,0,0,0,0,0,0,0,0	H6N5G3	HexNAc(5)Hex(6)NeuGc(3)	2926.9953	True
+622	G57939IT	Hex:7 HexNAc:6 NeuGc:1	7,6,0,0,1,0,0,0,0,0,0,0,0,0	H7N6G1	HexNAc(6)Hex(7)NeuGc(1)	2677.9469	True
+189	G10167LV	Hex:6 HexNAc:5 NeuAc:2 NeuGc:2	6,5,0,2,2,0,0,0,0,0,0,0,0,0	H6N5S2G2	HexNAc(5)Hex(6)NeuAc(2)NeuGc(2)	3202.0958	True
+581	G37773JL	Hex:7 HexNAc:6 NeuAc:3 NeuGc:1	7,6,0,3,1,0,0,0,0,0,0,0,0,0	H7N6S3G1	HexNAc(6)Hex(7)NeuAc(3)NeuGc(1)	3551.2331	True
+412	G17146RA	Hex:6 HexNAc:5 NeuAc:3 NeuGc:1	6,5,0,3,1,0,0,0,0,0,0,0,0,0	H6N5S3G1	HexNAc(5)Hex(6)NeuAc(3)NeuGc(1)	3186.1009	True
+191	G68873DS	Hex:7 HexNAc:6 NeuAc:2 NeuGc:1	7,6,0,2,1,0,0,0,0,0,0,0,0,0	H7N6S2G1	HexNAc(6)Hex(7)NeuAc(2)NeuGc(1)	3260.1377	True
+498	G50457PU	Hex:7 HexNAc:6 NeuGc:2	7,6,0,0,2,0,0,0,0,0,0,0,0,0	H7N6G2	HexNAc(6)Hex(7)NeuGc(2)	2985.0372	True
+488	G26101XB	Hex:7 HexNAc:6 NeuAc:1 NeuGc:1	7,6,0,1,1,0,0,0,0,0,0,0,0,0	H7N6S1G1	HexNAc(6)Hex(7)NeuAc(1)NeuGc(1)	2969.0423	True
+373	G58760BD	Hex:5 HexNAc:3 dHex:2 NeuAc:1 Su:1	5,3,2,1,0,0,1,0,0,0,0,0,0,0	H5N3F2S1s1	HexNAc(3)Hex(5)dHex(2)NeuAc(1)Sulfo(1)	2100.6808	True
+258	G59503RI	Hex:5 HexNAc:3 dHex:1 NeuAc:1 NeuGc:1 Su:1	5,3,1,1,1,0,1,0,0,0,0,0,0,0	H5N3F1S1G1s1	HexNAc(3)Hex(5)dHex(1)NeuAc(1)NeuGc(1)Sulfo(1)	2261.7132	True
+296	G59503RI	Hex:5 HexNAc:3 dHex:1 Su:2 HexA:1	5,3,1,0,0,0,2,0,0,0,1,0,0,0	H5N3F1s2A1	HexNAc(3)Hex(5)dHex(1)Sulfo(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1919.5164	True
+734	G32179YV	Hex:7 HexNAc:3 dHex:1 Su:1	7,3,1,0,0,0,1,0,0,0,0,0,0,0	H7N3F1s1	HexNAc(3)Hex(7)dHex(1)Sulfo(1)	1987.6331	True
+145	G83618OQ	Hex:4 HexNAc:3 dHex:1 NeuAc:2 Su:1	4,3,1,2,0,0,1,0,0,0,0,0,0,0	H4N3F1S2s1	HexNAc(3)Hex(4)dHex(1)NeuAc(2)Sulfo(1)	2083.6655	True
+548	G06213KM	Hex:5 HexNAc:3 dHex:1 NeuAc:1 Su:1	5,3,1,1,0,0,1,0,0,0,0,0,0,0	H5N3F1S1s1	HexNAc(3)Hex(5)dHex(1)NeuAc(1)Sulfo(1)	1954.6229	True
+417	G59437BE	Hex:6 HexNAc:3 dHex:2 NeuAc:1 Su:1	6,3,2,1,0,0,1,0,0,0,0,0,0,0	H6N3F2S1s1	HexNAc(3)Hex(6)dHex(2)NeuAc(1)Sulfo(1)	2262.7336	True
+247	G59437BE	Hex:5 HexNAc:3 dHex:1 Su:1 HexA:1	5,3,1,0,0,0,1,0,0,0,1,0,0,0	H5N3F1s1A1	HexNAc(3)Hex(5)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1839.5596	True
+623	G60360ZD	Hex:6 HexNAc:3 dHex:1 Su:1	6,3,1,0,0,0,1,0,0,0,0,0,0,0	H6N3F1s1	HexNAc(3)Hex(6)dHex(1)Sulfo(1)	1825.5803	True
+697	G36736UL	Hex:5 HexNAc:3 dHex:1 NeuGc:1 Su:1	5,3,1,0,1,0,1,0,0,0,0,0,0,0	H5N3F1G1s1	HexNAc(3)Hex(5)dHex(1)NeuGc(1)Sulfo(1)	1970.6178	True
+76	G88482EP	Hex:5 HexNAc:3 dHex:1 Su:1	5,3,1,0,0,0,1,0,0,0,0,0,0,0	H5N3F1s1	HexNAc(3)Hex(5)dHex(1)Sulfo(1)	1663.5275	True
+482	G77382YV	Hex:6 HexNAc:3 dHex:1 NeuAc:1 Su:1	6,3,1,1,0,0,1,0,0,0,0,0,0,0	H6N3F1S1s1	HexNAc(3)Hex(6)dHex(1)NeuAc(1)Sulfo(1)	2116.6757	True
+391	G07558YH	Hex:4 HexNAc:3 dHex:1 NeuAc:1 Su:1	4,3,1,1,0,0,1,0,0,0,0,0,0,0	H4N3F1S1s1	HexNAc(3)Hex(4)dHex(1)NeuAc(1)Sulfo(1)	1792.5701	True
+585	G14958BS	Hex:5 HexNAc:3 dHex:1 NeuGc:1	5,3,1,0,1,0,0,0,0,0,0,0,0,0	H5N3F1G1	HexNAc(3)Hex(5)dHex(1)NeuGc(1)	1890.661	True
+525	G74603KQ	Hex:4 HexNAc:3 dHex:2 NeuAc:1 Su:1	4,3,2,1,0,0,1,0,0,0,0,0,0,0	H4N3F2S1s1	HexNAc(3)Hex(4)dHex(2)NeuAc(1)Sulfo(1)	1938.628	True
+194	G74603KQ	Hex:5 HexNAc:4 dHex:1 Su:1 HexA:1	5,4,1,0,0,0,1,0,0,0,1,0,0,0	H5N4F1s1A1	HexNAc(4)Hex(5)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2042.639	True
+4	G74603KQ	Hex:4 HexNAc:2 dHex:1 Pent:1	4,2,1,0,0,1,0,0,0,0,0,0,0,0	H4N2F1P1	HexNAc(2)Hex(4)dHex(1)Pent(1)	1350.4808	True
+644	G74603KQ	Hex:5 HexNAc:2 dHex:1 Pent:1	5,2,1,0,0,1,0,0,0,0,0,0,0,0	H5N2F1P1	HexNAc(2)Hex(5)dHex(1)Pent(1)	1512.5336	True
+463	G28847IN	Hex:8 HexNAc:7 NeuAc:5	8,7,0,5,0,0,0,0,0,0,0,0,0,0	H8N7S5	HexNAc(7)Hex(8)NeuAc(5)	4191.4658	True
+21	G74081XX	Hex:8 HexNAc:5 NeuAc:1	8,5,0,1,0,0,0,0,0,0,0,0,0,0	H8N5S1	HexNAc(5)Hex(8)NeuAc(1)	2620.9254	True
+576	G56438GL	Hex:9 HexNAc:7	9,7,0,0,0,0,0,0,0,0,0,0,0,0	H9N7	HexNAc(7)Hex(9)	2898.0416	True
+571	G56438GL	Hex:10 HexNAc:7	10,7,0,0,0,0,0,0,0,0,0,0,0,0	H10N7	HexNAc(7)Hex(10)	3060.0944	True
+54	G56438GL	Hex:10 HexNAc:6	10,6,0,0,0,0,0,0,0,0,0,0,0,0	H10N6	HexNAc(6)Hex(10)	2857.015	True
+484	G56438GL	Hex:10 HexNAc:6 NeuAc:1	10,6,0,1,0,0,0,0,0,0,0,0,0,0	H10N6S1	HexNAc(6)Hex(10)NeuAc(1)	3148.1104	True
+104	G85291BI	Hex:8 HexNAc:6	8,6,0,0,0,0,0,0,0,0,0,0,0,0	H8N6	HexNAc(6)Hex(8)	2532.9094	True
+58	G58596DI	Hex:9 HexNAc:6	9,6,0,0,0,0,0,0,0,0,0,0,0,0	H9N6	HexNAc(6)Hex(9)	2694.9622	True
+385	G58596DI	Hex:12 HexNAc:7 NeuAc:1	12,7,0,1,0,0,0,0,0,0,0,0,0,0	H12N7S1	HexNAc(7)Hex(12)NeuAc(1)	3675.2954	True
+15	G58596DI	Hex:12 HexNAc:7	12,7,0,0,0,0,0,0,0,0,0,0,0,0	H12N7	HexNAc(7)Hex(12)	3384.2	True
+394	G58596DI	Hex:10 HexNAc:7 NeuAc:1	10,7,0,1,0,0,0,0,0,0,0,0,0,0	H10N7S1	HexNAc(7)Hex(10)NeuAc(1)	3351.1898	True
+389	G76575JG	Hex:9 HexNAc:7 NeuAc:1	9,7,0,1,0,0,0,0,0,0,0,0,0,0	H9N7S1	HexNAc(7)Hex(9)NeuAc(1)	3189.137	True
+728	G76575JG	Hex:11 HexNAc:6	11,6,0,0,0,0,0,0,0,0,0,0,0,0	H11N6	HexNAc(6)Hex(11)	3019.0678	True
+765	G74458CA	Hex:9 HexNAc:6 NeuAc:2	9,6,0,2,0,0,0,0,0,0,0,0,0,0	H9N6S2	HexNAc(6)Hex(9)NeuAc(2)	3277.153	True
+105	G74458CA	Hex:11 HexNAc:7	11,7,0,0,0,0,0,0,0,0,0,0,0,0	H11N7	HexNAc(7)Hex(11)	3222.1472	True
+327	G94372TX	Hex:9 HexNAc:5	9,5,0,0,0,0,0,0,0,0,0,0,0,0	H9N5	HexNAc(5)Hex(9)	2491.8828	True
+397	G27516OE	Hex:8 HexNAc:5	8,5,0,0,0,0,0,0,0,0,0,0,0,0	H8N5	HexNAc(5)Hex(8)	2329.83	True
+477	G06722UM	Hex:9 HexNAc:6 NeuAc:1	9,6,0,1,0,0,0,0,0,0,0,0,0,0	H9N6S1	HexNAc(6)Hex(9)NeuAc(1)	2986.0576	True
+523	G65019XG	Hex:5 HexNAc:5 dHex:2 NeuAc:1	5,5,2,1,0,0,0,0,0,0,0,0,0,0	H5N5F2S1	HexNAc(5)Hex(5)dHex(2)NeuAc(1)	2426.8828	True
+606	G92073XL	Hex:5 HexNAc:5 dHex:3 NeuAc:1	5,5,3,1,0,0,0,0,0,0,0,0,0,0	H5N5F3S1	HexNAc(5)Hex(5)dHex(3)NeuAc(1)	2572.9407	True
+227	G24271GS	Hex:8 HexNAc:7 dHex:2 NeuAc:4	8,7,2,4,0,0,0,0,0,0,0,0,0,0	H8N7F2S4	HexNAc(7)Hex(8)dHex(2)NeuAc(4)	4192.4862	True
+195	G51413EV	Hex:5 HexNAc:4 dHex:3 NeuAc:1	5,4,3,1,0,0,0,0,0,0,0,0,0,0	H5N4F3S1	HexNAc(4)Hex(5)dHex(3)NeuAc(1)	2369.8613	True
+767	G44490NG	Hex:8 HexNAc:7 dHex:3 NeuAc:4	8,7,3,4,0,0,0,0,0,0,0,0,0,0	H8N7F3S4	HexNAc(7)Hex(8)dHex(3)NeuAc(4)	4338.5441	True
+626	G86408JD	Hex:6 HexNAc:8	6,8,0,0,0,0,0,0,0,0,0,0,0,0	H6N8	HexNAc(8)Hex(6)	2614.9626	True
+79	G67093QB	Hex:5 HexNAc:7	5,7,0,0,0,0,0,0,0,0,0,0,0,0	H5N7	HexNAc(7)Hex(5)	2249.8304	True
+579	G65540UB	Hex:4 HexNAc:8	4,8,0,0,0,0,0,0,0,0,0,0,0,0	H4N8	HexNAc(8)Hex(4)	2290.857	True
+775	G65540UB	Pent:1 Other:2	0,0,0,0,0,1,0,0,0,0,0,0,0,2	P1X2	Pent(1)Other(2) % this composition contains  (not defined residue for Byonic)	683.2747	True
+382	G65540UB	Hex:3 HexNAc:1 dHex:3	3,1,3,0,0,0,0,0,0,0,0,0,0,0	H3N1F3	HexNAc(1)Hex(3)dHex(3)	1145.4221	True
+171	G65540UB	Hex:3 HexNAc:2 dHex:3 NeuAc:1	3,2,3,1,0,0,0,0,0,0,0,0,0,0	H3N2F3S1	HexNAc(2)Hex(3)dHex(3)NeuAc(1)	1639.5969	True
+268	G65540UB	Hex:3 HexNAc:2 dHex:4 NeuAc:1	3,2,4,1,0,0,0,0,0,0,0,0,0,0	H3N2F4S1	HexNAc(2)Hex(3)dHex(4)NeuAc(1)	1785.6548	True
+561	G65540UB	Hex:2 HexNAc:1 HexA:1	2,1,0,0,0,0,0,0,0,0,1,0,0,0	H2N1A1	HexNAc(1)Hex(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	721.2277	True
+563	G65540UB	Hex:4 HexNAc:1 HexA:1	4,1,0,0,0,0,0,0,0,0,1,0,0,0	H4N1A1	HexNAc(1)Hex(4)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1045.3333	True
+764	G65540UB	HexNAc:3 HexA:2	0,3,0,0,0,0,0,0,0,0,2,0,0,0	N3A2	HexNAc(3)HexA(2) % this composition contains HexA (not defined residue for Byonic)	979.313	True
+120	G65540UB	Hex:2 HexNAc:1 Pent:1 HexA:1	2,1,0,0,0,1,0,0,0,0,1,0,0,0	H2N1P1A1	HexNAc(1)Hex(2)Pent(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	853.27	True
+823	G65540UB	Hex:5 HexNAc:2 dHex:2 Me:1	5,2,2,0,0,0,0,0,0,0,0,1,0,0	H5N2F2m1	HexNAc(2)Hex(5)dHex(2)Me(1) % this composition contains Me (not defined residue for Byonic)	1540.5649	True
+124	G65540UB	HexNAc:2 HexA:1	0,2,0,0,0,0,0,0,0,0,1,0,0,0	N2A1	HexNAc(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	600.2015	True
+618	G65540UB	Hex:3 HexNAc:1 HexA:1	3,1,0,0,0,0,0,0,0,0,1,0,0,0	H3N1A1	HexNAc(1)Hex(3)HexA(1) % this composition contains HexA (not defined residue for Byonic)	883.2805	True
+251	G65540UB	HexNAc:2 HexA:2	0,2,0,0,0,0,0,0,0,0,2,0,0,0	N2A2	HexNAc(2)HexA(2) % this composition contains HexA (not defined residue for Byonic)	776.2336	True
+596	G28839GC	Hex:3 HexNAc:6 dHex:2 Su:1	3,6,2,0,0,0,1,0,0,0,0,0,0,0	H3N6F2s1	HexNAc(6)Hex(3)dHex(2)Sulfo(1)	2094.718	True
+319	G28839GC	Hex:3 HexNAc:2 dHex:3	3,2,3,0,0,0,0,0,0,0,0,0,0,0	H3N2F3	HexNAc(2)Hex(3)dHex(3)	1348.5015	True
+411	G28839GC	Hex:2 HexNAc:6 dHex:2 Su:1	2,6,2,0,0,0,1,0,0,0,0,0,0,0	H2N6F2s1	HexNAc(6)Hex(2)dHex(2)Sulfo(1)	1932.6652	True
+447	G28839GC	Hex:2 HexNAc:4 dHex:1 Su:2	2,4,1,0,0,0,2,0,0,0,0,0,0,0	H2N4F1s2	HexNAc(4)Hex(2)dHex(1)Sulfo(2)	1460.4053	True
+609	G28839GC	Hex:2 HexNAc:4 dHex:3 Su:2	2,4,3,0,0,0,2,0,0,0,0,0,0,0	H2N4F3s2	HexNAc(4)Hex(2)dHex(3)Sulfo(2)	1752.5211	True
+87	G28839GC	Hex:1 HexNAc:4 dHex:1 Su:1	1,4,1,0,0,0,1,0,0,0,0,0,0,0	H1N4F1s1	HexNAc(4)Hex(1)dHex(1)Sulfo(1)	1218.3957	True
+565	G28839GC	Hex:1 HexNAc:4 dHex:2 Su:1	1,4,2,0,0,0,1,0,0,0,0,0,0,0	H1N4F2s1	HexNAc(4)Hex(1)dHex(2)Sulfo(1)	1364.4536	True
+517	G28839GC	Hex:2 HexNAc:4 dHex:2 Su:2	2,4,2,0,0,0,2,0,0,0,0,0,0,0	H2N4F2s2	HexNAc(4)Hex(2)dHex(2)Sulfo(2)	1606.4632	True
+274	G53661HY	Hex:7 HexNAc:6 dHex:1 Su:1	7,6,1,0,0,0,1,0,0,0,0,0,0,0	H7N6F1s1	HexNAc(6)Hex(7)dHex(1)Sulfo(1)	2596.8713	True
+544	G53661HY	Hex:6 HexNAc:5 dHex:1 Su:1 HexA:1	6,5,1,0,0,0,1,0,0,0,1,0,0,0	H6N5F1s1A1	HexNAc(5)Hex(6)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2407.7712	True
+845	G10326NC	Hex:6 HexNAc:5 dHex:1 Su:1	6,5,1,0,0,0,1,0,0,0,0,0,0,0	H6N5F1s1	HexNAc(5)Hex(6)dHex(1)Sulfo(1)	2231.7391	True
+103	G10326NC	Hex:7 HexNAc:6 dHex:1 Su:1 HexA:1	7,6,1,0,0,0,1,0,0,0,1,0,0,0	H7N6F1s1A1	HexNAc(6)Hex(7)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2772.9034	True
+199	G10326NC	Hex:1 Pent:3	1,0,0,0,0,3,0,0,0,0,0,0,0,0	H1P3	Hex(1)Pent(3)	576.1903	True
+779	G10326NC	Hex:1 Pent:2 Me:1	1,0,0,0,0,2,0,0,0,0,0,1,0,0	H1P2m1	Hex(1)Pent(2)Me(1) % this composition contains Me (not defined residue for Byonic)	458.1637	True
+198	G10326NC	Hex:2 Pent:2	2,0,0,0,0,2,0,0,0,0,0,0,0,0	H2P2	Hex(2)Pent(2)	606.2008	True
+108	G10326NC	Pent:2	0,0,0,0,0,2,0,0,0,0,0,0,0,0	P2	Pent(2)	282.0952	True
+781	G10326NC	Hex:1 Pent:3 Me:1	1,0,0,0,0,3,0,0,0,0,0,1,0,0	H1P3m1	Hex(1)Pent(3)Me(1) % this composition contains Me (not defined residue for Byonic)	590.206	True
+791	G10326NC	Hex:2 Pent:2 Me:1	2,0,0,0,0,2,0,0,0,0,0,1,0,0	H2P2m1	Hex(2)Pent(2)Me(1) % this composition contains Me (not defined residue for Byonic)	620.2165	True
+519	G10326NC	Hex:3 HexNAc:3 dHex:2 Su:1	3,3,2,0,0,0,1,0,0,0,0,0,0,0	H3N3F2s1	HexNAc(3)Hex(3)dHex(2)Sulfo(1)	1485.4798	True
+137	G10326NC	NeuAc:1	0,0,0,1,0,0,0,0,0,0,0,0,0,0	S1	NeuAc(1)	309.106	True
+193	G99035ES	Hex:7 HexNAc:5 dHex:4	7,5,4,0,0,0,0,0,0,0,0,0,0,0	H7N5F4	HexNAc(5)Hex(7)dHex(4)	2752.0088	True
+835	G39064KU	Hex:5 HexNAc:4 dHex:3 NeuAc:2	5,4,3,2,0,0,0,0,0,0,0,0,0,0	H5N4F3S2	HexNAc(4)Hex(5)dHex(3)NeuAc(2)	2660.9567	True
+95	G95133RI	Hex:6 HexNAc:5 dHex:4	6,5,4,0,0,0,0,0,0,0,0,0,0,0	H6N5F4	HexNAc(5)Hex(6)dHex(4)	2589.956	True
+665	G52890YB	Hex:7 HexNAc:6 dHex:5	7,6,5,0,0,0,0,0,0,0,0,0,0,0	H7N6F5	HexNAc(6)Hex(7)dHex(5)	3101.1461	True
+42	G15028ED	Hex:9 HexNAc:5 dHex:4	9,5,4,0,0,0,0,0,0,0,0,0,0,0	H9N5F4	HexNAc(5)Hex(9)dHex(4)	3076.1144	True
+671	G39124ZN	Hex:8 HexNAc:6 dHex:5	8,6,5,0,0,0,0,0,0,0,0,0,0,0	H8N6F5	HexNAc(6)Hex(8)dHex(5)	3263.1989	True
+41	G39124ZN	Hex:11 HexNAc:6 dHex:5	11,6,5,0,0,0,0,0,0,0,0,0,0,0	H11N6F5	HexNAc(6)Hex(11)dHex(5)	3749.3573	True
+700	G39124ZN	Hex:10 HexNAc:6 dHex:5	10,6,5,0,0,0,0,0,0,0,0,0,0,0	H10N6F5	HexNAc(6)Hex(10)dHex(5)	3587.3045	True
+594	G22040QI	Hex:7 HexNAc:4 dHex:3	7,4,3,0,0,0,0,0,0,0,0,0,0,0	H7N4F3	HexNAc(4)Hex(7)dHex(3)	2402.8715	True
+134	G17269CN	Hex:9	9,0,0,0,0,0,0,0,0,0,0,0,0,0	H9	Hex(9)	1476.4858	True
+902	G17269CN	Hex:46 HexNAc:22 dHex:3 Ph:1 Other:1	46,22,3,0,0,0,0,1,0,0,0,0,0,1	H46N22F3p1X1	HexNAc(22)Hex(46)dHex(3)Phospho(1)Other(1) % this composition contains  (not defined residue for Byonic)	12458.3262	True
+708	G12313PD	Hex:5 HexNAc:3 dHex:2	5,3,2,0,0,0,0,0,0,0,0,0,0,0	H5N3F2	HexNAc(3)Hex(5)dHex(2)	1729.6286	True
+625	G12313PD	Hex:3 HexNAc:3 NeuAc:3	3,3,0,3,0,0,0,0,0,0,0,0,0,0	H3N3S3	HexNAc(3)Hex(3)NeuAc(3)	1986.6934	True
+479	G12313PD	Hex:11 HexNAc:6 dHex:1	11,6,1,0,0,0,0,0,0,0,0,0,0,0	H11N6F1	HexNAc(6)Hex(11)dHex(1)	3165.1257	True
+203	G33567AB	Hex:9 HexNAc:7 dHex:1	9,7,1,0,0,0,0,0,0,0,0,0,0,0	H9N7F1	HexNAc(7)Hex(9)dHex(1)	3044.0995	True
+410	G19116TW	Hex:7 HexNAc:5	7,5,0,0,0,0,0,0,0,0,0,0,0,0	H7N5	HexNAc(5)Hex(7)	2167.7772	True
+23	G19116TW	Hex:13 HexNAc:12 dHex:5	13,12,5,0,0,0,0,0,0,0,0,0,0,0	H13N12F5	HexNAc(12)Hex(13)dHex(5)	5291.9393	True
+185	G19116TW	Hex:4 dHex:1 HexA:1	4,0,1,0,0,0,0,0,0,0,1,0,0,0	H4F1A1	Hex(4)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	988.3118	True
+376	G19116TW	Hex:5 HexA:1	5,0,0,0,0,0,0,0,0,0,1,0,0,0	H5A1	Hex(5)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1004.3066	True
+526	G19116TW	Hex:4 HexA:1	4,0,0,0,0,0,0,0,0,0,1,0,0,0	H4A1	Hex(4)HexA(1) % this composition contains HexA (not defined residue for Byonic)	842.2539	True
+794	G19116TW	Hex:2 dHex:1 Ph:1 Other:1	2,0,1,0,0,0,0,1,0,0,0,0,0,1	H2F1p1X1	Hex(2)dHex(1)Phospho(1)Other(1) % this composition contains  (not defined residue for Byonic)	568.1404	True
+790	G19116TW	Hex:2 Ph:1 Other:1	2,0,0,0,0,0,0,1,0,0,0,0,0,1	H2p1X1	Hex(2)Phospho(1)Other(1) % this composition contains  (not defined residue for Byonic)	422.0825	True
+802	G19116TW	Hex:3 Ph:1	3,0,0,0,0,0,0,1,0,0,0,0,0,0	H3p1	Hex(3)Phospho(1)	584.1353	True
+793	G19116TW	Hex:2 dHex:1 Ph:1	2,0,1,0,0,0,0,1,0,0,0,0,0,0	H2F1p1	Hex(2)dHex(1)Phospho(1)	568.1404	True
+789	G19116TW	Hex:2 Ph:1	2,0,0,0,0,0,0,1,0,0,0,0,0,0	H2p1	Hex(2)Phospho(1)	422.0825	True
+260	G80743YX	Hex:6 HexNAc:8 dHex:4	6,8,4,0,0,0,0,0,0,0,0,0,0,0	H6N8F4	HexNAc(8)Hex(6)dHex(4)	3199.1942	True
+629	G56202WQ	Hex:7 HexNAc:10 dHex:5	7,10,5,0,0,0,0,0,0,0,0,0,0,0	H7N10F5	HexNAc(10)Hex(7)dHex(5)	3913.4637	True
+238	G35994TW	Hex:7 HexNAc:11 dHex:5	7,11,5,0,0,0,0,0,0,0,0,0,0,0	H7N11F5	HexNAc(11)Hex(7)dHex(5)	4116.5431	True
+267	G26383NG	Hex:4 HexNAc:4 NeuGc:2	4,4,0,0,2,0,0,0,0,0,0,0,0,0	H4N4G2	HexNAc(4)Hex(4)NeuGc(2)	2092.72	True
+133	G14456RI	Hex:4 HexNAc:4 NeuGc:1	4,4,0,0,1,0,0,0,0,0,0,0,0,0	H4N4G1	HexNAc(4)Hex(4)NeuGc(1)	1785.6297	True
+140	G14456RI	Hex:3 HexNAc:2 dHex:4	3,2,4,0,0,0,0,0,0,0,0,0,0,0	H3N2F4	HexNAc(2)Hex(3)dHex(4)	1494.5594	True
+656	G14456RI	Hex:1 HexNAc:1 dHex:2	1,1,2,0,0,0,0,0,0,0,0,0,0,0	H1N1F2	HexNAc(1)Hex(1)dHex(2)	675.2586	True
+838	G90868XK	Hex:6 Ph:1	6,0,0,0,0,0,0,1,0,0,0,0,0,0	H6p1	Hex(6)Phospho(1)	1070.2937	True
+632	G90868XK	HexNAc:1 Pent:1	0,1,0,0,0,1,0,0,0,0,0,0,0,0	N1P1	HexNAc(1)Pent(1)	353.1323	True
+314	G61806WR	Hex:6 HexNAc:5 dHex:1 NeuAc:1 NeuGc:1	6,5,1,1,1,0,0,0,0,0,0,0,0,0	H6N5F1S1G1	HexNAc(5)Hex(6)dHex(1)NeuAc(1)NeuGc(1)	2749.968	True
+403	G96577RX	Hex:6 HexNAc:5 dHex:3	6,5,3,0,0,0,0,0,0,0,0,0,0,0	H6N5F3	HexNAc(5)Hex(6)dHex(3)	2443.8981	True
+374	G86273TY	Hex:3 HexNAc:1 dHex:1 NeuAc:1	3,1,1,1,0,0,0,0,0,0,0,0,0,0	H3N1F1S1	HexNAc(1)Hex(3)dHex(1)NeuAc(1)	1144.4017	True
+870	G49329XU	Hex:8 HexNAc:6 dHex:1 NeuAc:3	8,6,1,3,0,0,0,0,0,0,0,0,0,0	H8N6F1S3	HexNAc(6)Hex(8)dHex(1)NeuAc(3)	3552.2535	True
+883	G49329XU	Hex:11 HexNAc:8 dHex:1 NeuAc:2	11,8,1,2,0,0,0,0,0,0,0,0,0,0	H11N8F1S2	HexNAc(8)Hex(11)dHex(1)NeuAc(2)	4153.4753	True
+880	G49329XU	Hex:10 HexNAc:6 dHex:1 NeuAc:1	10,6,1,1,0,0,0,0,0,0,0,0,0,0	H10N6F1S1	HexNAc(6)Hex(10)dHex(1)NeuAc(1)	3294.1683	True
+874	G76915KR	Hex:9 HexNAc:6 dHex:1 NeuAc:2	9,6,1,2,0,0,0,0,0,0,0,0,0,0	H9N6F1S2	HexNAc(6)Hex(9)dHex(1)NeuAc(2)	3423.2109	True
+125	G24954UD	Hex:5 HexNAc:6 dHex:1 NeuAc:1	5,6,1,1,0,0,0,0,0,0,0,0,0,0	H5N6F1S1	HexNAc(6)Hex(5)dHex(1)NeuAc(1)	2483.9043	True
+375	G42459UQ	Hex:7 HexNAc:7 dHex:1 NeuAc:3	7,7,1,3,0,0,0,0,0,0,0,0,0,0	H7N7F1S3	HexNAc(7)Hex(7)dHex(1)NeuAc(3)	3593.2801	True
+363	G67506FN	Hex:7 HexNAc:7 dHex:1 NeuAc:2	7,7,1,2,0,0,0,0,0,0,0,0,0,0	H7N7F1S2	HexNAc(7)Hex(7)dHex(1)NeuAc(2)	3302.1847	True
+675	G31596VW	Hex:6 HexNAc:6 dHex:1 NeuAc:1	6,6,1,1,0,0,0,0,0,0,0,0,0,0	H6N6F1S1	HexNAc(6)Hex(6)dHex(1)NeuAc(1)	2645.9571	True
+61	G31596VW	Hex:2 HexNAc:4 dHex:1 Kdn:1	2,4,1,0,0,0,0,0,1,0,0,0,0,0	H2N4F1K1	HexNAc(4)Hex(2)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1550.5606	True
+799	G31596VW	Hex:2 HexNAc:4 Kdn:1	2,4,0,0,0,0,0,0,1,0,0,0,0,0	H2N4K1	HexNAc(4)Hex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1404.5027	True
+398	G31596VW	Hex:2 HexNAc:3 dHex:1 Kdn:1	2,3,1,0,0,0,0,0,1,0,0,0,0,0	H2N3F1K1	HexNAc(3)Hex(2)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1347.4812	True
+590	G31596VW	Hex:2 HexNAc:4 dHex:2 Kdn:1	2,4,2,0,0,0,0,0,1,0,0,0,0,0	H2N4F2K1	HexNAc(4)Hex(2)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1696.6185	True
+151	G31596VW	Hex:3 HexNAc:5 dHex:1 Kdn:1	3,5,1,0,0,0,0,0,1,0,0,0,0,0	H3N5F1K1	HexNAc(5)Hex(3)dHex(1)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1915.6928	True
+807	G31596VW	Hex:3 HexNAc:4 Kdn:1	3,4,0,0,0,0,0,0,1,0,0,0,0,0	H3N4K1	HexNAc(4)Hex(3)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	1566.5555	True
+696	G31596VW	Hex:3 HexNAc:5 dHex:2 Kdn:1	3,5,2,0,0,0,0,0,1,0,0,0,0,0	H3N5F2K1	HexNAc(5)Hex(3)dHex(2)Kdn(1) % this composition contains Kdn (not defined residue for Byonic)	2061.7507	True
+801	G31596VW	Hex:2 HexNAc:5 dHex:1	2,5,1,0,0,0,0,0,0,0,0,0,0,0	H2N5F1	HexNAc(5)Hex(2)dHex(1)	1503.5711	True
+800	G31596VW	Hex:2 HexNAc:4 NeuGc:1	2,4,0,0,1,0,0,0,0,0,0,0,0,0	H2N4G1	HexNAc(4)Hex(2)NeuGc(1)	1461.5241	True
+415	G31596VW	Hex:2 HexNAc:4 dHex:1 NeuGc:1	2,4,1,0,1,0,0,0,0,0,0,0,0,0	H2N4F1G1	HexNAc(4)Hex(2)dHex(1)NeuGc(1)	1607.582	True
+102	G31596VW	Hex:2 HexNAc:3 dHex:1 NeuGc:1	2,3,1,0,1,0,0,0,0,0,0,0,0,0	H2N3F1G1	HexNAc(3)Hex(2)dHex(1)NeuGc(1)	1404.5026	True
+658	G27785LA	Hex:2 NeuGc:1	2,0,0,0,1,0,0,0,0,0,0,0,0,0	H2G1	Hex(2)NeuGc(1)	649.2065	True
+491	G27785LA	Hex:1 HexNAc:4	1,4,0,0,0,0,0,0,0,0,0,0,0,0	H1N4	HexNAc(4)Hex(1)	992.381	True
+810	G66239FP	Hex:3 HexNAc:4 dHex:2 Su:1	3,4,2,0,0,0,1,0,0,0,0,0,0,0	H3N4F2s1	HexNAc(4)Hex(3)dHex(2)Sulfo(1)	1688.5592	True
+876	G66239FP	Hex:10 HexNAc:3 dHex:2	10,3,2,0,0,0,0,0,0,0,0,0,0,0	H10N3F2	HexNAc(3)Hex(10)dHex(2)	2539.8926	True
+859	G41170ZW	Hex:7 HexNAc:3 dHex:2	7,3,2,0,0,0,0,0,0,0,0,0,0,0	H7N3F2	HexNAc(3)Hex(7)dHex(2)	2053.7342	True
+854	G24216YU	Hex:7 HexNAc:2 dHex:3	7,2,3,0,0,0,0,0,0,0,0,0,0,0	H7N2F3	HexNAc(2)Hex(7)dHex(3)	1996.7127	True
+905	G86396TU	Hex:7 HexNAc:2 dHex:2	7,2,2,0,0,0,0,0,0,0,0,0,0,0	H7N2F2	HexNAc(2)Hex(7)dHex(2)	1850.6548	True
+877	G86396TU	Hex:10 HexNAc:3 dHex:3	10,3,3,0,0,0,0,0,0,0,0,0,0,0	H10N3F3	HexNAc(3)Hex(10)dHex(3)	2685.9505	True
+868	G28430KP	Hex:8 HexNAc:3 dHex:2	8,3,2,0,0,0,0,0,0,0,0,0,0,0	H8N3F2	HexNAc(3)Hex(8)dHex(2)	2215.787	True
+882	G28430KP	Hex:11 HexNAc:5 dHex:1	11,5,1,0,0,0,0,0,0,0,0,0,0,0	H11N5F1	HexNAc(5)Hex(11)dHex(1)	2962.0463	True
+727	G31493EX	Hex:9 HexNAc:6 dHex:1 NeuAc:1	9,6,1,1,0,0,0,0,0,0,0,0,0,0	H9N6F1S1	HexNAc(6)Hex(9)dHex(1)NeuAc(1)	3132.1155	True
+815	G05394QK	Hex:4 HexNAc:4 dHex:1 Su:2	4,4,1,0,0,0,2,0,0,0,0,0,0,0	H4N4F1s2	HexNAc(4)Hex(4)dHex(1)Sulfo(2)	1784.5109	True
+458	G05394QK	Hex:5 HexNAc:3 dHex:1 Pent:1	5,3,1,0,0,1,0,0,0,0,0,0,0,0	H5N3F1P1	HexNAc(3)Hex(5)dHex(1)Pent(1)	1715.613	True
+406	G05394QK	Hex:6 HexNAc:3 dHex:1 Pent:1	6,3,1,0,0,1,0,0,0,0,0,0,0,0	H6N3F1P1	HexNAc(3)Hex(6)dHex(1)Pent(1)	1877.6658	True
+356	G05394QK	Hex:5 HexNAc:2 Pent:1	5,2,0,0,0,1,0,0,0,0,0,0,0,0	H5N2P1	HexNAc(2)Hex(5)Pent(1)	1366.4757	True
+557	G05394QK	Hex:6 HexNAc:3 dHex:2 Pent:1	6,3,2,0,0,1,0,0,0,0,0,0,0,0	H6N3F2P1	HexNAc(3)Hex(6)dHex(2)Pent(1)	2023.7237	True
+798	G05394QK	Hex:2 HexNAc:3 dHex:1 Pent:1	2,3,1,0,0,1,0,0,0,0,0,0,0,0	H2N3F1P1	HexNAc(3)Hex(2)dHex(1)Pent(1)	1229.4546	True
+620	G03027LH	Hex:7 HexNAc:7 dHex:3	7,7,3,0,0,0,0,0,0,0,0,0,0,0	H7N7F3	HexNAc(7)Hex(7)dHex(3)	3012.1097	True
+109	G46241DR	Hex:6 HexNAc:6 dHex:3	6,6,3,0,0,0,0,0,0,0,0,0,0,0	H6N6F3	HexNAc(6)Hex(6)dHex(3)	2646.9775	True
+936	G55412XP	Hex:6 HexNAc:5 dHex:2 NeuAc:3	6,5,2,3,0,0,0,0,0,0,0,0,0,0	H6N5F2S3	HexNAc(5)Hex(6)dHex(2)NeuAc(3)	3171.1264	True
+943	G78182GT	Hex:5 HexNAc:7 NeuAc:2	5,7,0,2,0,0,0,0,0,0,0,0,0,0	H5N7S2	HexNAc(7)Hex(5)NeuAc(2)	2832.0212	True
+945	G72978AW	Hex:7 HexNAc:3 NeuAc:1	7,3,0,1,0,0,0,0,0,0,0,0,0,0	H7N3S1	HexNAc(3)Hex(7)NeuAc(1)	2052.7138	True
+940	G94826KT	Hex:5 HexNAc:4 dHex:2 NeuGc:1	5,4,2,0,1,0,0,0,0,0,0,0,0,0	H5N4F2G1	HexNAc(4)Hex(5)dHex(2)NeuGc(1)	2239.7983	True
+946	G31615DN	Hex:7 HexNAc:4 dHex:2	7,4,2,0,0,0,0,0,0,0,0,0,0,0	H7N4F2	HexNAc(4)Hex(7)dHex(2)	2256.8136	True
+18	G20312EM	Hex:6 HexNAc:5 dHex:3 NeuAc:1	6,5,3,1,0,0,0,0,0,0,0,0,0,0	H6N5F3S1	HexNAc(5)Hex(6)dHex(3)NeuAc(1)	2734.9935	True
+906	G20312EM	Hex:10 HexNAc:2 dHex:1	10,2,1,0,0,0,0,0,0,0,0,0,0,0	H10N2F1	HexNAc(2)Hex(10)dHex(1)	2190.7553	True
+942	G20631AT	Hex:5 HexNAc:7 NeuAc:1	5,7,0,1,0,0,0,0,0,0,0,0,0,0	H5N7S1	HexNAc(7)Hex(5)NeuAc(1)	2540.9258	True
+929	G53046BR	Hex:4 HexNAc:6 dHex:1 NeuAc:2	4,6,1,2,0,0,0,0,0,0,0,0,0,0	H4N6F1S2	HexNAc(6)Hex(4)dHex(1)NeuAc(2)	2612.9469	True
+947	G52096TR	Hex:8 HexNAc:2 dHex:1	8,2,1,0,0,0,0,0,0,0,0,0,0,0	H8N2F1	HexNAc(2)Hex(8)dHex(1)	1866.6497	True
+935	G63651JH	Hex:5 HexNAc:7 dHex:1 NeuAc:2	5,7,1,2,0,0,0,0,0,0,0,0,0,0	H5N7F1S2	HexNAc(7)Hex(5)dHex(1)NeuAc(2)	2978.0791	True
+938	G15508AW	Hex:7 HexNAc:9 dHex:1 NeuAc:1	7,9,1,1,0,0,0,0,0,0,0,0,0,0	H7N9F1S1	HexNAc(9)Hex(7)dHex(1)NeuAc(1)	3417.2481	True
+939	G22769FQ	Hex:7 HexNAc:9 dHex:1 NeuAc:2	7,9,1,2,0,0,0,0,0,0,0,0,0,0	H7N9F1S2	HexNAc(9)Hex(7)dHex(1)NeuAc(2)	3708.3435	True
+933	G53959KE	Hex:5 HexNAc:5 dHex:1 NeuAc:3	5,5,1,3,0,0,0,0,0,0,0,0,0,0	H5N5F1S3	HexNAc(5)Hex(5)dHex(1)NeuAc(3)	2863.0157	True
+971	G22276PO	Hex:7 HexNAc:6 dHex:3	7,6,3,0,0,0,0,0,0,0,0,0,0,0	H7N6F3	HexNAc(6)Hex(7)dHex(3)	2809.0303	True
+963	G79286RS	Hex:7 HexNAc:6 dHex:4	7,6,4,0,0,0,0,0,0,0,0,0,0,0	H7N6F4	HexNAc(6)Hex(7)dHex(4)	2955.0882	True
+961	G86171ZO	Hex:7 HexNAc:6 dHex:6	7,6,6,0,0,0,0,0,0,0,0,0,0,0	H7N6F6	HexNAc(6)Hex(7)dHex(6)	3247.204	True
+941	G54845IR	Hex:5 HexNAc:7 dHex:1	5,7,1,0,0,0,0,0,0,0,0,0,0,0	H5N7F1	HexNAc(7)Hex(5)dHex(1)	2395.8883	True
+931	G00420UH	Hex:4 HexNAc:7 NeuAc:1	4,7,0,1,0,0,0,0,0,0,0,0,0,0	H4N7S1	HexNAc(7)Hex(4)NeuAc(1)	2378.873	True
+925	G84618NL	Hex:3 HexNAc:4 dHex:2 NeuAc:1	3,4,2,1,0,0,0,0,0,0,0,0,0,0	H3N4F2S1	HexNAc(4)Hex(3)dHex(2)NeuAc(1)	1899.6978	True
+944	G47748JZ	Hex:6 HexNAc:4 dHex:2 NeuAc:1	6,4,2,1,0,0,0,0,0,0,0,0,0,0	H6N4F2S1	HexNAc(4)Hex(6)dHex(2)NeuAc(1)	2385.8562	True
+969	G36591UL	Hex:5 HexNAc:4 dHex:2 NeuGc:2	5,4,2,0,2,0,0,0,0,0,0,0,0,0	H5N4F2G2	HexNAc(4)Hex(5)dHex(2)NeuGc(2)	2546.8886	True
+968	G22274VA	Hex:5 HexNAc:5 dHex:1 NeuGc:2	5,5,1,0,2,0,0,0,0,0,0,0,0,0	H5N5F1G2	HexNAc(5)Hex(5)dHex(1)NeuGc(2)	2603.9101	True
+960	G04795RQ	Hex:7 HexNAc:6 NeuGc:3	7,6,0,0,3,0,0,0,0,0,0,0,0,0	H7N6G3	HexNAc(6)Hex(7)NeuGc(3)	3292.1275	True
+972	G78224CS	Hex:4 HexNAc:4 dHex:1 NeuGc:1	4,4,1,0,1,0,0,0,0,0,0,0,0,0	H4N4F1G1	HexNAc(4)Hex(4)dHex(1)NeuGc(1)	1931.6876	True
+965	G67303LF	Hex:7 HexNAc:5 dHex:1 NeuGc:2	7,5,1,0,2,0,0,0,0,0,0,0,0,0	H7N5F1G2	HexNAc(5)Hex(7)dHex(1)NeuGc(2)	2928.0157	True
+970	G84001JR	Hex:6 HexNAc:5 dHex:2 NeuGc:2	6,5,2,0,2,0,0,0,0,0,0,0,0,0	H6N5F2G2	HexNAc(5)Hex(6)dHex(2)NeuGc(2)	2912.0208	True
+966	G19359HX	Hex:6 HexNAc:6 dHex:1 NeuGc:2	6,6,1,0,2,0,0,0,0,0,0,0,0,0	H6N6F1G2	HexNAc(6)Hex(6)dHex(1)NeuGc(2)	2969.0423	True
+924	G26782IQ	Hex:2 HexNAc:1 dHex:1 NeuAc:2	2,1,1,2,0,0,0,0,0,0,0,0,0,0	H2N1F1S2	HexNAc(1)Hex(2)dHex(1)NeuAc(2)	1273.4443	True
+973	G34105RF	Hex:5 HexNAc:5 dHex:3 NeuAc:2	5,5,3,2,0,0,0,0,0,0,0,0,0,0	H5N5F3S2	HexNAc(5)Hex(5)dHex(3)NeuAc(2)	2864.0361	True
+934	G50006QM	Hex:5 HexNAc:5 dHex:2 NeuAc:3	5,5,2,3,0,0,0,0,0,0,0,0,0,0	H5N5F2S3	HexNAc(5)Hex(5)dHex(2)NeuAc(3)	3009.0736	True
+937	G54982TL	Hex:7 HexNAc:4 dHex:1 NeuAc:1	7,4,1,1,0,0,0,0,0,0,0,0,0,0	H7N4F1S1	HexNAc(4)Hex(7)dHex(1)NeuAc(1)	2401.8511	True
+964	G31665QC	Hex:7 HexNAc:6 dHex:2 NeuAc:2	7,6,2,2,0,0,0,0,0,0,0,0,0,0	H7N6F2S2	HexNAc(6)Hex(7)dHex(2)NeuAc(2)	3245.1632	True
+985	G62894KT	Hex:4 HexNAc:3 dHex:3	4,3,3,0,0,0,0,0,0,0,0,0,0,0	H4N3F3	HexNAc(3)Hex(4)dHex(3)	1713.6337	True
+1006	G76417NN	Hex:8 HexNAc:7 NeuAc:1	8,7,0,1,0,0,0,0,0,0,0,0,0,0	H8N7S1	HexNAc(7)Hex(8)NeuAc(1)	3027.0842	True
+988	G83229XP	Hex:5 HexNAc:4 dHex:4	5,4,4,0,0,0,0,0,0,0,0,0,0,0	H5N4F4	HexNAc(4)Hex(5)dHex(4)	2224.8238	True
+989	G20210JR	Hex:6 HexNAc:3 dHex:2	6,3,2,0,0,0,0,0,0,0,0,0,0,0	H6N3F2	HexNAc(3)Hex(6)dHex(2)	1891.6814	False
+987	G92062TF	Hex:5 HexNAc:3 dHex:3	5,3,3,0,0,0,0,0,0,0,0,0,0,0	H5N3F3	HexNAc(3)Hex(5)dHex(3)	1875.6865	True
+990	G23984SE	Hex:6 HexNAc:3 dHex:3	6,3,3,0,0,0,0,0,0,0,0,0,0,0	H6N3F3	HexNAc(3)Hex(6)dHex(3)	2037.7393	False
+1000	G23221TW	Hex:7 HexNAc:4 dHex:1 NeuAc:2	7,4,1,2,0,0,0,0,0,0,0,0,0,0	H7N4F1S2	HexNAc(4)Hex(7)dHex(1)NeuAc(2)	2692.9465	False
+984	G23221TW	Hex:11 HexNAc:11 NeuAc:1	11,11,0,1,0,0,0,0,0,0,0,0,0,0	H11N11S1	HexNAc(11)Hex(11)NeuAc(1)	4325.5602	False
+993	G18183SM	Hex:6 HexNAc:5 dHex:7	6,5,7,0,0,0,0,0,0,0,0,0,0,0	H6N5F7	HexNAc(5)Hex(6)dHex(7)	3028.1297	False
+1003	G50427EO	Hex:7 HexNAc:6 dHex:4 NeuAc:1	7,6,4,1,0,0,0,0,0,0,0,0,0,0	H7N6F4S1	HexNAc(6)Hex(7)dHex(4)NeuAc(1)	3246.1836	True
+986	G24084IV	Hex:4 HexNAc:9	4,9,0,0,0,0,0,0,0,0,0,0,0,0	H4N9	HexNAc(9)Hex(4)	2493.9364	True
+1001	G19385TO	Hex:7 HexNAc:4 dHex:1 NeuAc:3	7,4,1,3,0,0,0,0,0,0,0,0,0,0	H7N4F1S3	HexNAc(4)Hex(7)dHex(1)NeuAc(3)	2984.0419	False
+1004	G71051TA	Hex:7 HexNAc:6 dHex:4 NeuAc:2	7,6,4,2,0,0,0,0,0,0,0,0,0,0	H7N6F4S2	HexNAc(6)Hex(7)dHex(4)NeuAc(2)	3537.279	True
+997	G69108CV	Hex:6 HexNAc:6 dHex:4	6,6,4,0,0,0,0,0,0,0,0,0,0,0	H6N6F4	HexNAc(6)Hex(6)dHex(4)	2793.0354	False
+1007	G94831VI	Hex:9 HexNAc:8 NeuAc:1	9,8,0,1,0,0,0,0,0,0,0,0,0,0	H9N8S1	HexNAc(8)Hex(9)NeuAc(1)	3392.2164	False
+1008	G23165GD	Hex:9 HexNAc:8 dHex:1 NeuAc:1	9,8,1,1,0,0,0,0,0,0,0,0,0,0	H9N8F1S1	HexNAc(8)Hex(9)dHex(1)NeuAc(1)	3538.2743	True
+1009	G49204YH	Hex:9 HexNAc:8 dHex:3	9,8,3,0,0,0,0,0,0,0,0,0,0,0	H9N8F3	HexNAc(8)Hex(9)dHex(3)	3539.2947	False
+1005	G03461SC	Hex:7 HexNAc:6 dHex:5 NeuAc:4	7,6,5,4,0,0,0,0,0,0,0,0,0,0	H7N6F5S4	HexNAc(6)Hex(7)dHex(5)NeuAc(4)	4265.5277	True
+995	G10019LZ	Hex:6 HexNAc:6 dHex:2 NeuAc:3	6,6,2,3,0,0,0,0,0,0,0,0,0,0	H6N6F2S3	HexNAc(6)Hex(6)dHex(2)NeuAc(3)	3374.2058	False
+999	G88619MM	Hex:6 HexNAc:6 dHex:4 NeuAc:3	6,6,4,3,0,0,0,0,0,0,0,0,0,0	H6N6F4S3	HexNAc(6)Hex(6)dHex(4)NeuAc(3)	3666.3216	False
+1083	G74728JK	Hex:7 HexNAc:6 dHex:2 NeuAc:1	7,6,2,1,0,0,0,0,0,0,0,0,0,0	H7N6F2S1	HexNAc(6)Hex(7)dHex(2)NeuAc(1)	2954.0678	False
+994	G38663NM	Hex:6 HexNAc:6 dHex:2 NeuAc:2	6,6,2,2,0,0,0,0,0,0,0,0,0,0	H6N6F2S2	HexNAc(6)Hex(6)dHex(2)NeuAc(2)	3083.1104	False
+996	G43089EG	Hex:6 HexNAc:6 dHex:3 NeuAc:2	6,6,3,2,0,0,0,0,0,0,0,0,0,0	H6N6F3S2	HexNAc(6)Hex(6)dHex(3)NeuAc(2)	3229.1683	False
+998	G29511JR	Hex:6 HexNAc:6 dHex:4 NeuAc:2	6,6,4,2,0,0,0,0,0,0,0,0,0,0	H6N6F4S2	HexNAc(6)Hex(6)dHex(4)NeuAc(2)	3375.2262	False
+1079	G52131KU	Hex:6 HexNAc:4 dHex:2 NeuAc:2	6,4,2,2,0,0,0,0,0,0,0,0,0,0	H6N4F2S2	HexNAc(4)Hex(6)dHex(2)NeuAc(2)	2676.9516	False
+1078	G08796TW	Hex:5 HexNAc:5 dHex:2 NeuAc:2	5,5,2,2,0,0,0,0,0,0,0,0,0,0	H5N5F2S2	HexNAc(5)Hex(5)dHex(2)NeuAc(2)	2717.9782	False
+1085	G31433PN	Hex:7 HexNAc:6 dHex:3 NeuAc:2	7,6,3,2,0,0,0,0,0,0,0,0,0,0	H7N6F3S2	HexNAc(6)Hex(7)dHex(3)NeuAc(2)	3391.2211	False
+1024	G89205CJ	Hex:7 HexNAc:6 dHex:2 NeuAc:3	7,6,2,3,0,0,0,0,0,0,0,0,0,0	H7N6F2S3	HexNAc(6)Hex(7)dHex(2)NeuAc(3)	3536.2586	False
+1022	G23010ZW	Hex:6 HexNAc:5 dHex:3 NeuAc:2	6,5,3,2,0,0,0,0,0,0,0,0,0,0	H6N5F3S2	HexNAc(5)Hex(6)dHex(3)NeuAc(2)	3026.0889	False
+1023	G89865VY	Hex:6 HexNAc:5 dHex:3 NeuAc:3	6,5,3,3,0,0,0,0,0,0,0,0,0,0	H6N5F3S3	HexNAc(5)Hex(6)dHex(3)NeuAc(3)	3317.1843	False
+1084	G25541YH	Hex:7 HexNAc:6 dHex:3 NeuAc:1	7,6,3,1,0,0,0,0,0,0,0,0,0,0	H7N6F3S1	HexNAc(6)Hex(7)dHex(3)NeuAc(1)	3100.1257	False
+1080	G90386IR	Hex:6 HexNAc:5 dHex:4 NeuAc:1	6,5,4,1,0,0,0,0,0,0,0,0,0,0	H6N5F4S1	HexNAc(5)Hex(6)dHex(4)NeuAc(1)	2881.0514	False
+1088	G06906LK	Hex:8 HexNAc:3 dHex:1 NeuAc:1	8,3,1,1,0,0,0,0,0,0,0,0,0,0	H8N3F1S1	HexNAc(3)Hex(8)dHex(1)NeuAc(1)	2360.8245	False
+1086	G58804QW	Hex:7 HexNAc:6 dHex:3 NeuAc:3	7,6,3,3,0,0,0,0,0,0,0,0,0,0	H7N6F3S3	HexNAc(6)Hex(7)dHex(3)NeuAc(3)	3682.3165	False
+1089	G91116OD	Hex:8 HexNAc:3 dHex:3 NeuAc:1	8,3,3,1,0,0,0,0,0,0,0,0,0,0	H8N3F3S1	HexNAc(3)Hex(8)dHex(3)NeuAc(1)	2652.9403	False
+1077	G21070BH	Hex:4 HexNAc:3 dHex:3 NeuAc:1	4,3,3,1,0,0,0,0,0,0,0,0,0,0	H4N3F3S1	HexNAc(3)Hex(4)dHex(3)NeuAc(1)	2004.7291	False
+1082	G44331JI	Hex:6 HexNAc:5 dHex:5 NeuAc:1	6,5,5,1,0,0,0,0,0,0,0,0,0,0	H6N5F5S1	HexNAc(5)Hex(6)dHex(5)NeuAc(1)	3027.1093	False
+1076	G14110OQ	Hex:8 HexNAc:3 NeuAc:1	8,3,0,1,0,0,0,0,0,0,0,0,0,0	H8N3S1	HexNAc(3)Hex(8)NeuAc(1)	2214.7666	False
+1081	G18589KA	Hex:6 HexNAc:5 dHex:4 NeuAc:2	6,5,4,2,0,0,0,0,0,0,0,0,0,0	H6N5F4S2	HexNAc(5)Hex(6)dHex(4)NeuAc(2)	3172.1468	False
+1087	G97968CT	Hex:7 HexNAc:6 dHex:3 NeuAc:4	7,6,3,4,0,0,0,0,0,0,0,0,0,0	H7N6F3S4	HexNAc(6)Hex(7)dHex(3)NeuAc(4)	3973.4119	False
+1029	G36013ES	Hex:3 HexNAc:6 dHex:1 NeuAc:1 NeuGc:1	3,6,1,1,1,0,0,0,0,0,0,0,0,0	H3N6F1S1G1	HexNAc(6)Hex(3)dHex(1)NeuAc(1)NeuGc(1)	2466.889	False
+1033	G64275UO	Hex:4 HexNAc:5 NeuAc:1 NeuGc:1	4,5,0,1,1,0,0,0,0,0,0,0,0,0	H4N5S1G1	HexNAc(5)Hex(4)NeuAc(1)NeuGc(1)	2279.8045	False
+1049	G67900CJ	Hex:6 HexNAc:5 dHex:1 NeuAc:1 NeuGc:2	6,5,1,1,2,0,0,0,0,0,0,0,0,0	H6N5F1S1G2	HexNAc(5)Hex(6)dHex(1)NeuAc(1)NeuGc(2)	3057.0583	False
+1066	G95389BC	Hex:5 HexNAc:5 NeuGc:1	5,5,0,0,1,0,0,0,0,0,0,0,0,0	H5N5G1	HexNAc(5)Hex(5)NeuGc(1)	2150.7619	False
+1031	G75256KV	Hex:4 HexNAc:5 NeuGc:1	4,5,0,0,1,0,0,0,0,0,0,0,0,0	H4N5G1	HexNAc(5)Hex(4)NeuGc(1)	1988.7091	False
+1032	G06010PM	Hex:4 HexNAc:5 NeuGc:2	4,5,0,0,2,0,0,0,0,0,0,0,0,0	H4N5G2	HexNAc(5)Hex(4)NeuGc(2)	2295.7994	False
+1051	G44173IH	Hex:6 HexNAc:6 NeuAc:1 NeuGc:1	6,6,0,1,1,0,0,0,0,0,0,0,0,0	H6N6S1G1	HexNAc(6)Hex(6)NeuAc(1)NeuGc(1)	2806.9895	False
+1030	G88061BX	Hex:3 HexNAc:6 dHex:2 NeuGc:1	3,6,2,0,1,0,0,0,0,0,0,0,0,0	H3N6F2G1	HexNAc(6)Hex(3)dHex(2)NeuGc(1)	2321.8515	False
+1060	G18590ZR	Hex:8 HexNAc:7 NeuGc:1	8,7,0,0,1,0,0,0,0,0,0,0,0,0	H8N7G1	HexNAc(7)Hex(8)NeuGc(1)	3043.0791	False
+1056	G35697OJ	Hex:7 HexNAc:6 NeuAc:2 NeuGc:2	7,6,0,2,2,0,0,0,0,0,0,0,0,0	H7N6S2G2	HexNAc(6)Hex(7)NeuAc(2)NeuGc(2)	3567.228	False
+1034	G44778BV	Hex:4 HexNAc:5 dHex:1 NeuAc:1 NeuGc:1	4,5,1,1,1,0,0,0,0,0,0,0,0,0	H4N5F1S1G1	HexNAc(5)Hex(4)dHex(1)NeuAc(1)NeuGc(1)	2425.8624	False
+1045	G44305KR	Hex:6 HexNAc:3 dHex:1 NeuGc:1	6,3,1,0,1,0,0,0,0,0,0,0,0,0	H6N3F1G1	HexNAc(3)Hex(6)dHex(1)NeuGc(1)	2052.7138	False
+1026	G44305KR	Hex:11 HexNAc:11 NeuGc:1	11,11,0,0,1,0,0,0,0,0,0,0,0,0	H11N11G1	HexNAc(11)Hex(11)NeuGc(1)	4341.5551	False
+1027	G44305KR	Hex:3 HexNAc:4 NeuGc:1	3,4,0,0,1,0,0,0,0,0,0,0,0,0	H3N4G1	HexNAc(4)Hex(3)NeuGc(1)	1623.5769	False
+1062	G00433UK	Hex:8 HexNAc:7 dHex:1 NeuAc:1 NeuGc:1	8,7,1,1,1,0,0,0,0,0,0,0,0,0	H8N7F1S1G1	HexNAc(7)Hex(8)dHex(1)NeuAc(1)NeuGc(1)	3480.2324	False
+1041	G77023TY	Hex:5 HexNAc:6 dHex:1 NeuGc:3	5,6,1,0,3,0,0,0,0,0,0,0,0,0	H5N6F1G3	HexNAc(6)Hex(5)dHex(1)NeuGc(3)	3114.0798	False
+1043	G11611PG	Hex:5 HexNAc:6 dHex:1 NeuAc:2 NeuGc:1	5,6,1,2,1,0,0,0,0,0,0,0,0,0	H5N6F1S2G1	HexNAc(6)Hex(5)dHex(1)NeuAc(2)NeuGc(1)	3082.09	False
+1058	G27322BI	Hex:7 HexNAc:7 dHex:1 NeuAc:2 NeuGc:1	7,7,1,2,1,0,0,0,0,0,0,0,0,0	H7N7F1S2G1	HexNAc(7)Hex(7)dHex(1)NeuAc(2)NeuGc(1)	3609.275	False
+1068	G84735GS	Hex:6 HexNAc:6 dHex:1 NeuAc:2 NeuGc:1	6,6,1,2,1,0,0,0,0,0,0,0,0,0	H6N6F1S2G1	HexNAc(6)Hex(6)dHex(1)NeuAc(2)NeuGc(1)	3244.1428	False
+1071	G53193KA	Hex:8 HexNAc:7 dHex:1 NeuAc:2 NeuGc:1	8,7,1,2,1,0,0,0,0,0,0,0,0,0	H8N7F1S2G1	HexNAc(7)Hex(8)dHex(1)NeuAc(2)NeuGc(1)	3771.3278	False
+1067	G23811SR	Hex:6 HexNAc:6 dHex:1 NeuGc:3	6,6,1,0,3,0,0,0,0,0,0,0,0,0	H6N6F1G3	HexNAc(6)Hex(6)dHex(1)NeuGc(3)	3276.1326	False
+1070	G78726CB	Hex:7 HexNAc:7 dHex:1 NeuAc:4	7,7,1,4,0,0,0,0,0,0,0,0,0,0	H7N7F1S4	HexNAc(7)Hex(7)dHex(1)NeuAc(4)	3884.3755	True
+1036	G30751OD	Hex:5 HexNAc:4 dHex:3 NeuGc:2	5,4,3,0,2,0,0,0,0,0,0,0,0,0	H5N4F3G2	HexNAc(4)Hex(5)dHex(3)NeuGc(2)	2692.9465	False
+1037	G56087PR	Hex:5 HexNAc:4 dHex:3 NeuAc:1 NeuGc:1	5,4,3,1,1,0,0,0,0,0,0,0,0,0	H5N4F3S1G1	HexNAc(4)Hex(5)dHex(3)NeuAc(1)NeuGc(1)	2676.9516	False
+1038	G81976CN	Hex:5 HexNAc:5 NeuGc:2	5,5,0,0,2,0,0,0,0,0,0,0,0,0	H5N5G2	HexNAc(5)Hex(5)NeuGc(2)	2457.8522	False
+1039	G78701GW	Hex:5 HexNAc:5 NeuAc:1 NeuGc:1	5,5,0,1,1,0,0,0,0,0,0,0,0,0	H5N5S1G1	HexNAc(5)Hex(5)NeuAc(1)NeuGc(1)	2441.8573	False
+1046	G03693IY	Hex:6 HexNAc:4 NeuGc:1	6,4,0,0,1,0,0,0,0,0,0,0,0,0	H6N4G1	HexNAc(4)Hex(6)NeuGc(1)	2109.7353	False
+1047	G68833MP	Hex:6 HexNAc:5 dHex:1 NeuGc:1	6,5,1,0,1,0,0,0,0,0,0,0,0,0	H6N5F1G1	HexNAc(5)Hex(6)dHex(1)NeuGc(1)	2458.8726	False
+1048	G46487SG	Hex:6 HexNAc:5 dHex:1 NeuGc:2	6,5,1,0,2,0,0,0,0,0,0,0,0,0	H6N5F1G2	HexNAc(5)Hex(6)dHex(1)NeuGc(2)	2765.9629	False
+1055	G61011OB	Hex:7 HexNAc:10	7,10,0,0,0,0,0,0,0,0,0,0,0,0	H7N10	HexNAc(10)Hex(7)	3183.1742	False
+1059	G30799SW	Hex:7 HexNAc:8	7,8,0,0,0,0,0,0,0,0,0,0,0,0	H7N8	HexNAc(8)Hex(7)	2777.0154	True
+1072	G18804KX	Hex:9 HexNAc:6 dHex:1 NeuAc:1 NeuGc:1	9,6,1,1,1,0,0,0,0,0,0,0,0,0	H9N6F1S1G1	HexNAc(6)Hex(9)dHex(1)NeuAc(1)NeuGc(1)	3439.2058	False
+1035	G50120TH	Hex:4 HexNAc:7 dHex:2	4,7,2,0,0,0,0,0,0,0,0,0,0,0	H4N7F2	HexNAc(7)Hex(4)dHex(2)	2379.8934	True
+1053	G39368QD	Hex:6 HexNAc:9	6,9,0,0,0,0,0,0,0,0,0,0,0,0	H6N9	HexNAc(9)Hex(6)	2818.042	True
+1028	G49856OX	Hex:3 HexNAc:6 dHex:1 NeuGc:1	3,6,1,0,1,0,0,0,0,0,0,0,0,0	H3N6F1G1	HexNAc(6)Hex(3)dHex(1)NeuGc(1)	2175.7936	False
+1040	G87651GX	Hex:5 HexNAc:5 dHex:1 NeuAc:1 NeuGc:1	5,5,1,1,1,0,0,0,0,0,0,0,0,0	H5N5F1S1G1	HexNAc(5)Hex(5)dHex(1)NeuAc(1)NeuGc(1)	2587.9152	False
+1042	G41346UA	Hex:5 HexNAc:6 dHex:1 NeuAc:1 NeuGc:1	5,6,1,1,1,0,0,0,0,0,0,0,0,0	H5N6F1S1G1	HexNAc(6)Hex(5)dHex(1)NeuAc(1)NeuGc(1)	2790.9946	False
+1044	G19993OB	Hex:6 HexNAc:3 NeuGc:1	6,3,0,0,1,0,0,0,0,0,0,0,0,0	H6N3G1	HexNAc(3)Hex(6)NeuGc(1)	1906.6559	False
+1050	G23133OF	Hex:6 HexNAc:5 dHex:3 NeuGc:1	6,5,3,0,1,0,0,0,0,0,0,0,0,0	H6N5F3G1	HexNAc(5)Hex(6)dHex(3)NeuGc(1)	2750.9884	False
+1052	G64227LK	Hex:6 HexNAc:6 dHex:1 NeuAc:1 NeuGc:1	6,6,1,1,1,0,0,0,0,0,0,0,0,0	H6N6F1S1G1	HexNAc(6)Hex(6)dHex(1)NeuAc(1)NeuGc(1)	2953.0474	False
+1054	G79896BV	Hex:6 HexNAc:9 dHex:1	6,9,1,0,0,0,0,0,0,0,0,0,0,0	H6N9F1	HexNAc(9)Hex(6)dHex(1)	2964.0999	False
+1057	G69237TO	Hex:7 HexNAc:6 dHex:4 NeuGc:1	7,6,4,0,1,0,0,0,0,0,0,0,0,0	H7N6F4G1	HexNAc(6)Hex(7)dHex(4)NeuGc(1)	3262.1785	False
+1061	G39170TE	Hex:8 HexNAc:7 dHex:1 NeuGc:2	8,7,1,0,2,0,0,0,0,0,0,0,0,0	H8N7F1G2	HexNAc(7)Hex(8)dHex(1)NeuGc(2)	3496.2273	False
+1063	G28135GF	Hex:8 HexNAc:8	8,8,0,0,0,0,0,0,0,0,0,0,0,0	H8N8	HexNAc(8)Hex(8)	2939.0682	True
+1064	G18938PT	Hex:3 HexNAc:6 dHex:1 NeuGc:2	3,6,1,0,2,0,0,0,0,0,0,0,0,0	H3N6F1G2	HexNAc(6)Hex(3)dHex(1)NeuGc(2)	2482.8839	False
+1065	G26198JI	Hex:5 HexNAc:3 NeuGc:1	5,3,0,0,1,0,0,0,0,0,0,0,0,0	H5N3G1	HexNAc(3)Hex(5)NeuGc(1)	1744.6031	False
+1069	G57557NS	Hex:7 HexNAc:5 dHex:1 NeuAc:1 NeuGc:1	7,5,1,1,1,0,0,0,0,0,0,0,0,0	H7N5F1S1G1	HexNAc(5)Hex(7)dHex(1)NeuAc(1)NeuGc(1)	2912.0208	False
+1074	G83676GD	Hex:7 HexNAc:3 dHex:1 NeuAc:1	7,3,1,1,0,0,0,0,0,0,0,0,0,0	H7N3F1S1	HexNAc(3)Hex(7)dHex(1)NeuAc(1)	2198.7717	True
+1073	G86056PA	Hex:4 dHex:1	4,0,1,0,0,0,0,0,0,0,0,0,0,0	H4F1	Hex(4)dHex(1)	812.2797	False
+1093	G63776KU	Hex:8 HexNAc:3	8,3,0,0,0,0,0,0,0,0,0,0,0,0	H8N3	HexNAc(3)Hex(8)	1923.6712	False
+1092	G64130AC	Hex:6 HexNAc:6 dHex:2 NeuAc:1	6,6,2,1,0,0,0,0,0,0,0,0,0,0	H6N6F2S1	HexNAc(6)Hex(6)dHex(2)NeuAc(1)	2792.015	False
+1091	G53844ZR	Hex:5 HexNAc:6 dHex:2 NeuAc:1	5,6,2,1,0,0,0,0,0,0,0,0,0,0	H5N6F2S1	HexNAc(6)Hex(5)dHex(2)NeuAc(1)	2629.9622	False
+1090	G70961NC	Hex:4 HexNAc:3 dHex:2 NeuAc:1	4,3,2,1,0,0,0,0,0,0,0,0,0,0	H4N3F2S1	HexNAc(3)Hex(4)dHex(2)NeuAc(1)	1858.6712	False
+1097	G70961NC	HexNAc:11	0,11,0,0,0,0,0,0,0,0,0,0,0,0	N11	HexNAc(11)	2251.884	True
+1102	G70961NC	Hex:3 HexNAc:3 dHex:1 NeuAc:4	3,3,1,4,0,0,0,0,0,0,0,0,0,0	H3N3F1S4	HexNAc(3)Hex(3)dHex(1)NeuAc(4)	2423.8467	True
+1098	G70961NC	Hex:11 HexNAc:6 NeuAc:2	11,6,0,2,0,0,0,0,0,0,0,0,0,0	H11N6S2	HexNAc(6)Hex(11)NeuAc(2)	3601.2586	True
+1100	G70961NC	Hex:4 HexNAc:3 NeuAc:3	4,3,0,3,0,0,0,0,0,0,0,0,0,0	H4N3S3	HexNAc(3)Hex(4)NeuAc(3)	2148.7462	True
+1101	G70961NC	Hex:6 HexNAc:8 dHex:2	6,8,2,0,0,0,0,0,0,0,0,0,0,0	H6N8F2	HexNAc(8)Hex(6)dHex(2)	2907.0784	True
+723	G20732FY	Hex:4 HexNAc:6 dHex:1 NeuAc:1	4,6,1,1,0,0,0,0,0,0,0,0,0,0	H4N6F1S1	HexNAc(6)Hex(4)dHex(1)NeuAc(1)	2321.8515	True
+1129	G20732FY	Hex:4 HexNAc:2 NeuAc:2	4,2,0,2,0,0,0,0,0,0,0,0,0,0	H4N2S2	HexNAc(2)Hex(4)NeuAc(2)	1654.5714	True
+1127	G20732FY	Hex:4 HexNAc:2 dHex:3	4,2,3,0,0,0,0,0,0,0,0,0,0,0	H4N2F3	HexNAc(2)Hex(4)dHex(3)	1510.5543	True
+1131	G20732FY	Hex:5 HexNAc:3 dHex:3 NeuAc:1	5,3,3,1,0,0,0,0,0,0,0,0,0,0	H5N3F3S1	HexNAc(3)Hex(5)dHex(3)NeuAc(1)	2166.7819	True
+1130	G20732FY	Hex:5 HexNAc:3 dHex:1 NeuAc:2	5,3,1,2,0,0,0,0,0,0,0,0,0,0	H5N3F1S2	HexNAc(3)Hex(5)dHex(1)NeuAc(2)	2165.7615	True
+1132	G20732FY	Hex:5 HexNAc:3 dHex:4	5,3,4,0,0,0,0,0,0,0,0,0,0,0	H5N3F4	HexNAc(3)Hex(5)dHex(4)	2021.7444	True
+1133	G20732FY	Hex:5 HexNAc:3 dHex:5	5,3,5,0,0,0,0,0,0,0,0,0,0,0	H5N3F5	HexNAc(3)Hex(5)dHex(5)	2167.8023	True
+1135	G20732FY	Hex:7 HexNAc:5 dHex:2 NeuAc:1	7,5,2,1,0,0,0,0,0,0,0,0,0,0	H7N5F2S1	HexNAc(5)Hex(7)dHex(2)NeuAc(1)	2750.9884	True
+1136	G20732FY	Hex:7 HexNAc:5 dHex:3	7,5,3,0,0,0,0,0,0,0,0,0,0,0	H7N5F3	HexNAc(5)Hex(7)dHex(3)	2605.9509	True
+1137	G20732FY	Hex:7 HexNAc:5 dHex:2	7,5,2,0,0,0,0,0,0,0,0,0,0,0	H7N5F2	HexNAc(5)Hex(7)dHex(2)	2459.893	True
+1134	G20732FY	Hex:6 HexNAc:4 dHex:4	6,4,4,0,0,0,0,0,0,0,0,0,0,0	H6N4F4	HexNAc(4)Hex(6)dHex(4)	2386.8766	True
+1104	G20732FY	Hex:5 HexNAc:2 dHex:2	5,2,2,0,0,0,0,0,0,0,0,0,0,0	H5N2F2	HexNAc(2)Hex(5)dHex(2)	1526.5492	True
+1140	G20732FY	Hex:4 HexNAc:7 dHex:3	4,7,3,0,0,0,0,0,0,0,0,0,0,0	H4N7F3	HexNAc(7)Hex(4)dHex(3)	2525.9513	True
+1141	G20732FY	Hex:5 HexNAc:4 dHex:5	5,4,5,0,0,0,0,0,0,0,0,0,0,0	H5N4F5	HexNAc(4)Hex(5)dHex(5)	2370.8817	True
+1139	G20732FY	Hex:4 HexNAc:6 dHex:4	4,6,4,0,0,0,0,0,0,0,0,0,0,0	H4N6F4	HexNAc(6)Hex(4)dHex(4)	2468.9298	True
+1142	G20732FY	Hex:9 HexNAc:4 dHex:1	9,4,1,0,0,0,0,0,0,0,0,0,0,0	H9N4F1	HexNAc(4)Hex(9)dHex(1)	2434.8613	True
+1149	G20732FY	Hex:5 HexNAc:2 dHex:3	5,2,3,0,0,0,0,0,0,0,0,0,0,0	H5N2F3	HexNAc(2)Hex(5)dHex(3)	1672.6071	True
+1150	G20732FY	Hex:8 HexNAc:6 dHex:2	8,6,2,0,0,0,0,0,0,0,0,0,0,0	H8N6F2	HexNAc(6)Hex(8)dHex(2)	2825.0252	True
+1151	G20732FY	Hex:8 HexNAc:6 dHex:3	8,6,3,0,0,0,0,0,0,0,0,0,0,0	H8N6F3	HexNAc(6)Hex(8)dHex(3)	2971.0831	True
+1148	G20732FY	Hex:7	7,0,0,0,0,0,0,0,0,0,0,0,0,0	H7	Hex(7)	1152.3802	True
+1147	G20732FY	Hex:8	8,0,0,0,0,0,0,0,0,0,0,0,0,0	H8	Hex(8)	1314.433	True
+1269	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:1 Ac:1	9,8,1,1,0,0,0,0,0,0,0,0,1,0	H9N8F1S1a1	HexNAc(8)Hex(9)dHex(1)NeuAc(1)Acetyl(1)	3580.2849	True
+1223	G20732FY	Hex:10 HexNAc:9 dHex:1 NeuAc:2	10,9,1,2,0,0,0,0,0,0,0,0,0,0	H10N9F1S2	HexNAc(9)Hex(10)dHex(1)NeuAc(2)	4194.5019	True
+1264	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:4 Ac:4	8,7,1,4,0,0,0,0,0,0,0,0,4,0	H8N7F1S4a4	HexNAc(7)Hex(8)dHex(1)NeuAc(4)Acetyl(4)	4214.4707	True
+1270	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:2	9,8,1,2,0,0,0,0,0,0,0,0,0,0	H9N8F1S2	HexNAc(8)Hex(9)dHex(1)NeuAc(2)	3829.3697	True
+1268	G20732FY	Hex:8 HexNAc:9 dHex:1 NeuAc:3	8,9,1,3,0,0,0,0,0,0,0,0,0,0	H8N9F1S3	HexNAc(9)Hex(8)dHex(1)NeuAc(3)	4161.4917	True
+1246	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:3 Ac:3	7,6,1,3,0,0,0,0,0,0,0,0,3,0	H7N6F1S3a3	HexNAc(6)Hex(7)dHex(1)NeuAc(3)Acetyl(3)	3516.2325	True
+1248	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:2	7,6,1,4,0,0,0,0,0,0,0,0,2,0	H7N6F1S4a2	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(2)	3765.3173	True
+1271	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:3 Ac:1	9,8,1,3,0,0,0,0,0,0,0,0,1,0	H9N8F1S3a1	HexNAc(8)Hex(9)dHex(1)NeuAc(3)Acetyl(1)	4162.4757	True
+1247	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:3 Ac:4	7,6,1,3,0,0,0,0,0,0,0,0,4,0	H7N6F1S3a4	HexNAc(6)Hex(7)dHex(1)NeuAc(3)Acetyl(4)	3558.2431	True
+1272	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:3 Ac:2	9,8,1,3,0,0,0,0,0,0,0,0,2,0	H9N8F1S3a2	HexNAc(8)Hex(9)dHex(1)NeuAc(3)Acetyl(2)	4204.4863	True
+1233	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:1 Ac:2	6,5,1,1,0,0,0,0,0,0,0,0,2,0	H6N5F1S1a2	HexNAc(5)Hex(6)dHex(1)NeuAc(1)Acetyl(2)	2526.8989	True
+1244	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:3 Ac:1	7,6,1,3,0,0,0,0,0,0,0,0,1,0	H7N6F1S3a1	HexNAc(6)Hex(7)dHex(1)NeuAc(3)Acetyl(1)	3432.2113	True
+1241	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:1 Ac:1	7,6,1,1,0,0,0,0,0,0,0,0,1,0	H7N6F1S1a1	HexNAc(6)Hex(7)dHex(1)NeuAc(1)Acetyl(1)	2850.0205	True
+1243	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:2 Ac:2	7,6,1,2,0,0,0,0,0,0,0,0,2,0	H7N6F1S2a2	HexNAc(6)Hex(7)dHex(1)NeuAc(2)Acetyl(2)	3183.1265	True
+1222	G20732FY	Hex:10 HexNAc:9 dHex:1 NeuAc:1	10,9,1,1,0,0,0,0,0,0,0,0,0,0	H10N9F1S1	HexNAc(9)Hex(10)dHex(1)NeuAc(1)	3903.4065	True
+1242	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:2 Ac:1	7,6,1,2,0,0,0,0,0,0,0,0,1,0	H7N6F1S2a1	HexNAc(6)Hex(7)dHex(1)NeuAc(2)Acetyl(1)	3141.1159	True
+1259	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:3 Ac:2	8,7,1,3,0,0,0,0,0,0,0,0,2,0	H8N7F1S3a2	HexNAc(7)Hex(8)dHex(1)NeuAc(3)Acetyl(2)	3839.3541	True
+1236	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:3 Ac:2	6,5,1,3,0,0,0,0,0,0,0,0,2,0	H6N5F1S3a2	HexNAc(5)Hex(6)dHex(1)NeuAc(3)Acetyl(2)	3109.0897	True
+1256	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:2 Ac:1	8,7,1,2,0,0,0,0,0,0,0,0,1,0	H8N7F1S2a1	HexNAc(7)Hex(8)dHex(1)NeuAc(2)Acetyl(1)	3506.2481	True
+1273	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:4 Ac:1	9,8,1,4,0,0,0,0,0,0,0,0,1,0	H9N8F1S4a1	HexNAc(8)Hex(9)dHex(1)NeuAc(4)Acetyl(1)	4453.5711	True
+1235	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:2 Ac:2	6,5,1,2,0,0,0,0,0,0,0,0,2,0	H6N5F1S2a2	HexNAc(5)Hex(6)dHex(1)NeuAc(2)Acetyl(2)	2817.9943	True
+1255	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:1 Ac:1	8,7,1,1,0,0,0,0,0,0,0,0,1,0	H8N7F1S1a1	HexNAc(7)Hex(8)dHex(1)NeuAc(1)Acetyl(1)	3215.1527	True
+1265	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:4 Ac:5	8,7,1,4,0,0,0,0,0,0,0,0,5,0	H8N7F1S4a5	HexNAc(7)Hex(8)dHex(1)NeuAc(4)Acetyl(5)	4256.4813	True
+1232	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:1 Ac:1	6,5,1,1,0,0,0,0,0,0,0,0,1,0	H6N5F1S1a1	HexNAc(5)Hex(6)dHex(1)NeuAc(1)Acetyl(1)	2484.8883	True
+1263	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:4 Ac:3	8,7,1,4,0,0,0,0,0,0,0,0,3,0	H8N7F1S4a3	HexNAc(7)Hex(8)dHex(1)NeuAc(4)Acetyl(3)	4172.4601	True
+1234	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:2 Ac:1	6,5,1,2,0,0,0,0,0,0,0,0,1,0	H6N5F1S2a1	HexNAc(5)Hex(6)dHex(1)NeuAc(2)Acetyl(1)	2775.9837	True
+1261	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:4 Ac:1	8,7,1,4,0,0,0,0,0,0,0,0,1,0	H8N7F1S4a1	HexNAc(7)Hex(8)dHex(1)NeuAc(4)Acetyl(1)	4088.4389	True
+1245	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:3 Ac:2	7,6,1,3,0,0,0,0,0,0,0,0,2,0	H7N6F1S3a2	HexNAc(6)Hex(7)dHex(1)NeuAc(3)Acetyl(2)	3474.2219	True
+1258	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:3 Ac:1	8,7,1,3,0,0,0,0,0,0,0,0,1,0	H8N7F1S3a1	HexNAc(7)Hex(8)dHex(1)NeuAc(3)Acetyl(1)	3797.3435	True
+1262	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:4 Ac:2	8,7,1,4,0,0,0,0,0,0,0,0,2,0	H8N7F1S4a2	HexNAc(7)Hex(8)dHex(1)NeuAc(4)Acetyl(2)	4130.4495	True
+1260	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:3 Ac:3	8,7,1,3,0,0,0,0,0,0,0,0,3,0	H8N7F1S3a3	HexNAc(7)Hex(8)dHex(1)NeuAc(3)Acetyl(3)	3881.3647	True
+1274	G20732FY	Hex:9 HexNAc:8 dHex:1 NeuAc:4 Ac:2	9,8,1,4,0,0,0,0,0,0,0,0,2,0	H9N8F1S4a2	HexNAc(8)Hex(9)dHex(1)NeuAc(4)Acetyl(2)	4495.5817	True
+1287	G20732FY	Hex:1 HexNAc:1 NeuAc:2 Ac:4	1,1,0,2,0,0,0,0,0,0,0,0,4,0	H1N1S2a4	HexNAc(1)Hex(1)NeuAc(2)Acetyl(4)	1133.376	True
+1292	G20732FY	HexNAc:1 NeuAc:1 Ac:2	0,1,0,1,0,0,0,0,0,0,0,0,2,0	N1S1a2	HexNAc(1)NeuAc(1)Acetyl(2)	596.2066	True
+1291	G20732FY	HexNAc:1 NeuAc:1 Ac:1	0,1,0,1,0,0,0,0,0,0,0,0,1,0	N1S1a1	HexNAc(1)NeuAc(1)Acetyl(1)	554.196	True
+1286	G20732FY	Hex:1 HexNAc:1 NeuAc:2 Ac:3	1,1,0,2,0,0,0,0,0,0,0,0,3,0	H1N1S2a3	HexNAc(1)Hex(1)NeuAc(2)Acetyl(3)	1091.3654	True
+1277	G20732FY	Hex:1 HexNAc:1 NeuGc:1 Ac:1	1,1,0,0,1,0,0,0,0,0,0,0,1,0	H1N1G1a1	HexNAc(1)Hex(1)NeuGc(1)Acetyl(1)	732.2437	True
+1282	G20732FY	Hex:1 HexNAc:1 NeuAc:1 NeuGc:1 Ac:1	1,1,0,1,1,0,0,0,0,0,0,0,1,0	H1N1S1G1a1	HexNAc(1)Hex(1)NeuAc(1)NeuGc(1)Acetyl(1)	1023.3391	True
+1280	G20732FY	Hex:1 HexNAc:1 NeuAc:1 Ac:2	1,1,0,1,0,0,0,0,0,0,0,0,2,0	H1N1S1a2	HexNAc(1)Hex(1)NeuAc(1)Acetyl(2)	758.2594	True
+1254	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:5 Ac:1	7,6,1,5,0,0,0,0,0,0,0,0,1,0	H7N6F1S5a1	HexNAc(6)Hex(7)dHex(1)NeuAc(5)Acetyl(1)	4014.4021	True
+1227	G20732FY	Hex:5 HexNAc:4 dHex:1 NeuAc:1 Ac:2	5,4,1,1,0,0,0,0,0,0,0,0,2,0	H5N4F1S1a2	HexNAc(4)Hex(5)dHex(1)NeuAc(1)Acetyl(2)	2161.7667	True
+1240	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:4 Ac:2	6,5,1,4,0,0,0,0,0,0,0,0,2,0	H6N5F1S4a2	HexNAc(5)Hex(6)dHex(1)NeuAc(4)Acetyl(2)	3400.1851	True
+1257	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:2 Ac:2	8,7,1,2,0,0,0,0,0,0,0,0,2,0	H8N7F1S2a2	HexNAc(7)Hex(8)dHex(1)NeuAc(2)Acetyl(2)	3548.2587	True
+1228	G20732FY	Hex:5 HexNAc:4 dHex:1 NeuAc:2 Ac:2	5,4,1,2,0,0,0,0,0,0,0,0,2,0	H5N4F1S2a2	HexNAc(4)Hex(5)dHex(1)NeuAc(2)Acetyl(2)	2452.8621	True
+1225	G20732FY	Hex:4 HexNAc:2 Ph:1	4,2,0,0,0,0,0,1,0,0,0,0,0,0	H4N2p1	HexNAc(2)Hex(4)Phospho(1)	1152.3469	True
+1230	G20732FY	Hex:5 HexNAc:4 dHex:1 NeuAc:3 Ac:1	5,4,1,3,0,0,0,0,0,0,0,0,1,0	H5N4F1S3a1	HexNAc(4)Hex(5)dHex(1)NeuAc(3)Acetyl(1)	2701.9469	True
+1226	G20732FY	Hex:5 HexNAc:2 dHex:1 Ph:1	5,2,1,0,0,0,0,1,0,0,0,0,0,0	H5N2F1p1	HexNAc(2)Hex(5)dHex(1)Phospho(1)	1460.4576	True
+1250	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:4	7,6,1,4,0,0,0,0,0,0,0,0,4,0	H7N6F1S4a4	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(4)	3849.3385	True
+1253	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:5	7,6,1,5,0,0,0,0,0,0,0,0,0,0	H7N6F1S5	HexNAc(6)Hex(7)dHex(1)NeuAc(5)	3972.3915	True
+1238	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:4	6,5,1,4,0,0,0,0,0,0,0,0,0,0	H6N5F1S4	HexNAc(5)Hex(6)dHex(1)NeuAc(4)	3316.1639	True
+1229	G20732FY	Hex:5 HexNAc:4 dHex:1 NeuAc:2 Ac:3	5,4,1,2,0,0,0,0,0,0,0,0,3,0	H5N4F1S2a3	HexNAc(4)Hex(5)dHex(1)NeuAc(2)Acetyl(3)	2494.8727	True
+1251	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:5	7,6,1,4,0,0,0,0,0,0,0,0,5,0	H7N6F1S4a5	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(5)	3891.3491	True
+1231	G20732FY	Hex:5 HexNAc:4 dHex:1 NeuAc:3 Ac:2	5,4,1,3,0,0,0,0,0,0,0,0,2,0	H5N4F1S3a2	HexNAc(4)Hex(5)dHex(1)NeuAc(3)Acetyl(2)	2743.9575	True
+1266	G20732FY	Hex:8 HexNAc:7 dHex:1 NeuAc:5	8,7,1,5,0,0,0,0,0,0,0,0,0,0	H8N7F1S5	HexNAc(7)Hex(8)dHex(1)NeuAc(5)	4337.5237	True
+1237	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:3 Ac:3	6,5,1,3,0,0,0,0,0,0,0,0,3,0	H6N5F1S3a3	HexNAc(5)Hex(6)dHex(1)NeuAc(3)Acetyl(3)	3151.1003	True
+1224	G20732FY	Hex:4 HexNAc:2 dHex:1 Ph:1	4,2,1,0,0,0,0,1,0,0,0,0,0,0	H4N2F1p1	HexNAc(2)Hex(4)dHex(1)Phospho(1)	1298.4048	True
+1249	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:3	7,6,1,4,0,0,0,0,0,0,0,0,3,0	H7N6F1S4a3	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(3)	3807.3279	True
+1239	G20732FY	Hex:6 HexNAc:5 dHex:1 NeuAc:4 Ac:1	6,5,1,4,0,0,0,0,0,0,0,0,1,0	H6N5F1S4a1	HexNAc(5)Hex(6)dHex(1)NeuAc(4)Acetyl(1)	3358.1745	True
+1252	G20732FY	Hex:7 HexNAc:6 dHex:1 NeuAc:4 Ac:6	7,6,1,4,0,0,0,0,0,0,0,0,6,0	H7N6F1S4a6	HexNAc(6)Hex(7)dHex(1)NeuAc(4)Acetyl(6)	3933.3597	True
+1267	G20732FY	Hex:8 HexNAc:7 dHex:2 NeuAc:3	8,7,2,3,0,0,0,0,0,0,0,0,0,0	H8N7F2S3	HexNAc(7)Hex(8)dHex(2)NeuAc(3)	3901.3908	True
+1299	G20732FY	Hex:1 HexNAc:1 NeuAc:3 Ac:1	1,1,0,3,0,0,0,0,0,0,0,0,1,0	H1N1S3a1	HexNAc(1)Hex(1)NeuAc(3)Acetyl(1)	1298.4396	True
+1303	G20732FY	Hex:2 HexNAc:2 NeuAc:2 Ac:2	2,2,0,2,0,0,0,0,0,0,0,0,2,0	H2N2S2a2	HexNAc(2)Hex(2)NeuAc(2)Acetyl(2)	1414.487	True
+1300	G20732FY	Hex:1 HexNAc:1 NeuAc:3 Ac:2	1,1,0,3,0,0,0,0,0,0,0,0,2,0	H1N1S3a2	HexNAc(1)Hex(1)NeuAc(3)Acetyl(2)	1340.4502	True
+1302	G20732FY	Hex:2 HexNAc:2 NeuAc:2 Ac:1	2,2,0,2,0,0,0,0,0,0,0,0,1,0	H2N2S2a1	HexNAc(2)Hex(2)NeuAc(2)Acetyl(1)	1372.4764	True
+1301	G20732FY	Hex:1 HexNAc:1 NeuAc:3 Ac:3	1,1,0,3,0,0,0,0,0,0,0,0,3,0	H1N1S3a3	HexNAc(1)Hex(1)NeuAc(3)Acetyl(3)	1382.4608	True
+1305	G20732FY	Hex:2 HexNAc:2 dHex:1 NeuAc:2 Ac:2	2,2,1,2,0,0,0,0,0,0,0,0,2,0	H2N2F1S2a2	HexNAc(2)Hex(2)dHex(1)NeuAc(2)Acetyl(2)	1560.5449	True
+1304	G20732FY	Hex:2 HexNAc:2 dHex:1 NeuAc:2 Ac:1	2,2,1,2,0,0,0,0,0,0,0,0,1,0	H2N2F1S2a1	HexNAc(2)Hex(2)dHex(1)NeuAc(2)Acetyl(1)	1518.5343	True
+1308	G20732FY	Hex:4 HexNAc:4 NeuAc:3	4,4,0,3,0,0,0,0,0,0,0,0,0,0	H4N4S3	HexNAc(4)Hex(4)NeuAc(3)	2351.8256	True
+1306	G20732FY	Hex:2 HexNAc:2 NeuAc:3 Ac:1	2,2,0,3,0,0,0,0,0,0,0,0,1,0	H2N2S3a1	HexNAc(2)Hex(2)NeuAc(3)Acetyl(1)	1663.5718	True
+1307	G20732FY	Hex:2 HexNAc:2 NeuAc:3 Ac:2	2,2,0,3,0,0,0,0,0,0,0,0,2,0	H2N2S3a2	HexNAc(2)Hex(2)NeuAc(3)Acetyl(2)	1705.5824	True
+1105	G20732FY	Hex:7 HexNAc:7	7,7,0,0,0,0,0,0,0,0,0,0,0,0	H7N7	HexNAc(7)Hex(7)	2573.936	True
+1309	G20732FY	Hex:1 HexNAc:2 HexA:2	1,2,0,0,0,0,0,0,0,0,2,0,0,0	H1N2A2	HexNAc(2)Hex(1)HexA(2) % this composition contains HexA (not defined residue for Byonic)	938.2863	True
+1310	G20732FY	Hex:2 HexNAc:2 HexA:1	2,2,0,0,0,0,0,0,0,0,1,0,0,0	H2N2A1	HexNAc(2)Hex(2)HexA(1) % this composition contains HexA (not defined residue for Byonic)	924.307	True
+1314	G20732FY	HexNAc:1 dHex:1 HexA:1	0,1,1,0,0,0,0,0,0,0,1,0,0,0	N1F1A1	HexNAc(1)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	543.1799	True
+926	G15363AF	Hex:3 HexNAc:5 NeuAc:1	3,5,0,1,0,0,0,0,0,0,0,0,0,0	H3N5S1	HexNAc(5)Hex(3)NeuAc(1)	1810.6614	True
+1311	G15363AF	Hex:6 HexNAc:3 dHex:1 NeuAc:2	6,3,1,2,0,0,0,0,0,0,0,0,0,0	H6N3F1S2	HexNAc(3)Hex(6)dHex(1)NeuAc(2)	2327.8143	True
+1312	G15363AF	Hex:6 HexNAc:3 NeuAc:2	6,3,0,2,0,0,0,0,0,0,0,0,0,0	H6N3S2	HexNAc(3)Hex(6)NeuAc(2)	2181.7564	True
+1325	G15363AF	Hex:6 HexNAc:7 dHex:2 NeuAc:1	6,7,2,1,0,0,0,0,0,0,0,0,0,0	H6N7F2S1	HexNAc(7)Hex(6)dHex(2)NeuAc(1)	2995.0944	False
+1331	G15363AF	Hex:6 HexNAc:6 dHex:3 NeuAc:1	6,6,3,1,0,0,0,0,0,0,0,0,0,0	H6N6F3S1	HexNAc(6)Hex(6)dHex(3)NeuAc(1)	2938.0729	False
+1320	G15363AF	Hex:7 HexNAc:7 dHex:3 NeuAc:1	7,7,3,1,0,0,0,0,0,0,0,0,0,0	H7N7F3S1	HexNAc(7)Hex(7)dHex(3)NeuAc(1)	3303.2051	False
+1318	G15363AF	Hex:5 HexNAc:7 dHex:2 NeuAc:1	5,7,2,1,0,0,0,0,0,0,0,0,0,0	H5N7F2S1	HexNAc(7)Hex(5)dHex(2)NeuAc(1)	2833.0416	False
+1317	G15363AF	Hex:6 HexNAc:7 dHex:3 NeuAc:2	6,7,3,2,0,0,0,0,0,0,0,0,0,0	H6N7F3S2	HexNAc(7)Hex(6)dHex(3)NeuAc(2)	3432.2477	False
+1329	G15363AF	Hex:7 HexNAc:7 dHex:3 NeuAc:2	7,7,3,2,0,0,0,0,0,0,0,0,0,0	H7N7F3S2	HexNAc(7)Hex(7)dHex(3)NeuAc(2)	3594.3005	False
+1319	G15363AF	Hex:6 HexNAc:7 dHex:3 NeuAc:1	6,7,3,1,0,0,0,0,0,0,0,0,0,0	H6N7F3S1	HexNAc(7)Hex(6)dHex(3)NeuAc(1)	3141.1523	False
+1332	G15363AF	Hex:5 HexNAc:7 dHex:2 NeuAc:2	5,7,2,2,0,0,0,0,0,0,0,0,0,0	H5N7F2S2	HexNAc(7)Hex(5)dHex(2)NeuAc(2)	3124.137	False
+1316	G15363AF	Hex:5 HexNAc:6 dHex:3 NeuAc:1	5,6,3,1,0,0,0,0,0,0,0,0,0,0	H5N6F3S1	HexNAc(6)Hex(5)dHex(3)NeuAc(1)	2776.0201	False
+1322	G15363AF	Hex:6 HexNAc:7 dHex:2 NeuAc:2	6,7,2,2,0,0,0,0,0,0,0,0,0,0	H6N7F2S2	HexNAc(7)Hex(6)dHex(2)NeuAc(2)	3286.1898	False
+1333	G15363AF	Hex:7 HexNAc:7 dHex:4 NeuAc:2	7,7,4,2,0,0,0,0,0,0,0,0,0,0	H7N7F4S2	HexNAc(7)Hex(7)dHex(4)NeuAc(2)	3740.3584	False
+1327	G15363AF	Hex:6 HexNAc:7 dHex:2 NeuAc:3	6,7,2,3,0,0,0,0,0,0,0,0,0,0	H6N7F2S3	HexNAc(7)Hex(6)dHex(2)NeuAc(3)	3577.2852	False
+1315	G15363AF	Hex:9 HexNAc:4 dHex:3 NeuAc:2	9,4,3,2,0,0,0,0,0,0,0,0,0,0	H9N4F3S2	HexNAc(4)Hex(9)dHex(3)NeuAc(2)	3309.1679	False
+1330	G15363AF	Hex:5 HexNAc:6 dHex:2 NeuAc:2	5,6,2,2,0,0,0,0,0,0,0,0,0,0	H5N6F2S2	HexNAc(6)Hex(5)dHex(2)NeuAc(2)	2921.0576	False
+1324	G15363AF	Hex:7 HexNAc:7 dHex:2 NeuAc:3	7,7,2,3,0,0,0,0,0,0,0,0,0,0	H7N7F2S3	HexNAc(7)Hex(7)dHex(2)NeuAc(3)	3739.338	False
+1326	G15363AF	Hex:7 HexNAc:7 dHex:4 NeuAc:1	7,7,4,1,0,0,0,0,0,0,0,0,0,0	H7N7F4S1	HexNAc(7)Hex(7)dHex(4)NeuAc(1)	3449.263	False
+1323	G15363AF	Hex:7 HexNAc:7 dHex:3 NeuAc:3	7,7,3,3,0,0,0,0,0,0,0,0,0,0	H7N7F3S3	HexNAc(7)Hex(7)dHex(3)NeuAc(3)	3885.3959	False
+1321	G15363AF	Hex:5 HexNAc:6 dHex:2 NeuAc:3	5,6,2,3,0,0,0,0,0,0,0,0,0,0	H5N6F2S3	HexNAc(6)Hex(5)dHex(2)NeuAc(3)	3212.153	False
+1328	G15363AF	Hex:5 HexNAc:7 dHex:1 NeuAc:3	5,7,1,3,0,0,0,0,0,0,0,0,0,0	H5N7F1S3	HexNAc(7)Hex(5)dHex(1)NeuAc(3)	3269.1745	False
+1334	G15363AF	Hex:1 HexNAc:3 NeuAc:1 Su:1	1,3,0,1,0,0,1,0,0,0,0,0,0,0	H1N3S1s1	HexNAc(3)Hex(1)NeuAc(1)Sulfo(1)	1160.3538	False
+1335	G15363AF	Hex:7 HexNAc:7 dHex:1 NeuAc:1	7,7,1,1,0,0,0,0,0,0,0,0,0,0	H7N7F1S1	HexNAc(7)Hex(7)dHex(1)NeuAc(1)	3011.0893	False
+1336	G15363AF	Hex:4 HexNAc:3 dHex:2 Su:2	4,3,2,0,0,0,2,0,0,0,0,0,0,0	H4N3F2s2	HexNAc(3)Hex(4)dHex(2)Sulfo(2)	1727.4894	False
+1345	G15363AF	Hex:7 HexNAc:7 NeuAc:2	7,7,0,2,0,0,0,0,0,0,0,0,0,0	H7N7S2	HexNAc(7)Hex(7)NeuAc(2)	3156.1268	False
+1342	G15363AF	Hex:7 HexNAc:7 dHex:2 NeuAc:1	7,7,2,1,0,0,0,0,0,0,0,0,0,0	H7N7F2S1	HexNAc(7)Hex(7)dHex(2)NeuAc(1)	3157.1472	False
+1338	G15363AF	Hex:6 HexNAc:6 dHex:6	6,6,6,0,0,0,0,0,0,0,0,0,0,0	H6N6F6	HexNAc(6)Hex(6)dHex(6)	3085.1512	False
+1344	G15363AF	Hex:7 HexNAc:7 NeuAc:1	7,7,0,1,0,0,0,0,0,0,0,0,0,0	H7N7S1	HexNAc(7)Hex(7)NeuAc(1)	2865.0314	False
+1343	G15363AF	Hex:7 HexNAc:7 dHex:2 NeuAc:2	7,7,2,2,0,0,0,0,0,0,0,0,0,0	H7N7F2S2	HexNAc(7)Hex(7)dHex(2)NeuAc(2)	3448.2426	False
+1341	G15363AF	Hex:7 HexNAc:6 dHex:5 NeuAc:3	7,6,5,3,0,0,0,0,0,0,0,0,0,0	H7N6F5S3	HexNAc(6)Hex(7)dHex(5)NeuAc(3)	3974.4323	False
+1337	G15363AF	Hex:5 HexNAc:8 dHex:2 NeuAc:2	5,8,2,2,0,0,0,0,0,0,0,0,0,0	H5N8F2S2	HexNAc(8)Hex(5)dHex(2)NeuAc(2)	3327.2164	False
+1339	G15363AF	Hex:7 HexNAc:6 dHex:4 NeuAc:3	7,6,4,3,0,0,0,0,0,0,0,0,0,0	H7N6F4S3	HexNAc(6)Hex(7)dHex(4)NeuAc(3)	3828.3744	False
+1340	G15363AF	Hex:7 HexNAc:6 dHex:5 NeuAc:1	7,6,5,1,0,0,0,0,0,0,0,0,0,0	H7N6F5S1	HexNAc(6)Hex(7)dHex(5)NeuAc(1)	3392.2415	False
+1347	G15363AF	Hex:7 HexNAc:4 NeuAc:1 Ph:1	7,4,0,1,0,0,0,1,0,0,0,0,0,0	H7N4S1p1	HexNAc(4)Hex(7)NeuAc(1)Phospho(1)	2335.7595	False
+1349	G15363AF	Hex:8 HexNAc:7 NeuAc:3	8,7,0,3,0,0,0,0,0,0,0,0,0,0	H8N7S3	HexNAc(7)Hex(8)NeuAc(3)	3609.275	False
+1351	G15363AF	Hex:9 HexNAc:8 NeuAc:4	9,8,0,4,0,0,0,0,0,0,0,0,0,0	H9N8S4	HexNAc(8)Hex(9)NeuAc(4)	4265.5026	False
+1352	G15363AF	Hex:9 HexNAc:8 NeuAc:5	9,8,0,5,0,0,0,0,0,0,0,0,0,0	H9N8S5	HexNAc(8)Hex(9)NeuAc(5)	4556.598	False
+1350	G15363AF	Hex:9 HexNAc:8 dHex:1 NeuAc:5	9,8,1,5,0,0,0,0,0,0,0,0,0,0	H9N8F1S5	HexNAc(8)Hex(9)dHex(1)NeuAc(5)	4702.6559	False
+1348	G15363AF	Hex:7 HexNAc:6 NeuAc:6	7,6,0,6,0,0,0,0,0,0,0,0,0,0	H7N6S6	HexNAc(6)Hex(7)NeuAc(6)	4117.429	False
+1346	G15363AF	Hex:3 HexNAc:6 NeuAc:2	3,6,0,2,0,0,0,0,0,0,0,0,0,0	H3N6S2	HexNAc(6)Hex(3)NeuAc(2)	2304.8362	False
+1128	G15363AF	Hex:4 HexNAc:2 NeuAc:3	4,2,0,3,0,0,0,0,0,0,0,0,0,0	H4N2S3	HexNAc(2)Hex(4)NeuAc(3)	1945.6668	True
+1126	G15363AF	Hex:3 HexNAc:1 dHex:1 NeuAc:2	3,1,1,2,0,0,0,0,0,0,0,0,0,0	H3N1F1S2	HexNAc(1)Hex(3)dHex(1)NeuAc(2)	1435.4971	True
+1138	G15363AF	Hex:2 NeuAc:1 Su:1	2,0,0,1,0,0,1,0,0,0,0,0,0,0	H2S1s1	Hex(2)NeuAc(1)Sulfo(1)	713.1684	True
+1353	G15363AF	Hex:4 HexNAc:1 dHex:1 NeuAc:1	4,1,1,1,0,0,0,0,0,0,0,0,0,0	H4N1F1S1	HexNAc(1)Hex(4)dHex(1)NeuAc(1)	1306.4545	False
+1396	G15363AF	Hex:4 HexNAc:2 dHex:3 Su:1	4,2,3,0,0,0,1,0,0,0,0,0,0,0	H4N2F3s1	HexNAc(2)Hex(4)dHex(3)Sulfo(1)	1590.5111	False
+1412	G15363AF	Hex:4 HexNAc:2 dHex:2 Su:1	4,2,2,0,0,0,1,0,0,0,0,0,0,0	H4N2F2s1	HexNAc(2)Hex(4)dHex(2)Sulfo(1)	1444.4532	False
+1354	G15363AF	Hex:5 HexNAc:4 NeuAc:2 Su:1	5,4,0,2,0,0,1,0,0,0,0,0,0,0	H5N4S2s1	HexNAc(4)Hex(5)NeuAc(2)Sulfo(1)	2302.7398	False
+974	G98472XA	Hex:3 HexNAc:5 NeuGc:1	3,5,0,0,1,0,0,0,0,0,0,0,0,0	H3N5G1	HexNAc(5)Hex(3)NeuGc(1)	1826.6563	True
+962	G62067NB	Hex:6 HexNAc:2 Su:1	6,2,0,0,0,0,1,0,0,0,0,0,0,0	H6N2s1	HexNAc(2)Hex(6)Sulfo(1)	1476.443	True
+975	G65059GX	Hex:6 HexNAc:3 Su:1	6,3,0,0,0,0,1,0,0,0,0,0,0,0	H6N3s1	HexNAc(3)Hex(6)Sulfo(1)	1679.5224	True
+967	G24164CX	Hex:4 HexNAc:6 dHex:2 NeuAc:1	4,6,2,1,0,0,0,0,0,0,0,0,0,0	H4N6F2S1	HexNAc(6)Hex(4)dHex(2)NeuAc(1)	2467.9094	True
+1370	G24164CX	Hex:4 HexNAc:4 NeuAc:2 Su:1	4,4,0,2,0,0,1,0,0,0,0,0,0,0	H4N4S2s1	HexNAc(4)Hex(4)NeuAc(2)Sulfo(1)	2140.687	False
+1361	G24164CX	Hex:3 HexNAc:3 Su:2	3,3,0,0,0,0,2,0,0,0,0,0,0,0	H3N3s2	HexNAc(3)Hex(3)Sulfo(2)	1273.3208	False
+1358	G24164CX	Hex:3 HexNAc:3 dHex:1 NeuAc:1 Su:1	3,3,1,1,0,0,1,0,0,0,0,0,0,0	H3N3F1S1s1	HexNAc(3)Hex(3)dHex(1)NeuAc(1)Sulfo(1)	1630.5173	False
+1363	G24164CX	Hex:3 HexNAc:4 dHex:2 NeuAc:2	3,4,2,2,0,0,0,0,0,0,0,0,0,0	H3N4F2S2	HexNAc(4)Hex(3)dHex(2)NeuAc(2)	2190.7932	False
+1362	G24164CX	Hex:3 HexNAc:4 dHex:1 NeuAc:2	3,4,1,2,0,0,0,0,0,0,0,0,0,0	H3N4F1S2	HexNAc(4)Hex(3)dHex(1)NeuAc(2)	2044.7353	False
+1357	G24164CX	Hex:3 HexNAc:2 dHex:2 NeuAc:2	3,2,2,2,0,0,0,0,0,0,0,0,0,0	H3N2F2S2	HexNAc(2)Hex(3)dHex(2)NeuAc(2)	1784.6344	False
+1366	G24164CX	Hex:4 HexNAc:4 dHex:1 NeuAc:3	4,4,1,3,0,0,0,0,0,0,0,0,0,0	H4N4F1S3	HexNAc(4)Hex(4)dHex(1)NeuAc(3)	2497.8835	False
+1368	G24164CX	Hex:4 HexNAc:4 dHex:3 NeuAc:3	4,4,3,3,0,0,0,0,0,0,0,0,0,0	H4N4F3S3	HexNAc(4)Hex(4)dHex(3)NeuAc(3)	2789.9993	False
+1360	G24164CX	Hex:3 HexNAc:3 dHex:2 NeuAc:1 Su:1	3,3,2,1,0,0,1,0,0,0,0,0,0,0	H3N3F2S1s1	HexNAc(3)Hex(3)dHex(2)NeuAc(1)Sulfo(1)	1776.5752	False
+1355	G24164CX	Hex:2 HexNAc:2 NeuAc:3	2,2,0,3,0,0,0,0,0,0,0,0,0,0	H2N2S3	HexNAc(2)Hex(2)NeuAc(3)	1621.5612	False
+1365	G24164CX	Hex:4 HexNAc:4 dHex:1 NeuAc:2	4,4,1,2,0,0,0,0,0,0,0,0,0,0	H4N4F1S2	HexNAc(4)Hex(4)dHex(1)NeuAc(2)	2206.7881	False
+1367	G24164CX	Hex:4 HexNAc:4 dHex:2 NeuAc:2	4,4,2,2,0,0,0,0,0,0,0,0,0,0	H4N4F2S2	HexNAc(4)Hex(4)dHex(2)NeuAc(2)	2352.846	False
+1369	G24164CX	Hex:4 HexNAc:4 NeuAc:1 Su:1	4,4,0,1,0,0,1,0,0,0,0,0,0,0	H4N4S1s1	HexNAc(4)Hex(4)NeuAc(1)Sulfo(1)	1849.5916	False
+1364	G24164CX	Hex:3 HexNAc:4 NeuAc:2 Su:2	3,4,0,2,0,0,2,0,0,0,0,0,0,0	H3N4S2s2	HexNAc(4)Hex(3)NeuAc(2)Sulfo(2)	2058.591	False
+1371	G24164CX	Hex:4 HexNAc:4 NeuAc:4	4,4,0,4,0,0,0,0,0,0,0,0,0,0	H4N4S4	HexNAc(4)Hex(4)NeuAc(4)	2642.921	False
+1356	G24164CX	Hex:2 HexNAc:4 NeuAc:2	2,4,0,2,0,0,0,0,0,0,0,0,0,0	H2N4S2	HexNAc(4)Hex(2)NeuAc(2)	1736.6246	False
+1359	G24164CX	Hex:3 HexNAc:3 dHex:1 Su:2	3,3,1,0,0,0,2,0,0,0,0,0,0,0	H3N3F1s2	HexNAc(3)Hex(3)dHex(1)Sulfo(2)	1419.3787	False
+1399	G24164CX	Hex:8 HexNAc:2 Ph:1	8,2,0,0,0,0,0,1,0,0,0,0,0,0	H8N2p1	HexNAc(2)Hex(8)Phospho(1)	1800.5581	False
+1397	G24164CX	Hex:3 HexNAc:4 Ph:1	3,4,0,0,0,0,0,1,0,0,0,0,0,0	H3N4p1	HexNAc(4)Hex(3)Phospho(1)	1396.4529	False
+1400	G24164CX	Hex:8 HexNAc:3 Ph:1	8,3,0,0,0,0,0,1,0,0,0,0,0,0	H8N3p1	HexNAc(3)Hex(8)Phospho(1)	2003.6375	False
+1398	G24164CX	Hex:6 HexNAc:5 dHex:4 NeuAc:3	6,5,4,3,0,0,0,0,0,0,0,0,0,0	H6N5F4S3	HexNAc(5)Hex(6)dHex(4)NeuAc(3)	3463.2422	False
+1406	G24164CX	Hex:1 HexNAc:4 NeuAc:2	1,4,0,2,0,0,0,0,0,0,0,0,0,0	H1N4S2	HexNAc(4)Hex(1)NeuAc(2)	1574.5718	False
+1404	G24164CX	Hex:1 HexNAc:1 NeuAc:2 Su:1	1,1,0,2,0,0,1,0,0,0,0,0,0,0	H1N1S2s1	HexNAc(1)Hex(1)NeuAc(2)Sulfo(1)	1045.2904	False
+1407	G24164CX	Hex:2 HexNAc:2 Su:2	2,2,0,0,0,0,2,0,0,0,0,0,0,0	H2N2s2	HexNAc(2)Hex(2)Sulfo(2)	908.1886	False
+1402	G24164CX	Hex:11 HexNAc:10 dHex:1 NeuAc:4	11,10,1,4,0,0,0,0,0,0,0,0,0,0	H11N10F1S4	HexNAc(10)Hex(11)dHex(1)NeuAc(4)	5141.8249	False
+1408	G24164CX	Hex:8 HexNAc:7 NeuAc:2	8,7,0,2,0,0,0,0,0,0,0,0,0,0	H8N7S2	HexNAc(7)Hex(8)NeuAc(2)	3318.1796	False
+1409	G24164CX	Hex:9 HexNAc:8 dHex:2 NeuAc:4	9,8,2,4,0,0,0,0,0,0,0,0,0,0	H9N8F2S4	HexNAc(8)Hex(9)dHex(2)NeuAc(4)	4557.6184	False
+1401	G24164CX	Hex:10 HexNAc:9 dHex:2 NeuAc:4	10,9,2,4,0,0,0,0,0,0,0,0,0,0	H10N9F2S4	HexNAc(9)Hex(10)dHex(2)NeuAc(4)	4922.7506	False
+1403	G24164CX	Hex:12 HexNAc:11 dHex:1 NeuAc:4	12,11,1,4,0,0,0,0,0,0,0,0,0,0	H12N11F1S4	HexNAc(11)Hex(12)dHex(1)NeuAc(4)	5506.9571	False
+1410	G24164CX	Hex:9 HexNAc:8 NeuAc:2	9,8,0,2,0,0,0,0,0,0,0,0,0,0	H9N8S2	HexNAc(8)Hex(9)NeuAc(2)	3683.3118	False
+1433	G24164CX	Hex:6 HexNAc:7 dHex:4	6,7,4,0,0,0,0,0,0,0,0,0,0,0	H6N7F4	HexNAc(7)Hex(6)dHex(4)	2996.1148	False
+1430	G24164CX	Hex:5 HexNAc:7 dHex:2	5,7,2,0,0,0,0,0,0,0,0,0,0,0	H5N7F2	HexNAc(7)Hex(5)dHex(2)	2541.9462	False
+1435	G24164CX	Hex:8 HexNAc:7 dHex:5 NeuAc:1	8,7,5,1,0,0,0,0,0,0,0,0,0,0	H8N7F5S1	HexNAc(7)Hex(8)dHex(5)NeuAc(1)	3757.3737	False
+1419	G24164CX	Hex:4 HexNAc:6 dHex:2 Su:1	4,6,2,0,0,0,1,0,0,0,0,0,0,0	H4N6F2s1	HexNAc(6)Hex(4)dHex(2)Sulfo(1)	2256.7708	False
+1418	G24164CX	Hex:4 HexNAc:6 dHex:1 Su:1	4,6,1,0,0,0,1,0,0,0,0,0,0,0	H4N6F1s1	HexNAc(6)Hex(4)dHex(1)Sulfo(1)	2110.7129	False
+1424	G24164CX	Hex:5 HexNAc:5 dHex:2 Su:1 HexA:1	5,5,2,0,0,0,1,0,0,0,1,0,0,0	H5N5F2s1A1	HexNAc(5)Hex(5)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2391.7762	False
+825	G30208WJ	Hex:5 HexNAc:4 NeuAc:1 Ac:1	5,4,0,1,0,0,0,0,0,0,0,0,1,0	H5N4S1a1	HexNAc(4)Hex(5)NeuAc(1)Acetyl(1)	1973.6982	True
+1427	G30208WJ	Hex:5 HexNAc:6 dHex:1 Su:1 HexA:1	5,6,1,0,0,0,1,0,0,0,1,0,0,0	H5N6F1s1A1	HexNAc(6)Hex(5)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2448.7977	False
+826	G17720FO	Hex:5 HexNAc:4 NeuAc:1 Ac:2	5,4,0,1,0,0,0,0,0,0,0,0,2,0	H5N4S1a2	HexNAc(4)Hex(5)NeuAc(1)Acetyl(2)	2015.7088	True
+1417	G17720FO	Hex:4 HexNAc:6 dHex:1 Su:1 HexA:1	4,6,1,0,0,0,1,0,0,0,1,0,0,0	H4N6F1s1A1	HexNAc(6)Hex(4)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2286.7449	False
+1415	G17720FO	Hex:4 HexNAc:5 dHex:1 HexA:1	4,5,1,0,0,0,0,0,0,0,1,0,0,0	H4N5F1A1	HexNAc(5)Hex(4)dHex(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2003.7087	False
+1425	G17720FO	Hex:5 HexNAc:5 dHex:2 Su:1	5,5,2,0,0,0,1,0,0,0,0,0,0,0	H5N5F2s1	HexNAc(5)Hex(5)dHex(2)Sulfo(1)	2215.7442	False
+829	G18588YS	Hex:5 HexNAc:4 NeuAc:2 Ac:4	5,4,0,2,0,0,0,0,0,0,0,0,4,0	H5N4S2a4	HexNAc(4)Hex(5)NeuAc(2)Acetyl(4)	2390.8254	True
+828	G56199WZ	Hex:5 HexNAc:4 NeuAc:2 Ac:3	5,4,0,2,0,0,0,0,0,0,0,0,3,0	H5N4S2a3	HexNAc(4)Hex(5)NeuAc(2)Acetyl(3)	2348.8148	True
+1426	G56199WZ	Hex:5 HexNAc:5 dHex:3 Su:1	5,5,3,0,0,0,1,0,0,0,0,0,0,0	H5N5F3s1	HexNAc(5)Hex(5)dHex(3)Sulfo(1)	2361.8021	False
+1413	G56199WZ	Hex:1 HexNAc:1 NeuAc:4	1,1,0,4,0,0,0,0,0,0,0,0,0,0	H1N1S4	HexNAc(1)Hex(1)NeuAc(4)	1547.5244	False
+1422	G56199WZ	Hex:5 HexNAc:4 dHex:2 NeuAc:1 Su:1	5,4,2,1,0,0,1,0,0,0,0,0,0,0	H5N4F2S1s1	HexNAc(4)Hex(5)dHex(2)NeuAc(1)Sulfo(1)	2303.7602	False
+1432	G56199WZ	Hex:6 HexNAc:7 dHex:3	6,7,3,0,0,0,0,0,0,0,0,0,0,0	H6N7F3	HexNAc(7)Hex(6)dHex(3)	2850.0569	False
+831	G03583HV	Hex:5 HexNAc:4 NeuAc:3 Ac:3	5,4,0,3,0,0,0,0,0,0,0,0,3,0	H5N4S3a3	HexNAc(4)Hex(5)NeuAc(3)Acetyl(3)	2639.9102	True
+1118	G03583HV	Hex:2 HexNAc:1 NeuAc:2	2,1,0,2,0,0,0,0,0,0,0,0,0,0	H2N1S2	HexNAc(1)Hex(2)NeuAc(2)	1127.3864	False
+830	G54496BL	Hex:5 HexNAc:4 NeuAc:3 Ac:2	5,4,0,3,0,0,0,0,0,0,0,0,2,0	H5N4S3a2	HexNAc(4)Hex(5)NeuAc(3)Acetyl(2)	2597.8996	True
+832	G38173YA	Hex:5 HexNAc:4 NeuAc:3 Ac:4	5,4,0,3,0,0,0,0,0,0,0,0,4,0	H5N4S3a4	HexNAc(4)Hex(5)NeuAc(3)Acetyl(4)	2681.9208	True
+1423	G38173YA	Hex:5 HexNAc:4 dHex:3 Su:1	5,4,3,0,0,0,1,0,0,0,0,0,0,0	H5N4F3s1	HexNAc(4)Hex(5)dHex(3)Sulfo(1)	2158.7227	False
+1431	G38173YA	Hex:6 HexNAc:3 dHex:2 NeuAc:1	6,3,2,1,0,0,0,0,0,0,0,0,0,0	H6N3F2S1	HexNAc(3)Hex(6)dHex(2)NeuAc(1)	2182.7768	False
+1434	G38173YA	Hex:7 HexNAc:7 dHex:5	7,7,5,0,0,0,0,0,0,0,0,0,0,0	H7N7F5	HexNAc(7)Hex(7)dHex(5)	3304.2255	False
+1429	G38173YA	Hex:5 HexNAc:7 dHex:1 NeuAc:1	5,7,1,1,0,0,0,0,0,0,0,0,0,0	H5N7F1S1	HexNAc(7)Hex(5)dHex(1)NeuAc(1)	2686.9837	False
+1414	G38173YA	Hex:4 HexNAc:4 dHex:1 Su:1 HexA:1	4,4,1,0,0,0,1,0,0,0,1,0,0,0	H4N4F1s1A1	HexNAc(4)Hex(4)dHex(1)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	1880.5861	False
+930	G10441JJ	Hex:4 HexNAc:7 dHex:1 NeuAc:1	4,7,1,1,0,0,0,0,0,0,0,0,0,0	H4N7F1S1	HexNAc(7)Hex(4)dHex(1)NeuAc(1)	2524.9309	False
+1428	G10441JJ	Hex:5 HexNAc:6 dHex:2 Su:1 HexA:1	5,6,2,0,0,0,1,0,0,0,1,0,0,0	H5N6F2s1A1	HexNAc(6)Hex(5)dHex(2)Sulfo(1)HexA(1) % this composition contains HexA (not defined residue for Byonic)	2594.8556	False
+1421	G10441JJ	Hex:5 HexNAc:4 dHex:1 NeuAc:4	5,4,1,4,0,0,0,0,0,0,0,0,0,0	H5N4F1S4	HexNAc(4)Hex(5)dHex(1)NeuAc(4)	2951.0317	False

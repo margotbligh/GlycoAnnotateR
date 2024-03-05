@@ -8,7 +8,7 @@
 #' from precursors annotated as glycans by \link[GlycoAnnotateR]{glycoAnnotate}.
 #'
 #' @slot precursorAnnotations Vector of precursor annotations including IUPAC name,
-#' ion and DP, separated by a colon (:) unless otherwise specified. Assumes 
+#' ion and DP, separated by a colon (:) unless otherwise specified. Assumes
 #' multiple annotations (if multiple annotations assigned to one precursor) are
 #' separated by a comma!
 #' @slot precursorAnnotations_sep Non-default separator of IUPAC name, ion and DP
@@ -20,13 +20,18 @@
 #' @slot error Numeric value - error used to create window for matching. mz values
 #' will be matched against theoretical mzs +- error.
 #' @slot error_units Units for error - can be 'ppm' or 'Da'
-
+#' @slot nmod_max  Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
+#' Does not take into account unsaturated, alditol or dehydrated.
+#' @slot double_sulfate Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.
+#' @slot label Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
+#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
+#'
 #' @export
 #'
-#' @seealso GlycoAnnotateR::glycoPredict()
-#' @seealso GlycoAnnotateR::glycoPredictParam()
-#' @seealso GlycoAnnotateR::glycoAnnotate()
-#' @seealso GlycoAnnotateR::glycoMS2Extract()
+#' @seealso \link[GlycoAnnotateR]{glycoPredictParam}
+#' @seealso \link[GlycoAnnotateR]{glycoPredict}
+#' @seealso \link[GlycoAnnotateR]{glycoAnnotate}
+#' @seealso \link[GlycoAnnotateR]{glycoMS2Extract}
 
 
 
@@ -36,12 +41,15 @@ glycoMS2Annotate <- function(precursorAnnotations,
                              error = 3,
                              error_units = 'ppm',
                              ion_type = 'ESI',
-                             polarity = 'neg'){
+                             polarity = 'neg',
+                             nmod_max = 1,
+                             double_sulfate = FALSE,
+                             label = 'none'){
   #check input validity
   if(!is.vector(precursorAnnotations)){
     stop('precursorAnnotations is not a vector')
   }
-  if(!all(grepl(':', precursorAnnotations)) & 
+  if(!all(grepl(':', precursorAnnotations)) &
      is.null(precursorAnnotations_sep)){
     stop('No : separators in precursorAnnotations and no alternative provided')
   }
@@ -75,41 +83,41 @@ glycoMS2Annotate <- function(precursorAnnotations,
     stop('none of the precursorAnnotations are in the precursorAnnotations',
          'column of the ms2spectra dataframe')
   }
-  
+
   #use default sep if none provided
   if(is.null(precursorAnnotations_sep)){
     precursorAnnotations_sep = ':'
   }
-  
+
   #make an empty list
   ms2_annot_list <- list()
-  
+
   #fill in list with dfs for annotated spectra, with one entry per annotation
   for(i in 1:length(precursorAnnotations)){
     #get annotation
     annot = precursorAnnotations[i]
-    
+
     #get dp from annotation
-    if (grepl(',', annot)){ 
+    if (grepl(',', annot)){
       #if multiple annotations, get maximum dp
       annots <- stringr::str_split_1(annot, ',')
-      dps <- stringr::str_split_i(annots, 
-                                  precursorAnnotations_sep, 
+      dps <- stringr::str_split_i(annots,
+                                  precursorAnnotations_sep,
                                   3) %>% as.numeric()
       max_dp = max(dps)
     } else {
       #otherwise just get the dp
-      max_dp = stringr::str_split_i(annot, 
-                                    precursorAnnotations_sep, 
+      max_dp = stringr::str_split_i(annot,
+                                    precursorAnnotations_sep,
                                     3) %>% as.numeric()
     }
-    
+
     #get modifications from annotations
     #split by separator or space
     p = paste0(' |', precursorAnnotations_sep)
     annot_split <- stringr::str_split_1(annot, pattern = p)
     #remove elements with the ion
-    annot_split <- annot_split[!grepl('\\[', annot_split)] %>% 
+    annot_split <- annot_split[!grepl('\\[', annot_split)] %>%
       #remove numbers
       gsub('\\d', '', .) %>%
       #make unique
@@ -122,54 +130,55 @@ glycoMS2Annotate <- function(precursorAnnotations,
     if(length(annot_split) == 0){
       annot_split <- 'none'
     }
-    
-    #make sure everything is lower case and formatted correctly
-    annot_split_lc <- stringr::str_to_lower(annot_split) %>% 
-      sub('-', '', .) %>% 
-      sub('fate', 'phate', .)
-    
+
+    #make sure everything is lower case
+    annot_split_lc <- stringr::str_to_lower(annot_split) %>%
+      sub('-', '', .)
+
     #get pentose option
     if(any(annot_split == 'pen')){
       pent_option = T
     } else {
       pent_option = F
     }
-    
+
     #create parameter object
     gpp <- GlycoAnnotateR::glycoPredictParam(dp = c(1, max_dp),
                                              pent_option = pent_option,
                                              modifications = annot_split_lc,
                                              polarity = polarity,
                                              scan_range = c(0, 10000), #set the scan range wide
-                                             ion_type = ion_type) 
-    
+                                             ion_type = ion_type,
+                                             nmod_max = nmod_max,
+                                             double_sulfate = double_sulfate,
+                                             label = label)
+
     #make df for annotation
-    df <- ms2spectra %>% 
+    df <- ms2spectra %>%
       #filter for precursor annotation
-      dplyr::filter(precursorAnnotations == !!annot) 
-    
+      dplyr::filter(precursorAnnotations == !!annot)
+
     #annotate fragments
-    df_annot <- GlycoAnnotateR::glycoAnnotate(df, 
-                                              param = gpp, 
-                                              collapse = T, 
+    df_annot <- GlycoAnnotateR::glycoAnnotate(df,
+                                              param = gpp,
+                                              collapse = T,
                                               error = error,
                                               error_units = error_units)
-    
+
     #add to list
     ms2_annot_list[[i]] <- df_annot
-    
+
   }
-  
+
   #bind dfs in list into one df
-  ms2spectra_annotated <- ms2_annot_list %>% 
+  ms2spectra_annotated <- ms2_annot_list %>%
     dplyr::bind_rows()
-  
+
   #return output
   return(ms2spectra_annotated)
-  
-  
+
+
 }
-  
-  
-  
-  
+
+
+

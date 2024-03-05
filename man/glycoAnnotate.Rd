@@ -78,7 +78,7 @@ annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.
 
 }
 \seealso{
-glycoAnnotateR::glycoPredict()
+\link[GlycoAnnotateR]{glycoPredictParam}
 
-glycoAnnotateR::glycoPredictParam()
+\link[GlycoAnnotateR]{glycoPredict}
 }

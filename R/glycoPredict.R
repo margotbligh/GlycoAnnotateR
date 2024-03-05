@@ -13,8 +13,8 @@
 #' gpp@@dp <- c(1,7)
 #' gpp@@polarity <- 'neg'
 #' gpp@@scan_range <- c(150, 1300)
-#' gpp@@modifications <- c('sulphate', 'carboxylicacid')
-#' gpp@@double_sulphate <- TRUE
+#' gpp@@modifications <- c('sulfate', 'carboxylicacid')
+#' gpp@@double_sulfate <- TRUE
 #' predicted.df <- glycoPredict(param = gpp)
 #'
 #' @details
@@ -27,7 +27,7 @@
 #' encoded in the python script.
 #'
 #' @seealso
-#' glycoAnnotateR::glycoPredictParam()
+#' \link[GlycoAnnotateR]{glycoPredictParam}
 #'
 
 glycoPredict <- function(param){
@@ -49,7 +49,7 @@ glycoPredict <- function(param){
   pent_option = param@pent_option
   nmod_max = as.integer(param@nmod_max)
   modifications = as.list(param@modifications)
-  double_sulphate = param@double_sulphate
+  double_sulfate = param@double_sulfate
   label = param@label
   ion_type = param@ion_type
   adducts = as.list(param@adducts)
@@ -63,7 +63,7 @@ glycoPredict <- function(param){
                        scan_range = scan_range,
                        pent_option = pent_option, modifications = modifications,
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
-                       double_sulphate = double_sulphate, adducts = adducts,
+                       double_sulfate = double_sulfate, adducts = adducts,
                        naming = naming, glycan_linkage = glycan_linkage,
                        modification_limits = modification_limits)
   format = param@format

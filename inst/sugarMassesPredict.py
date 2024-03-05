@@ -24,7 +24,7 @@ possible_modifications = ['carboxylicacid',
                           'alditol',
                           'amino',
                           'dehydrated',
-                          'sulphate',
+                          'sulfate',
                          'aminopentyllinker']
 # hexose and water masses to build molecule base
 hex_mass = 180.0633881
@@ -32,7 +32,7 @@ water_mass = 18.01056468
 # mass differences for modifications
 pent_mdiff = -30.01056468
 modifications_mdiff = {
-    "sulphate": 79.95681486,
+    "sulfate": 79.95681486,
     "anhydrobridge": -water_mass,
     "omethyl": 14.01565006,
     "carboxylicacid": 13.97926456,
@@ -83,7 +83,7 @@ formulas = {
     "hex": [6, 12, 0, 6, 0, 0],
     "pent": [5, 10, 0, 5, 0, 0],
     "water": [0, -2, 0, -1, 0, 0],
-    "sulphate": [0, 0, 0, 3, 1, 0],
+    "sulfate": [0, 0, 0, 3, 1, 0],
     "anhydrobridge": [0, -2, 0, -1, 0, 0],
     "omethyl": [1, 2, 0, 0, 0, 0],
     "carboxylicacid": [0, -2, 0, 1, 0, 0],
@@ -104,7 +104,7 @@ formulas = {
   "aminopentyllinker": [5, 11, 1, 0, 0, 0]
 }
 # modification types
-modifications_anionic = {"sulphate",
+modifications_anionic = {"sulfate",
                          "phosphate",
                          "carboxylicacid",
                          "sialicacid"}
@@ -122,7 +122,7 @@ modifications_neutral = {"anhydrobridge",
 names_iupac = {
     "hex" : 'Hex',
     'pent' : 'Pen',
-    "sulphate": 'Sulfate',
+    "sulfate": 'Sulfate',
     "anhydrobridge": 'AnhydroBridge',
     "omethyl": 'O-Methyl',
     "carboxylicacid": 'CarboxylicAcid',
@@ -140,7 +140,7 @@ names_iupac = {
 names_glycoct = {
     "hex": 'HEX',
     'pent': 'PEN',
-    "sulphate": 'SO4',
+    "sulfate": 'SO4',
     "anhydrobridge": 'ANH',
     "omethyl": 'OMe',
     "carboxylicacid": 'COOH',
@@ -158,7 +158,7 @@ names_glycoct = {
 names_oxford = {
     "hex": 'H',
     'pent': 'P',
-    "sulphate": 'S',
+    "sulfate": 'S',
     "anhydrobridge": 'B',
     "omethyl": 'M',
     "carboxylicacid": 'A',
@@ -178,7 +178,7 @@ names_oxford = {
 bracket_mapping = {
     "hex": '()',
     'pent': '()',
-    "sulphate": '[]',
+    "sulfate": '[]',
     "anhydrobridge": '[]',
     "omethyl": '[]',
     "carboxylicacid": '[]',
@@ -202,7 +202,7 @@ nglycan_limits = {
     "deoxy": 6,
     "sialicacid": 5,
     "pent": 4,
-    "sulphate": 3,
+    "sulfate": 3,
     "phosphate": 2,
     "amino": 0
 }
@@ -212,12 +212,12 @@ oglycan_limits = {
     "deoxy": 6,
     "sialicacid": 7,
     "pen": 3,
-    "sulphate": 6,
+    "sulfate": 6,
     "phosphate": 6,
     "amino": 2
 }
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulphate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"], modification_limits = 'none'):
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulfate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"], modification_limits = 'none'):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
     if type(adducts)==str:
@@ -227,8 +227,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     print("----------------------------------------")
     if "all" in modifications:
         modifications = possible_modifications
-    if "sulphate" in modifications and len(modifications) > 1:
-        modifications.append(modifications.pop(modifications.index('sulphate')))
+    if "sulfate" in modifications and len(modifications) > 1:
+        modifications.append(modifications.pop(modifications.index('sulfate')))
     if "alditol" in modifications:
         alditol_option = 'y'
         modifications.remove("alditol")
@@ -338,8 +338,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses = masses[conditions.all(axis=1)]
             if "nacetyl" in modifications:
                 masses['hex'] = masses['hex'] + masses['nacetyl']
-            if "sulphate" in modifications and "phosphate" in modifications:
-                masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
+            if "sulfate" in modifications and "phosphate" in modifications:
+                masses = masses[(masses['sulfate'] == 0) | (masses['phosphate'] == 0)]
             if "deoxy" in modifications:
                 masses = masses[masses['deoxy']+1 <= masses['hex']]
             if "sialicacid" in modifications and "nacetyl" in modifications:
@@ -396,8 +396,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             masses = masses[conditions.all(axis=1)]
             if "nacetyl" in modifications:
                 masses['hex'] = masses['hex'] + masses['nacetyl']
-            if "sulphate" in modifications and "phosphate" in modifications:
-                masses = masses[(masses['sulphate'] == 0) | (masses['phosphate'] == 0)]
+            if "sulfate" in modifications and "phosphate" in modifications:
+                masses = masses[(masses['sulfate'] == 0) | (masses['phosphate'] == 0)]
             if "deoxy" in modifications:
                 masses = masses[masses['deoxy']+1 <= masses['hex']]
             if "sialicacid" in modifications and "nacetyl" in modifications:
@@ -418,12 +418,12 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if "none" in modifications or len(modifications) == 0:
         if pent_option == True: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'pent', 'mass'])
         if pent_option == False: masses = pd.DataFrame(masses, columns=['dp', 'hex', 'mass'])
-    if "sulphate" in modifications and double_sulphate == True:
-        #print("--> adding extra sulphate groups")
-        masses_s1 = masses.loc[masses['sulphate'] >= 1]
+    if "sulfate" in modifications and double_sulfate == True:
+        #print("--> adding extra sulfate groups")
+        masses_s1 = masses.loc[masses['sulfate'] >= 1]
         masses_s2 = masses_s1
-        masses_s2.sulphate = masses_s1.sulphate + masses_s1.dp
-        masses_s2.mass = masses_s1.mass + masses_s1.dp * modifications_mdiff['sulphate']
+        masses_s2.sulfate = masses_s1.sulfate + masses_s1.dp
+        masses_s2.mass = masses_s1.mass + masses_s1.dp * modifications_mdiff['sulfate']
         masses = pd.concat([masses, masses_s2]).reset_index()
         del masses_s1
         del masses_s2
@@ -644,11 +644,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             if alditol_option == 'y':
                 masses = masses[(masses['alditol'] <= masses['hex'])]
             if 'deoxy' in modifications:
-                if 'sulphate' in modifications:
-                    if double_sulphate == True:
-                        masses = masses[(masses['sulphate'] <= (masses['hex'] + masses['deoxy']) * 2)]
-                    if double_sulphate == False:
-                        masses = masses[(masses['sulphate'] <= masses['hex'] + masses['deoxy'])]
+                if 'sulfate' in modifications:
+                    if double_sulfate == True:
+                        masses = masses[(masses['sulfate'] <= (masses['hex'] + masses['deoxy']) * 2)]
+                    if double_sulfate == False:
+                        masses = masses[(masses['sulfate'] <= masses['hex'] + masses['deoxy'])]
                 if 'phosphate' in modifications:
                     masses = masses[(masses['phosphate'] <= masses['hex'] + masses['deoxy'])]
                 if 'omethyl' in modifications:
@@ -662,11 +662,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 if unsaturated_option == 'y':
                     masses = masses[(masses['unsaturated'] <= masses['hex'] + masses['deoxy'])]
             if 'deoxy' not in modifications:
-                if 'sulphate' in modifications:
-                    if double_sulphate == True:
-                        masses = masses[(masses['sulphate'] <= (masses['hex']) * 2)]
-                    if double_sulphate == False:
-                        masses = masses[(masses['sulphate'] <= masses['hex'] )]
+                if 'sulfate' in modifications:
+                    if double_sulfate == True:
+                        masses = masses[(masses['sulfate'] <= (masses['hex']) * 2)]
+                    if double_sulfate == False:
+                        masses = masses[(masses['sulfate'] <= masses['hex'] )]
                 if 'phosphate' in modifications:
                     masses = masses[(masses['phosphate'] <= masses['hex'] )]
                 if 'omethyl' in modifications:
@@ -685,11 +685,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             if alditol_option == 'y':
                 masses = masses[(masses['alditol'] <= masses['hex'] + masses['pent'])]
             if 'deoxy' in modifications:
-                if 'sulphate' in modifications:
-                    if double_sulphate == True:
-                        masses = masses[(masses['sulphate'] <= (masses['hex'] + masses['pent']+ masses['deoxy']) * 2)]
-                    if double_sulphate == False:
-                        masses = masses[(masses['sulphate'] <= masses['hex'] + masses['pent']+ masses['deoxy'])]
+                if 'sulfate' in modifications:
+                    if double_sulfate == True:
+                        masses = masses[(masses['sulfate'] <= (masses['hex'] + masses['pent']+ masses['deoxy']) * 2)]
+                    if double_sulfate == False:
+                        masses = masses[(masses['sulfate'] <= masses['hex'] + masses['pent']+ masses['deoxy'])]
                 if 'phosphate' in modifications:
                     masses = masses[(masses['phosphate'] <= masses['hex'] + masses['deoxy'] + masses['pent'])]
                 if 'omethyl' in modifications:
@@ -703,11 +703,11 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 if unsaturated_option == 'y':
                     masses = masses[(masses['unsaturated'] <= masses['hex'] + masses['deoxy'] + masses['pent'])]
             if 'deoxy' not in modifications:
-                if 'sulphate' in modifications:
-                    if double_sulphate == True:
-                        masses = masses[(masses['sulphate'] <= (masses['hex'] + masses['pent']) * 2)]
-                    if double_sulphate == False:
-                        masses = masses[(masses['sulphate'] <= masses['hex'] + masses['pent'])]
+                if 'sulfate' in modifications:
+                    if double_sulfate == True:
+                        masses = masses[(masses['sulfate'] <= (masses['hex'] + masses['pent']) * 2)]
+                    if double_sulfate == False:
+                        masses = masses[(masses['sulfate'] <= masses['hex'] + masses['pent'])]
                 if 'phosphate' in modifications:
                     masses = masses[(masses['phosphate'] <= masses['hex'] + masses['pent'])]
                 if 'omethyl' in modifications:

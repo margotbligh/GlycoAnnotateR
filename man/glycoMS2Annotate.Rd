@@ -11,7 +11,10 @@ glycoMS2Annotate(
   error = 3,
   error_units = "ppm",
   ion_type = "ESI",
-  polarity = "neg"
+  polarity = "neg",
+  nmod_max = 1,
+  double_sulfate = FALSE,
+  label = "none"
 )
 }
 \description{
@@ -39,14 +42,22 @@ column with precursor annotations (matching those in \code{precursorAnnotations}
 will be matched against theoretical mzs +- error.}
 
 \item{\code{error_units}}{Units for error - can be 'ppm' or 'Da'}
+
+\item{\code{nmod_max}}{Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
+Does not take into account unsaturated, alditol or dehydrated.}
+
+\item{\code{double_sulfate}}{Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.}
+
+\item{\code{label}}{Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
+"2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".}
 }}
 
 \seealso{
-GlycoAnnotateR::glycoPredict()
+\link[GlycoAnnotateR]{glycoPredictParam}
 
-GlycoAnnotateR::glycoPredictParam()
+\link[GlycoAnnotateR]{glycoPredict}
 
-GlycoAnnotateR::glycoAnnotate()
+\link[GlycoAnnotateR]{glycoAnnotate}
 
-GlycoAnnotateR::glycoMS2Extract()
+\link[GlycoAnnotateR]{glycoMS2Extract}
 }

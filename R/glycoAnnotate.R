@@ -50,9 +50,8 @@
 #' pred_table <- glycoPredict(param = gpp)
 #' annotated_data <- glycoAnnotate(data = data, pred_table = pred_table, error = 1.5, units = 'ppm', collapse = T, collapse_columns = c("IUPAC name", "ion"))
 #'
-#' @seealso glycoAnnotateR::glycoPredict()
-#' @seealso glycoAnnotateR::glycoPredictParam()
-#'
+#' @seealso \link[GlycoAnnotateR]{glycoPredictParam}
+#' @seealso \link[GlycoAnnotateR]{glycoPredict}
 
 glycoAnnotate <- function(data,
                           mz_column = 'mz',

@@ -30,12 +30,12 @@ encoded in the python script.
 
 \item{\code{modifications}}{Modifications to be considered. Any combination of 'carboxylicacid', 'sialicacid',
 'phosphate', 'deoxy', 'nacetyl', 'omethyl', 'anhydrobridge', 'oacetyl',
-'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulphate', 'aminopentyllinker' or 'all' or 'none' (default)}
+'unsaturated', 'alditol', 'amino', 'dehydrated', 'sulfate', 'aminopentyllinker' or 'all' or 'none' (default)}
 
 \item{\code{nmod_max}}{Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
 Does not take into account unsaturated, alditol or dehydrated.}
 
-\item{\code{double_sulphate}}{Logical. Can monomers be double-sulphated. If \code{TRUE}, nmod_max needs to have a value of at least 2.}
+\item{\code{double_sulfate}}{Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.}
 
 \item{\code{label}}{Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
 "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".}
@@ -54,8 +54,8 @@ gpp <- glycoPredictParam()
 gpp@dp <- c(1,7)
 gpp@polarity <- 'neg'
 gpp@scan_range <- c(150, 1300)
-gpp@modifications <- c('sulphate', 'carboxylicacid')
-gpp@double_sulphate <- TRUE
+gpp@modifications <- c('sulfate', 'carboxylicacid')
+gpp@double_sulfate <- TRUE
 predicted.df <- glycoPredict(param = gpp)
 
 }

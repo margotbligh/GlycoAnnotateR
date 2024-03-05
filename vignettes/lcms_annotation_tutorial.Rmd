@@ -116,12 +116,6 @@ df_dihexose <- glycoPredict(param = glycoPredictParam(dp = c(2,2),
                                                        polarity = 'neg',
                                                        adducts = 'Cl'))
 
-#define function for conversion between ppm and mz
-ppm_to_mz = function(mz, noise){
-  ppm = mz / 1000000 * noise
-  return(ppm)
-}
-
 #extract chromatogram +- 4 ppm
 chr_dihexose_pk <- chromatogram(data_ms1_pks,
                                 mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 4), 

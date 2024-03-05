@@ -76,7 +76,7 @@ glycoPredict <- function(param){
 
   #read in formatted composition db
   db <- fread(paste0(system.file(package="GlycoAnnotateR"),
-                     'db/compositions_formatted.tsv'))
+                     '/db/compositions_formatted.tsv'))
 
   #get shared modifications
   modifications_shared <- names(db)[names(db) %in% param@modifications]

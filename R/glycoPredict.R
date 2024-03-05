@@ -68,6 +68,39 @@ glycoPredict <- function(param){
                        modification_limits = modification_limits)
   format = param@format
   library(magrittr)
+  library(tidyr)
+  library(dplyr)
+  library(data.table)
+  library(magrittr)
+  library(stringr)
+
+  #read in formatted composition db
+  db <- fread(paste0(system.file(package="GlycoAnnotateR"),
+                     'db/compositions_formatted.tsv'))
+
+  #get shared modifications
+  modifications_shared <- names(db)[names(db) %in% param@modifications]
+  if(param@pent_option == TRUE){
+    modifications_shared <- c(modifications_shared, 'pent')
+  }
+
+  #get names to drop after matching
+  db_names_to_drop <- names(db)[!grepl('_id', names(db))]
+
+  #match predictions with db
+  df <- df %>%
+    dplyr::mutate(mass_rounded = round(mass, 2)) %>%
+    dplyr::left_join(db %>%
+                       dplyr::mutate(mass_rounded = round(mass, 2)),
+                     by = c('mass_rounded', 'hex', modifications_shared)) %>%
+    dplyr::select(!any_of(db_names_to_drop)) %>%
+    dplyr::select(!any_of(c('mass_rounded', 'mass.y'))) %>%
+    dplyr::rename(mass = `mass.x`)
+
+  #change NAs to nones
+  df$glyconnect_id[is.na(df$glyconnect_id)] <- 'none'
+  df$glytoucan_id[is.na(df$glytoucan_id)] <- 'none'
+
   if(format == "long"){
     as.num = function(x, na.strings = "NA") {
       stopifnot(is.character(x))

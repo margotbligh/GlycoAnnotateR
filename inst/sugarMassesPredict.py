@@ -6,6 +6,7 @@ import itertools
 import math
 import re
 from operator import itemgetter
+import os
 
 # suppress warnings
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -937,9 +938,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])
         masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
         masses = masses.dropna(subset=my_cols, how='all')
-        bad_cols = {'level_0','index','hex','pent','alditol','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated', 'k', 'x', 'name'}
-        bad_cols.update(modifications_anionic)
-        bad_cols.update(modifications_neutral)
+        bad_cols = {'level_0','index','nmod','nmod_avg','nmod_anionic','_merge', 'k', 'x', 'name'}
+        #bad_cols.update(modifications_anionic)
+        #bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
         masses = masses.drop(columns=cols_del)
     if len(list(set(modifications).intersection(modifications_anionic))) == 0:
@@ -970,11 +971,12 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[my_cols] = masses[my_cols].where(masses[my_cols] <= scan_range[1])
         masses = masses.dropna(subset=my_cols, how='all')
         # format nicely to only have useful columns
-        bad_cols = {'level_0','index','alditol','hex','pent','nmod','nmod_avg','nmod_anionic','_merge', 'dehydrated','name'}
-        bad_cols.update(modifications_neutral)
+        bad_cols = {'level_0', 'index', 'nmod', 'nmod_avg', 'nmod_anionic', '_merge', 'k', 'x', 'name'}
+        # bad_cols.update(modifications_anionic)
+        # bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
         masses = masses.drop(columns=cols_del)
-    print("\nstep #8: returning ouput")
+    print("\nstep #8: returning output")
     print("----------------------------------------------------------------\n")
     masses = masses.reset_index(drop=True)
     masses = masses.sort_values(by = ["dp", "mass"])

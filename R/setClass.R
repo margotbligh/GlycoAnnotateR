@@ -101,9 +101,9 @@ glycoPredictParam = setClass("glycoPredictParam",
                any(object@nmod_max > 3))
              msg <- c(msg, paste0("'nmod_max' has to be numeric",
                                   " of length 1 between 1 and 3."))
-           if (length(object@double_sulphate) != 1 |
-               class(object@double_sulphate) != "logical")
-             msg <- c(msg, paste0("'double_sulphate' has to be a logical of",
+           if (length(object@double_sulfate) != 1 |
+               class(object@double_sulfate) != "logical")
+             msg <- c(msg, paste0("'double_sulfate' has to be a logical of",
                                   " length 1."))
            possible_labels <- c("none", "procainamide", "proca","procA", "ProA",
                                 "2-ap","2-AP","pa","PA","2-aminopyridine",

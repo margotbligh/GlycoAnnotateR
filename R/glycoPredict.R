@@ -86,6 +86,9 @@ glycoPredict <- function(param){
 
   #get names to drop after matching
   db_names_to_drop <- names(db)[!grepl('_id', names(db))]
+  db_names_to_drop <- c(db_names_to_drop,
+                        param@modifications) %>%
+    unique()
 
   #match predictions with db
   df <- df %>%

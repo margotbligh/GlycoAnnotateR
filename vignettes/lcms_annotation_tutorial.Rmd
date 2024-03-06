@@ -778,9 +778,9 @@ ms2_df_annotP <- glycoAnnotate(ms2_df,
                                error = 4,
                                param = gpp, #param object
                                mz_column = 'precursorMz', #name of mz column
-                               collapse = T, #we would like to collapse annotations...
-                               collapse_columns = c('IUPAC name', 'ion', 'dp')) #...on these columns
-
+                               collapse = T, #we will collapse annotations...
+                               #...on these columns
+                               collapse_columns = c('IUPAC name', 'ion', 'dp')) 
 ```
 
 All precursors should be assigned an annotation (as we only extracted MS2 spectra for annotated precursors).
@@ -816,7 +816,7 @@ ms2_df_annotF <- glycoMS2Annotate(
 
 #collapse the fragment ion annotations
 ms2_annotF_c <- glycoAnnotationsCollapse(
-  annotated_data = ms2_annotF,
+  annotated_data = ms2_df_annotF,
   collapse_columns = c('IUPAC name', 'ion'),
   noncollapse_columns = names(ms2_df_annotP))
 

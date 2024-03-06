@@ -297,7 +297,7 @@ glycoAnnotationsCollapse <- function(annotated_data,
     nrow()
   nrow = nrow(annotated_data)
   if(nrow_distinct == nrow){
-    stop("all rows in annotated_data are distinct... no collapsing necessary :)")
+    message("all rows in annotated_data are distinct... no collapsing necessary :)")
   }
 
   #collapse annotations

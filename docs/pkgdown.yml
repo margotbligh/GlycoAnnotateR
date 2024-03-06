@@ -1,9 +1,0 @@
-pandoc: 3.1.1
-pkgdown: 2.0.7
-pkgdown_sha: ~
-articles: {}
-last_built: 2024-01-24T16:59Z
-urls:
-  reference: https://margotbligh.github.io/GlycoAnnotateR/reference
-  article: https://margotbligh.github.io/GlycoAnnotateR/articles
-

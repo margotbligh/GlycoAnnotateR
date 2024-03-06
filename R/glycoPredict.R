@@ -57,7 +57,7 @@ glycoPredict <- function(param){
   glycan_linkage = as.list(param@glycan_linkage)
   modification_limits = param@modification_limits
 
-  message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param)))
+  #message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param)))
 
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,
@@ -86,6 +86,9 @@ glycoPredict <- function(param){
 
   #get names to drop after matching
   db_names_to_drop <- names(db)[!grepl('_id', names(db))]
+  db_names_to_drop <- c(db_names_to_drop,
+                        param@modifications) %>%
+    unique()
 
   #match predictions with db
   df <- df %>%

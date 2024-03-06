@@ -223,8 +223,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if type(adducts)==str:
         adducts = [adducts]
     dp_range_list = list(range(dp[0], dp[1] + 1))
-    print("\nstep #1: getting arguments")
-    print("----------------------------------------")
     if "all" in modifications:
         modifications = possible_modifications
     if "sulfate" in modifications and len(modifications) > 1:
@@ -250,10 +248,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     elif "aminopentyllinker" not in modifications:
         aminopentyllinker_option = 'n'
     #calculate possible masses
-    print("\nstep #2: calculating all possible masses")
-    print("----------------------------------------\n")
     # build hexose molecules
-    print("--> getting hexose masses")
     def getHexMasses(dp_range_list):
         dp = np.array(dp_range_list, dtype=int)
         mass = dp * hex_mass - (dp - 1) * water_mass
@@ -288,22 +283,15 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 b = np.array(a)[np.rollaxis(np.indices((len(a),) * m), 0, m + 1).reshape(-1, m)]
                 if index == 0: modification_numbers = b
                 if index > 0: modification_numbers = np.concatenate((modification_numbers, b), axis = 0)
-            print("added modifications for dp" + str(i))
         return modification_numbers
     if pent_option == 1:
-        print("--> getting pentose masses")
         masses = getPentMasses(masses)
     #add modifications
-    print("\nstep #3: adding modifications")
-    print("----------------------------------------\n")
     if "none" not in modifications and pent_option == True and len(modifications) != 0:
         m = len(modifications)
-        print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        print("-->expanding array")
         masses = np.repeat(masses, repeats=(masses[:,0].astype(int)+1) ** m, axis=0)
         masses = np.column_stack((masses, modification_numbers))
-        print("-->filtering by nmod_max")
         nmod_sums =  np.sum(modification_numbers, axis = 1)
         nmod_avg = nmod_sums / masses[:,0]
         nmod_avg_filter = nmod_avg <= nmod_max
@@ -316,7 +304,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             hex_index = masses_columns.index('hex')
             deoxy_index = masses_columns.index('deoxy')
             masses = masses[masses[:, deoxy_index] <= masses[:, hex_index]]
-            print("-->converting deoxy modifications into deoxy monomers")
             masses[:,hex_index] = masses[:,hex_index] - masses[:,deoxy_index]
         # subtract sialicacid from hex
         if "sialicacid" in modifications:
@@ -324,12 +311,9 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             hex_index = masses_columns.index('hex')
             sialicacid_index = masses_columns.index('sialicacid')
             masses = masses[masses[:, sialicacid_index] <= masses[:, hex_index]]
-            print("-->converting sialic acid modifications into monomers")
             masses[:,hex_index] = masses[:,hex_index] - masses[:,sialicacid_index]
-        print("-->converting to pandas dataframe from array")
         masses = pd.DataFrame(masses, columns=masses_columns)
         if "nglycan" in glycan_linkage:
-            print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]
             relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
             if "nacetyl" in modifications:
@@ -347,24 +331,19 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 masses.drop(to_remove.index, axis=0, inplace=True)
                 del to_remove
         if "oglycan" in glycan_linkage:
-            print("-->filtering by O-glycan limits")
             relevant_columns = list(set(masses.columns) & set(oglycan_limits.keys()))
             conditions = masses[relevant_columns].apply(lambda col: col.le(oglycan_limits.get(col.name, float('inf'))),
                                                         axis=0)
             masses = masses[conditions.all(axis=1)]
-        print("-->calculating masses")
         modification_masses = masses.apply(
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
         del modification_masses
     if "none" not in modifications and pent_option == False and len(modifications) != 0:
         m = len(modifications)
-        print("-->getting modification numbers")
         modification_numbers = getModificationNumbers(dp_range_list, m, pent_option, modifications)
-        print("-->expanding array")
         masses = np.repeat(masses, repeats=(masses[:,0].astype(int)+1) ** m, axis=0)
         masses = np.column_stack((masses, modification_numbers))
-        print("-->filtering by nmod_max")
         nmod_sums =  np.sum(modification_numbers, axis = 1)
         nmod_avg = nmod_sums / masses[:,0]
         nmod_avg_filter = nmod_avg <= nmod_max
@@ -375,19 +354,15 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if "deoxy" in modifications:
             hex_index = masses_columns.index('hex')
             deoxy_index = masses_columns.index('deoxy')
-            print("-->converting deoxy modifications into deoxy monomers")
             masses[:,hex_index] = masses[:,hex_index] - masses[:,deoxy_index]
         # subtract sialicacid from hex
         if "sialicacid" in modifications:
             # remove rows with sialicacid pentose
             hex_index = masses_columns.index('hex')
             sialicacid_index = masses_columns.index('sialicacid')
-            print("-->converting sialic acid modifications into monomers")
             masses[:,hex_index] = masses[:,hex_index] - masses[:,sialicacid_index]
-        print("-->converting to pandas dataframe from array")
         masses = pd.DataFrame(masses, columns=masses_columns)
         if "nglycan" in glycan_linkage:
-            print("-->filtering by N-glycan limits")
             masses = masses[masses['hex'] != 0]
             relevant_columns = list(set(masses.columns) & set(nglycan_limits.keys()))
             if "nacetyl" in modifications:
@@ -405,12 +380,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 masses.drop(to_remove.index, axis=0, inplace=True)
                 del to_remove
         if "oglycan" in glycan_linkage:
-            print("-->filtering by O-glycan limits")
             relevant_columns = list(set(masses.columns) & set(oglycan_limits.keys()))
             conditions = masses[relevant_columns].apply(lambda col: col.le(oglycan_limits.get(col.name, float('inf'))),
                                                         axis=0)
             masses = masses[conditions.all(axis=1)]
-        print("-->calculating masses")
         modification_masses = masses.apply(
             lambda row: sum(row[col] * modifications_mdiff[col] for col in modifications), axis=1)
         masses['mass'] += modification_masses
@@ -428,22 +401,16 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         del masses_s1
         del masses_s2
     if label in proa_names:
-        print("--> adding procainamide label")
         masses['mass'] = masses.mass + proca_mdiff
     if label in pa_names:
-        print("--> adding 2-aminopyridine")
         masses['mass'] = masses.mass + pa_mdiff
     if label in aba_names:
-        print("--> adding 2-aminobenzoic acid label")
         masses['mass'] = masses.mass + aba_mdiff
     if label in ab_names:
-        print("--> adding 2-aminobenzamide")
         masses['mass'] = masses.mass + ab_mdiff
     if label in pmp_names:
-        print("--> adding bis-PMP label")
         masses['mass'] = masses.mass + pmp_mdiff
     if unsaturated_option == 'y':
-        #print("--> adding unsaturated sugars")
         masses_a = masses.copy()
         masses_a['unsaturated'] = 1
         masses['unsaturated'] = 0
@@ -451,7 +418,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
     if alditol_option == 'y':
-        #print("--> adding alditol sugars")
         masses_a = masses.copy()
         masses_a['alditol'] = 1
         masses['alditol'] = 0
@@ -720,8 +686,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                     masses = masses[(masses['amino'] <= masses['hex'] + masses['pent'])]
                 if unsaturated_option == 'y':
                     masses = masses[(masses['unsaturated'] <= masses['hex'] + masses['pent'])]
-    print("\nstep #4: building formulas")
-    print("----------------------------------------\n")
     molecules = list(masses.drop(['dp', "mass"], axis=1).columns)
     if "index" in molecules:
         molecules.remove("index")
@@ -744,7 +708,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in pmp_names:
                 tmp = tmp + [formulas['ab'][i]]
         masses[atom] = list(tmp)
-        print("added to formula " + atom)
+        #print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
     masses['formula'] = masses['formula'].str.replace("\D0", "", regex=True)
     masses['formula'] = masses['formula'].str.replace("N1O", "NO")
@@ -756,8 +720,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         indexDelete = masses[masses.hex < masses.anhydrobridge].index
         masses.drop(indexDelete, inplace=True)
         masses = masses.reset_index()
-    print("\nstep #5: configuring names to convention")
-    print("----------------------------------------------------------------\n")
+    #print("\nstep #5: configuring names to convention")
+    #print("----------------------------------------------------------------\n")
     #reorder modifications
     if "sialicacid" in modifications: modifications.insert(0, modifications.pop(modifications.index('sialicacid')))
     if "deoxy" in modifications: modifications.insert(0, modifications.pop(modifications.index('deoxy')))
@@ -808,8 +772,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in aba_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
         if label in ab_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AB'
         if label in pmp_names: masses['Oxford name'] = masses['Oxford name'] + ' bis-PMP'
-    print("\nstep #7: calculating m/z values of ions")
-    print("----------------------------------------------------------------\n")
+    #print("\nstep #7: calculating m/z values of ions")
+    #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:
         if "pos" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
@@ -976,8 +940,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         # bad_cols.update(modifications_neutral)
         cols_del = list(set(masses.columns).intersection(bad_cols))
         masses = masses.drop(columns=cols_del)
-    print("\nstep #8: returning output")
-    print("----------------------------------------------------------------\n")
+    #print("\nstep #8: returning output")
+    #print("----------------------------------------------------------------\n")
     masses = masses.reset_index(drop=True)
     masses = masses.sort_values(by = ["dp", "mass"])
     return(masses)

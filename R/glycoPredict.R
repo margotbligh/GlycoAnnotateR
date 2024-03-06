@@ -57,7 +57,7 @@ glycoPredict <- function(param){
   glycan_linkage = as.list(param@glycan_linkage)
   modification_limits = param@modification_limits
 
-  message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param)))
+  #message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param)))
 
   df <- predict_sugars(dp = dp, polarity = polarity,
                        scan_range = scan_range,

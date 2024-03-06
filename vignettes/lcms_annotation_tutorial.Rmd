@@ -49,16 +49,26 @@ library(stringr)
 ## Import and prepare the data
 
 ### Import data
-Now we import the data. An OnDiskMSnExp object (`all_data`) was created from mzML files with an associated phenodata (i.e. metadata) table. 
+Now we import the mzML data files as an OnDiskMSnExp object (`all_data`) with an associated phenodata (i.e. metadata) table. It is important that you download the example files _**manually**_ from [Github](https://github.com/margotbligh/GlycoAnnotateR/tree/master/inst/extdata), they can be found at 'inst/extdata'. The data files should be 180-220 MB - if they are smaller than this, they have been downloaded incorrectly. Download them from Github manually by clicking on the individual files and then pressing the download button.
 
 
 ```{r import data}
-#load data object
-fp <- system.file('extdata/data_MSnExp.rda', package = 'GlycoAnnotateR')
-load(fp)
+#get filepaths of mzML files
+#change as necessary to match your directory structure
+fp <- dir('../inst/extdata', pattern = 'mzML$', full.names = T)
 
-#print phenodata dataframe
-pData(all_data)
+#make a metadata df
+pd <- data.frame(sample_name = gsub(".mzML|.*1[78]_", "", basename(fp)),
+                 frag = str_split_i(basename(fp), "_", 4),
+                 sample_type = str_split_i(basename(fp), "_", 3))
+
+#print the metadata df                 
+pd
+
+#read in data with metadata df as phenodata
+all_data <- readMSData(files = fp, 
+                       pdata = new("NAnnotatedDataFrame", pd),
+                       mode = 'onDisk')
 ```
 
 ### Filter by retention time
@@ -250,7 +260,7 @@ gpp <- glycoPredictParam(
   scan_range = c(175,1400),
   #expected modifications
   modifications = c("alditol", 
-                    "sulphate",
+                    "sulfate",
                     "omethyl",
                     "anhydrobridge"),
   #maximum average number of modifications per monomer
@@ -782,91 +792,35 @@ any(is.na(ms2_df_annotP$annotations))
 
 
 ### Annotate fragments
-Now we can annotate the MS2 spectra. We change the `glycoPredictParam` parameters depending on the precursor annotation. Only fragments resulting from glycosidic bond breakage, dehydration, or loss of modified groups (e.g. desulphation) can be annotated by GlycoAnnotateR. 
+Now we can annotate the MS2 spectra. We change the `glycoPredictParam` parameters depending on the precursor annotation. Only fragments resulting from glycosidic bond breakage, dehydration, or loss of modified groups (e.g. desulfation) can be annotated by GlycoAnnotateR. 
 
 ```{r annotate fragment ions, message=FALSE, warning=FALSE}
 #make a vector of the precursor annotations
 annotP <- ms2_df_annotP$annotations %>% unique()
 
+#rename annotations column to precursorAnnotations
+names(ms2_df_annotP)[names(ms2_df_annotP) == 'annotations'] <- 'precursorAnnotations'
 
-#make an empty list
-ms2_annot_list <- list()
+#annotate the fragment ions based on the precursor annotations
+ms2_df_annotF <- glycoMS2Annotate(
+  #vector of the precursor annotations
+  precursorAnnotations = annotP,
+  #separator in between name, ion and dp of precursor annotations
+  precursorAnnotations_sep = ':',
+  #ms2spectra dataframe with annotated precursors
+  ms2spectra = as.data.frame(ms2_df_annotP),
+  #ion type
+  ion_type = 'ESI',
+  #error
+  error = 4, error_units = 'ppm')
 
-#fill in list with dfs for annotated spectra, with one entry per annotation
-for(i in 1:length(annotP)){
-  #get annotation
-  annot = annotP[i]
-  
-  #get dp from annotation - we collapsed on name, ion and dp, so dp is at the
-  #end of the annotation string
-  if (grepl(',', annot)){ 
-    #if multiple annotations, get maximum dp
-    annots <- str_split_1(annot, ',')
-    dps <- sub('.*:(\\d)', '\\1', annots) %>% as.numeric()
-    max_dp = max(dps)
-  } else {
-    #otherwise just get the dp
-    max_dp = sub('.*:(\\d)', '\\1', annot) %>% as.numeric()
-  }
-  
-  #get modifications from annotations
-  #split by colon or space
-  annot_split <- str_split_1(annot, pattern = ' |:')
-  #remove elements with the ion
-  annot_split <- annot_split[!grepl('\\[', annot_split)] %>% 
-    #number elements
-    gsub('\\d', '', .) %>%
-    #make unique
-    unique()
-  #remove hexose (always included)
-  #only keep elements with word characters
-  annot_split <- annot_split[annot_split != 'Hex' &
-                               grepl('\\w',annot_split)]
-  #if no modifications, set to 'none'
-  if(length(annot_split) == 0){
-    annot_split <- 'none'
-  }
+#collapse the fragment ion annotations
+ms2_annotF_c <- glycoAnnotationsCollapse(
+  annotated_data = ms2_annotF,
+  collapse_columns = c('IUPAC name', 'ion'),
+  noncollapse_columns = names(ms2_df_annotP))
 
-  #make sure everything is lower case or formatted correctly
-  annot_split_lc <- str_to_lower(annot_split) %>% 
-    sub('-', '', .) %>% 
-    sub('fate', 'phate', .)
-  
-  #get pentose option
-  if(any(annot_split == 'pen')){
-    pent_option = T
-  } else {
-    pent_option = F
-  }
-  
-  #create parameter object
-  gpp <- glycoPredictParam(dp = c(1, max_dp),
-                           pent_option = pent_option,
-                           modifications = annot_split_lc,
-                           polarity = 'neg',
-                           scan_range = c(50, 1000), #set the scan range wide
-                           ion_type = 'ESI') 
-  
-  #make df for annotation
-  df <- ms2_df_annotP %>% 
-    #filter for precursor annotation
-    filter(annotations == !!annot) %>% 
-    #rename precursor annotation column
-    dplyr::rename(precursorAnnotations = annotations) 
-  
-  
-  #annotate fragments
-  df_annot <- glycoAnnotate(df, param = gpp, collapse = T, error = 4)
-  
-  #add to list
-  ms2_annot_list[[i]] <- df_annot
-  
-}
-
-#bind dfs in list into one df
-ms2_df_annotF <- ms2_annot_list %>% 
-  bind_rows()
-
+#no collapsing necessary
 ```
 
 

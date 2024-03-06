@@ -48,9 +48,9 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 | 2-aminobenzamide               | "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"      |
 | 1-phenyl-3-methyl-5-pyrazolone | "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"      |
 
-* Double sulphate, `double_sulphate`
+* Double sulfate, `double_sulfate`
 
-  Can monomers be disulphated? Logical option required. To work `sulphate` must be in modifications and `nmod_max` at least 2.
+  Can monomers be disulfated? Logical option required. To work `sulfate` must be in modifications and `nmod_max` at least 2.
 
 * Glycan linkage, `glycan_linkage`
 
@@ -72,7 +72,7 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 | carboxylicacid    | Effective loss of two hydrogens and gain of one oxygen to form a carboxylic acid group on C6. The modified monomer is commonly called a 'uronic acid'                                                         | CarboxylicAcid   | COOH               | A                 |
 | sialicacid        | Effect addition of C11H19N1O9 to hexose. Here, sialic acid only refers to N-Acetylneuraminic acid (Neu5Ac), the most common sialic acid. Predominantly found in complex mammalian glycans.                    | NeuAc            | SIA                | SA                |
 | phosphate         |                                                                                                                                                                                                               | Phosphate        | PO4                | P                 |
-| sulphate          | Addition of SO3. Only modification allowed to occur twice per monomer (see options for `double_sulphate`)                                                                                                     | Sulfate          | SO4                | S                 |
+| sulfate          | Addition of SO3. Only modification allowed to occur twice per monomer (see options for `double_sulfate`)                                                                                                     | Sulfate          | SO4                | S                 |
 | amino             | Gain of NH and loss of of O - result ofreplacing a hydroxyl group with an amino group.                                                                                                                        | Amino            | NH2                | Am                |
 | deoxy             | One hydroxyl group is replaced by an H atom. Fucose and rhamnose are two common deoxyhexoses. NB: GlycoAnnotateR currently only considers deoxyhexoses and not deoxypentoses.                                 | DeoxyHex         | DHEX               | D                 |
 | nacetyl           | Addition of an N-acetyl group (net change = +C2H3N) . Common example of N-acetylated hexose is N-acetylglucosamine. Note that here, N-acetylglucosamine would be termed in e.g. IUPAC naming Hex1 N-Acetyl1.  | N-Acetyl         | NAc                | N                 |

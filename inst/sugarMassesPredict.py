@@ -710,10 +710,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses[atom] = list(tmp)
         #print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
-    masses['formula'] = masses['formula'].str.replace("\D0", "", regex=True)
-    masses['formula'] = masses['formula'].str.replace("N1O", "NO")
-    masses['formula'] = masses['formula'].str.replace("P1", "P")
-    masses['formula'] = masses['formula'].str.replace("S1$", "S", regex=True)
+    masses['formula'] = masses['formula'].astype(str).replace("\D0", "", regex=True)
+    masses['formula'] = masses['formula'].astype(str).replace("N1O", "NO")
+    masses['formula'] = masses['formula'].astype(str).replace("P1", "P")
+    masses['formula'] = masses['formula'].astype(str).replace("S1$", "S", regex=True)
     masses = masses.drop(atom_names, axis = 1)
     del tmp, water_loss, molecule_numbers, molecules
     if 'anhydrobridge' in modifications and pent_option == True:

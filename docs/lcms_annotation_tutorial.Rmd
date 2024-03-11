@@ -18,12 +18,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This is a tutorial for the annotation of glycans in LC-MS data in R using XCMS, CAMERA and GlycoAnnotateR. Other data processing pipelines (e.g. mzMine) can be used but are not covered in this tutorial. For the annotation step is all that is needed is a dataframe with one row per *m/z*. This tutorial assumes a basic understanding of the XMCS processing pipeline - for a great explanation of LC-MS data processing with XCMS, check out this [tutorial](https://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcms.html). 
+This is a tutorial for the annotation of glycans in LC-MS data in R using [XCMS](https://sneumann.github.io/xcms/index.html), [CAMERA](https://rdrr.io/bioc/CAMERA/) and GlycoAnnotateR. Other data processing pipelines (e.g. mzMine) can be used but are not covered in this tutorial. For the annotation step all that is needed is a dataframe with one row per *m/z*. This tutorial assumes a basic understanding of the XMCS processing pipeline - for a great explanation of LC-MS data processing with XCMS, check out this [tutorial](https://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcms.html). 
 
 
-This tutorial will use example data, which you can find here on Github under 'inst/example_data'. The .mzML files should be downloaded and unzipped. The data consists of three mzML files. All contain HILIC-ESI-Orbitrap MS data. The same mixture of commercial oligosaccharide standards was run three times in negative mode: once with full MS only and twice with DDA-MS/MS. 
+This tutorial will use example data, which you can find here on Github under ['inst/extdata'](https://github.com/margotbligh/GlycoAnnotateR/tree/master/inst/extdata). The mzML files should be manually downloaded. The data consists of three mzML files. All contain HILIC-ESI-Orbitrap MS data. The same mixture of commercial oligosaccharide standards was run three times in negative mode: once with full MS only and twice with DDA-MS/MS. 
 
-We will first set up the environment by loading the required packages. xcms is used for the data processing (peak picking and grouping, chromatogram extraction etc) and CAMERA is used for isotope detection. xcms can be installed from BioConductor using BiocManager. 
+We will first set up the environment by loading the required packages. XCMS is used for the data processing (peak picking and grouping, chromatogram extraction etc) and CAMERA is used for isotope detection. XCMS and CAMERA can be installed from BioConductor using BiocManager. 
 
 # Load required packages
 
@@ -120,18 +120,22 @@ chr_dihexose_pk <- chromatogram(data_ms1_pks,
                                        df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 4)))
 ```
 
-Picked peaks are indicated by the grey shading in the chromatograms. We can see that the peak was picked relatively nicely for the first two samples, but the peak is split in the third sample.
+Picked peaks are indicated by the red rectangles in the chromatograms. In the XIC version the defined peak is shown in the lower panel. We can see that the peak was picked relatively nicely for the first sample. For the second sample, only ~half of the peak is picked. For the third sample, there are two peaks picked for the same peak. We will refine the peaks in the next steps.
 
 ```{r plot chr, fig.show='hold', fig.width=6, fig.height=3}
-#plot chromatogram for each sample
-plot(chr_dihexose_pk[[1]])
-plot(chr_dihexose_pk[[2]])
-plot(chr_dihexose_pk[[3]])
+plot(chr_dihexose_pk[[1]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+plot(chr_dihexose_pk[[2]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+plot(chr_dihexose_pk[[3]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+data_ms1_pks %>% 
+  filterRt(rt = c(350, 550)) %>% 
+  filterMz(mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 6), 
+                  df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 6))) %>% 
+  plot(type = "XIC")
 ```
 
 ### Peak merging
 
-We will merge the split peaks using the 'refineChromPeaks' function of xcms. Again, the parameters used will vary for each dataset.
+We will merge the split peaks using the 'refineChromPeaks' function of XCMS. Again, the parameters used will vary for each dataset.
 
 ```{r merge neighbouring peaks}
 #create parameter object
@@ -148,9 +152,9 @@ chr_dihexose_pk_mg <- chromatogram(data_ms1_pks_mg,
                                 mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 4), 
                                        df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 4)))
 #plot chromatogram for each sample
-plot(chr_dihexose_pk_mg[[1]])
-plot(chr_dihexose_pk_mg[[2]])
-plot(chr_dihexose_pk_mg[[3]])
+plot(chr_dihexose_pk_mg[[1]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+plot(chr_dihexose_pk_mg[[2]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+plot(chr_dihexose_pk_mg[[3]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
 ```
 
 ### Peak grouping (correspondence)
@@ -189,8 +193,6 @@ chr_tetrahexose_pk <- chromatogram(data_ms1_pks_mg_gp,
 plot(chr_tetrahexose_pk[[1]])
 plot(chr_tetrahexose_pk[[2]])
 plot(chr_tetrahexose_pk[[3]])
-
-
 ```
 
 
@@ -216,7 +218,7 @@ plot(chr_tetrahexose_pkfill[[3]])
 
 # Isotope detection
 
-We will now use CAMERA for detection of isotopes. We first need to convert our `XCMSnExp` object to an `xcmsSet` object, which can the be used to construct an `xsAnnotate` object. 
+We will now use CAMERA for detection of isotopes. We first need to convert our `XCMSnExp` object to an `xcmsSet` object, which can then be used to construct an `xsAnnotate` object. 
 
 ```{r change to xcmsSet, message=FALSE}
 #creat xcmsSet object
@@ -227,7 +229,7 @@ sampnames(xset) <- pData(data_ms1_pks_mg_gp_fill)$sample_name
 sampclass(xset) <- pData(data_ms1_pks_mg_gp_fill)$sample_type
 ```
 
-Now we create the `xsAnnotate` object, group peaks by retention time, find isotopes, and generate a feature table containing the isotope information. Features are filtered so that at least 1 sample has an integrated peak area >5e5. 
+Now we create the `xsAnnotate` object and group peaks by retention time. This allows us to find isotopes. We use `getPeakList` to generate a feature table containing the isotope information. Isotope identification is important for many reasons, e.g. to ensure we are not just annotating isotopes, and to try to resolve ambiguous annotations (when there are multiple annotations per peak). Features are filtered here so that at least 1 sample has an integrated peak area >5e5, this step is optional and heavily depends on your samples and system. 
 
 ```{r isotope detection}
 #build xsAnnotate object
@@ -307,7 +309,7 @@ head(pred_df)
 
 ## Annotate features
 
-We will now annotate the feature list generated after isotope detection using the parameters we defined. Because our feature list has minimum and maximum *m/z* values, we can use those values for annotation against theoretical values (the range for each theoretical values is created as the value +- the error in ppm or Da). This is done by checking for overlap of two ranges. For peak/feature lists with only an *m/z* value (mean or otherwise defined), or if you would like to only use this value, we can supply just the *m/z* column name. This will annotate by checking if the value is within the range of the theoretical values. The below figure summarises the two types of annotation possible:
+We will now annotate the feature list generated after isotope detection using the parameters we defined. Because our feature list has minimum and maximum *m/z* values, we can use those values for annotation against theoretical values (the range for each theoretical values is created as the value +/- the error in ppm or Da). This is done by checking for overlap of two ranges. For peak/feature lists with only an *m/z* value (mean or otherwise defined), or if you would like to only use this value, we can supply just the *m/z* column name. This will annotate by checking if the value is within the range of the theoretical values. The below figure summarises the two types of annotation possible:
 
 ```{r image matching types, out.width = "400px", echo=FALSE}
 knitr::include_graphics("matching_types.png")
@@ -437,7 +439,7 @@ pl_annotonly[, c('mz', 'rt', 'annotations')]
 We will see if we can use the detected isotopes to choose one of the two annotations as the more likely one. The annotated feature table is filtered to only the pcgroup of the feature with two annotations, and within that group only features detected as isotopes by CAMERA. The 'pcgroup' represents features grouped together based on retention time. 
 
 ```{r filter for pc group}
-#get the pc group of the feature with two annotstions
+#get the pc group of the feature with two annotations
 pc = pl_annotonly$pcgroup[grepl(',', pl_annotonly$annotations)]
 
 #filter the annotated feature table to only that pcgroup
@@ -515,12 +517,12 @@ pl_annotonly$annotations[pl_annotonly$pcgroup == pc] <- 'Hex2 Anhydro1 Sulfate1:
 
 ## Extract and plot chromatograms of annotated features
 
-It is often interesting to look at the chromatograms of the annotated features, to verify the peak processing and see how the retention times differ across annotations (and if that makes sense, e.g. are higher DP oligosaccharides eluting later than shorter DP. oligosaccharides), and if we have multiple peaks (i.e. isomers) for some annotations. We can use the `featureChromatograms` function from xcms to extract the chromatograms, and then extract the information from those objects.
+It is often interesting to look at the chromatograms of the annotated features, to verify the peak processing and see how the retention times differ across annotations (and if that makes sense, e.g. are higher DP oligosaccharides eluting later than shorter DP. oligosaccharides), and if we have multiple peaks (i.e. isomers) for some annotations. We can use the `featureChromatograms` function from XCMS to extract the chromatograms, and then extract the information from those objects.
 
 
 
 ```{r extract feature chromatograms}
-#get the definitions of all featuzres
+#get the definitions of all features
 featDef <- featureDefinitions(data_ms1_pks_mg_gp_fill)
 #get in the indices of the annotated features
 featIndices = which(featDef$mzmed %in% pl_annotonly$mz)
@@ -572,10 +574,10 @@ featChr_df$annotations <- factor(featChr_df$annotations,
 ```
 
 
-Chromatograms can then be plotted with ggplot.We can see that some features likely derive from in-source fragmentation e.g. some of the monosulphated hexose peaks could be from the sulphated kappa carrageenan oligosaccharides (e.g. 'Hex2 AnhydroBridge1 Sulfate1').
+Chromatograms can then be plotted with ggplot. We can see that some features likely derive from in-source fragmentation e.g. some of the monosulfated hexose peaks could be from the sulfated kappa carrageenan oligosaccharides (e.g. 'Hex2 AnhydroBridge1 Sulfate1').
 
 ```{r plot feature chromatograms, fig.width=6, fig.height=10}
-#get the definitions of all featuzres
+#get the definitions of all features
 featDef <- featureDefinitions(data_ms1_pks_mg_gp_fill)
 #get in the indices of the annotated features
 featIndices = which(featDef$mzmed %in% pl_annotonly$mz)

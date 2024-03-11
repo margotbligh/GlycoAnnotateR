@@ -120,18 +120,24 @@ chr_dihexose_pk <- chromatogram(data_ms1_pks,
                                        df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 4)))
 ```
 
-Picked peaks are indicated by the red rectangles in the chromatograms. In the XIC version the defined peak is shown in the lower panel. We can see that the peak was picked relatively nicely for the first sample. For the second sample, only ~half of the peak is picked. For the third sample, there are two peaks picked for the same peak. We will refine the peaks in the next steps.
+Picked peaks are indicated by the red rectangles in the chromatograms. We can see that the peak was picked relatively nicely for the first sample. For the second sample, only ~half of the peak is picked. For the third sample, there are two peaks picked for the same peak. We will refine the peaks in the next steps.
 
-```{r plot chr, fig.show='hold', fig.width=6, fig.height=3}
+```{r plot chr, warning=FALSE, message = FALSE, fig.show='hold', fig.width=6, fig.height=3}
 plot(chr_dihexose_pk[[1]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
 plot(chr_dihexose_pk[[2]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
 plot(chr_dihexose_pk[[3]], peakType = 'rectangle', peakCol = 'darkred', peakBg = NA)
+```
+In the XIC version the defined peak is shown in the lower panel, this demonstrates how the peaks are defined in the mz-rt dimensions.
+
+```{r plot chr XIC, warning=FALSE, message = FALSE, fig.show='hold', fig.width=6, fig.height=6}
 data_ms1_pks %>% 
   filterRt(rt = c(350, 550)) %>% 
   filterMz(mz = c(df_dihexose$mz-ppm_to_mz(df_dihexose$mz, 6), 
                   df_dihexose$mz+ppm_to_mz(df_dihexose$mz, 6))) %>% 
   plot(type = "XIC")
 ```
+
+
 
 ### Peak merging
 
@@ -451,7 +457,7 @@ iso_check <- pl_annot_valueInRange %>%
 
 There are a couple of things we can notice in the filtered df:
 
-* The mass error differences of the two annotations are the same to 10 decimal places (meaning this cannot differentiate the annotations)
+* The ppm mass error differences of the two annotations are the same to the displayed decimal places (meaning this cannot differentiate the annotations)
 
 * There are M+1 (*m/z* 404.0576) and M+2 (*m/z* 405.0532) isotopes detected for molecule 42 (and the annotated feature was detected as the M isotope for molecule 42)
 

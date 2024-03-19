@@ -39,7 +39,7 @@ column with precursor annotations (matching those in \code{precursorAnnotations}
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
 
 \item{\code{error}}{Numeric value - error used to create window for matching. mz values
-will be matched against theoretical mzs +- error.}
+will be matched against theoretical mzs +/- error.}
 
 \item{\code{error_units}}{Units for error - can be 'ppm' or 'Da'}
 

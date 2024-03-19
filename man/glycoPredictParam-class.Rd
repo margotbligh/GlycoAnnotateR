@@ -44,9 +44,15 @@ Does not take into account unsaturated, alditol or dehydrated.}
 
 \item{\code{naming}}{Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'}
 
+\item{\code{adducts}}{Adduct types to be included. Options are 'H', 'Na', 'K', 'NH4', 'Cl'
+and 'CHOO'. See \href{https://margotbligh.github.io/GlycoAnnotateR/#output-and-other-parameters}{here}
+for detailed description of which adducts are generated,}
+
 \item{\code{glycan_linkage}}{Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.}
 
 \item{\code{modification_limits}}{Option to implement user created filters. Must be a named list, with names as modifications and values as limits.}
+
+\item{\code{format}}{Output format. Options are 'long' (default) or wide.}
 }}
 
 \examples{
@@ -55,7 +61,6 @@ gpp@dp <- c(1,7)
 gpp@polarity <- 'neg'
 gpp@scan_range <- c(150, 1300)
 gpp@modifications <- c('sulfate', 'carboxylicacid')
-gpp@double_sulfate <- TRUE
 predicted.df <- glycoPredict(param = gpp)
 
 }

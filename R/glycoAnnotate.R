@@ -204,11 +204,11 @@ glycoAnnotate <- function(data,
   #calculate mass error
   if(mz_column == 'mz'){
     data_annot <- data_annot %>%
-      dplyr::mutate(mass_error = abs(mz - mz_pred))
+      dplyr::mutate(mass_error_ppm = abs(mz - mz_pred)/mz_pred*1e6)
   }
   if(mz_column != 'mz'){
     data_annot <- data_annot %>%
-      dplyr::mutate(mass_error = abs(get(mz_column) - mz_pred))
+      dplyr::mutate(mass_error_ppm = abs(get(mz_column) - mz_pred)/mz_pred*1e6)
   }
 
   #collapse annotations

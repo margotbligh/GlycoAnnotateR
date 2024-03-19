@@ -28,7 +28,6 @@ gpp@dp <- c(1,7)
 gpp@polarity <- 'neg'
 gpp@scan_range <- c(150, 1300)
 gpp@modifications <- c('sulfate', 'carboxylicacid')
-gpp@double_sulfate <- TRUE
 predicted.df <- glycoPredict(param = gpp)
 
 }

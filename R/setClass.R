@@ -22,9 +22,13 @@
 #' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
+#' @slot adducts Adduct types to be included. Options are 'H', 'Na', 'K', 'NH4', 'Cl' 
+#' and 'CHOO'. See [here](https://margotbligh.github.io/GlycoAnnotateR/#output-and-other-parameters) 
+#' for detailed description of which adducts are generated,
 #' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.
 #' @slot modification_limits Option to implement user created filters. Must be a named list, with names as modifications and values as limits.
-#'
+#' @slot format Output format. Options are 'long' (default) or wide.
+#' 
 #' @inherit glycoPredict details
 #' @inherit glycoPredict examples
 

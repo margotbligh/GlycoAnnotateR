@@ -4,8 +4,10 @@
 #' @include glycoPredict.R
 #'
 #' @description \code{glycoAnnotate()} annotates peaks or features in MS data,
-#' using either a pre-generated table by \link[GlycoAnnotateR]{glycoPredict} or
-#' by generating a new table.
+#' using EITHER a pre-generated table (`pred_table`) by 
+#' \link[GlycoAnnotateR]{glycoPredict} OR
+#' by generating a new table by suppling a `glycoPredictParam`object
+#' to `param`.
 #'
 #' @export
 #'
@@ -14,17 +16,18 @@
 #' or features from Cardinal (MALDI).
 #' @slot mz_column Name of column containing m/z values.
 #' @slot mzmin_column OPTIONAL: Name of column containing minimum m/z data values.
-#' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
+#' If supplied, will do overlap of two ranges matching. Generally only if mzmin and mzmax
 #' values generated during peak picking. If not provided, mz value will be annotated
-#' if within range of theoretical mz +- error.
+#' if within range of theoretical mz +/- error (value within range).
 #' @slot mzmax_column OPTIONAL: Name of column containing maximum m/z data values.
-#' If supplied, will do overlap-overlap matching. Generally only if mzmin and mzmax
+#' If supplied, will do overlap of two ranges matching. Generally only if mzmin and mzmax
 #' values generated during peak picking.If not provided, mz value will be annotated
-#' if within range of theoretical mz +- error.
+#' if within range of theoretical mz +/- error (value within range).
 #' @slot pred_table Table generated previously by \link[GlycoAnnotateR]{glycoPredict}.
 #' MUST BE LONG FORMAT - select \code{format='long'} when running prediction.
+#' Must provide value for this OR `param`.
 #' @slot param \link[GlycoAnnotateR]{glycoPredictParam} object for generation of table
-#' of theoretical mz values for annotation.
+#' of theoretical mz values for annotation. Must provide value for this OR `pred_table`.
 #' @slot collapse Logical. If \code{TRUE}, annotations will be 'collapsed' so that multiple
 #' annotations for one mz will be in the same row, comma separated (nrow of output is in
 #' this case equal to nrow of input data). If \code{FALSE} (default), it is possible
@@ -36,7 +39,7 @@
 #' molecule name and ion. If prediction table provided to \code{pred_table} instead of
 #' \code{param}, column names are required.
 #' @slot error Numeric value - error used to create window for matching. mz values
-#' will be matched against theoretical mzs +- error.
+#' will be matched against theoretical mzs +/- error.
 #' @slot error_units Units for error - can be 'ppm' or 'Da'
 #'
 #' @examples
@@ -277,9 +280,9 @@ glycoAnnotate <- function(data,
 #' #collapse multiple annotations
 #' annotated_data_collapsed <- glycoAnnotationsCollapse(annotated_data = annotated_data, collapse_columns = c('IUPAC name', 'ion'), noncollapse_columns = c('mz', 'rt', 'sampleA', 'sampleB'))
 #'
-#' @seealso glycoAnnotateR::glycoPredict()
-#' @seealso glycoAnnotateR::glycoPredictParam()
-#' @seealso glycoAnnotateR::glycoAnnotate()
+#' @seealso \link[GlycoAnnotateR]{glycoPredictParam}
+#' @seealso \link[GlycoAnnotateR]{glycoPredict}
+#' @seealso \link[GlycoAnnotateR]{glycoAnnotate}
 
 
 glycoAnnotationsCollapse <- function(annotated_data,

@@ -36,9 +36,9 @@ annotated_data_collapsed <- glycoAnnotationsCollapse(annotated_data = annotated_
 
 }
 \seealso{
-glycoAnnotateR::glycoPredict()
+\link[GlycoAnnotateR]{glycoPredictParam}
 
-glycoAnnotateR::glycoPredictParam()
+\link[GlycoAnnotateR]{glycoPredict}
 
-glycoAnnotateR::glycoAnnotate()
+\link[GlycoAnnotateR]{glycoAnnotate}
 }

@@ -18,7 +18,7 @@
 #' column with precursor annotations (matching those in `precursorAnnotations`)
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot error Numeric value - error used to create window for matching. mz values
-#' will be matched against theoretical mzs +- error.
+#' will be matched against theoretical mzs +/- error.
 #' @slot error_units Units for error - can be 'ppm' or 'Da'
 #' @slot nmod_max  Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
 #' Does not take into account unsaturated, alditol or dehydrated.

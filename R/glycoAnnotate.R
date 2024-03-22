@@ -232,8 +232,9 @@ glycoAnnotate <- function(data,
     data_annot <- data_annot %>%
       dplyr::mutate(annotations = paste0(apply(data_annot[collapse_columns], 1,
                                                paste, collapse=':')))
-    group_column_names <- setdiff(names(data_annot), names(pred_table))
+    group_column_names <- c(setdiff(names(data_annot), names(pred_table)))
     group_column_names <- group_column_names[group_column_names != "annotations"]
+    group_column_names <- group_column_names[group_column_names != "mass_error_ppm"]
     data_annot <- data_annot %>%
       dplyr::group_by(across(all_of(group_column_names))) %>%
       dplyr::summarise(annotations = toString(annotations)) %>%

@@ -14,7 +14,7 @@
 #' @slot precursorAnnotations_sep Non-default separator of IUPAC name, ion and DP
 #' in `precursorAnnotations`
 #' @slot ms2spectra MS2 spectra from fragmentation of annotated precursors. MUST be
-#' a dataframe with an 'mz' column for fragment ions and a 'precursorAnnotation'
+#' a dataframe with an 'mz' column for fragment ions and a 'precursorAnnotations'
 #' column with precursor annotations (matching those in `precursorAnnotations`)
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot error Numeric value - error used to create window for matching. mz values
@@ -85,9 +85,7 @@ glycoMS2Annotate <- function(precursorAnnotations,
   }
 
   #use default sep if none provided
-  if(is.null(precursorAnnotations_sep)){
-    precursorAnnotations_sep = ':'
-  }
+  if(is.null(precursorAnnotations_sep)){ precursorAnnotations_sep = ':'}
 
   #make an empty list
   ms2_annot_list <- list()
@@ -140,6 +138,11 @@ glycoMS2Annotate <- function(precursorAnnotations,
       pent_option = T
     } else {
       pent_option = F
+    }
+    
+    #change deoxyhex to deoxy
+    if(any(annot_split_lc == 'deoxyhex')){
+      annot_split_lc[annot_split_lc == 'deoxyhex'] <- 'deoxy'
     }
 
     #create parameter object

@@ -25,6 +25,8 @@
 #' @slot double_sulfate Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.
 #' @slot label Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
 #' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
+#' @slot dehydrations Logical. If TRUE 'dehydrated' will be included in modifications
+#' to look for water losses.
 #'
 #' @export
 #'
@@ -44,7 +46,8 @@ glycoMS2Annotate <- function(precursorAnnotations,
                              polarity = 'neg',
                              nmod_max = 1,
                              double_sulfate = FALSE,
-                             label = 'none'){
+                             label = 'none',
+                             dehydrations = FALSE){
   #check input validity
   if(!is.vector(precursorAnnotations)){
     stop('precursorAnnotations is not a vector')
@@ -143,6 +146,10 @@ glycoMS2Annotate <- function(precursorAnnotations,
     #change deoxyhex to deoxy
     if(any(annot_split_lc == 'deoxyhex')){
       annot_split_lc[annot_split_lc == 'deoxyhex'] <- 'deoxy'
+    }
+    
+    if(dehydrations == TRUE){
+      annot_split_lc <- c(annot_split_lc, 'dehydrated')
     }
 
     #create parameter object

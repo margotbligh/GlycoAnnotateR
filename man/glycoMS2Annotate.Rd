@@ -14,7 +14,8 @@ glycoMS2Annotate(
   polarity = "neg",
   nmod_max = 1,
   double_sulfate = FALSE,
-  label = "none"
+  label = "none",
+  dehydrations = FALSE
 )
 }
 \description{
@@ -33,7 +34,7 @@ separated by a comma!}
 in \code{precursorAnnotations}}
 
 \item{\code{ms2spectra}}{MS2 spectra from fragmentation of annotated precursors. MUST be
-a dataframe with an 'mz' column for fragment ions and a 'precursorAnnotation'
+a dataframe with an 'mz' column for fragment ions and a 'precursorAnnotations'
 column with precursor annotations (matching those in \code{precursorAnnotations})}
 
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
@@ -50,6 +51,9 @@ Does not take into account unsaturated, alditol or dehydrated.}
 
 \item{\code{label}}{Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
 "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".}
+
+\item{\code{dehydrations}}{Logical. If TRUE 'dehydrated' will be included in modifications
+to look for water losses.}
 }}
 
 \seealso{

@@ -137,8 +137,9 @@ glycoMS2Annotate <- function(precursorAnnotations,
       sub('-', '', .)
 
     #get pentose option
-    if(any(annot_split == 'pen')){
+    if(any(annot_split_lc == 'pen')){
       pent_option = T
+      annot_split_lc <- annot_split_lc[!annot_split_lc == 'pen']
     } else {
       pent_option = F
     }

@@ -4,18 +4,26 @@
 \alias{glycoMS2Extract}
 \title{MS/MS Spectra Extraction from annotated features}
 \usage{
-glycoMS2Extract(data_ms2, data_features, annotations)
+glycoMS2Extract(
+  data_ms2,
+  data_features,
+  annotations,
+  processing_level = "features"
+)
 }
 \arguments{
 \item{data_ms2}{\code{\link[MSnbase:MSnExp-class]{MSnbase::MSnExp()}}, \code{\link[MSnbase:OnDiskMSnExp-class]{MSnbase::OnDiskMSnExp()}} or \code{\link[xcms:XCMSnExp-class]{xcms::XCMSnExp()}}
 object with MS/MS spectra.}
 
-\item{data_features}{\code{\link[xcms:XCMSnExp-class]{xcms::XCMSnExp()}} with MS1 features defined by XCMS processing
+\item{data_features}{\code{\link[xcms:XCMSnExp-class]{xcms::XCMSnExp()}} with MS1 features or peaks defined by XCMS processing
 that were annotated by \link[GlycoAnnotateR]{glycoAnnotate}.}
 
 \item{annotations}{Output of \link[GlycoAnnotateR]{glycoAnnotate}. It needs to be a
-\code{data.frame} with numerical columns named "mz" and "rt" (mz columns contains \emph{m/z}
+\code{data.frame} with numerical columns named "mz" and "rt" (mz column contains \emph{m/z}
 of the features, not of the annotations!).}
+
+\item{processing_level}{Is MS1 data processed to the level of peaks ('peaks')
+or have peaks been grouped inro features ('features', default)}
 }
 \value{
 It returns a MSpectra object with all msLevel=2 spectra whose

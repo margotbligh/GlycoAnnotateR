@@ -47,15 +47,17 @@ The 'prediction' or 'calculation' of glycan compositions is the core utility of 
 
 * Label, `label`
 
-  Are sugars labelled by reductive amination? Current supported labels are `none` (default) and those givin in the table below:
+  Are sugars labelled? Unless specified, labelling is assumed to be by reductive amination. Current supported labels are `none` (default) and those given in the table below:
 
-| **Label**                      | **Accepted names**                                  |
-|--------------------------------|-----------------------------------------------------|
-| procainamide                   | "procainamide", "proca", "procA", "ProA"            |
-| 2-aminopyridine                | "2-ap", "2-AP", "pa", "PA", "2-aminopyridine"       |
-| 2-aminobenzoic acid            | "2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid" |
+| **Label**                          | **Accepted names**                                  |
+|------------------------------------|-----------------------------------------------------|
+| procainamide                       | "procainamide", "proca", "procA", "ProA"            |
+| 2-aminopyridine                    | "2-ap", "2-AP", "pa", "PA", "2-aminopyridine"       |
+| 2-aminobenzoic acid                | "2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid" |
+| 2-aminobenzoic acid (nonreductive) | "2-aa nonreductive", "2-AA nonreductive", "aba nonreductive", "ABA nonreductive", "2-aminobenzoic acid nonreductive" |
 | 2-aminobenzamide               | "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"      |
 | 1-phenyl-3-methyl-5-pyrazolone | "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"      |
+| 3-aminoquinoline (nonreductive) | "3AQ nonreductive", "3-AQ nonreductive", "3-aminoquinoline nonreductive" |
 
 * Double sulfate, `double_sulfate`
 

@@ -52,15 +52,19 @@ modifications_mdiff = {
 proca_mdiff = 219.173546
 pa_mdiff = 78.058183
 aba_mdiff = 121.052764
+aba_nonreductive_mdiff = 119.037114
 pmp_mdiff = 330.148061
 ab_mdiff = 120.068748
+aq_nonreductive_mdiff = 126.058183
 
 #possible names for labels
 proa_names = {"procainamide", "proca", "procA", "ProA"}
 pa_names = {"2-ap", "2-AP", "pa", "PA", "2-aminopyridine"}
 aba_names = {"2-aa", "2-AA", "aba", "ABA", "2-aminobenzoic acid"}
+aba_nonreductive_names = {"2-aa nonreductive", "2-AA nonreductive", "aba nonreductive", "ABA nonreductive", "2-aminobenzoic acid nonreductive"}
 ab_names = {"2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"}
 pmp_names = {"pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"}
+aq_nonreductive_names = {'3AQ nonreductive', '3-AQ nonreductive', '3-aminoquinoline nonreductive'}
 
 
 # mass differences for ions
@@ -99,8 +103,10 @@ formulas = {
     "dehydrated": [0, -2, 0, -1, 0, 0],
     "pa": [5, 6, 2, -1, 0, 0] ,
     "aba": [7, 7, 1, 1, 0, 0] ,
+    "aba_nonreductive": [7, 7, 1, 1, 0, 0],
     "pmp": [20, 18, 4, 1, 0, 0],
     "ab": [7, 8, 2, 0, 0, 0],
+    "aq_nonreductive" : [9, 6, -1, 2, 0, 0],
   "aminopentyllinker": [5, 11, 1, 0, 0, 0]
 }
 # modification types
@@ -410,6 +416,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['mass'] = masses.mass + ab_mdiff
     if label in pmp_names:
         masses['mass'] = masses.mass + pmp_mdiff
+    if label in aba_nonreductive_names:
+        masses['mass'] = masses.mass + aba_nonreductive_mdiff
+    if label in aq_nonreductive_names:
+        masses['mass'] = masses.mass + aq_nonreductive_mdiff
     if unsaturated_option == 'y':
         masses_a = masses.copy()
         masses_a['unsaturated'] = 1
@@ -707,6 +717,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
             tmp = tmp + [formulas['ab'][i]]
         if label in pmp_names:
                 tmp = tmp + [formulas['ab'][i]]
+        if label in aba_nonreductive_names:
+                tmp = tmp + [formulas['aba_nonreductive'][i]]
+        if label in aq_nonreductive_names:
+            tmp = tmp + [formulas['aq_nonreductive'][i]]
         masses[atom] = list(tmp)
         #print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
@@ -749,6 +763,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in aba_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
         if label in ab_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AB'
         if label in pmp_names: masses['IUPAC name'] = masses['IUPAC name'] + ' bis-PMP'
+        if label in aba_nonreductive_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
+        if label in aq_nonreductive_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 3-AQ'
     if "GlycoCT" in naming:
         masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in molecules_names if row[name] != 0), axis=1)
@@ -760,6 +776,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in aba_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
         if label in ab_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AB'
         if label in pmp_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' bis-PMP'
+        if label in aba_nonreductive_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
+        if label in aq_nonreductive_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 3-AQ'
     if "Oxford" in naming:
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in
@@ -772,6 +790,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in aba_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
         if label in ab_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AB'
         if label in pmp_names: masses['Oxford name'] = masses['Oxford name'] + ' bis-PMP'
+        if label in aba_nonreductive_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
+        if label in aq_nonreductive_names: masses['Oxford name'] = masses['Oxford name'] + ' 3-AQ'
     #print("\nstep #7: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:

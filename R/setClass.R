@@ -18,8 +18,9 @@
 #' @slot nmod_max Maximum number of modifications per monomer, calculated by the number of modifications over the number of monomers (default 1).
 #' Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulfate Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.
-#' @slot label Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
-#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
+#' @slot label Are sugars labelled? Current supported options for reductive amination are: "procainamide","2-aminobenzoic acid",
+#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone". Current supported options for nonreductive amination are: "2-aminobenzoic acid nonreductive"
+#' "3-aminoquinoline nonreductive". For no label (default): "none".
 #' @slot ion_type Ionisation type. Currently accepted ESI and MALDI. Impacts ions.
 #' @slot naming Notation for molecule names. Uses commonly accepted abbreviations. Possibilities: 'IUPAC' (default), 'Oxford', 'GlycoCT'
 #' @slot adducts Adduct types to be included. Options are 'H', 'Na', 'K', 'NH4', 'Cl' 
@@ -113,7 +114,10 @@ glycoPredictParam = setClass("glycoPredictParam",
                                 "2-ap","2-AP","pa","PA","2-aminopyridine",
                                 "2-aa", "2-AA","aba", "ABA","2-aminobenzoic acid",
                                 "2-ab", "2-AB", "ab", "AB", "2-aminobenzamide",
-                                "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone")
+                                "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone",
+                                "2-aa nonreductive", "2-AA nonreductive", "aba nonreductive", 
+                                "ABA nonreductive", "2-aminobenzoic acid nonreductive",
+                                '3AQ nonreductive', '3-AQ nonreductive', '3-aminoquinoline nonreductive')
            if (length(object@label) != 1 | !any(object@label %in% possible_labels))
              msg <- c(msg, paste0("'label' has to be a character",
                                   " of length 1",

@@ -37,8 +37,9 @@ Does not take into account unsaturated, alditol or dehydrated.}
 
 \item{\code{double_sulfate}}{Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.}
 
-\item{\code{label}}{Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
-"2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".}
+\item{\code{label}}{Are sugars labelled? Current supported options for reductive amination are: "procainamide","2-aminobenzoic acid",
+"2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone". Current supported options for nonreductive amination are: "2-aminobenzoic acid nonreductive"
+"3-aminoquinoline nonreductive". For no label (default): "none".}
 
 \item{\code{ion_type}}{Ionisation type. Currently accepted ESI and MALDI. Impacts ions.}
 

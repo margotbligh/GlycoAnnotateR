@@ -7,7 +7,6 @@ import math
 import re
 from operator import itemgetter
 import os
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
 # suppress warnings
 pd.options.mode.chained_assignment = None  # default='warn'
 

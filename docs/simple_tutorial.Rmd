@@ -1,0 +1,383 @@
+---
+title: "Simple LC-MS/MS glycan annotation with GlycoAnnotateR (single file)"
+author: "Margot Bligh"
+date: "2024-12-11"
+output:
+  html_document:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Glycan annotation with GlycoAnnotateR}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+This is a *simple* tutorial for the annotation of glycans in a single LC-MS/MS file in R using [XCMS](https://sneumann.github.io/xcms/index.html) and GlycoAnnotateR. For a more detailed tutorial, including correspondence analysis and isotope detection, see this [tutorial](https://margotbligh.github.io/GlycoAnnotateR/lcms_annotation_tutorial.html).
+
+The data used in this tutorial is an enzyme digest of fucoidan, a sulfated fucan from brown algae. The data can be downloaded from the MassIVE server (f.MSV000095410/peak/MS31_20240618_newMpyrifera_digest_SIMddMS2_2.5uL_85%EtOH_11.mzML).
+
+
+# Load required packages
+
+```{r import packages, message=FALSE, warning=FALSE}
+library(GlycoAnnotateR)
+library(tidyverse)
+library(xcms)
+library(ggplot2)
+library(ggrepel)
+```
+
+# Pre-processing the data
+## Import data
+
+Now we import the mzML file as an OnDiskMSnExp object. 
+
+
+```{r import data}
+#read in data 
+data <- readMSData(files = 'MS31_20240618_newMpyrifera_digest_SIMddMS2_2.5uL_85%EtOH_11.mzML',
+                   mode = 'onDisk')
+```
+
+## Peak picking
+
+Peak picking is done with the CentWave algorithm, for details see [Tautenhahn et al., 2008](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-504).
+
+*Important to note: each dataset will require parameters appropriate for your data! If no peaks are picked, then you will not be able to annotate any peaks! See this [tutorial](https://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcms.html) for pick peaking with CentWave.*
+
+```{r pick peaks}
+#create parameter object
+cwp <- CentWaveParam(ppm = 10, peakwidth = c(10, 60), integrate = 2,
+                     snthresh = 1)
+#pick peaks
+pks <- findChromPeaks(data, cwp)
+```
+
+
+Peak picking should always be optimised and checked extensively, as this will have a massive impact on the downstream data interpretation. Here, we will check an example chromatogram for a hexasulfated trifucan oligomer  We will quickly use glycoPredict from GlycoAnnotateR to get the correct *m/z* value.
+
+```{r extract chr, warning=FALSE, message=FALSE}
+#calculate m/z values 
+#first make parameter object
+param = glycoPredictParam(dp = c(3,3), #degree of polymerisation
+                          polarity = 'neg', #polarity
+                          adducts = 'H', # adducts
+                          modifications = c('sulfate', #modifications
+                                            'deoxy'),
+                          double_sulfate = T, #allow double sulfation 
+                          nmod_max = 3) #allow 3 modifications per monomer i.e. 2 sulfates, 1 deoxy
+#make table
+masses_trifucan <- glycoPredict(param)
+
+#inspect table
+#there are 82 possible ions 
+head(masses_trifucan)
+
+#get mz value for [M-2H]-2 adduct
+mz_trifucan = masses_trifucan$mz[masses_trifucan$`IUPAC name` == 'DeoxyHex3 Sulfate6'&
+                                   masses_trifucan$ion == '[M-2H]-2']
+
+#extract chromatogram +- 4 ppm
+chr_trifucan <- chromatogram(pks,
+                             mz = c(mz_trifucan-ppm_to_mz(mz_trifucan, 4), 
+                                    mz_trifucan+ppm_to_mz(mz_trifucan, 4)))
+
+```
+
+The picked peak is indicated by the shaded grey area in the extracted ion chromatogram.
+
+```{r plot chr, warning=FALSE, message = FALSE, fig.show='hold', fig.width=6, fig.height=3}
+plot(chr_trifucan[[1]])
+```
+
+# Annotating peaks
+
+We will now move forward with extracting and annotating our peak table table to identify putative oligosaccharide ions. Here, we will first create the `glycoPredictParam` object, then make a table of potential oligosaccharide compositions. We will filter this for charges of -1 and -2, and then use it to annotate the peak table. The charge filtering may not be appropriate depending on your instrument and dataset. 
+
+## Extract the peak table
+
+We will extract a dataframe with the picked chromatographic peaks
+
+```{r extract peak table}
+#extract table and make dataframe
+pks_df <- chromPeaks(pks) %>% as.data.frame()
+
+#inspect table
+#54 peaks were identified in this example
+str(pks_df)
+head(pks_df)
+```
+
+
+## Making the parameter object
+
+Create the parameter object for calculation of theoretical compositions.
+
+```{r creating the parameter object}
+#create the glycoPredictParam object
+gpp <- glycoPredictParam(
+  #degree of polymerisation range
+  dp = c(1,10), 
+  #ionisation polarity
+  polarity = "neg", 
+  #ionisation type (affects adduct types)
+  ion_type = "ESI", 
+  #scan range during MS1 acquisition 
+  scan_range = c(175,1400),
+  #expected modifications
+  modifications = c('sulfate', 'deoxy'),
+  #double sulfation is possible
+  double_sulfate = T,
+  #maximum average number of modifications per monomer
+  nmod_max = 3,
+  #adducts
+  adducts = "H")
+gpp
+```
+
+## Calculating compositions
+
+We can now use parameters defined in the `glycoPredictParam` object to 'predict' (or rather calculate) all possible glycans. You can directly run `glycoAnnotate` to annotate your peak list using the parameters, which will call `glycoPredict` in the background, but here we will demonstrate the output of `glycoPredict` by running it separately, as we want to introduce an addition filtering for charge. You can see that the charge filtered table contains ~1000 ions, while the original table contains >6000.
+
+```{r build calculated df, warning=FALSE}
+#create a table of theoretical glycans and their ions
+pred_df <- glycoPredict(param = gpp)
+
+#inspect table
+str(pred_df)
+
+#charge filter
+pred_df_filt <- pred_df %>% filter(charge %in% c('-1', '-2'))
+
+#inspect filtered table
+str(pred_df_filt)
+
+```
+
+## Annotate peaks
+
+We will use the charge filtered table to annotate our peaks at 3.5 ppm error.
+If you want to 'collapse' annotations in cases where there are multiple annotations per peak (and your peaks are therefore duplicated), use the `collapse = TRUE` option.
+
+```{r annotate peaks}
+#annotate peaks
+pks_df_annotated <- glycoAnnotate(data = pks_df,
+                                  pred_table = pred_df_filt,
+                                  error = 3.5)
+#keep only annotated peaks in the table
+pks_df_onlyannotated <- pks_df_annotated %>% drop_na(dp)
+
+#inspect annotated peaks
+#11 sulfated fucan oligosaccharides were annotated
+pks_df_onlyannotated
+```
+
+
+# Extract and annotate MS2 spectra associated with annotations
+## Extract MS2 spectra
+
+We will use the `glycoMS2Extract` function from GlycoAnnotateR to extract the spectra. This function is basically a wrapper for XCMS functions for MS2 spectra extraction, with a layer to only extract those spectra associated with annotated peaks or features
+
+```{r extract ms2 spectra}
+ms2 <- glycoMS2Extract(
+  #object with MS1 and MS2 data 
+  data_ms2 = data, 
+  #processed MS1 data object (must have peaks)
+  data_features = pks, 
+  #annotated feature table
+  #must contain an 'mz' and 'rt' column
+  annotations = pks_df_onlyannotated,
+  #processing level here is 'peaks' (would be features after correspondence)
+  processing_level = 'peaks')
+
+#see how many spectra were extracted in total (here = 961)
+length(ms2@backend@spectraData@rownames)
+```
+
+
+## Process MS2 spectra
+
+We will use the functions from `Spectra` to average the MS2 spectra.
+
+```{r process ms2 spectra}
+#combine peaks with spectra
+ms2_combine <- Spectra::combinePeaks(ms2, tolerance = 0.005, ppm = 3)
+
+#combine spectra by peak within each file across scans
+ms2_mean <- Spectra::combineSpectra(ms2_combine, f = ms2$peak_index,
+                                    tolerance = 0.005, ppm = 3,  
+                                    peaks = 'intersect', minProp = 0.2,
+                                    intensityFun = max)
+
+#see how many spectra there are after averaging - 11
+length(ms2_mean)
+```
+
+
+## Convert to dataframe
+
+Now we will convert MS2 data into a dataframe format so its easier to work with.
+
+
+```{r convert spectra to df}
+#build empty df
+ms2_df <- data.frame(precursorMz = as.numeric(),
+                     rt = as.numeric(),
+                     mz = as.numeric(),
+                     intensity = as.numeric(),
+                     peak_id = as.numeric())
+#fill in df
+for (i in 1:length(ms2_mean)){
+  mz = sprintf("%.4f",mz(ms2_mean)[i] %>% unlist()) %>% 
+    as.numeric()
+  intensity = intensity(ms2_mean)[i] %>% unlist()
+  intensity = (intensity / max(intensity)) * 100 #normalise intensity with respect to maximum
+  rt = rep(rtime(ms2_mean)[i], length(mz))
+  precursorMz = rep(precursorMz(ms2_mean)[i], length(mz))
+  peak_id = rep(ms2_mean$peak_id[i], length(mz)) 
+
+  temp <- data.frame(precursorMz = precursorMz,
+                     rt = rt, mz = mz, intensity = intensity,
+                     peak_id = peak_id)
+  ms2_df <- rbind(temp, ms2_df)
+}
+
+#inspect dataframe
+head(ms2_df)
+```
+
+
+
+## Annotate MS2 spectra
+
+### Annotate precursors
+
+We will begin by annotating the precursors. 
+
+
+```{r annotate precursors}
+ms2_df_annotP <- glycoAnnotate(data = ms2_df,
+                               #this should generally be higher than for MS1
+                               error = 5, 
+                               #table for annotation
+                               pred_table = pred_df_filt, 
+                               #name of mz column to annotate) 
+                               mz_column = 'precursorMz') 
+#make column named 'annotation' with name, ion and dp pasted together
+#separated by a colon 
+ms2_df_annotP <- ms2_df_annotP %>% 
+  mutate(annotations = paste(`IUPAC name`, `ion`, dp, sep = ':'))
+
+
+```
+
+All precursors should be assigned an annotation (as we only extracted MS2 spectra for annotated precursors).
+
+```{r check precursor annotations}
+#check all precursors annotated (statement should be FLASE)
+any(is.na(ms2_df_annotP$dp))
+```
+
+
+### Annotate fragments
+Now we can annotate the fragment ions in MS2 spectra. The `glycoPredictParam` parameters automatically change depending on the precursor annotation. Only fragments resulting from glycosidic bond breakage, dehydration, or loss of modified groups (e.g. desulfation) can currently be annotated by GlycoAnnotateR. 
+
+```{r annotate fragment ions, message=FALSE, warning=FALSE}
+#make a vector of the precursor annotations
+#the vector should be as long as the number of peaks / the length
+#of the ms2 object after averaging (i.e. 11 in this case)
+ms2_df_annotP_unique <- ms2_df_annotP %>% 
+  distinct(precursorMz, annotations, rt, peak_id)
+
+#rename annotations column to precursorAnnotations
+names(ms2_df_annotP)[names(ms2_df_annotP) == 'annotations'] <- 'precursorAnnotations'
+
+#remove other columns added during annotation
+ms2_df_annotP <- ms2_df_annotP %>% 
+  select(all_of(c(names(ms2_df), 'precursorAnnotations')))
+
+#annotate the fragment ions based on the precursor annotations
+ms2_df_annotF <- glycoMS2Annotate(
+  #vector of the precursor annotations
+  precursorAnnotations = ms2_df_annotP_unique$annotations,
+  #separator in between name, ion and dp of precursor annotations
+  precursorAnnotations_sep = ':',
+  #ms2spectra dataframe with annotated precursors
+  ms2spectra = as.data.frame(ms2_df_annotP),
+  #ion type
+  ion_type = 'ESI',
+  #error
+  error = 5, error_units = 'ppm',
+  #allow double sulfate and dehydrations and 3 annotations per monomer
+  double_sulfate = T, nmod_max = 3, dehydrations = T)
+
+#ions with multiple annotations will automatically be 'collapsed'
+#in the 'annotations' column
+#ions with one annotation will not be collapsed, so we will now 
+#coalesce these columns
+#and also annotate sulfate
+ms2_df_annotF <- ms2_df_annotF %>% 
+  mutate(annotations = case_when(is.na(annotations) & !is.na(ion)~ 
+                                   paste(`IUPAC name`, ion, sep = ':'),
+                                 is.na(annotations) & is.na(ion) ~  NA,
+                                 TRUE ~ annotations),
+         annotations = case_when(mz > 96.95 & mz < 97 ~ 'HSO4-',
+                                 TRUE ~ annotations))
+```
+
+
+Annotated spectra can be plotted with ggplot.
+
+```{r plot annotated ms2, fig.width=4, fig.height=4, fig.show='hold', warning=FALSE}
+#plot spectra with annotated fragments
+#you can play around with how you plot this
+peakIDs <- ms2_df_annotF$peak_id %>% unique()
+for(i in 1:length(peakIDs)){
+  pkid <- peakIDs[i]
+  df <- ms2_df_annotF %>% 
+    #filter for peak id
+    filter(peak_id == !!pkid)  %>% 
+    #filter for 1% relative abundance
+    filter(intensity > 1) %>% 
+    #add new line break where there are commas for prettier plotting
+    mutate(annotations = gsub('\\,', ',\n', annotations))
+  
+  
+  
+  p <-  ggplot(df) +
+    #plot lines
+    geom_segment(aes(x = mz, xend = mz, y = 0, yend= intensity)) +
+    #add annotations
+    geom_text_repel(aes(label = annotations, x = mz, y = intensity),
+                    size = 2, hjust = 0.5, vjust = 0.5, nudge_y = 1,
+                    segment.size = 1, segment.colour = 'lightblue', 
+                    segment.linetype = 'dashed', min.segment.length = 0.2) +
+    #add mz values 
+    geom_text(mapping = aes(x = mz, y = intensity + 0.5, label = round(mz, 4)),
+              size = 2) +
+    #set labels
+    labs(x = expression(italic("m/z")), y = "Normalised intensity (a.u.)",
+         title = paste0(df$precursorAnnotations[1], ' at ',
+                        round(df$rt[1],1), ' sec, precursor m/z=',
+                        round(df$precursorMz[1], 4)))+
+    theme_minimal()+
+    theme(axis.title = element_text(colour = 'black', size = 8, face = 'bold'),
+          axis.text =  element_text(colour = 'black', size = 6),
+          plot.title =element_text(colour = 'black', size = 8, face = 'bold', 
+                                   hjust = 0.5),
+          panel.border = element_rect(fill = NA, colour = 'black'),
+          panel.grid = element_blank())
+  print(p)
+}
+
+```
+
+
+
+

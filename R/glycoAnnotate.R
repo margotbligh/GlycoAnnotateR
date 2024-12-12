@@ -161,6 +161,9 @@ glycoAnnotate <- function(data,
     }
   }
 
+  #set DT threads to avoid OMP errors
+  setDTthreads(threads = 1)
+
   #generate mzmin and mzmax columns in pred_table
   if(error_units == 'ppm'){
     ppm_to_mz = function(mz, noise){

@@ -84,8 +84,8 @@ carefully whether you need to increase this value above the
 default.</p></li>
 <li><p>Label, <code>label</code></p>
 <p>Are sugars labelled? Unless specified, labelling is assumed to be by
-reductive amination. Current supported labels are <code>none</code>
-(default) and those given in the table below:</p></li>
+reductive amination. Current automated labels are <code>none</code>
+(default) and those given in the table below. Custom labels can be added as described below.</p></li>
 </ul>
 <table>
 <colgroup>
@@ -129,9 +129,19 @@ nonreductive”, “2-aminobenzoic acid nonreductive”</td>
 <td>“3AQ nonreductive”, “3-AQ nonreductive”, “3-aminoquinoline
 nonreductive”</td>
 </tr>
+<tr class="even">
+<td>aminopentyllinker</td>
+<td>“aminopentyllinker”</td>
+</tr>
 </tbody>
 </table>
 <ul>
+<li><p>Custom label name, <code>custom_label_name</code></p>
+<p>Name of custom label - this will be directly appended to all composition names.</p></li>
+<li><p>Custom label mass difference, <code>custom_label_mdiff</code></p>
+<p>Net change in monisotopic mass upon addition of custom label (i.e. mass difference between unlabelled and labelled glycan).</p></li>
+<li><p>Custom label change in sum formula, <code>custom_label_formdiff</code></p>
+<p>Per element net change with addition of label - can be zero, positive or negative. Provide as a vector (must have 6 values to work) in the following order: C, H, N, O, S, P.</p></li>
 <li><p>Double sulfate, <code>double_sulfate</code></p>
 <p>Can monomers be disulfated? Logical option required. To work
 <code>sulfate</code> must be in modifications and <code>nmod_max</code>

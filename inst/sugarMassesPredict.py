@@ -703,7 +703,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in aminopentyllinker_names:
             tmp = tmp + [formulas['aminopentyllinker'][i]]
         if custom_label_name != 'none':
-            tmp = tmp + [custom_label_formdiff][[i]]
+            tmp = tmp + [custom_label_formdiff[i]]
         masses[atom] = list(tmp)
         #print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)

@@ -1,0 +1,89 @@
+---
+title: "How to use with mzMine for LC-MS analysis"
+author: "Margot Bligh"
+date: "2025-01-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a quick tutorial for how to use GlycoAnnotateR in conjuction with [mzMine](https://mzmine.github.io/mzmine_documentation/index.html), a popular GUI-based tool for MS data analysis. In this tutorial I am using mzMine version 4.4.3 to analyse the same LC-MS/MS data that is used in the [simple GlycoAnnotateR tutorial](https://margotbligh.github.io/GlycoAnnotateR/simple_tutorial.html). An enzyme digest of fucoidan, a sulfated fucan from brown algae, was separated by HILIC and detected with an Orbitrap. The data can be downloaded from the MassIVE server (f.MSV000095410/peak/MS31_20240618_newMpyrifera_digest_SIMddMS2_2.5uL_85%EtOH_11.mzML).
+
+# Detect features with mzMine
+
+First, the data needs to be processed in mzMine. Since the mzMine documentation is excellent I will only briefly describe the steps here. I always used the default parameters unless specified.
+
+1. Import the data to mzMine (Raw data methods --> Import MS data).
+
+2. Detect masses (Raw data methods --> Spectra processing --> Mass detection)
+
+3. Detect LC-MS peaks (Feature detection --> LC-MS --> Chromatogram builder)
+
+4. Export feature list (Feature list methods --> Export feature list --> CSV)
+
+# Annotate feature list in R
+
+Just a few lines of code are needed to annotate the feature list in R. 
+For a detailed explanation of the annotation parameters see [here](https://margotbligh.github.io/GlycoAnnotateR/#prediction-parameters)
+
+```{r annotate feature list, message=FALSE, warning=FALSE}
+#load GlycoAnnotateR package and tidyverse
+library(GlycoAnnotateR)
+library(tidyverse)
+#import exported feature list. make sure you are in the correct directory!
+mzmine_export <- read_csv('export_mzmine.csv', show_col_types = F)
+#set parameters for annotation
+#change as needed for your data
+param <- glycoPredictParam(
+  #degree of polymerisation data
+  dp = c(1, 10), 
+  #modifications
+  modifications = c('sulfate', 'deoxy'),
+  #is double sulfation possible?
+  double_sulfate = T,
+  #maximum number of monomers per modification
+  nmod_max = 3,
+  #adducts
+  adducts = 'H',
+  #polarity
+  polarity = 'neg',
+  #ionisation type 
+  ion_type = 'ESI',
+  #mass range
+  scan_range = c(145, 1500))
+#annotate exported feature list
+mzmine_export_annot <- glycoAnnotate(mzmine_export,
+                                     #name of column with mz value to annotate
+                                     mz_column = 'mz', 
+                                     #parameters for composition prediction
+                                     param = param,
+                                     #error tolerance for annotation
+                                     error = 3.5, error_units = 'ppm')
+#filter annotated feature list to only contain annotated features
+#and format for import into mzmine
+mzmine_export_annotonly <- mzmine_export_annot %>%
+  #filter for only annotated features
+  drop_na(`IUPAC name`) %>% 
+  #rename columns to match mzmine requirements
+  rename(`neutral mass` = mass,
+         name = `IUPAC name`, #this will be the composition description
+         adduct = ion) %>% 
+  #select columns
+  select(mz, rt, `neutral mass`, name, adduct, formula)
+#write formatted and filtered table to file
+write_csv(mzmine_export_annotonly, 'export_glycoannotateR.csv')
+#print for inspection
+print(mzmine_export_annotonly)
+```
+
+
+# Filter features in mzMine to annotations
+
+The exported csv can then be used as a 'database' for targeted feature detection in mzMine. This can be done by selecting 'Feature detection --> LC-MS --> Targeted feature detection' in mzMine. The file exported from R should be selected as the 'Database file'. The following columns should be checked: neutral mass, mz, rt, formula, adduct, and name (and then press OK). This will create a new feature list in mzMine with only the annotated features, and will show the annotated compositions under 'Compound DB'. 
+
+MS/MS spectra can be associated (Feature list methods --> Processing --> Assign MS2 features) to features, exported, and annotated in a similar way as the MS1 features.
+
+
+

@@ -1,0 +1,189 @@
+---
+layout: default
+---
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">How to use with mzMine for LC-MS
+analysis</h1>
+<h4 class="author">Margot Bligh</h4>
+<h4 class="date">2025-01-20</h4>
+
+</div>
+
+
+<p>This is a quick tutorial for how to use GlycoAnnotateR in conjuction
+with <a href="https://mzmine.github.io/mzmine_documentation/index.html">mzMine</a>,
+a popular GUI-based tool for MS data analysis. In this tutorial I am
+using mzMine version 4.4.3 to analyse the same LC-MS/MS data that is
+used in the <a href="https://margotbligh.github.io/GlycoAnnotateR/simple_tutorial.html">simple
+GlycoAnnotateR tutorial</a>. An enzyme digest of fucoidan, a sulfated
+fucan from brown algae, was separated by HILIC and detected with an
+Orbitrap. The data can be downloaded from the MassIVE server
+(f.MSV000095410/peak/MS31_20240618_newMpyrifera_digest_SIMddMS2_2.5uL_85%EtOH_11.mzML).</p>
+<div id="detect-features-with-mzmine" class="section level1">
+<h1>Detect features with mzMine</h1>
+<p>First, the data needs to be processed in mzMine. Since the mzMine
+documentation is excellent I will only briefly describe the steps here.
+I always used the default parameters unless specified.</p>
+<ol style="list-style-type: decimal">
+<li><p>Import the data to mzMine (Raw data methods –&gt; Import MS
+data).</p></li>
+<li><p>Detect masses (Raw data methods –&gt; Spectra processing –&gt;
+Mass detection)</p></li>
+<li><p>Detect LC-MS peaks (Feature detection –&gt; LC-MS –&gt;
+Chromatogram builder)</p></li>
+<li><p>Export feature list (Feature list methods –&gt; Export feature
+list –&gt; CSV)</p></li>
+</ol>
+</div>
+<div id="annotate-feature-list-in-r" class="section level1">
+<h1>Annotate feature list in R</h1>
+<p>Just a few lines of code are needed to annotate the feature list in
+R. For a detailed explanation of the annotation parameters see <a href="https://margotbligh.github.io/GlycoAnnotateR/#prediction-parameters">here</a></p>
+<pre class="r"><code>#load GlycoAnnotateR package and tidyverse
+library(GlycoAnnotateR)
+library(tidyverse)
+#import exported feature list. make sure you are in the correct directory!
+mzmine_export &lt;- read_csv(&#39;export_mzmine.csv&#39;, show_col_types = F)
+#set parameters for annotation
+#change as needed for your data
+param &lt;- glycoPredictParam(
+  #degree of polymerisation data
+  dp = c(1, 10), 
+  #modifications
+  modifications = c(&#39;sulfate&#39;, &#39;deoxy&#39;),
+  #is double sulfation possible?
+  double_sulfate = T,
+  #maximum number of monomers per modification
+  nmod_max = 3,
+  #adducts
+  adducts = &#39;H&#39;,
+  #polarity
+  polarity = &#39;neg&#39;,
+  #ionisation type 
+  ion_type = &#39;ESI&#39;,
+  #mass range
+  scan_range = c(145, 1500))
+#annotate exported feature list
+mzmine_export_annot &lt;- glycoAnnotate(mzmine_export,
+                                     #name of column with mz value to annotate
+                                     mz_column = &#39;mz&#39;, 
+                                     #parameters for composition prediction
+                                     param = param,
+                                     #error tolerance for annotation
+                                     error = 3.5, error_units = &#39;ppm&#39;)
+#filter annotated feature list to only contain annotated features
+#and format for import into mzmine
+mzmine_export_annotonly &lt;- mzmine_export_annot %&gt;%
+  #filter for only annotated features
+  drop_na(`IUPAC name`) %&gt;% 
+  #rename columns to match mzmine requirements
+  rename(`neutral mass` = mass,
+         name = `IUPAC name`, #this will be the composition description
+         adduct = ion) %&gt;% 
+  #select columns
+  select(mz, rt, `neutral mass`, name, adduct, formula)
+#write formatted and filtered table to file
+write_csv(mzmine_export_annotonly, &#39;export_glycoannotateR.csv&#39;)
+#print for inspection
+print(mzmine_export_annotonly)</code></pre>
+<pre><code>##          mz      rt neutral mass                     name     adduct
+## 1  243.1237  0.6425    3173.6954 Hex6 DeoxyHex4 Sulfate20 [M-13H]-13
+## 2  243.0178  0.9809     244.0253       DeoxyHex1 Sulfate1     [M-H]-
+## 3  234.0123  1.3713     470.0400       DeoxyHex2 Sulfate2   [M-2H]-2
+## 4  313.9686  6.7659     629.9536       DeoxyHex2 Sulfate4   [M-2H]-2
+## 5  386.9985  7.8018     776.0116       DeoxyHex3 Sulfate4   [M-2H]-2
+## 6  426.9768  9.8313     855.9684       DeoxyHex3 Sulfate5   [M-2H]-2
+## 7  500.0064 11.3063    1002.0263       DeoxyHex4 Sulfate5   [M-2H]-2
+## 8  539.9851 13.3453    1081.9831       DeoxyHex4 Sulfate6   [M-2H]-2
+## 9  466.9552 13.9708     935.9252       DeoxyHex3 Sulfate6   [M-2H]-2
+## 10 579.9630 15.3721    1161.9399       DeoxyHex4 Sulfate7   [M-2H]-2
+## 11 692.9713 17.5747    1387.9546       DeoxyHex5 Sulfate8   [M-2H]-2
+## 12 766.0006 18.4773    1534.0125       DeoxyHex6 Sulfate8   [M-2H]-2
+##           formula
+## 1  C60H102O107S20
+## 2        C6H12O8S
+## 3     C12H22O15S2
+## 4     C12H22O21S4
+## 5     C18H32O25S4
+## 6     C18H32O28S5
+## 7     C24H42O32S5
+## 8     C24H42O35S6
+## 9     C18H32O31S6
+## 10    C24H42O38S7
+## 11    C30H52O45S8
+## 12    C36H62O49S8</code></pre>
+</div>
+<div id="filter-features-in-mzmine-to-annotations" class="section level1">
+<h1>Filter features in mzMine to annotations</h1>
+<p>The exported csv can then be used as a ‘database’ for targeted
+feature detection in mzMine. This can be done by selecting ‘Feature
+detection –&gt; LC-MS –&gt; Targeted feature detection’ in mzMine. The
+file exported from R should be selected as the ‘Database file’. The
+following columns should be checked: neutral mass, mz, rt, formula,
+adduct, and name (and then press OK). This will create a new feature
+list in mzMine with only the annotated features, and will show the
+annotated compositions under ‘Compound DB’.</p>
+<p>MS/MS spectra can be associated (Feature list methods –&gt;
+Processing –&gt; Assign MS2 features) to features, exported, and
+annotated in a similar way as the MS1 features.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

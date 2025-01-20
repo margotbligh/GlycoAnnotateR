@@ -29,6 +29,9 @@
 #' @slot glycan_linkage Option to implement filters for O- and N-glycans. Possibilities: 'none' (default), 'nglycan' or 'oglycan'.
 #' @slot modification_limits Option to implement user created filters. Must be a named list, with names as modifications and values as limits.
 #' @slot format Output format. Options are 'long' (default) or wide.
+#' @slot custom_label_name Name of custom label or tag added to glycans. The name as written here will be appended to all composition names.
+#' @slot custom_label_mdiff Monisotopic mass difference of custom label (i.e. mass difference between unlabelled and labelled glycan).
+#' @slot custom_label_formdiff Formulas difference associated with custom label. Vector in order: C, H, N, O, S, P. Zero, positive and negative values possible.
 #' 
 #' @inherit glycoPredict details
 #' @inherit glycoPredict examples
@@ -48,7 +51,10 @@ glycoPredictParam = setClass("glycoPredictParam",
            adducts = "character",
            naming = "character",
            glycan_linkage = "character",
-           modification_limits = "ANY"
+           modification_limits = "ANY",
+           custom_label_name = "character",
+           custom_label_mdiff = "ANY",
+           custom_label_formdiff = "numeric"
          ),
          prototype = prototype(
            dp = c(1, 6),
@@ -64,7 +70,10 @@ glycoPredictParam = setClass("glycoPredictParam",
            adducts = "all",
            naming = "IUPAC",
            glycan_linkage = "none",
-           modification_limits = "none"
+           modification_limits = "none",
+           custom_label_name = "none",
+           custom_label_mdiff = "none",
+           custom_label_formdiff = c(0,0,0,0,0,0)
          ),
          validity = function(object) {
            msg <- character()
@@ -87,7 +96,7 @@ glycoPredictParam = setClass("glycoPredictParam",
                                         'sialicacid', 'phosphate',
                                         'deoxy', 'nacetyl', 'omethyl',
                                         'anhydrobridge', 'oacetyl', 'unsaturated',
-                                        'alditol', 'amino','dehydrated','sulfate', 'aminopentyllinker')
+                                        'alditol', 'amino','dehydrated','sulfate')
            if (!all(object@modifications %in% possible_modifications))
              msg <- c(msg, paste0("valid options for 'modifications' are: ",
                                   paste0("'", possible_modifications, "'",
@@ -117,7 +126,8 @@ glycoPredictParam = setClass("glycoPredictParam",
                                 "pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone",
                                 "2-aa nonreductive", "2-AA nonreductive", "aba nonreductive", 
                                 "ABA nonreductive", "2-aminobenzoic acid nonreductive",
-                                '3AQ nonreductive', '3-AQ nonreductive', '3-aminoquinoline nonreductive')
+                                '3AQ nonreductive', '3-AQ nonreductive', '3-aminoquinoline nonreductive',
+                                'aminopentyllinker')
            if (length(object@label) != 1 | !any(object@label %in% possible_labels))
              msg <- c(msg, paste0("'label' has to be a character",
                                   " of length 1",
@@ -144,6 +154,12 @@ glycoPredictParam = setClass("glycoPredictParam",
            if (!object@glycan_linkage %in% c("nglycan", "oglycan", "none"))
              msg <- c(msg, paste0("valid options for 'glycan_linkage' are: ",
                                   "none, nglycan or oglycan"))
+           if(custom_label_name != 'none' & custom_label_mdiff == 'none')
+             msg <- c(msg, paste('custom label name provided but no mass difference.',
+                                 'provide value to custom_label_mdiff!'))
+           if(custom_label_mdiff != 'none' & custom_label_name == 'none')
+             msg <- c(msg, paste('custom label mass difference provided but no label.',
+                                 'provide value to custom_label_mdiff!'))
            if (length(msg) >= 1)
              print(msg)
            else

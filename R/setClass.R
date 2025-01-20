@@ -154,12 +154,12 @@ glycoPredictParam = setClass("glycoPredictParam",
            if (!object@glycan_linkage %in% c("nglycan", "oglycan", "none"))
              msg <- c(msg, paste0("valid options for 'glycan_linkage' are: ",
                                   "none, nglycan or oglycan"))
-           if(custom_label_name != 'none' & custom_label_mdiff == 'none')
+           if(object@custom_label_name != 'none' & object@custom_label_mdiff == 'none')
              msg <- c(msg, paste('custom label name provided but no mass difference.',
                                  'provide value to custom_label_mdiff!'))
-           if(custom_label_mdiff != 'none' & custom_label_name == 'none')
+           if(object@custom_label_mdiff != 'none' & object@custom_label_name == 'none')
              msg <- c(msg, paste('custom label mass difference provided but no label.',
-                                 'provide value to custom_label_mdiff!'))
+                                 'provide value to custom_label_name!'))
            if (length(msg) >= 1)
              print(msg)
            else

@@ -9,7 +9,7 @@ License: GPL-2
 URL: https://margotbligh.github.io/GlycoAnnotateR, https://github.com/margotbligh/GlycoAnnotateR, https://margotbligh.github.io/GlycoAnnotateR/
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports:
 	reticulate,
 	tidyr,

@@ -15,7 +15,10 @@ glycoMS2Annotate(
   nmod_max = 1,
   double_sulfate = FALSE,
   label = "none",
-  dehydrations = FALSE
+  dehydrations = FALSE,
+  custom_label_name = "none",
+  custom_label_mdiff = "none",
+  custom_label_formdiff = c(0, 0, 0, 0, 0, 0)
 )
 }
 \description{
@@ -50,10 +53,16 @@ Does not take into account unsaturated, alditol or dehydrated.}
 \item{\code{double_sulfate}}{Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.}
 
 \item{\code{label}}{Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
-"2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".}
+"2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone", "aminopentyllinker".}
 
 \item{\code{dehydrations}}{Logical. If TRUE 'dehydrated' will be included in modifications
 to look for water losses.}
+
+\item{\code{custom_label_name}}{Name of custom label or tag added to glycans. The name as written here will be appended to all composition names.}
+
+\item{\code{custom_label_mdiff}}{Monisotopic mass difference of custom label (i.e. mass difference between unlabelled and labelled glycan).}
+
+\item{\code{custom_label_formdiff}}{Formulas difference associated with custom label. Vector in order: C, H, N, O, S, P. Zero, positive and negative values possible.}
 }}
 
 \seealso{

@@ -24,10 +24,13 @@
 #' Does not take into account unsaturated, alditol or dehydrated.
 #' @slot double_sulfate Logical. Can monomers be double-sulfated. If \code{TRUE}, nmod_max needs to have a value of at least 2.
 #' @slot label Are sugars labelled by reductive amination? Current supported labels are: "none", "procainamide","2-aminobenzoic acid",
-#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone".
+#' "2-aminobenzamide", "1-phenyl-3-methyl-5-pyrazolone", "aminopentyllinker".
 #' @slot dehydrations Logical. If TRUE 'dehydrated' will be included in modifications
 #' to look for water losses.
-#'
+#' @slot custom_label_name Name of custom label or tag added to glycans. The name as written here will be appended to all composition names.
+#' @slot custom_label_mdiff Monisotopic mass difference of custom label (i.e. mass difference between unlabelled and labelled glycan).
+#' @slot custom_label_formdiff Formulas difference associated with custom label. Vector in order: C, H, N, O, S, P. Zero, positive and negative values possible.
+#' 
 #' @export
 #'
 #' @seealso \link[GlycoAnnotateR]{glycoPredictParam}
@@ -47,7 +50,10 @@ glycoMS2Annotate <- function(precursorAnnotations,
                              nmod_max = 1,
                              double_sulfate = FALSE,
                              label = 'none',
-                             dehydrations = FALSE){
+                             dehydrations = FALSE, 
+                             custom_label_name = 'none',
+                             custom_label_mdiff = 'none',
+                             custom_label_formdiff = c(0,0,0,0,0,0)){
   #check input validity
   if(!is.vector(precursorAnnotations)){
     stop('precursorAnnotations is not a vector')
@@ -85,6 +91,14 @@ glycoMS2Annotate <- function(precursorAnnotations,
   if(!any(precursorAnnotations %in% ms2spectra$precursorAnnotations)){
     stop('none of the precursorAnnotations are in the precursorAnnotations',
          'column of the ms2spectra dataframe')
+  }
+  if(custom_label_name != 'none' & custom_label_mdiff == 'none'){
+    stop('custom label name provided but no mass difference.',
+         'provide value to custom_label_mdiff!')
+  }
+  if(custom_label_mdiff != 'none' & custom_label_name == 'none'){
+    stop('custom mass difference provided but no name.',
+         'provide value to custom_label_name!')
   }
 
   #use default sep if none provided
@@ -162,7 +176,10 @@ glycoMS2Annotate <- function(precursorAnnotations,
                                              ion_type = ion_type,
                                              nmod_max = nmod_max,
                                              double_sulfate = double_sulfate,
-                                             label = label)
+                                             label = label,
+                                             custom_label_name = custom_label_name,
+                                             custom_label_mdiff = custom_label_mdiff,
+                                             custom_label_formdiff = custom_label_formdiff)
 
     #make df for annotation
     df <- ms2spectra %>%

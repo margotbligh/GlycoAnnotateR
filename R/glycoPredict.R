@@ -55,6 +55,9 @@ glycoPredict <- function(param){
   naming = as.list(param@naming)
   glycan_linkage = as.list(param@glycan_linkage)
   modification_limits = param@modification_limits
+  custom_label_name = param@custom_label_name
+  custom_label_mdiff = param@custom_label_mdiff
+  custom_label_formdiff = param@custom_label_formdiff
 
   #message(paste("Glycans will be predicted according to the following glycoPredictParam() object:\n", str(param)))
 
@@ -64,7 +67,10 @@ glycoPredict <- function(param){
                        label = label, nmod_max = nmod_max, ion_type = ion_type,
                        double_sulfate = double_sulfate, adducts = adducts,
                        naming = naming, glycan_linkage = glycan_linkage,
-                       modification_limits = modification_limits)
+                       modification_limits = modification_limits,
+                       custom_label_name = custom_label_name,
+                       custom_label_mdiff = custom_label_mdiff,
+                       custom_label_formdiff = custom_label_formdiff)
   format = param@format
   library(magrittr)
   library(tidyr)

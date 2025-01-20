@@ -54,6 +54,12 @@ for detailed description of which adducts are generated,}
 \item{\code{modification_limits}}{Option to implement user created filters. Must be a named list, with names as modifications and values as limits.}
 
 \item{\code{format}}{Output format. Options are 'long' (default) or wide.}
+
+\item{\code{custom_label_name}}{Name of custom label or tag added to glycans. The name as written here will be appended to all composition names.}
+
+\item{\code{custom_label_mdiff}}{Monisotopic mass difference of custom label (i.e. mass difference between unlabelled and labelled glycan).}
+
+\item{\code{custom_label_formdiff}}{Formulas difference associated with custom label. Vector in order: C, H, N, O, S, P. Zero, positive and negative values possible.}
 }}
 
 \examples{

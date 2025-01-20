@@ -23,8 +23,7 @@ possible_modifications = ['carboxylicacid',
                           'alditol',
                           'amino',
                           'dehydrated',
-                          'sulfate',
-                         'aminopentyllinker']
+                          'sulfate']
 # hexose and water masses to build molecule base
 hex_mass = 180.0633881
 water_mass = 18.01056468
@@ -43,9 +42,7 @@ modifications_mdiff = {
     "unsaturated": -water_mass,
     "alditol": 2.015650064,
     "amino": -0.984015588,
-    "dehydrated": -water_mass,
-  "aminopentyllinker": 85.08914935
-}
+    "dehydrated": -water_mass}
 
 # mass differences for labels
 proca_mdiff = 219.173546
@@ -55,6 +52,7 @@ aba_nonreductive_mdiff = 119.037114
 pmp_mdiff = 330.148061
 ab_mdiff = 120.068748
 aq_nonreductive_mdiff = 126.058183
+aminopentyllinker_mdiff= 85.08914935
 
 #possible names for labels
 proa_names = {"procainamide", "proca", "procA", "ProA"}
@@ -64,6 +62,7 @@ aba_nonreductive_names = {"2-aa nonreductive", "2-AA nonreductive", "aba nonredu
 ab_names = {"2-ab", "2-AB", "ab", "AB", "2-aminobenzamide"}
 pmp_names = {"pmp", "PMP", "1-phenyl-3-methyl-5-pyrazolone"}
 aq_nonreductive_names = {'3AQ nonreductive', '3-AQ nonreductive', '3-aminoquinoline nonreductive'}
+aminopentyllinker_names = {"aminopentyllinker"}
 
 
 # mass differences for ions
@@ -106,7 +105,7 @@ formulas = {
     "pmp": [20, 18, 4, 1, 0, 0],
     "ab": [7, 8, 2, 0, 0, 0],
     "aq_nonreductive" : [9, 6, -1, 2, 0, 0],
-  "aminopentyllinker": [5, 11, 1, 0, 0, 0]
+    "aminopentyllinker": [5, 11, 1, 0, 0, 0]
 }
 # modification types
 modifications_anionic = {"sulfate",
@@ -120,8 +119,7 @@ modifications_neutral = {"anhydrobridge",
                          "deoxy",
                          "unsaturated",
                          "amino",
-                         "dehydrated",
-                        "aminopentyllinker"}
+                         "dehydrated"}
 
 #names
 names_iupac = {
@@ -139,9 +137,7 @@ names_iupac = {
     "unsaturated": 'Unsaturated',
     "alditol": 'Alditol',
     "amino": 'Amino',
-    "dehydrated": 'Dehydrated',
-  "aminopentyllinker": "NH2Pent1"
-}
+    "dehydrated": 'Dehydrated'}
 names_glycoct = {
     "hex": 'HEX',
     'pent': 'PEN',
@@ -157,9 +153,7 @@ names_glycoct = {
     "unsaturated": 'UNS',
     "alditol": 'ALD',
     "amino": 'NH2',
-    "dehydrated": 'Y',
-  "aminopentyllinker": "NH2Pent1"
-}
+    "dehydrated": 'Y'}
 names_oxford = {
     "hex": 'H',
     'pent': 'P',
@@ -175,9 +169,7 @@ names_oxford = {
     "unsaturated": 'U',
     "alditol": 'o',
     "amino": 'Am',
-    "dehydrated": 'Y',
-  "aminopentyllinker": "NH2Pent1"
-}
+    "dehydrated": 'Y'}
 
 #brackets
 bracket_mapping = {
@@ -195,10 +187,7 @@ bracket_mapping = {
     "unsaturated": '[]',
     "alditol": '[]',
     "amino": '[]',
-    "dehydrated": '[]',
-  "aminopentyllinker": '[]'
-  
-}
+    "dehydrated": '[]'}
 
 #n-glycan limits
 nglycan_limits = {
@@ -222,7 +211,7 @@ oglycan_limits = {
     "amino": 2
 }
 
-def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulfate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"], modification_limits = 'none'):
+def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_option=False, modifications='none', nmod_max=1, double_sulfate=False, label='none', ion_type = "ESI", format="long", adducts = ["all"], naming = "IUPAC", glycan_linkage = ["none"], modification_limits = 'none', custom_label_name = 'none', custom_label_mdiff = 'none', custom_label_formdiff = [0,0,0,0,0,0]):
     if 'all' in adducts:
         adducts=['H', 'Cl', 'CHOO', 'Na', 'NH4', 'K']
     if type(adducts)==str:
@@ -247,11 +236,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         modifications.remove("dehydrated")
     elif "dehydrated" not in modifications:
         dehydrated_option = 'n'
-    if "aminopentyllinker" in modifications:
-        aminopentyllinker_option = 'y'
-        modifications.remove("aminopentyllinker")
-    elif "aminopentyllinker" not in modifications:
-        aminopentyllinker_option = 'n'
     #calculate possible masses
     # build hexose molecules
     def getHexMasses(dp_range_list):
@@ -419,6 +403,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses['mass'] = masses.mass + aba_nonreductive_mdiff
     if label in aq_nonreductive_names:
         masses['mass'] = masses.mass + aq_nonreductive_mdiff
+    if label in aminopentyllinker_names:
+        masses['mass'] = masses.mass + aminopentyllinker_mdiff
+    if custom_label_name != 'none':
+        masses['mass'] = masses.mass + custom_label_mdiff
     if unsaturated_option == 'y':
         masses_a = masses.copy()
         masses_a['unsaturated'] = 1
@@ -439,14 +427,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         masses_a['dehydrated'] = 1
         masses['dehydrated'] = 0
         masses_a.mass = masses_a.mass + modifications_mdiff['dehydrated']
-        masses = pd.concat([masses, masses_a]).reset_index(drop=True)
-        del masses_a
-    if aminopentyllinker_option == 'y':
-        #print("--> adding dehydration to sugars")
-        masses_a = masses.copy()
-        masses_a['aminopentyllinker'] = 1
-        masses['aminopentyllinker'] = 0
-        masses_a.mass = masses_a.mass + modifications_mdiff['aminopentyllinker']
         masses = pd.concat([masses, masses_a]).reset_index(drop=True)
         del masses_a
     #remove modification combinations that are not possible
@@ -720,6 +700,10 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                 tmp = tmp + [formulas['aba_nonreductive'][i]]
         if label in aq_nonreductive_names:
             tmp = tmp + [formulas['aq_nonreductive'][i]]
+        if label in aminopentyllinker_names:
+            tmp = tmp + [formulas['aminopentyllinker'][i]]
+        if custom_label_name != 'none':
+            tmp = tmp + [custom_label_formdiff[i]]
         masses[atom] = list(tmp)
         #print("added to formula " + atom)
     masses['formula'] = "C" + pd.Series(masses["C"]).astype(str) + "H" + pd.Series(masses["H"]).astype(str) + "N" + pd.Series(masses["N"]).astype(str) + "O" + pd.Series(masses["O"]).astype(str) + "S" + pd.Series(masses["S"]).astype(str) + "P" + pd.Series(masses["P"]).astype(str)
@@ -748,7 +732,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
     if unsaturated_option == 'y': molecules_names = ['unsaturated'] + molecules_names
     if alditol_option == 'y': molecules_names = ['alditol'] + molecules_names
     if dehydrated_option == 'y': molecules_names = ['dehydrated'] + molecules_names
-    if aminopentyllinker_option == 'y': molecules_names = ['aminopentyllinker'] + molecules_names
     molecule_numbers = masses[molecules_names]
     if "IUPAC" in naming:
         masses['IUPAC name'] = molecule_numbers[molecules_names].apply(lambda row: ' '.join(
@@ -756,7 +739,6 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if unsaturated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Unsaturated1", "Unsaturated", regex=True)
         if alditol_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Alditol1", "Alditol", regex=True)
         if dehydrated_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("Dehydrated1", "Dehydrated", regex=True)
-        if aminopentyllinker_option == 'y': masses['IUPAC name'] = masses['IUPAC name'].str.replace("NH2Pent11", "NH2Pent1", regex=True)
         if label in proa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' procA'
         if label in pa_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-PA'
         if label in aba_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
@@ -764,12 +746,13 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in pmp_names: masses['IUPAC name'] = masses['IUPAC name'] + ' bis-PMP'
         if label in aba_nonreductive_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 2-AA'
         if label in aq_nonreductive_names: masses['IUPAC name'] = masses['IUPAC name'] + ' 3-AQ'
+        if label in aminopentyllinker_names: masses['IUPAC name'] = masses['IUPAC name'] + ' NH2 Pent1'
+        if custom_label_name != 'none': masses['IUPAC name'] = masses['IUPAC name'] + ' ' + custom_label_name
     if "GlycoCT" in naming:
         masses['GlycoCT name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_glycoct[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in molecules_names if row[name] != 0), axis=1)
         if alditol_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("[ALD]1", "[ALD]", regex=False)
         if dehydrated_option == 'y': masses['GlycoCT name'] = masses['GlycoCT name'].str.replace("[Y]1", "[Y]", regex=False)
-        if aminopentyllinker_option == 'y': masses['GlycoCT name'] = masses['IUPAC name'].str.replace("[NH2Pent1]1", "[NH2Pent1]", regex=False)
         if label in proa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' procA'
         if label in pa_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-PA'
         if label in aba_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
@@ -777,13 +760,14 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in pmp_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' bis-PMP'
         if label in aba_nonreductive_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 2-AA'
         if label in aq_nonreductive_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' 3-AQ'
+        if label in aminopentyllinker_names: masses['GlycoCT name'] = masses['GlycoCT name'] + ' NH2 Pent1'
+        if custom_label_name != 'none': masses['GlycoCT name'] = masses['GlycoCT name'] + ' ' + custom_label_name
     if "Oxford" in naming:
         masses['Oxford name'] = molecule_numbers[molecules_names].apply(lambda row: ''.join(
             f'{bracket_mapping[name][0]}{names_oxford[name]}{bracket_mapping[name][1]}' + str(int(row[name])) for name in
             molecules_names if row[name] != 0), axis=1)
         if alditol_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("[o]1", "[o]", regex=False)
         if dehydrated_option == 'y': masses['Oxford name'] = masses['Oxford name'].str.replace("[Y]1", "[Y]", regex=False)
-        if aminopentyllinker_option == 'y': masses['Oxford name'] = masses['IUPAC name'].str.replace("[NH2Pent1]1", "[NH2Pent1]", regex=False)
         if label in proa_names: masses['Oxford name'] = masses['Oxford name'] + ' procA'
         if label in pa_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-PA'
         if label in aba_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
@@ -791,6 +775,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
         if label in pmp_names: masses['Oxford name'] = masses['Oxford name'] + ' bis-PMP'
         if label in aba_nonreductive_names: masses['Oxford name'] = masses['Oxford name'] + ' 2-AA'
         if label in aq_nonreductive_names: masses['Oxford name'] = masses['Oxford name'] + ' 3-AQ'
+        if label in aminopentyllinker_names: masses['Oxford name'] = masses['Oxford name'] + ' NH2 Pent1'
+        if custom_label_name != 'none': masses['Oxford name'] = masses['Oxford name'] + ' ' + custom_label_name
     #print("\nstep #7: calculating m/z values of ions")
     #print("----------------------------------------------------------------\n")
     if len(list(set(modifications).intersection(modifications_anionic))) >= 1:

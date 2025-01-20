@@ -52,7 +52,7 @@ aba_nonreductive_mdiff = 119.037114
 pmp_mdiff = 330.148061
 ab_mdiff = 120.068748
 aq_nonreductive_mdiff = 126.058183
-aminopentyllinker_mdiff: 85.08914935
+aminopentyllinker_mdiff= 85.08914935
 
 #possible names for labels
 proa_names = {"procainamide", "proca", "procA", "ProA"}

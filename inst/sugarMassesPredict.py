@@ -908,7 +908,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                 charge = charges[i]
                                 masses_anionic[ions[i]] = (masses_anionic.mass - (ion_mdiff['H'] * nH) + (ion_mdiff['Na'] * nMe)+ (e_mdiff * charge)) / charge
                                 masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= nH)
-                        masses_anionic = masses_anionic.rename(columns=lambda x: x.replace('1', '') if x.startswith('[M-') else x)
+                        masses_anionic = masses_anionic.rename(columns=lambda x: re.sub(r'(?<!\d)1(?!\d)', '', x) if x.startswith('[M-') else x)
                     if a == "K":
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         for nH in H_ions:
@@ -922,9 +922,8 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                             ion_mdiff['K'] * nMe) + (e_mdiff * charge)) / charge
                                 masses_anionic[ions[i]] = masses_anionic[ions[i]].where(
                                     masses_anionic['nmod_anionic'] >= nH)
-                        masses_anionic = masses_anionic.rename(
-                            columns=lambda x: x.replace('1', '') if x.startswith('[M-') else x)
-                    if a == "NH4" :
+                        masses_anionic = masses_anionic.rename(columns=lambda x: re.sub(r'(?<!\d)1(?!\d)', '', x) if x.startswith('[M-') else x)
+                    if a == "NH4":
                         H_ions = list(range(2, masses_anionic.nmod_anionic.max() + 1))
                         for nH in H_ions:
                             Me_range = list(range(1, nH))  # ensures charge is always <= -1
@@ -937,13 +936,12 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                                             ion_mdiff['NH4'] * nMe) + (e_mdiff * charge)) / charge
                                 masses_anionic[ions[i]] = masses_anionic[ions[i]].where(
                                     masses_anionic['nmod_anionic'] >= nH)
-                        masses_anionic = masses_anionic.rename(
-                            columns=lambda x: x.replace('1', '') if x.startswith('[M-') else x)
+                        masses_anionic = masses_anionic.rename(columns=lambda x: re.sub(r'(?<!\d)1(?!\d)', '', x) if x.startswith('[M-') else x)
                     if a == 'Cl':
                         masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
                     if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-            masses = pd.concat([masses_anionic, masses_neutral]).reset_index(drop=True)
+            masses = pd.concat([masses_anionic, masses_neutral])
             del masses_anionic, masses_neutral
         my_cols = list(masses.filter(like='[M', axis=1).columns)
         masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])

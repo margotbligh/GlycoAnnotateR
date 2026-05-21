@@ -834,7 +834,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         masses_anionic[ions[i]] = masses_anionic[ions[i]].where(masses_anionic['nmod_anionic'] >= (i))
                         masses_anionic = masses_anionic.rename({'[M-0H+1NH4]+': '[M+NH4]+'}, axis=1)
                         masses_anionic = masses_anionic.rename({'[M-1H+2NH4]+': '[M-H+2NH4]+'}, axis=1)
-            masses = pd.concat([masses_anionic, masses_neutral])
+            masses = pd.concat([masses_anionic, masses_neutral]).reset_index(drop=True)
             del masses_anionic, masses_neutral
         if "neg" in polarity:
             #create separate tables of sugars with (any) anionic modifications, and with (only) neutral modifications
@@ -943,7 +943,7 @@ def predict_sugars(dp= [1, 6], polarity='neg', scan_range=[175, 1400], pent_opti
                         masses_anionic['[M+Cl]-'] = masses_anionic.mass + ion_mdiff['Cl'] + e_mdiff
                     if a == 'CHOO':
                         masses_anionic['[M+CHOO]-'] = masses_anionic.mass + ion_mdiff['CHOO'] + e_mdiff
-            masses = pd.concat([masses_anionic, masses_neutral])
+            masses = pd.concat([masses_anionic, masses_neutral]).reset_index(drop=True)
             del masses_anionic, masses_neutral
         my_cols = list(masses.filter(like='[M', axis=1).columns)
         masses[my_cols] = masses[my_cols].where(masses[my_cols] >= scan_range[0])

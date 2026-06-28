@@ -166,20 +166,76 @@ glycoMS2Annotate <- function(precursorAnnotations,
     if(dehydrations == TRUE){
       annot_split_lc <- c(annot_split_lc, 'dehydrated')
     }
+    
+    #get adducts from annotations
+    annot_split_ad <- stringr::str_split_1(annot, pattern = p)
+    #remove elements with the ion
+    annot_split_ad <- annot_split_ad[grepl('\\[', annot_split_ad)]
+    adducts <- c()
+    
+    if (any(grepl("\\[M\\-\\d*H|\\[M\\+\\d*H", annot_split_ad))) {
+      adducts <- c(adducts, "H")
+    }
+    if (any(grepl("Na", annot_split_ad))) {
+      adducts <- c(adducts, "Na")
+    }
+    if (any(grepl("NH4", annot_split_ad))) {
+      adducts <- c(adducts, "NH4")
+    }
+    if (any(grepl("K", annot_split_ad))) {
+      adducts <- c(adducts, "K")
+    }
+    if (any(grepl("CHOO", annot_split_ad))) {
+      adducts <- c(adducts, "CHOO")
+    }
+    if (any(grepl("Cl", annot_split_ad))) {
+      adducts <- c(adducts, "Cl")
+    }
+    
 
     #create parameter object
-    gpp <- GlycoAnnotateR::glycoPredictParam(dp = c(1, max_dp),
-                                             pent_option = pent_option,
-                                             modifications = annot_split_lc,
-                                             polarity = polarity,
-                                             scan_range = c(0, 10000), #set the scan range wide
-                                             ion_type = ion_type,
-                                             nmod_max = nmod_max,
-                                             double_sulfate = double_sulfate,
-                                             label = label,
-                                             custom_label_name = custom_label_name,
-                                             custom_label_mdiff = custom_label_mdiff,
-                                             custom_label_formdiff = custom_label_formdiff)
+    #remove annotations with more sulfate than the max sulfation
+    if('sulfate' %in% annot_split_lc){
+      annot_split_S <- stringr::str_split_1(annot, pattern = p)
+      annot_split_S <- annot_split_S[grepl('Sulfate', annot_split_S)] %>% 
+        sub('Sulfate(\\d+)', '\\1', .) %>% 
+        as.numeric()
+      maxS = max(annot_split_S)
+      
+      gpp <- GlycoAnnotateR::glycoPredictParam(dp = c(1, max_dp),
+                                               pent_option = pent_option,
+                                               modifications = annot_split_lc,
+                                               adducts = adducts,
+                                               polarity = polarity,
+                                               scan_range = c(0, 10000), #set the scan range wide
+                                               ion_type = ion_type,
+                                               nmod_max = nmod_max,
+                                               double_sulfate = double_sulfate,
+                                               label = label,
+                                               custom_label_name = custom_label_name,
+                                               custom_label_mdiff = custom_label_mdiff,
+                                               custom_label_formdiff = custom_label_formdiff,
+                                               modification_limits = list('sulfate' = maxS))
+
+    } else {
+      gpp <- GlycoAnnotateR::glycoPredictParam(dp = c(1, max_dp),
+                                               pent_option = pent_option,
+                                               modifications = annot_split_lc,
+                                               adducts = adducts,
+                                               polarity = polarity,
+                                               scan_range = c(0, 10000), #set the scan range wide
+                                               ion_type = ion_type,
+                                               nmod_max = nmod_max,
+                                               double_sulfate = double_sulfate,
+                                               label = label,
+                                               custom_label_name = custom_label_name,
+                                               custom_label_mdiff = custom_label_mdiff,
+                                               custom_label_formdiff = custom_label_formdiff)
+    }
+    
+    
+    
+
 
     #make df for annotation
     df <- ms2spectra %>%
@@ -189,12 +245,31 @@ glycoMS2Annotate <- function(precursorAnnotations,
     #annotate fragments
     df_annot <- GlycoAnnotateR::glycoAnnotate(df,
                                               param = gpp,
-                                              collapse = T,
                                               error = error,
                                               error_units = error_units)
-
+    
+    #remove hexose annotations if only deoxyhexose in precursor annotation
+    if(!grepl('^Hex|\\sHex', annot)){
+      df_annot <- df_annot %>% 
+        mutate(dp = case_when(grepl('^Hex|\\sHex', `IUPAC name`) ~ NA,
+                                        TRUE ~ dp),
+               ion = case_when(grepl('^Hex|\\sHex', `IUPAC name`) ~ NA,
+                                        TRUE ~ ion),
+               `IUPAC name` = case_when(grepl('^Hex|\\sHex', `IUPAC name`) ~ NA,
+                                        TRUE ~ `IUPAC name`))
+    }
+    
+    df_annot_collapse <- GlycoAnnotateR::glycoAnnotationsCollapse(
+      df_annot,
+      collapse_columns = c('IUPAC name', 'ion'),
+      noncollapse_columns = names(ms2spectra)) %>% 
+      mutate(annotations = gsub('NA:NA|NA:NA,\\s', '', annotations) %>% 
+               sub(',\\s$', '', .),
+             annotations = case_when(annotations == "" ~ NA,
+                                     TRUE ~ annotations))
+    
     #add to list
-    ms2_annot_list[[i]] <- df_annot
+    ms2_annot_list[[i]] <- df_annot_collapse
 
   }
 
